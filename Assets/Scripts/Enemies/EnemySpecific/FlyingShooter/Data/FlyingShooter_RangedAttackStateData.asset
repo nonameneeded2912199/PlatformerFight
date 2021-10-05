@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3c0713421bb3c848b88443184ec600e, type: 3}
+  m_Name: FlyingShooter_RangedAttackStateData
+  m_EditorClassIdentifier: 
+  movingSpeed: 3
+  movingAngle: {x: 1, y: 0}
+  bulletShootTypes:
+  - bulletSpeed: 3
+    bulletAcceleration: 0
+    bulletDamage: 10
+    bulletLifeSpan: 0
+    destroyOnInvisible: 1
+    bulletType: 0
+    bulletColor: 15

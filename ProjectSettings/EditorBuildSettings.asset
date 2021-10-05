@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1045 &1
+EditorBuildSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/PreloadScreen.unity
+    guid: 63b031c958020a9478a030b3fde2e5f5
+  - enabled: 1
+    path: Assets/Scenes/TitleScreen.unity
+    guid: 83fc5b4ce27ca7b4b9325575f703d453
+  - enabled: 1
+    path: Assets/Scenes/SharedScene.unity
+    guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/Stage1-1.unity
+    guid: 52ca6ad4cc7466e44b0d1af43f5c3a4a
+  - enabled: 1
+    path: Assets/Scenes/Stage1-2.unity
+    guid: dc0044ea8aedd514ca6361a09c9f822a
+  - enabled: 1
+    path: Assets/Scenes/Stage1-Preboss.unity
+    guid: 03f20e7b8419d344386b0873532d9f0e
+  - enabled: 1
+    path: Assets/Scenes/Stage1-Boss.unity
+    guid: 906274a64f920ba42afe7a28cff58d02
+  - enabled: 1
+    path: Assets/Scenes/Stage2-1.unity
+    guid: 6b5cbbe56fde7b440b517147d20e2fbd
+  - enabled: 1
+    path: Assets/Scenes/Stage1-3.unity
+    guid: d3717215925b56c43bbd0ed54e3c1a3b
+  - enabled: 1
+    path: Assets/Scenes/Stage1-4.unity
+    guid: 7c27c0f722b2fbe49b4f0f2b6992f7c3
+  m_configObjects: {}
