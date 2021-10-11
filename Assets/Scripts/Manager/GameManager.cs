@@ -43,7 +43,7 @@ public class GameManager : Singleton<GameManager>
             if (cpoint.CheckPointName == SaveManager.CheckPointName)
             {
                 spawnPoint = cpoint.transform.position;
-                CharacterController.Instance.Respawn(spawnPoint);
+                //CharacterController.Instance.Respawn(spawnPoint);
             }
         }
 

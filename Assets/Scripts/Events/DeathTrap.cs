@@ -8,7 +8,7 @@ public class DeathTrap : MonoBehaviour
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
-            collision.gameObject.GetComponent<CharacterController>().Die();
+            //collision.gameObject.GetComponent<CharacterController>().Die();
         }    
     }
 }

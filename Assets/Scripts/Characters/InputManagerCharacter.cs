@@ -159,11 +159,11 @@ public class InputManagerCharacter : MonoBehaviour
     private void HandleInput()
     {
         // Horizontal 
-        if ((int)Input.GetAxis("Horizontal") == 1 || buttonRight == 1)
+        if ((int)Input.GetAxisRaw("Horizontal") == 1 || buttonRight == 1)
         {
             horizontal = 1;
         }
-        else if ((int)Input.GetAxis("Horizontal") == -1 || buttonLeft == 1)
+        else if ((int)Input.GetAxisRaw("Horizontal") == -1 || buttonLeft == 1)
         {
             horizontal = -1;
         }
@@ -173,11 +173,11 @@ public class InputManagerCharacter : MonoBehaviour
         }
 
         // Vertical
-        if ((int)Input.GetAxis("Vertical") == 1 || buttonUp == 1)
+        if ((int)Input.GetAxisRaw("Vertical") == 1 || buttonUp == 1)
         {
             vertical = 1;
         }
-        else if ((int)Input.GetAxis("Vertical") == -1 || buttonDown == 1)
+        else if ((int)Input.GetAxisRaw("Vertical") == -1 || buttonDown == 1)
         {
             vertical = -1;
         }

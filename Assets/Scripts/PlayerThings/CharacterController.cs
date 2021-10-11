@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,53 +8,91 @@ public class CharacterController : MonoBehaviour
 {
     public static CharacterController Instance { get; private set; }
 
-    [Header("Stat")]
-    public float hp;
-    public float maxHP;
-    public Image imageHP;
-    public Text textHP;
-
     [Header("Component")]
     private Rigidbody2D rb;
-    private Animator myAnimator;
+    private Animator animator;
+
+    [Header("LayerMask")]
+    [SerializeField]
+    private LayerMask groundLayer;
+    [SerializeField]
+    private LayerMask wallLayer;
+
+    private bool isInvincible;
+    [Header("Movement")]
+    [SerializeField]
+    private float acceleration;
+    [SerializeField]
+    private float maxMoveSpeed;
+    [SerializeField]
+    private float groundLinearDrag = 10f;
+    [SerializeField]
+    private bool facingRight = true;
 
     private float horizontal;
-    private float dashTimeLeft;
-    private float lastDash = -100f;
-    private float knockbackStartTime;
     [SerializeField]
-    private float knockbackDuration;
+    private bool canMove = true;
 
-    private bool isTouchingWall;
-    private bool facingRight = true;
-    private bool isWallSliding;
-    private bool allowMove = true;
-    private bool isGrounded;
+    [Header("Jump")]
+    [SerializeField]
+    private float jumpForce = 12f;
+    [SerializeField]
+    private float airLinearDrag = 2.5f;
+    [SerializeField]
+    private float fallMultiplier = 8f;
+    [SerializeField]
+    private float lowJumpFallMultiplier = 5f;
+    [SerializeField]
+    private float jumpDelay = 0.15f;
+    [SerializeField]
+    private int extraJumps = 1;
+    [SerializeField]
+    private float hangTime = 1f;
+    [SerializeField]
+    private float jumpBufferLength = 0.1f;
+    [SerializeField]
+    private float timeBeforeMovable = 0.1f;
+    [SerializeField]
+    private float timeBeforeWallJump = 0.1f;
+    private bool preparingToWallJump = false;
+
+    private bool jump => jumpBufferCounter > 0f && (hangTimeCounter > 0f || extraJumpsSum > 0);
+
+    private bool wallGrab => onWall && !isGrounded && ((horizontal > 0 && onRightWall) || (horizontal < 0 && !onRightWall));
+
+    private int extraJumpsSum;
+    private float hangTimeCounter;
+    [SerializeField]
+    private float jumpBufferCounter;
+
+    [Header("Dash Variables")]
+    [SerializeField]
+    private float dashSpeed = 15f;
+    [SerializeField]
+    private float dashLength = 3f;
+    [SerializeField]
+    private float dashBufferLength = 0.1f;
+    private float dashBufferCounter;
     private bool isDashing;
-    private bool allowDash = true;
-    private bool knockback;
-    private bool wallJumping = false;
-    private bool isInvincible;
-
-    [Header("Physics Parameter")]
+    private bool hasDashed;
     [SerializeField]
-    private Vector2 knockbackSpeed;
-    public float speed, jumpHeight;
-    public float jumpHeightModifier = 0.5f;
-    public float groundCheckRadius;
-    public float wallCheckRadius;
-    public float wallSlideSpeed;
-    public float movementForceInAir;
-    public float dashTime;
-    public float dashSpeed;
-    public float dashCooldown;
-    public Vector2 wallForce;
-    public float wallJumpTime;
-    public Transform groundPoint;
-    public Transform wallPoint;
-    public LayerMask groundLayer;
+    private float dashCooldown = 1f;
+    private float dashCooldownCounter = 0f;
+    private bool canDash => dashBufferCounter > 0f && !hasDashed && dashCooldownCounter == 0;
 
-    public bool FacingRight => facingRight;
+    [Header("Ground Collision Check")]
+    [SerializeField]
+    private float groundRaycastLength;
+    [SerializeField]
+    private Vector3 groundRaycastOffset;
+    private bool isGrounded;
+
+    [Header("Wall Collision Check")]
+    [SerializeField]
+    private float wallRaycastLength;
+    public bool onWall;
+    public bool onRightWall;
+
 
     private void Awake()
     {
@@ -66,324 +105,249 @@ public class CharacterController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        myAnimator = GetComponent<Animator>();
-
-        hp = maxHP;
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        horizontal = GetComponent<InputManagerCharacter>().horizontal;
-        HandleHPBar();
         HandleInput();
-    }
-
-    private void HandleMovement()
-    {
-        if (allowMove && !knockback)
-            rb.velocity = new Vector2(horizontal * speed, rb.velocity.y);
-
-        if (isWallSliding && allowMove)
-        {
-            if (rb.velocity.y < -wallSlideSpeed)
-            {
-                rb.velocity = new Vector2(rb.velocity.x, -wallSlideSpeed);
-            }
-        }
-    }  
-
-    private void HandleHPBar()
-    {
-        imageHP.fillAmount = hp / maxHP;
-        textHP.text = hp + " / " + maxHP;
-    }
-    
-    private void Jump()
-    {
-        if (isGrounded && !isWallSliding && allowMove)
-            rb.velocity = new Vector2(rb.velocity.x, jumpHeight);
-
-        if (isWallSliding)
-        {
-            wallJumping = true;
-            Invoke("SetWallJumpingToFalse", wallJumpTime);
-        }       
-    }   
-
-    void SetWallJumpingToFalse()
-    {
-        wallJumping = false;
-    }
-    
-    private void HandleAnimations()
-    {
-        myAnimator.SetBool("Move", (horizontal != 0 && allowMove));
-        myAnimator.SetBool("Grounded", isGrounded);
-        myAnimator.SetFloat("Jump", rb.velocity.y);
-        myAnimator.SetBool("WallSlide", isWallSliding);
-    }    
-
-    private void HandleFlip()
-    {
-        if (((horizontal > 0 && !facingRight) || (horizontal < 0 && facingRight)) && allowMove && !knockback)
-        {
-            facingRight = !facingRight;
-
-            Vector3 theScale = transform.localScale;
-            theScale.x *= -1;
-            transform.localScale = theScale;
-        }    
-    }    
-
-    private void HandleWallJump()
-    {
-        if (wallJumping)
-        {
-            int dir = facingRight == true ? -1 : 1;
-            rb.velocity = new Vector2(wallForce.x * dir, wallForce.y);
-        }
+        HandleAnimation();
+        HandleFlip();
     }
 
     private void FixedUpdate()
     {
-        CheckSurroundings();
-
-        HandleMovement();
-
-        HandleFlip();
-
-        HandleWallJump();
-
-        HandleAnimations();
-
-        CheckIfWallSliding();
-
-        CheckDash();
-
-        CheckKnockback();
+        HandleCollision();
+        if (canDash)
+            StartCoroutine(Dash());
+        if (!isDashing)
+        {
+            if (canMove)
+                HandleMovement();
+            if (isGrounded)
+            {
+                extraJumpsSum = extraJumps;
+                ApplyGroundLinearDrag();
+                hangTimeCounter = hangTime;
+                hasDashed = false;
+            }
+            else
+            {
+                ApplyAirLinearDrag();
+                if (!preparingToWallJump)
+                    FallMultiplier();
+                hangTimeCounter -= Time.fixedDeltaTime;
+            }
+            if (jump && canMove)
+            {
+                if (wallGrab)
+                {
+                    PrepareToWallJump();
+                }
+                else
+                {
+                    Jump(Vector2.up);
+                }
+            }
+        }              
     }
 
+    private void Flip()
+    {
+        facingRight = !facingRight;
+        transform.rotation = Quaternion.Euler(0f, facingRight ? 0 : 180f, 0f);
+        Debug.Log("Flipped");
+    }
+
+    private void HandleAnimation()
+    {
+        animator.SetBool("Move", horizontal != 0);
+        animator.SetBool("Grounded", isGrounded);
+        animator.SetFloat("Jump", rb.velocity.y);
+        animator.SetBool("IsDashing", isDashing);
+    }
+    
+    private void HandleFlip()
+    {
+        if ((horizontal < 0 && facingRight) || (horizontal > 0 && !facingRight))
+        {
+            Flip();
+        }
+    }
 
     private void HandleInput()
     {
-        horizontal = Input.GetAxisRaw("Horizontal");
+        if (canMove && !isDashing)
+            horizontal = Input.GetAxisRaw("Horizontal");
+        else
+            horizontal = 0;
 
-        if (Input.GetKeyDown(KeyCode.Z))
-        {
-            Jump();
-        }
-        if (Input.GetKeyUp(KeyCode.Z))
-        {
-            rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * jumpHeightModifier);
-        }
+        if (Input.GetButtonDown("Jump") && !isDashing)
+            jumpBufferCounter = jumpBufferLength;
+        else
+            jumpBufferCounter -= Time.deltaTime;
 
-        if (Input.GetKeyDown(KeyCode.C))
+        if (Input.GetButtonDown("Dash"))
         {
-            if (Time.time >= (lastDash + dashCooldown) && allowDash)
-                AttemptToDash();
-        }
-    }    
+            dashBufferCounter = dashBufferLength;
+        }    
+        else
+        {
+            dashBufferCounter -= Time.deltaTime;
+        }    
+    }
 
-    private void CheckSurroundings()
+    private void Jump(Vector2 direction)
     {
-        isGrounded = Physics2D.OverlapCircle(groundPoint.position, groundCheckRadius, groundLayer);
-        float directionCheck = (facingRight == true) ? 1 : -1;
-        isTouchingWall = Physics2D.Raycast(wallPoint.position, transform.right * directionCheck, wallCheckRadius, groundLayer);
-    } 
+        if (!isGrounded && !wallGrab)
+            extraJumpsSum--;
 
-    private void CheckDash()
+        ApplyAirLinearDrag();
+        rb.velocity = new Vector2(rb.velocity.x, 0f);
+        rb.AddForce(direction * jumpForce, ForceMode2D.Impulse);
+        hangTimeCounter = 0f;
+        jumpBufferCounter = 0f;
+    }
+
+    private async void PrepareToWallJump()
     {
-        if (isDashing)
-        {
-            allowDash = false;
-            if (dashTimeLeft > 0)
-            {
-                Shadow.Instance.UpdateTimer();
-                allowMove = false;
-                rb.velocity = new Vector2(dashSpeed * ((facingRight == true) ? 1 : -1), 0);
-                dashTimeLeft -= Time.deltaTime;
-            }
+        preparingToWallJump = true;
+        animator.SetBool("WallGrab", true);
+        canMove = false;
+        rb.constraints = RigidbodyConstraints2D.FreezePosition;
+        float timeStartToPrepare = Time.time;
+        while (Time.time < timeStartToPrepare + timeBeforeWallJump)
+        {   
+            await Task.Yield();
+        }
+        rb.constraints = RigidbodyConstraints2D.None;
+        rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+        animator.SetBool("WallGrab", false);
+        WallJump();
+        preparingToWallJump = false;
+    }
 
-            if (dashTimeLeft <= 0 || isTouchingWall )
-            {
-                isDashing = false;
-                allowMove = true;
-            }
+    private void WallJump()
+    {
+        Vector2 jumpDirection = onRightWall ? Vector2.left : Vector2.right;
+        Jump(jumpDirection + Vector2.up);
+        StartCoroutine(StunMoveWallJump());
+        Flip();
+    }
+
+    private void FallMultiplier()
+    {
+        if (rb.velocity.y < 0)
+        {
+            rb.gravityScale = fallMultiplier;
+        }
+        else if (rb.velocity.y > 0 && !Input.GetButton("Jump"))
+        {
+            rb.gravityScale = lowJumpFallMultiplier;
         }
         else
         {
-            if (isTouchingWall || isGrounded)
-                allowDash = true;
+            rb.gravityScale = 1f;
         }
     }
-    
-    private void CheckIfWallSliding()
+
+    private void HandleCollision()
     {
-        if (isTouchingWall && !isGrounded && rb.velocity.y < 0)
+        // Ground collision
+        isGrounded = Physics2D.Raycast(transform.position + groundRaycastOffset, Vector2.down, groundRaycastLength, groundLayer)
+            || Physics2D.Raycast(transform.position - groundRaycastOffset, Vector2.down, groundRaycastLength, groundLayer);
+
+        // Wall collision
+        onWall = Physics2D.Raycast(transform.position, Vector2.right, wallRaycastLength, wallLayer)
+            || Physics2D.Raycast(transform.position, Vector2.left, wallRaycastLength, wallLayer);
+
+        onRightWall = Physics2D.Raycast(transform.position, Vector2.right, wallRaycastLength, wallLayer);
+    }
+
+    private void HandleMovement()
+    {
+        rb.AddForce(Vector2.right * horizontal * acceleration);
+
+        if (Mathf.Abs(rb.velocity.x) > maxMoveSpeed)
         {
-            isWallSliding = true;
+            rb.velocity = new Vector2(Mathf.Sign(rb.velocity.x) * maxMoveSpeed, rb.velocity.y);
+        }
+    }
+
+    private void ApplyGroundLinearDrag()
+    {
+        bool changingDirection = (rb.velocity.x > 0f && horizontal < 0f) || (rb.velocity.x < 0f && horizontal > 0f);
+        if (Mathf.Abs(horizontal) < 0.4f || changingDirection)
+        {
+            rb.drag = groundLinearDrag;
         }
         else
         {
-            isWallSliding = false;
+            rb.drag = 0f;
         }
     }
 
-    public bool CheckAnimationIsPlaying(string c)
+    private void ApplyAirLinearDrag()
     {
-        if (myAnimator.GetCurrentAnimatorStateInfo(0).IsName(c))
-            return true;
-        return false;
+        rb.drag = airLinearDrag;
     }
 
-    public void EnableMove()
+    private IEnumerator StunMoveWallJump()
     {
-        allowMove = true;
+        canMove = false;
+        yield return new WaitForSeconds(timeBeforeMovable);
+        canMove = true;
     }
 
-    public void DisableMove()
+    private IEnumerator Dash()
     {
-        allowMove = false;
-        rb.velocity = new Vector2(0, rb.velocity.y);
-    }
-
-    public void ToIdle()
-    {
-        myAnimator.speed = 1f;
-        if (CheckAnimationIsPlaying("LieDown"))
-        {
-
-        }
-        else if (isGrounded)
-        {
-
-        }
-    }
-
-    private void TakeDamage(AttackDetails attackDetails)
-    {
-        if (!isDashing && !isInvincible)
-        {
-            hp -= attackDetails.damageAmount;
-
-            if (hp > 0)
-            {
-                StartCoroutine(BecomeInvicible(1.5f));
-
-                int direction = attackDetails.position.x < transform.position.x ? 1 : -1;
-
-                Knockback(direction);
-            }
-            else
-            {
-                Die();
-            }
-        }
-    }
-
-    public void Knockback(int direction)
-    {
-        knockback = true;
-        DisableMove();
-        knockbackStartTime = Time.time;
-        rb.velocity = new Vector2(knockbackSpeed.x * direction, knockbackSpeed.y);
-    }
-
-    private void CheckKnockback()
-    {
-        if (Time.time >= knockbackStartTime + knockbackDuration && knockback && isGrounded)
-        {
-            knockback = false;
-            EnableMove();
-            rb.velocity = new Vector2(0.0f, rb.velocity.y);
-        }
-    }
-
-    private void AttemptToDash()
-    {
+        float dashStartTime = Time.time;
+        hasDashed = true;
         isDashing = true;
-        dashTimeLeft = dashTime;
-        lastDash = Time.time;
-    }
-
-    public bool GetDashStatus()
-    {
-        return isDashing;
-    }
-
-    public bool IsGrounded()
-    {
-        return isGrounded;
-    }    
-
-    public void Die()
-    {
-        hp = 0;
-
-        HandleHPBar();
-
-        gameObject.SetActive(false);
-
-        Camera.main.GetComponent<Cinemachine.CinemachineBrain>().ActiveVirtualCamera.Follow = null;
-
-        GameManager.Instance.RestartLevel();
-        //myAnimator.SetBool("Dead", true);
-
-    }
-
-    public void Respawn(Vector3 position)
-    {
-        print("Last check point is: " + position);
-
-        hp = maxHP;
-
-        transform.position = position;
-
-        //myAnimator.SetBool("Dead", false);
-    }
-
-    private IEnumerator BecomeInvicible(float seconds)
-    {
         isInvincible = true;
-        SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
-        for (float i = 0; i < seconds; i += seconds / 10)
+
+        rb.velocity = Vector2.zero;
+        rb.gravityScale = 0f;
+        rb.drag = 0f;
+        extraJumpsSum = 0;
+
+        Vector2 dir = facingRight ? Vector2.right : Vector2.left;
+
+        while (Time.time < dashStartTime + dashLength)
         {
-            if (spriteRenderer.enabled)
-            {
-                spriteRenderer.enabled = false;
-            }
-            else
-            {
-                spriteRenderer.enabled = true;
-            }
-
-            yield return new WaitForSeconds(seconds / 10);
+            rb.velocity = dir.normalized * dashSpeed;
+            yield return null;
         }
-        spriteRenderer.enabled = true;
+
+        isDashing = false;
         isInvincible = false;
-    }
-
-    public void Regenerate()
-    {
-        hp = maxHP;
+        EnterDashCooldown();
     } 
-    
-    public void PlayAnimation(string c)
-    {
-        
-    }
 
-    public void StopWaitForSecondsToPlayIdle()
+    private async void EnterDashCooldown()
     {
+        dashCooldownCounter = dashCooldown;
         
+        while (dashCooldownCounter > 0)
+        {
+            dashCooldownCounter -= Time.deltaTime;
+            await Task.Yield();
+        }
+
+        dashCooldownCounter = 0;
     }
 
     private void OnDrawGizmos()
     {
-        Gizmos.DrawWireSphere(groundPoint.position, groundCheckRadius);
-        Gizmos.DrawLine(wallPoint.position, new Vector3(wallPoint.position.x + wallCheckRadius * ((facingRight == true) ? 1 : -1), 
-            wallPoint.position.y, wallPoint.position.z));
+        Gizmos.DrawLine(transform.position + groundRaycastOffset, transform.position + groundRaycastOffset + Vector3.down * groundRaycastLength);
+        Gizmos.DrawLine(transform.position - groundRaycastOffset, transform.position - groundRaycastOffset + Vector3.down * groundRaycastLength);
+
+        // Wall Check
+        Gizmos.DrawLine(transform.position, transform.position + Vector3.right * wallRaycastLength);
+        Gizmos.DrawLine(transform.position, transform.position + Vector3.left * wallRaycastLength);
     }
+
+
 
 }

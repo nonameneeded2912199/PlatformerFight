@@ -27,7 +27,7 @@ public class Checkpoint : MonoBehaviour
 
                 Debug.Log("Checked Point: " + transform.position);
             }
-            CharacterController.Instance.Regenerate();
+            //CharacterController.Instance.Regenerate();
         }
     }
 }
