@@ -45,8 +45,9 @@ public class FlyingShooter_RangedAttackState : RangedAttackState
     public override void LogicUpdate()
     {
         base.LogicUpdate();
-        if ((CharacterController.Instance.transform.position.x > enemy.transform.position.x && enemy.facingDirection == -1)
-            || (CharacterController.Instance.transform.position.x < enemy.transform.position.x && enemy.facingDirection == 1))
+        int facingDirection = enemy.facingRight ? 1 : -1;
+        if ((Player.Instance.transform.position.x > enemy.transform.position.x && facingDirection == -1)
+            || (Player.Instance.transform.position.x < enemy.transform.position.x && facingDirection == 1))
         {
             enemy.Flip();
         }    
@@ -75,7 +76,7 @@ public class FlyingShooter_RangedAttackState : RangedAttackState
     private IEnumerator ShootPlayer()
     {
         isAttacking = true;
-        Vector2 playerPos = CharacterController.Instance.transform.position;
+        Vector2 playerPos = Player.Instance.transform.position;
         Vector2 myPos = enemy.transform.position;
         float angle = Mathf.Atan2(playerPos.y - myPos.y, playerPos.x - myPos.x);
         for (int j = 0; j < 5; j++)
@@ -83,13 +84,13 @@ public class FlyingShooter_RangedAttackState : RangedAttackState
             switch (GameManager.Instance.currentGameDifficulty)
             {
                 case GameDifficulty.EASY:
-                    Bullet.GetBullet(attackPosition.position, stateData.bulletShootTypes[0].bulletSpeed, angle, stateData.bulletShootTypes[0].bulletLifeSpan, 
+                    Bullet.GetBullet(BulletOwner.Enemy, attackPosition.position, stateData.bulletShootTypes[0].bulletSpeed, angle, stateData.bulletShootTypes[0].bulletLifeSpan, 
                         stateData.bulletShootTypes[0].bulletDamage, stateData.bulletShootTypes[0].bulletType, stateData.bulletShootTypes[0].bulletColor);
                     break;
                 case GameDifficulty.NORMAL:
                     for (float i = 0; i < 2 * Mathf.PI; i += (2f * Mathf.PI / 6))
                     {
-                        Bullet.GetBullet(attackPosition.position, stateData.bulletShootTypes[0].bulletSpeed, angle + i, stateData.bulletShootTypes[0].bulletLifeSpan,
+                        Bullet.GetBullet(BulletOwner.Enemy, attackPosition.position, stateData.bulletShootTypes[0].bulletSpeed, angle + i, stateData.bulletShootTypes[0].bulletLifeSpan,
                          stateData.bulletShootTypes[0].bulletDamage, stateData.bulletShootTypes[0].bulletType, stateData.bulletShootTypes[0].bulletColor,
                          stateData.bulletShootTypes[0].destroyOnInvisible);
                     }
@@ -97,7 +98,7 @@ public class FlyingShooter_RangedAttackState : RangedAttackState
                 case GameDifficulty.HARD:
                     for (float i = 0; i < 2 * Mathf.PI; i += (2f * Mathf.PI / 12))
                     {
-                        Bullet.GetBullet(attackPosition.position, stateData.bulletShootTypes[0].bulletSpeed, angle + i, stateData.bulletShootTypes[0].bulletLifeSpan,
+                        Bullet.GetBullet(BulletOwner.Enemy, attackPosition.position, stateData.bulletShootTypes[0].bulletSpeed, angle + i, stateData.bulletShootTypes[0].bulletLifeSpan,
                         stateData.bulletShootTypes[0].bulletDamage * 1.5f, stateData.bulletShootTypes[0].bulletType, stateData.bulletShootTypes[0].bulletColor,
                         stateData.bulletShootTypes[0].destroyOnInvisible);
                     }
@@ -105,7 +106,7 @@ public class FlyingShooter_RangedAttackState : RangedAttackState
                 case GameDifficulty.LUNATIC:
                     for (float i = 0; i < 2 * Mathf.PI; i += (2f * Mathf.PI / 18))
                     {
-                        Bullet.GetBullet(attackPosition.position, stateData.bulletShootTypes[0].bulletSpeed, angle + i, stateData.bulletShootTypes[0].bulletLifeSpan,
+                        Bullet.GetBullet(BulletOwner.Enemy, attackPosition.position, stateData.bulletShootTypes[0].bulletSpeed, angle + i, stateData.bulletShootTypes[0].bulletLifeSpan,
                         stateData.bulletShootTypes[0].bulletDamage * 2f, stateData.bulletShootTypes[0].bulletType, stateData.bulletShootTypes[0].bulletColor,
                         stateData.bulletShootTypes[0].destroyOnInvisible);
                     }

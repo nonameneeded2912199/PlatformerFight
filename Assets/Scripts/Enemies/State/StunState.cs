@@ -22,7 +22,7 @@ public class StunState : State
     {
         base.DoChecks();
 
-        isGrounded = entity.CheckGround();
+        isGrounded = entity.IsGrounded;
         performCloseRangeAction = entity.CheckPlayerInCloseRangeAction();
         isPlayerInMinAgroRange = entity.CheckPlayerInMinArgoRange();
     }

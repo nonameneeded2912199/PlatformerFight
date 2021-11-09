@@ -32,7 +32,7 @@ public class Bullet : MonoBehaviour
 
     public bool destroyOnInvisible { get; set; } = true;
 
-    public CharacterController player { get; set; }
+    public Player player { get; set; }
 
     // Start is called before the first frame update
     void Start()
@@ -40,10 +40,20 @@ public class Bullet : MonoBehaviour
         
     }
 
-    public static GameObject GetBullet(Vector2 position, float speed, float direction, float lifeSpan, float damage, 
+    public static GameObject GetBullet(BulletOwner owner, Vector2 position, float speed, float direction, float lifeSpan, float damage, 
         BulletType bulletType, BulletColor bulletColor, bool destroyOnInvisible = true)
     {
         GameObject bulletObj = PoolManager.Instance.GetPoolObject(PoolObjectType.Bullet);
+        switch (owner)
+        {
+            case BulletOwner.Player:
+                bulletObj.tag = "Player";
+                break;
+            case BulletOwner.Enemy:
+            default:
+                bulletObj.tag = "Enemy";
+                break;
+        }
         bulletObj.transform.position = position;
         Bullet bulletCom = bulletObj.GetComponent<Bullet>();
         bulletCom.Speed = speed;
@@ -63,10 +73,20 @@ public class Bullet : MonoBehaviour
         return bulletObj;
     }
 
-    public static GameObject GetBullet(Vector2 position, float speed, float direction, float acceleration, float lifeSpan, float damage,
+    public static GameObject GetBullet(BulletOwner owner, Vector2 position, float speed, float direction, float acceleration, float lifeSpan, float damage,
         BulletType bulletType, BulletColor bulletColor, bool destroyOnInvisible = true)
     {
         GameObject bulletObj = PoolManager.Instance.GetPoolObject(PoolObjectType.Bullet);
+        switch (owner)
+        {
+            case BulletOwner.Player:
+                bulletObj.tag = "Player";
+                break;
+            case BulletOwner.Enemy:
+            default:
+                bulletObj.tag = "Enemy";
+                break;
+        }
         bulletObj.transform.position = position;
         Bullet bulletCom = bulletObj.GetComponent<Bullet>();
         bulletCom.Speed = speed;
@@ -133,7 +153,7 @@ public class Bullet : MonoBehaviour
 
     private void OnEnable()
     {
-        player = GameObject.Find("Player").GetComponent<CharacterController>();
+        player = GameObject.Find("Player").GetComponent<Player>();
     }
 
     private void OnDisable()
@@ -215,7 +235,7 @@ public class Bullet : MonoBehaviour
                 break;
         }
 
-        GetComponent<SpriteRenderer>().sprite = BulletGraphicLoader.Instance.GetBulletGraphics(bulletType, bulletColor);
+        //GetComponent<SpriteRenderer>().sprite = BulletGraphicLoader.Instance.GetBulletGraphics(bulletType, bulletColor);
     }    
     
     public void ResetAttributes()

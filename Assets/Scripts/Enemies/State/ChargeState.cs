@@ -27,7 +27,7 @@ public class ChargeState : State
         base.DoChecks();
         isPlayerInMinAgroRange = entity.CheckPlayerInMinArgoRange();
         ledgeCheck = entity.CheckLedge();
-        wallCheck = entity.CheckWall();
+        wallCheck = entity.onWall;
 
         performCloseRangeAction = entity.CheckPlayerInCloseRangeAction();
     }

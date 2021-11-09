@@ -42,8 +42,9 @@ public class Stage1Boss_RangedAttack : RangedAttackState
     public override void LogicUpdate()
     {
         base.LogicUpdate();
-        if ((CharacterController.Instance.transform.position.x > boss.transform.position.x && boss.facingDirection == -1)
-            || (CharacterController.Instance.transform.position.x < boss.transform.position.x && boss.facingDirection == 1))
+        int facingDirection = boss.facingRight ? 1 : -1;
+        if ((Player.Instance.transform.position.x > boss.transform.position.x && facingDirection == -1)
+            || (Player.Instance.transform.position.x < boss.transform.position.x && facingDirection == 1))
         {
             boss.Flip();
         }
@@ -78,12 +79,12 @@ public class Stage1Boss_RangedAttack : RangedAttackState
     {
         for (int i = 0; i < 3; i++)
         {
-            if (CharacterController.Instance.isActiveAndEnabled)
+            if (Player.Instance.isActiveAndEnabled)
             {
-                Vector2 playerPos = CharacterController.Instance.transform.position;
+                Vector2 playerPos = Player.Instance.transform.position;
                 Vector2 myPos = boss.transform.position;
                 float angle = Mathf.Atan2(playerPos.y - myPos.y, playerPos.x - myPos.x);
-                Bullet.GetBullet(attackPosition.position, stateData.bulletShootTypes[0].bulletSpeed, angle, stateData.bulletShootTypes[0].bulletAcceleration,
+                Bullet.GetBullet(BulletOwner.Enemy, attackPosition.position, stateData.bulletShootTypes[0].bulletSpeed, angle, stateData.bulletShootTypes[0].bulletAcceleration,
                     stateData.bulletShootTypes[0].bulletLifeSpan, stateData.bulletShootTypes[0].bulletDamage, stateData.bulletShootTypes[0].bulletType,
                     stateData.bulletShootTypes[0].bulletColor, stateData.bulletShootTypes[0].destroyOnInvisible);
 
@@ -103,12 +104,12 @@ public class Stage1Boss_RangedAttack : RangedAttackState
     {
         for (int i = 0; i < 5; i++)
         {
-            if (CharacterController.Instance.isActiveAndEnabled)
+            if (Player.Instance.isActiveAndEnabled)
             {
-                Vector2 playerPos = CharacterController.Instance.transform.position;
+                Vector2 playerPos = Player.Instance.transform.position;
                 Vector2 myPos = boss.transform.position;
                 float angle = Mathf.Atan2(playerPos.y - myPos.y, playerPos.x - myPos.x);
-                Bullet.GetBullet(attackPosition.position, stateData.bulletShootTypes[0].bulletSpeed, angle, stateData.bulletShootTypes[0].bulletAcceleration,
+                Bullet.GetBullet(BulletOwner.Enemy, attackPosition.position, stateData.bulletShootTypes[0].bulletSpeed, angle, stateData.bulletShootTypes[0].bulletAcceleration,
                     stateData.bulletShootTypes[0].bulletLifeSpan, stateData.bulletShootTypes[0].bulletDamage, stateData.bulletShootTypes[0].bulletType,
                     stateData.bulletShootTypes[0].bulletColor, stateData.bulletShootTypes[0].destroyOnInvisible);
 
@@ -128,12 +129,12 @@ public class Stage1Boss_RangedAttack : RangedAttackState
     {
         for (int i = 0; i < 5; i++)
         {
-            if (CharacterController.Instance.isActiveAndEnabled)
+            if (Player.Instance.isActiveAndEnabled)
             {
-                Vector2 playerPos = CharacterController.Instance.transform.position;
+                Vector2 playerPos = Player.Instance.transform.position;
                 Vector2 myPos = boss.transform.position;
                 float angle = Mathf.Atan2(playerPos.y - myPos.y, playerPos.x - myPos.x);
-                GameObject bulletOBJ = Bullet.GetBullet(attackPosition.position, stateData.bulletShootTypes[0].bulletSpeed, angle, stateData.bulletShootTypes[0].bulletAcceleration,
+                GameObject bulletOBJ = Bullet.GetBullet(BulletOwner.Enemy, attackPosition.position, stateData.bulletShootTypes[0].bulletSpeed, angle, stateData.bulletShootTypes[0].bulletAcceleration,
                     stateData.bulletShootTypes[0].bulletLifeSpan, stateData.bulletShootTypes[0].bulletDamage, stateData.bulletShootTypes[0].bulletType,
                     stateData.bulletShootTypes[0].bulletColor, stateData.bulletShootTypes[0].destroyOnInvisible);
 
@@ -144,7 +145,7 @@ public class Stage1Boss_RangedAttack : RangedAttackState
                     {
                         for (float j = 0; j < 2 * Mathf.PI; j += 2f * Mathf.PI / 8f)
                         {
-                            Bullet.GetBullet(bulletOBJ.transform.position, stateData.bulletShootTypes[1].bulletSpeed, j, stateData.bulletShootTypes[1].bulletAcceleration,
+                            Bullet.GetBullet(BulletOwner.Enemy, bulletOBJ.transform.position, stateData.bulletShootTypes[1].bulletSpeed, j, stateData.bulletShootTypes[1].bulletAcceleration,
                                 stateData.bulletShootTypes[1].bulletLifeSpan, stateData.bulletShootTypes[1].bulletDamage, stateData.bulletShootTypes[1].bulletType,
                                 stateData.bulletShootTypes[1].bulletColor, stateData.bulletShootTypes[1].destroyOnInvisible);
                         }
@@ -170,12 +171,12 @@ public class Stage1Boss_RangedAttack : RangedAttackState
     {
         for (int i = 0; i < 8; i++)
         {
-            if (CharacterController.Instance.isActiveAndEnabled)
+            if (Player.Instance.isActiveAndEnabled)
             {
-                Vector2 playerPos = CharacterController.Instance.transform.position;
+                Vector2 playerPos = Player.Instance.transform.position;
                 Vector2 myPos = boss.transform.position;
                 float angle = Mathf.Atan2(playerPos.y - myPos.y, playerPos.x - myPos.x);
-                GameObject bulletOBJ = Bullet.GetBullet(attackPosition.position, stateData.bulletShootTypes[0].bulletSpeed, angle, stateData.bulletShootTypes[0].bulletAcceleration,
+                GameObject bulletOBJ = Bullet.GetBullet(BulletOwner.Enemy, attackPosition.position, stateData.bulletShootTypes[0].bulletSpeed, angle, stateData.bulletShootTypes[0].bulletAcceleration,
                     stateData.bulletShootTypes[0].bulletLifeSpan, stateData.bulletShootTypes[0].bulletDamage, stateData.bulletShootTypes[0].bulletType,
                     stateData.bulletShootTypes[0].bulletColor, stateData.bulletShootTypes[0].destroyOnInvisible);
 
@@ -186,7 +187,7 @@ public class Stage1Boss_RangedAttack : RangedAttackState
                     {
                         for (float j = 0; j < 2 * Mathf.PI; j += 2f * Mathf.PI / 8f)
                         {
-                            GameObject bulletOBJChild = Bullet.GetBullet(bulletOBJ.transform.position, stateData.bulletShootTypes[1].bulletSpeed, j, stateData.bulletShootTypes[1].bulletAcceleration,
+                            GameObject bulletOBJChild = Bullet.GetBullet(BulletOwner.Enemy, bulletOBJ.transform.position, stateData.bulletShootTypes[1].bulletSpeed, j, stateData.bulletShootTypes[1].bulletAcceleration,
                                 stateData.bulletShootTypes[1].bulletLifeSpan, stateData.bulletShootTypes[1].bulletDamage, stateData.bulletShootTypes[1].bulletType,
                                 stateData.bulletShootTypes[1].bulletColor, stateData.bulletShootTypes[1].destroyOnInvisible);
 
@@ -196,7 +197,7 @@ public class Stage1Boss_RangedAttack : RangedAttackState
                             {
                                 if (commandChild.frame == 60)
                                 {
-                                    Vector2 playerPos = CharacterController.Instance.transform.position;
+                                    Vector2 playerPos = Player.Instance.transform.position;
                                     Vector2 myPos = bulletOBJChild.transform.position;
                                     float angle = Mathf.Atan2(playerPos.y - myPos.y, playerPos.x - myPos.x);
 

@@ -46,7 +46,7 @@ public class Enemy1 : Entity
     [SerializeField]
     private Transform meleeAttackPosition;
 
-    public override void Start()
+    protected override void Start()
     {
         base.Start();
 
@@ -62,7 +62,7 @@ public class Enemy1 : Entity
         stateMachine.Initialize(moveState);
     }
 
-    public override void OnDrawGizmos()
+    protected override void OnDrawGizmos()
     {
         base.OnDrawGizmos();
 

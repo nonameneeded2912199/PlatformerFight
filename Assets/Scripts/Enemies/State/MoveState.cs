@@ -22,7 +22,7 @@ public class MoveState : State
     {
         base.DoChecks();
         ledgeCheck = entity.CheckLedge();
-        wallCheck = entity.CheckWall();
+        wallCheck = entity.onWall;
         playerInMinAgroRangeCheck = entity.CheckPlayerInMinArgoRange();
     }
 

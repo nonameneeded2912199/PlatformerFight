@@ -2,9 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Entity : MonoBehaviour
+public class Entity : BaseCharacter
 {
-    private Vector2 velocityWorkspace;
     private Vector2 touchDamageBotLeft, touchDamageTopRight;
 
     private Vector3 initialPosition;
@@ -25,16 +24,10 @@ public class Entity : MonoBehaviour
     private float touchDamage, touchDamageWidth, touchDamageHeight;
 
     [SerializeField]
-    private Transform wallPoint;
-
-    [SerializeField]
     private Transform ledgePoint;
 
     [SerializeField]
     private Transform playerCheckPoint;
-
-    [SerializeField]
-    private Transform groundPoint;
 
     [SerializeField]
     private Transform touchDamagePoint;
@@ -42,12 +35,9 @@ public class Entity : MonoBehaviour
     public FiniteStateMachine stateMachine;
 
     public D_Entity entityData;
-    public Rigidbody2D rb { get; private set; }
-    public Animator animator { get; private set; }
 
     public AnimationToStateMachine atsm { get; private set; }
 
-    public int facingDirection { get; private set; } = 1;
     public int lastDamageDirection { get; private set; }
 
     protected bool isStunned;
@@ -58,11 +48,12 @@ public class Entity : MonoBehaviour
 
     protected AttackDetails touchAttackDetails;
 
-    public virtual void Start()
+    protected override void Start()
     {
+        base.Start();
         initialPosition = transform.position;
 
-        facingDirection = 1;
+        facingRight = true;
 
         switch (GameManager.Instance.currentGameDifficulty)
         {
@@ -82,8 +73,6 @@ public class Entity : MonoBehaviour
 
         currentStunResistance = entityData.stunResistance;
 
-        rb = GetComponent<Rigidbody2D>();
-        animator = GetComponent<Animator>();
         atsm = GetComponent<AnimationToStateMachine>();
 
         stateMachine = new FiniteStateMachine();
@@ -92,8 +81,9 @@ public class Entity : MonoBehaviour
             Flip();
     }
 
-    public virtual void Update()
+    protected override void Update()
     {
+        base.Update();
         stateMachine.CurrentState?.LogicUpdate();
 
         animator.SetFloat("YVelocity", rb.velocity.y);
@@ -104,8 +94,9 @@ public class Entity : MonoBehaviour
         }
     }
 
-    public virtual void FixedUpdate()
+    protected override void FixedUpdate()
     {
+        base.FixedUpdate();
         CheckTouchDamage();
         stateMachine.CurrentState?.PhysicsUpdate();
     }
@@ -115,36 +106,11 @@ public class Entity : MonoBehaviour
         stateMachine.CurrentState?.LateUpdate();
     }    
 
-    public virtual void SetVelocity(float velocity)
-    {
-        velocityWorkspace.Set(facingDirection * velocity, rb.velocity.y);
-        rb.velocity = velocityWorkspace;
-    }
-
     public virtual void SetInvincibility(bool invincibility)
     {
         isInvincible = invincibility;
     }    
 
-    public virtual void SetVelocity(float velocity, Vector2 angle)
-    {
-        angle.Normalize();
-        velocityWorkspace.Set(angle.x * velocity * facingDirection, angle.y * velocity);
-        rb.velocity = velocityWorkspace;
-    }
-
-    public virtual void SetVelocity(float velocity, Vector2 angle, int direction)
-    {
-        angle.Normalize();
-        velocityWorkspace.Set(angle.x * velocity * direction, angle.y * velocity);
-        rb.velocity = velocityWorkspace;
-    }
-
-    public virtual bool CheckWall()
-    {
-        return Physics2D.Raycast(wallPoint.position, Vector2.right * facingDirection, entityData.wallRadius,
-            entityData.groundLayer);
-    }
 
     public virtual bool CheckLedge()
     {
@@ -152,25 +118,23 @@ public class Entity : MonoBehaviour
             entityData.groundLayer);
     }
 
-    public virtual bool CheckGround()
-    {
-        return Physics2D.OverlapCircle(groundPoint.position, entityData.groundRadius, entityData.groundLayer);
-    }
-
     public virtual bool CheckPlayerInMinArgoRange()
     {
+        int facingDirection = facingRight ? 1 : -1;
         return Physics2D.Raycast(playerCheckPoint.position, transform.right * facingDirection, entityData.minAgroDistance,
             entityData.playerLayer);
     }
 
     public virtual bool CheckPlayerInMaxArgoRange()
     {
+        int facingDirection = facingRight ? 1 : -1;
         return Physics2D.Raycast(playerCheckPoint.position, transform.right * facingDirection, entityData.maxAgroDistance,
             entityData.playerLayer);
     }
 
     public virtual bool CheckPlayerInCloseRangeAction()
     {
+        int facingDirection = facingRight ? 1 : -1;
         return Physics2D.Raycast(playerCheckPoint.position, transform.right * facingDirection, entityData.closeRangeActionDistance,
             entityData.playerLayer);
     }
@@ -243,7 +207,7 @@ public class Entity : MonoBehaviour
 
     public virtual void Flip()
     {
-        facingDirection *= -1;
+        facingRight = !facingRight;
 
         Vector3 theScale = transform.localScale;
         theScale.x *= -1;
@@ -275,7 +239,7 @@ public class Entity : MonoBehaviour
     {
         transform.position = initialPosition;
 
-        facingDirection = 1;
+        facingRight = true;
         Vector3 localScale = transform.localScale;
         localScale.x = Mathf.Abs(localScale.x);
         transform.localScale = localScale;
@@ -290,11 +254,10 @@ public class Entity : MonoBehaviour
         gameObject.SetActive(true);
     }
 
-    public virtual void OnDrawGizmos()
+    protected override void OnDrawGizmos()
     {
-        Gizmos.DrawLine(wallPoint.position, wallPoint.position + (Vector3)(Vector2.right * facingDirection * entityData.wallRadius));
-        Gizmos.DrawLine(ledgePoint.position, ledgePoint.position + (Vector3)(Vector2.down * entityData.ledgeRadius));
-        Gizmos.DrawWireSphere(groundPoint.position, entityData.groundRadius);
+        base.OnDrawGizmos();
+        int facingDirection = facingRight ? 1 : -1;
 
         Gizmos.DrawWireSphere(playerCheckPoint.position + (Vector3)(Vector2.right * entityData.closeRangeActionDistance * facingDirection), 0.2f);
         Gizmos.DrawWireSphere(playerCheckPoint.position + (Vector3)(Vector2.right * entityData.minAgroDistance * facingDirection), 0.2f);

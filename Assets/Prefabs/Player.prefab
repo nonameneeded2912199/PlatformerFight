@@ -193,29 +193,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f4fd012997b7a74290d27def26c429b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 0
-  maxHP: 1000
-  imageHP: {fileID: 0}
-  textHP: {fileID: 0}
-  knockbackDuration: 0.1
-  knockbackSpeed: {x: 8, y: 5}
-  speed: 5
-  jumpHeight: 12
-  jumpHeightModifier: 0.5
-  groundCheckRadius: 0.1
-  wallCheckRadius: 0.2
-  wallSlideSpeed: 2
-  movementForceInAir: 6
-  dashTime: 0.2
-  dashSpeed: 10
-  dashCooldown: 0.5
-  wallForce: {x: 10, y: 10}
-  wallJumpTime: 0.05
-  groundPoint: {fileID: 1983534275717705966}
-  wallPoint: {fileID: 1983534275967805134}
   groundLayer:
     serializedVersion: 2
     m_Bits: 128
+  wallLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  movementSpeed: 10
+  jumpForce: 50
+  wallJumpForce: 1.5
+  slideSpeed: 5
+  wallJumpLerp: 10
+  dashSpeed: 10
+  canMove: 0
+  wallGrab: 0
+  wallJumped: 0
+  wallSlide: 0
+  isDashing: 0
+  doubleJumped: 0
+  canGrab: 0
+  canDoubleJump: 0
+  canDash: 0
 --- !u!114 &1983534276738268300
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -229,20 +227,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isAttacking: 0
-  isJumpAttacking: 0
-  attackPoint: {fileID: 1983534275741592285}
+  canAttack: 0
   interval: 0.5
-  attackRange: 0.5
-  stunDamageAmount: 1
-  jumpAttackDMG: 0
-  attackDMG:
-  - 10
-  - 5
-  - 20
-  enemiesLayer:
-    serializedVersion: 2
-    m_Bits: 256
-  combo: 0
+  normalATKCombo: 0
+  normalATKCount: 0
+  skill1: {fileID: 0}
+  skill2: {fileID: 0}
+  skill3: {fileID: 0}
+  skill4: {fileID: 0}
 --- !u!50 &1983534276738268302
 Rigidbody2D:
   serializedVersion: 4

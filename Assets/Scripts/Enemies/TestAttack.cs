@@ -8,7 +8,7 @@ public class TestAttack : AttackPhase
     [SerializeField]
     ulong frame = 0;
     float angle1 = 0f, angle2 = 0f;
-    public CharacterController player;
+    public Player player;
 
     // Start is called before the first frame update
     void Start()

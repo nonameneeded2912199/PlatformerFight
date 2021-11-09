@@ -56,7 +56,7 @@ public class Enemy2 : Entity
     [SerializeField]
     private Transform rangedAttackPosition;
 
-    public override void Start()
+    protected override void Start()
     {
         base.Start();
 
@@ -99,7 +99,7 @@ public class Enemy2 : Entity
         }
     }
 
-    public override void OnDrawGizmos()
+    protected override void OnDrawGizmos()
     {
         base.OnDrawGizmos();
 

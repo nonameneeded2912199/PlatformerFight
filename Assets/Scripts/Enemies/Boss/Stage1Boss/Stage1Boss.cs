@@ -78,7 +78,7 @@ public class Stage1Boss : Boss
 
     public Text stageCompleteText;
 
-    public override void Start()
+    protected override void Start()
     {
         base.Start();
 
@@ -100,7 +100,7 @@ public class Stage1Boss : Boss
         deadState = new Stage1Boss_Dead(stateMachine, this, "Dead", deadStateData);
     }
 
-    public override void Update()
+    protected override void Update()
     {
         base.Update();
         HandleHPBar();
@@ -117,7 +117,7 @@ public class Stage1Boss : Boss
         }
     }
 
-    public override void OnDrawGizmos()
+    protected override void OnDrawGizmos()
     {
         base.OnDrawGizmos();
 

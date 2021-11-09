@@ -77,7 +77,7 @@ public class Stage1Boss_SpecialAttack3 : MoveState
         {
             for (float i = 0; i < 2 * Mathf.PI; i += 2 * Mathf.PI / 4)
             {
-                GameObject bulletOBJ = Bullet.GetBullet(boss.transform.position, rangedData.bulletShootTypes[0].bulletSpeed, i, rangedData.bulletShootTypes[0].bulletAcceleration,
+                GameObject bulletOBJ = Bullet.GetBullet(BulletOwner.Enemy, boss.transform.position, rangedData.bulletShootTypes[0].bulletSpeed, i, rangedData.bulletShootTypes[0].bulletAcceleration,
                         rangedData.bulletShootTypes[0].bulletLifeSpan, rangedData.bulletShootTypes[0].bulletDamage, rangedData.bulletShootTypes[0].bulletType,
                         rangedData.bulletShootTypes[0].bulletColor, rangedData.bulletShootTypes[0].destroyOnInvisible);
 
@@ -103,7 +103,7 @@ public class Stage1Boss_SpecialAttack3 : MoveState
         {
             for (float i = 0; i < 2 * Mathf.PI; i += 2 * Mathf.PI / 8)
             {
-                GameObject bulletOBJ = Bullet.GetBullet(boss.transform.position, rangedData.bulletShootTypes[0].bulletSpeed, i, rangedData.bulletShootTypes[0].bulletAcceleration,
+                GameObject bulletOBJ = Bullet.GetBullet(BulletOwner.Enemy, boss.transform.position, rangedData.bulletShootTypes[0].bulletSpeed, i, rangedData.bulletShootTypes[0].bulletAcceleration,
                         rangedData.bulletShootTypes[0].bulletLifeSpan, rangedData.bulletShootTypes[0].bulletDamage, rangedData.bulletShootTypes[0].bulletType,
                         rangedData.bulletShootTypes[0].bulletColor, rangedData.bulletShootTypes[0].destroyOnInvisible);
 
@@ -129,7 +129,7 @@ public class Stage1Boss_SpecialAttack3 : MoveState
         {
             for (float i = 0; i < 2 * Mathf.PI; i += 2 * Mathf.PI / 12)
             {
-                GameObject bulletOBJ = Bullet.GetBullet(boss.transform.position, rangedData.bulletShootTypes[0].bulletSpeed, i, rangedData.bulletShootTypes[0].bulletAcceleration,
+                GameObject bulletOBJ = Bullet.GetBullet(BulletOwner.Enemy, boss.transform.position, rangedData.bulletShootTypes[0].bulletSpeed, i, rangedData.bulletShootTypes[0].bulletAcceleration,
                         rangedData.bulletShootTypes[0].bulletLifeSpan, rangedData.bulletShootTypes[0].bulletDamage, rangedData.bulletShootTypes[0].bulletType,
                         rangedData.bulletShootTypes[0].bulletColor, rangedData.bulletShootTypes[0].destroyOnInvisible);
 
@@ -155,7 +155,7 @@ public class Stage1Boss_SpecialAttack3 : MoveState
         {
             for (float i = 0; i < 2 * Mathf.PI; i += 2 * Mathf.PI / 16)
             {
-                GameObject bulletOBJ = Bullet.GetBullet(boss.transform.position, rangedData.bulletShootTypes[0].bulletSpeed, i, rangedData.bulletShootTypes[0].bulletAcceleration,
+                GameObject bulletOBJ = Bullet.GetBullet(BulletOwner.Enemy, boss.transform.position, rangedData.bulletShootTypes[0].bulletSpeed, i, rangedData.bulletShootTypes[0].bulletAcceleration,
                         rangedData.bulletShootTypes[0].bulletLifeSpan, rangedData.bulletShootTypes[0].bulletDamage, rangedData.bulletShootTypes[0].bulletType,
                         rangedData.bulletShootTypes[0].bulletColor, rangedData.bulletShootTypes[0].destroyOnInvisible);
 

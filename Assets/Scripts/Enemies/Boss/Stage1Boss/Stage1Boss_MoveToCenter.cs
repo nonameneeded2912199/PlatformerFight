@@ -18,8 +18,9 @@ public class Stage1Boss_MoveToCenter : MoveState
     {
         base.Enter();
 
-        if ((centerPoint.position.x > boss.transform.position.x && boss.facingDirection == -1)
-            || (centerPoint.position.x < boss.transform.position.x && boss.facingDirection == 1))
+        int facingDirection = boss.facingRight ? 1 : -1;
+        if ((centerPoint.position.x > boss.transform.position.x && facingDirection == -1)
+            || (centerPoint.position.x < boss.transform.position.x && facingDirection == 1))
         {
             boss.Flip();
             boss.SetVelocity(stateData.movementSpeed);

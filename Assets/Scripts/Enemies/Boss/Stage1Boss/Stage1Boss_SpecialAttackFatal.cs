@@ -90,25 +90,25 @@ public class Stage1Boss_SpecialAttackFatal : RangedAttackState
         {
             for (float j = 0; j < 2 * Mathf.PI; j += Mathf.PI / 16)
             {
-                Bullet.GetBullet(spawner1, stateData.bulletShootTypes[0].bulletSpeed, j, stateData.bulletShootTypes[0].bulletLifeSpan, stateData.bulletShootTypes[0].bulletDamage,
+                Bullet.GetBullet(BulletOwner.Enemy, spawner1, stateData.bulletShootTypes[0].bulletSpeed, j, stateData.bulletShootTypes[0].bulletLifeSpan, stateData.bulletShootTypes[0].bulletDamage,
                     stateData.bulletShootTypes[0].bulletType, stateData.bulletShootTypes[0].bulletColor, stateData.bulletShootTypes[0].destroyOnInvisible);
             }
 
             for (float j = 0; j < 2 * Mathf.PI; j += Mathf.PI / 16)
             {
-                Bullet.GetBullet(spawner2, stateData.bulletShootTypes[0].bulletSpeed, j, stateData.bulletShootTypes[0].bulletLifeSpan, stateData.bulletShootTypes[0].bulletDamage,
+                Bullet.GetBullet(BulletOwner.Enemy, spawner2, stateData.bulletShootTypes[0].bulletSpeed, j, stateData.bulletShootTypes[0].bulletLifeSpan, stateData.bulletShootTypes[0].bulletDamage,
                     stateData.bulletShootTypes[0].bulletType, stateData.bulletShootTypes[0].bulletColor, stateData.bulletShootTypes[0].destroyOnInvisible);
             }
 
             yield return new WaitForSeconds(0.1f);
 
-            GameObject bulletOBJ = Bullet.GetBullet(spawner1, stateData.bulletShootTypes[1].bulletSpeed, Mathf.PI / 2, stateData.bulletShootTypes[1].bulletAcceleration,
+            GameObject bulletOBJ = Bullet.GetBullet(BulletOwner.Enemy, spawner1, stateData.bulletShootTypes[1].bulletSpeed, Mathf.PI / 2, stateData.bulletShootTypes[1].bulletAcceleration,
                                 stateData.bulletShootTypes[1].bulletLifeSpan, stateData.bulletShootTypes[1].bulletDamage, stateData.bulletShootTypes[1].bulletType,
                                 stateData.bulletShootTypes[1].bulletColor, stateData.bulletShootTypes[1].destroyOnInvisible);
 
             BulletCommand command = bulletOBJ.AddComponent<BulletCommand>();
 
-            GameObject bulletOBJ2 = Bullet.GetBullet(spawner2, stateData.bulletShootTypes[1].bulletSpeed, Mathf.PI / 2, stateData.bulletShootTypes[1].bulletAcceleration,
+            GameObject bulletOBJ2 = Bullet.GetBullet(BulletOwner.Enemy, spawner2, stateData.bulletShootTypes[1].bulletSpeed, Mathf.PI / 2, stateData.bulletShootTypes[1].bulletAcceleration,
                                 stateData.bulletShootTypes[1].bulletLifeSpan, stateData.bulletShootTypes[1].bulletDamage, stateData.bulletShootTypes[1].bulletType,
                                 stateData.bulletShootTypes[1].bulletColor, stateData.bulletShootTypes[1].destroyOnInvisible);
 
@@ -124,7 +124,7 @@ public class Stage1Boss_SpecialAttackFatal : RangedAttackState
                     for (int j = 0; j < 10; j++)
                     {
                         float angle = Random.Range(235f * Mathf.Deg2Rad, 315f * Mathf.Deg2Rad);
-                        Bullet.GetBullet(bulletOBJ.transform.position, stateData.bulletShootTypes[2].bulletSpeed, angle, stateData.bulletShootTypes[2].bulletAcceleration,
+                        Bullet.GetBullet(BulletOwner.Enemy, bulletOBJ.transform.position, stateData.bulletShootTypes[2].bulletSpeed, angle, stateData.bulletShootTypes[2].bulletAcceleration,
                                 stateData.bulletShootTypes[2].bulletLifeSpan, stateData.bulletShootTypes[2].bulletDamage, stateData.bulletShootTypes[2].bulletType,
                                 stateData.bulletShootTypes[2].bulletColor, stateData.bulletShootTypes[2].destroyOnInvisible);
                     }
@@ -139,7 +139,7 @@ public class Stage1Boss_SpecialAttackFatal : RangedAttackState
                     for (int j = 0; j < 10; j++)
                     {
                         float angle = Random.Range(235f * Mathf.Deg2Rad, 315f * Mathf.Deg2Rad);
-                        Bullet.GetBullet(bulletOBJ2.transform.position, stateData.bulletShootTypes[2].bulletSpeed, angle, stateData.bulletShootTypes[2].bulletAcceleration,
+                        Bullet.GetBullet(BulletOwner.Enemy, bulletOBJ2.transform.position, stateData.bulletShootTypes[2].bulletSpeed, angle, stateData.bulletShootTypes[2].bulletAcceleration,
                                 stateData.bulletShootTypes[2].bulletLifeSpan, stateData.bulletShootTypes[2].bulletDamage, stateData.bulletShootTypes[2].bulletType,
                                 stateData.bulletShootTypes[2].bulletColor, stateData.bulletShootTypes[2].destroyOnInvisible);
                     }
@@ -163,25 +163,25 @@ public class Stage1Boss_SpecialAttackFatal : RangedAttackState
         {
             for (float j = 0; j < 2 * Mathf.PI; j += Mathf.PI / 16)
             {
-                Bullet.GetBullet(spawner1, stateData.bulletShootTypes[0].bulletSpeed, j, stateData.bulletShootTypes[0].bulletLifeSpan, stateData.bulletShootTypes[0].bulletDamage,
+                Bullet.GetBullet(BulletOwner.Enemy, spawner1, stateData.bulletShootTypes[0].bulletSpeed, j, stateData.bulletShootTypes[0].bulletLifeSpan, stateData.bulletShootTypes[0].bulletDamage,
                     stateData.bulletShootTypes[0].bulletType, stateData.bulletShootTypes[0].bulletColor, stateData.bulletShootTypes[0].destroyOnInvisible);
             }
 
             for (float j = 0; j < 2 * Mathf.PI; j += Mathf.PI / 16)
             {
-                Bullet.GetBullet(spawner2, stateData.bulletShootTypes[0].bulletSpeed, j, stateData.bulletShootTypes[0].bulletLifeSpan, stateData.bulletShootTypes[0].bulletDamage,
+                Bullet.GetBullet(BulletOwner.Enemy, spawner2, stateData.bulletShootTypes[0].bulletSpeed, j, stateData.bulletShootTypes[0].bulletLifeSpan, stateData.bulletShootTypes[0].bulletDamage,
                     stateData.bulletShootTypes[0].bulletType, stateData.bulletShootTypes[0].bulletColor, stateData.bulletShootTypes[0].destroyOnInvisible);
             }
 
             yield return new WaitForSeconds(0.1f);
 
-            GameObject bulletOBJ = Bullet.GetBullet(spawner1, stateData.bulletShootTypes[1].bulletSpeed, Mathf.PI / 2, stateData.bulletShootTypes[1].bulletAcceleration,
+            GameObject bulletOBJ = Bullet.GetBullet(BulletOwner.Enemy, spawner1, stateData.bulletShootTypes[1].bulletSpeed, Mathf.PI / 2, stateData.bulletShootTypes[1].bulletAcceleration,
                                 stateData.bulletShootTypes[1].bulletLifeSpan, stateData.bulletShootTypes[1].bulletDamage, stateData.bulletShootTypes[1].bulletType,
                                 stateData.bulletShootTypes[1].bulletColor, stateData.bulletShootTypes[1].destroyOnInvisible);
 
             BulletCommand command = bulletOBJ.AddComponent<BulletCommand>();
 
-            GameObject bulletOBJ2 = Bullet.GetBullet(spawner2, stateData.bulletShootTypes[1].bulletSpeed, Mathf.PI / 2, stateData.bulletShootTypes[1].bulletAcceleration,
+            GameObject bulletOBJ2 = Bullet.GetBullet(BulletOwner.Enemy, spawner2, stateData.bulletShootTypes[1].bulletSpeed, Mathf.PI / 2, stateData.bulletShootTypes[1].bulletAcceleration,
                                 stateData.bulletShootTypes[1].bulletLifeSpan, stateData.bulletShootTypes[1].bulletDamage, stateData.bulletShootTypes[1].bulletType,
                                 stateData.bulletShootTypes[1].bulletColor, stateData.bulletShootTypes[1].destroyOnInvisible);
 
@@ -197,7 +197,7 @@ public class Stage1Boss_SpecialAttackFatal : RangedAttackState
                     for (int j = 0; j < 10; j++)
                     {
                         float angle = Random.Range(235f * Mathf.Deg2Rad, 315f * Mathf.Deg2Rad);
-                        Bullet.GetBullet(bulletOBJ.transform.position, stateData.bulletShootTypes[2].bulletSpeed, angle, stateData.bulletShootTypes[2].bulletAcceleration,
+                        Bullet.GetBullet(BulletOwner.Enemy, bulletOBJ.transform.position, stateData.bulletShootTypes[2].bulletSpeed, angle, stateData.bulletShootTypes[2].bulletAcceleration,
                                 stateData.bulletShootTypes[2].bulletLifeSpan, stateData.bulletShootTypes[2].bulletDamage, stateData.bulletShootTypes[2].bulletType,
                                 stateData.bulletShootTypes[2].bulletColor, stateData.bulletShootTypes[2].destroyOnInvisible);
                     }
@@ -212,7 +212,7 @@ public class Stage1Boss_SpecialAttackFatal : RangedAttackState
                     for (int j = 0; j < 10; j++)
                     {
                         float angle = Random.Range(235f * Mathf.Deg2Rad, 315f * Mathf.Deg2Rad);
-                        Bullet.GetBullet(bulletOBJ2.transform.position, stateData.bulletShootTypes[2].bulletSpeed, angle, stateData.bulletShootTypes[2].bulletAcceleration,
+                        Bullet.GetBullet(BulletOwner.Enemy, bulletOBJ2.transform.position, stateData.bulletShootTypes[2].bulletSpeed, angle, stateData.bulletShootTypes[2].bulletAcceleration,
                                 stateData.bulletShootTypes[2].bulletLifeSpan, stateData.bulletShootTypes[2].bulletDamage, stateData.bulletShootTypes[2].bulletType,
                                 stateData.bulletShootTypes[2].bulletColor, stateData.bulletShootTypes[2].destroyOnInvisible);
                     }
@@ -236,25 +236,25 @@ public class Stage1Boss_SpecialAttackFatal : RangedAttackState
         {
             for (float j = 0; j < 2 * Mathf.PI; j += Mathf.PI / 16)
             {
-                Bullet.GetBullet(spawner1, stateData.bulletShootTypes[0].bulletSpeed, j, stateData.bulletShootTypes[0].bulletLifeSpan, stateData.bulletShootTypes[0].bulletDamage,
+                Bullet.GetBullet(BulletOwner.Enemy, spawner1, stateData.bulletShootTypes[0].bulletSpeed, j, stateData.bulletShootTypes[0].bulletLifeSpan, stateData.bulletShootTypes[0].bulletDamage,
                     stateData.bulletShootTypes[0].bulletType, stateData.bulletShootTypes[0].bulletColor, stateData.bulletShootTypes[0].destroyOnInvisible);
             }
 
             for (float j = 0; j < 2 * Mathf.PI; j += Mathf.PI / 16)
             {
-                Bullet.GetBullet(spawner2, stateData.bulletShootTypes[0].bulletSpeed, j, stateData.bulletShootTypes[0].bulletLifeSpan, stateData.bulletShootTypes[0].bulletDamage,
+                Bullet.GetBullet(BulletOwner.Enemy, spawner2, stateData.bulletShootTypes[0].bulletSpeed, j, stateData.bulletShootTypes[0].bulletLifeSpan, stateData.bulletShootTypes[0].bulletDamage,
                     stateData.bulletShootTypes[0].bulletType, stateData.bulletShootTypes[0].bulletColor, stateData.bulletShootTypes[0].destroyOnInvisible);
             }
 
             yield return new WaitForSeconds(0.1f);
 
-            GameObject bulletOBJ = Bullet.GetBullet(spawner1, stateData.bulletShootTypes[1].bulletSpeed, Mathf.PI / 2, stateData.bulletShootTypes[1].bulletAcceleration,
+            GameObject bulletOBJ = Bullet.GetBullet(BulletOwner.Enemy, spawner1, stateData.bulletShootTypes[1].bulletSpeed, Mathf.PI / 2, stateData.bulletShootTypes[1].bulletAcceleration,
                                 stateData.bulletShootTypes[1].bulletLifeSpan, stateData.bulletShootTypes[1].bulletDamage, stateData.bulletShootTypes[1].bulletType,
                                 stateData.bulletShootTypes[1].bulletColor, stateData.bulletShootTypes[1].destroyOnInvisible);
 
             BulletCommand command = bulletOBJ.AddComponent<BulletCommand>();
 
-            GameObject bulletOBJ2 = Bullet.GetBullet(spawner2, stateData.bulletShootTypes[1].bulletSpeed, Mathf.PI / 2, stateData.bulletShootTypes[1].bulletAcceleration,
+            GameObject bulletOBJ2 = Bullet.GetBullet(BulletOwner.Enemy, spawner2, stateData.bulletShootTypes[1].bulletSpeed, Mathf.PI / 2, stateData.bulletShootTypes[1].bulletAcceleration,
                                 stateData.bulletShootTypes[1].bulletLifeSpan, stateData.bulletShootTypes[1].bulletDamage, stateData.bulletShootTypes[1].bulletType,
                                 stateData.bulletShootTypes[1].bulletColor, stateData.bulletShootTypes[1].destroyOnInvisible);
 
@@ -270,7 +270,7 @@ public class Stage1Boss_SpecialAttackFatal : RangedAttackState
                     for (int j = 0; j < 10; j++)
                     {
                         float angle = Random.Range(235f * Mathf.Deg2Rad, 315f * Mathf.Deg2Rad);
-                        Bullet.GetBullet(bulletOBJ.transform.position, stateData.bulletShootTypes[2].bulletSpeed, angle, stateData.bulletShootTypes[2].bulletAcceleration,
+                        Bullet.GetBullet(BulletOwner.Enemy, bulletOBJ.transform.position, stateData.bulletShootTypes[2].bulletSpeed, angle, stateData.bulletShootTypes[2].bulletAcceleration,
                                 stateData.bulletShootTypes[2].bulletLifeSpan, stateData.bulletShootTypes[2].bulletDamage, stateData.bulletShootTypes[2].bulletType,
                                 stateData.bulletShootTypes[2].bulletColor, stateData.bulletShootTypes[2].destroyOnInvisible);
                     }
@@ -285,7 +285,7 @@ public class Stage1Boss_SpecialAttackFatal : RangedAttackState
                     for (int j = 0; j < 10; j++)
                     {
                         float angle = Random.Range(235f * Mathf.Deg2Rad, 315f * Mathf.Deg2Rad);
-                        Bullet.GetBullet(bulletOBJ2.transform.position, stateData.bulletShootTypes[2].bulletSpeed, angle, stateData.bulletShootTypes[2].bulletAcceleration,
+                        Bullet.GetBullet(BulletOwner.Enemy, bulletOBJ2.transform.position, stateData.bulletShootTypes[2].bulletSpeed, angle, stateData.bulletShootTypes[2].bulletAcceleration,
                                 stateData.bulletShootTypes[2].bulletLifeSpan, stateData.bulletShootTypes[2].bulletDamage, stateData.bulletShootTypes[2].bulletType,
                                 stateData.bulletShootTypes[2].bulletColor, stateData.bulletShootTypes[2].destroyOnInvisible);
                     }
@@ -309,25 +309,25 @@ public class Stage1Boss_SpecialAttackFatal : RangedAttackState
         {
             for (float j = 0; j < 2 * Mathf.PI; j += Mathf.PI / 16)
             {
-                Bullet.GetBullet(spawner1, stateData.bulletShootTypes[0].bulletSpeed, j, stateData.bulletShootTypes[0].bulletLifeSpan, stateData.bulletShootTypes[0].bulletDamage,
+                Bullet.GetBullet(BulletOwner.Enemy, spawner1, stateData.bulletShootTypes[0].bulletSpeed, j, stateData.bulletShootTypes[0].bulletLifeSpan, stateData.bulletShootTypes[0].bulletDamage,
                     stateData.bulletShootTypes[0].bulletType, stateData.bulletShootTypes[0].bulletColor, stateData.bulletShootTypes[0].destroyOnInvisible);
             }
 
             for (float j = 0; j < 2 * Mathf.PI; j += Mathf.PI / 16)
             {
-                Bullet.GetBullet(spawner2, stateData.bulletShootTypes[0].bulletSpeed, j, stateData.bulletShootTypes[0].bulletLifeSpan, stateData.bulletShootTypes[0].bulletDamage,
+                Bullet.GetBullet(BulletOwner.Enemy, spawner2, stateData.bulletShootTypes[0].bulletSpeed, j, stateData.bulletShootTypes[0].bulletLifeSpan, stateData.bulletShootTypes[0].bulletDamage,
                     stateData.bulletShootTypes[0].bulletType, stateData.bulletShootTypes[0].bulletColor, stateData.bulletShootTypes[0].destroyOnInvisible);
             }
 
             yield return new WaitForSeconds(0.1f);
 
-            GameObject bulletOBJ = Bullet.GetBullet(spawner1, stateData.bulletShootTypes[1].bulletSpeed, Mathf.PI / 2, stateData.bulletShootTypes[1].bulletAcceleration,
+            GameObject bulletOBJ = Bullet.GetBullet(BulletOwner.Enemy, spawner1, stateData.bulletShootTypes[1].bulletSpeed, Mathf.PI / 2, stateData.bulletShootTypes[1].bulletAcceleration,
                                 stateData.bulletShootTypes[1].bulletLifeSpan, stateData.bulletShootTypes[1].bulletDamage, stateData.bulletShootTypes[1].bulletType,
                                 stateData.bulletShootTypes[1].bulletColor, stateData.bulletShootTypes[1].destroyOnInvisible);
 
             BulletCommand command = bulletOBJ.AddComponent<BulletCommand>();
 
-            GameObject bulletOBJ2 = Bullet.GetBullet(spawner2, stateData.bulletShootTypes[1].bulletSpeed, Mathf.PI / 2, stateData.bulletShootTypes[1].bulletAcceleration,
+            GameObject bulletOBJ2 = Bullet.GetBullet(BulletOwner.Enemy, spawner2, stateData.bulletShootTypes[1].bulletSpeed, Mathf.PI / 2, stateData.bulletShootTypes[1].bulletAcceleration,
                                 stateData.bulletShootTypes[1].bulletLifeSpan, stateData.bulletShootTypes[1].bulletDamage, stateData.bulletShootTypes[1].bulletType,
                                 stateData.bulletShootTypes[1].bulletColor, stateData.bulletShootTypes[1].destroyOnInvisible);
 
@@ -343,7 +343,7 @@ public class Stage1Boss_SpecialAttackFatal : RangedAttackState
                     for (int j = 0; j < 10; j++)
                     {
                         float angle = Random.Range(235f * Mathf.Deg2Rad, 315f * Mathf.Deg2Rad);
-                        Bullet.GetBullet(bulletOBJ.transform.position, stateData.bulletShootTypes[2].bulletSpeed, angle, stateData.bulletShootTypes[2].bulletAcceleration,
+                        Bullet.GetBullet(BulletOwner.Enemy, bulletOBJ.transform.position, stateData.bulletShootTypes[2].bulletSpeed, angle, stateData.bulletShootTypes[2].bulletAcceleration,
                                 stateData.bulletShootTypes[2].bulletLifeSpan, stateData.bulletShootTypes[2].bulletDamage, stateData.bulletShootTypes[2].bulletType,
                                 stateData.bulletShootTypes[2].bulletColor, stateData.bulletShootTypes[2].destroyOnInvisible);
                     }
@@ -358,7 +358,7 @@ public class Stage1Boss_SpecialAttackFatal : RangedAttackState
                     for (int j = 0; j < 10; j++)
                     {
                         float angle = Random.Range(235f * Mathf.Deg2Rad, 315f * Mathf.Deg2Rad);
-                        Bullet.GetBullet(bulletOBJ2.transform.position, stateData.bulletShootTypes[2].bulletSpeed, angle, stateData.bulletShootTypes[2].bulletAcceleration,
+                        Bullet.GetBullet(BulletOwner.Enemy, bulletOBJ2.transform.position, stateData.bulletShootTypes[2].bulletSpeed, angle, stateData.bulletShootTypes[2].bulletAcceleration,
                                 stateData.bulletShootTypes[2].bulletLifeSpan, stateData.bulletShootTypes[2].bulletDamage, stateData.bulletShootTypes[2].bulletType,
                                 stateData.bulletShootTypes[2].bulletColor, stateData.bulletShootTypes[2].destroyOnInvisible);
                     }

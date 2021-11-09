@@ -25,7 +25,7 @@ public class FlyingShooter : Entity
     [SerializeField]
     private Transform playerCircleDetector;
 
-    public override void Start()
+    protected override void Start()
     {
         base.Start();
 
