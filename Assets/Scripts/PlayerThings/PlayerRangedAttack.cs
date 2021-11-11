@@ -17,8 +17,8 @@ public class PlayerRangedAttack : PlayerAttack
     // Update is called once per frame
     void Update()
     {
-        animatorStateInfo = this.animator.GetCurrentAnimatorStateInfo(0);
-        if (animatorStateInfo.normalizedTime >= 0.9f && IsAttackingAnimation())
+        animatorStateInfo = playerAnimation.GetCurrentAnimatorStateInfo();
+        if (animatorStateInfo.normalizedTime >= 0.9f && IsNormalAttacking())
         {
             isAttacking = false;
             canAttack = true;
@@ -37,9 +37,9 @@ public class PlayerRangedAttack : PlayerAttack
         }
     }
 
-    protected override bool IsAttackingAnimation()
+    protected override bool IsNormalAttacking()
     {
-        return animator.GetCurrentAnimatorStateInfo(0).IsName("NormalATKShoot");
+        return playerAnimation.GetCurrentAnimatorStateInfo().IsName("NormalATKShoot");
     }
 
     public void PerformShot()

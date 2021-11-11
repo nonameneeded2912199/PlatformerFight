@@ -90,7 +90,7 @@ public class Player : BaseCharacter
         base.Update();
         if (isGrounded && !isDashing)
         {
-            wallJumped = false;
+            //wallJumped = false;
             betterJumping.enabled = true;
         }    
 
@@ -103,8 +103,6 @@ public class Player : BaseCharacter
     protected override void FixedUpdate()
     {
         base.FixedUpdate();
-        /*if (canDash)
-            StartCoroutine(Dash());*/
         if (!isDashing)
         {
             HandleMovement();
@@ -120,18 +118,15 @@ public class Player : BaseCharacter
             {
                 if (onWall && !isGrounded)
                 {
-                    if (rb.velocity.y < 0)
+                    if (horizontal != 0)
                     {
-                        if (horizontal != 0)
-                        {
-                            wallSlide = true;
-                            availableJumps = totalJumps;
-                            WallSliding();
-                        }
-                        else
-                        {
-                            wallSlide = false;
-                        }
+                        wallSlide = true;
+                        availableJumps = totalJumps;
+                        WallSliding();
+                    }
+                    else
+                    {
+                        wallSlide = false;
                     }
                 }
             }
@@ -231,7 +226,6 @@ public class Player : BaseCharacter
 
         rb.gravityScale = 0;
         betterJumping.enabled = false;
-        wallJumped = true;
         isDashing = true;
 
         yield return new WaitForSeconds(0.3f);
@@ -239,7 +233,6 @@ public class Player : BaseCharacter
         rb.gravityScale = originalGravity;
         betterJumping.enabled = true;
 
-        wallJumped = false;
         isDashing = false;
     }
 
@@ -262,9 +255,7 @@ public class Player : BaseCharacter
 
         Vector2 wallDir = onRightWall ? Vector2.left : Vector2.right;
 
-        //Jump((Vector2.up / wallJumpForce + wallDir / wallJumpForce), true);
-
-        wallJumped = true;
+        rb.velocity = new Vector2(wallDir.x * 0.25f * jumpForce, 0.75f * jumpForce);
     }
 
     private void WallSliding()
@@ -281,7 +272,6 @@ public class Player : BaseCharacter
             pushingWall = true;
         }
         float push = pushingWall ? 0 : rb.velocity.x;
-        animator.SetBool("WallSlide", true);
         rb.velocity = new Vector2(push, -slideSpeed);
     }
 

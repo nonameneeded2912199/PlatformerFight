@@ -86,7 +86,7 @@ public class Entity : BaseCharacter
         base.Update();
         stateMachine.CurrentState?.LogicUpdate();
 
-        animator.SetFloat("YVelocity", rb.velocity.y);
+        //animator.SetFloat("YVelocity", rb.velocity.y);
 
         if (Time.time >= lastDamageTime + entityData.stunRecoveryTime)
         {

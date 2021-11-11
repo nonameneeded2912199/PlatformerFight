@@ -4742,6 +4742,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &1737245686 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1983534275741592285, guid: 46128880e4bcebe42a0fbdac5b5b14b9, type: 3}
+  m_PrefabInstance: {fileID: 1983534275519781503}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1815932311
 GameObject:
   m_ObjectHideFlags: 0
@@ -12818,6 +12823,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: -0.035
       objectReference: {fileID: 0}
+    - target: {fileID: 1983534275741592286, guid: 46128880e4bcebe42a0fbdac5b5b14b9, type: 3}
+      propertyPath: m_Name
+      value: AttackPoint
+      objectReference: {fileID: 0}
     - target: {fileID: 1983534276738268299, guid: 46128880e4bcebe42a0fbdac5b5b14b9, type: 3}
       propertyPath: maxHP
       value: 1000
@@ -13063,6 +13072,10 @@ PrefabInstance:
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 1983534276738268307, guid: 46128880e4bcebe42a0fbdac5b5b14b9, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1983534276738268307, guid: 46128880e4bcebe42a0fbdac5b5b14b9, type: 3}
       propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
@@ -13079,6 +13092,33 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1983534276738268307, guid: 46128880e4bcebe42a0fbdac5b5b14b9, type: 3}
   m_PrefabInstance: {fileID: 1983534275519781503}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1983534275519781506
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1983534275519781505}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b830a6cc44caf64eb1ea90cc2191f0f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isAttacking: 0
+  isNormalAttacking: 0
+  isSkillAttacking: 0
+  canAttack: 1
+  normalAttack: {fileID: 0}
+  normalJumpAttack: {fileID: 0}
+  skill1: {fileID: 0}
+  skill2: {fileID: 0}
+  skill3: {fileID: 0}
+  skill4: {fileID: 0}
+  listSkill: []
+  currentSkill: {fileID: 0}
+  AttackPoint: {fileID: 1737245686}
+  normalATKCombo: 0
+  normalATKCount: 3
 --- !u!114 &1983534275519781507
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13197,26 +13237,6 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 519420031}
---- !u!114 &1983534275519781508
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1983534275519781505}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6aef8aa8e1cfa964796c779ccaa28bb2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isAttacking: 0
-  canAttack: 1
-  skill1: {fileID: 0}
-  skill2: {fileID: 0}
-  skill3: {fileID: 0}
-  skill4: {fileID: 0}
-  AttackPoint: {fileID: 1983534275519781510}
-  bulletLimit: 3
 --- !u!114 &1983534275519781509
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13231,11 +13251,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fallMultiplier: 2.5
   lowJumpMultiplier: 2
---- !u!4 &1983534275519781510 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1983534275741592285, guid: 46128880e4bcebe42a0fbdac5b5b14b9, type: 3}
-  m_PrefabInstance: {fileID: 1983534275519781503}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1983534275519781514
 MonoBehaviour:
   m_ObjectHideFlags: 0

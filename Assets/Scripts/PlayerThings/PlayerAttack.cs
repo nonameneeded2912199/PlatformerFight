@@ -9,7 +9,6 @@ public abstract class PlayerAttack : MonoBehaviour
     protected Rigidbody2D rb;
     protected Player playerMovement;
     protected PlayerAnimation playerAnimation;
-    protected Animator animator;
 
     protected AnimatorStateInfo animatorStateInfo;
 
@@ -19,14 +18,33 @@ public abstract class PlayerAttack : MonoBehaviour
     protected bool isAttacking;
 
     [SerializeField]
+    protected bool isNormalAttacking;
+
+    [SerializeField]
+    protected bool isSkillAttacking;
+
+    [SerializeField]
     protected bool canAttack = true;
 
     public bool IsAttacking => isAttacking;
+
+    [Header("Skills")]
+    [SerializeField]
+    protected List<Skill> normalAttack;
+
+    [SerializeField]
+    protected Skill normalJumpAttack;
 
     public Skill skill1;
     public Skill skill2;
     public Skill skill3;
     public Skill skill4;
+
+    [SerializeField]
+    private List<Skill> listSkill;
+
+    [SerializeField]
+    private Skill currentSkill;
 
     public Transform AttackPoint;
 
@@ -44,21 +62,23 @@ public abstract class PlayerAttack : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         playerMovement = GetComponent<Player>();
         playerAnimation = GetComponent<PlayerAnimation>();
-        animator = GetComponent<Animator>();
         canAttack = true;
     }
 
     public abstract void NormalAttack(InputAction.CallbackContext context);
 
-    protected abstract bool IsAttackingAnimation();
+    protected abstract bool IsNormalAttacking();
 
     public void SkillButton1(InputAction.CallbackContext context)
     {
-        if (skill1 != null && context.performed && !isAttacking)
+        if (skill1 != null && context.performed && !isAttacking/* && !isNormalAttacking && !isSkillAttacking*/)
         {
             if (skill1.CanPeform(playerMovement.IsGrounded))
             {
+                currentSkill = skill1;
+                currentSkill.attackPoint = AttackPoint;
                 isAttacking = true;
+                isSkillAttacking = true;
                 rb.velocity = Vector2.zero;
                 playerAnimation.PlayAnim(skill1.animationName);
             }
@@ -71,6 +91,8 @@ public abstract class PlayerAttack : MonoBehaviour
         {
             if (skill2.CanPeform(playerMovement.IsGrounded))
             {
+                currentSkill = skill2;
+                currentSkill.attackPoint = AttackPoint;
                 isAttacking = true;
                 rb.velocity = Vector2.zero;
                 playerAnimation.PlayAnim(skill2.animationName);
@@ -84,6 +106,8 @@ public abstract class PlayerAttack : MonoBehaviour
         {
             if (skill3.CanPeform(playerMovement.IsGrounded))
             {
+                currentSkill = skill3;
+                currentSkill.attackPoint = AttackPoint;
                 isAttacking = true;
                 rb.velocity = Vector2.zero;
                 playerAnimation.PlayAnim(skill3.animationName);
@@ -97,6 +121,8 @@ public abstract class PlayerAttack : MonoBehaviour
         {
             if (skill4.CanPeform(playerMovement.IsGrounded))
             {
+                currentSkill = skill4;
+                currentSkill.attackPoint = AttackPoint;
                 isAttacking = true;
                 rb.velocity = Vector2.zero;
                 playerAnimation.PlayAnim(skill4.animationName);
@@ -107,5 +133,19 @@ public abstract class PlayerAttack : MonoBehaviour
     public void SetAttackState(bool state)
     {
         isAttacking = state;
+    }
+
+    public void SkillDamage()
+    {
+        if (currentSkill != null)
+            currentSkill.Damage();
+    }
+
+    private void OnDrawGizmos()
+    {
+        if (isAttacking)
+        {
+            currentSkill.DrawGizmo();
+        }
     }
 }

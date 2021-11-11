@@ -26,8 +26,8 @@ public class PlayerMeleeCombat : PlayerAttack
 
     private void Update()
     {
-        animatorStateInfo = this.animator.GetCurrentAnimatorStateInfo(0);
-        if (animatorStateInfo.normalizedTime >= 0.9f && IsAttackingAnimation())
+        animatorStateInfo = playerAnimation.GetCurrentAnimatorStateInfo();
+        if (animatorStateInfo.normalizedTime >= 0.9f && IsNormalAttacking())
         {
             normalATKCombo = 0;
             playerMovement.EnableMove();
@@ -41,13 +41,13 @@ public class PlayerMeleeCombat : PlayerAttack
             isAttacking = false;
         }
 
-        if (!IsAttackingAnimation())
+        if (!IsNormalAttacking())
         {
             playerMovement.EnableMove();
         }
     }
 
-    protected override bool IsAttackingAnimation()
+    protected override bool IsNormalAttacking()
     {
         for (int i = 1; i <= normalATKCount; i++)
         {
@@ -61,21 +61,20 @@ public class PlayerMeleeCombat : PlayerAttack
 
     public override void NormalAttack(InputAction.CallbackContext context)
     {
-        Debug.Log(context.ReadValue<float>());
-        if (!playerMovement.IsDashing && canAttack /*&& !isAttacking*/)
+        if (!playerMovement.IsDashing && canAttack /*&& !isAttacking*/ && normalATKCombo < normalATKCount)
         {
             //Debug.Log(context.ReadValue<>());
             //canAttack = true;  
             if (playerMovement.IsGrounded)
             {
-                animatorStateInfo = this.animator.GetCurrentAnimatorStateInfo(0);
-                if (normalATKCombo == 0 || (IsAttackingAnimation() && animatorStateInfo.normalizedTime < 0.8f))
+                animatorStateInfo = playerAnimation.GetCurrentAnimatorStateInfo();
+                if (normalATKCombo == 0 || (IsNormalAttacking() && animatorStateInfo.normalizedTime < 0.8f))
                 {
                     rb.velocity = Vector2.zero;
                     isAttacking = true;
                     normalATKCombo++;
+                    normalATKCombo = Mathf.Clamp(normalATKCombo, 1, normalATKCount);
                     playerAnimation.PlayAnim("NormalATK" + normalATKCombo);
-                    normalATKCombo = Mathf.Clamp(normalATKCombo, 0, normalATKCount);
                 }               
             }
             else

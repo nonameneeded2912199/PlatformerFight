@@ -6,7 +6,9 @@ public abstract class BaseCharacter : MonoBehaviour
 {
     public Rigidbody2D rb { get; private set; }
     public SpriteRenderer spriteRender { get; private set; }
-    public Animator animator { get; private set; }
+    //public Animator animator { get; private set; }
+
+    public CharacterAnimation characterAnimation { get; private set; }
 
     protected Vector2 velocityWorkspace;
 
@@ -39,7 +41,8 @@ public abstract class BaseCharacter : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         spriteRender = GetComponent<SpriteRenderer>();
-        animator = GetComponent<Animator>();
+        //animator = GetComponent<Animator>();
+        characterAnimation = GetComponent<CharacterAnimation>();
         buffs = new Dictionary<string, BaseBuff>();
     }
 

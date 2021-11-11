@@ -2,14 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "NewSkillData", menuName = "Skill/CharacterSkill")]
-public class Skill : ScriptableObject
+
+public abstract class Skill : ScriptableObject
 {
+    [HideInInspector]
+    public BaseCharacter executor;
+
+    [HideInInspector]
+    public Transform attackPoint;
+
     public string skillName;
 
     public string animationName;
 
     public float cooldownTime;
+
+    public float apCost;
+
+    public float attackMultiplier;
 
     public bool canPerformOnAir = false;
 
@@ -30,4 +40,10 @@ public class Skill : ScriptableObject
 
         return false;
     }
+
+    public abstract void Execute();
+
+    public abstract void Damage();
+
+    public abstract void DrawGizmo();
 }
