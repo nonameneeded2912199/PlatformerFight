@@ -27,10 +27,10 @@ public class PlayerMeleeCombat : PlayerAttack
     private void Update()
     {
         animatorStateInfo = playerAnimation.GetCurrentAnimatorStateInfo();
-        if (animatorStateInfo.normalizedTime >= 0.9f && IsNormalAttacking())
+        if (animatorStateInfo.normalizedTime >= 0.9f && IsAttackingAnimation() && !player.CanMove)
         {
             normalATKCombo = 0;
-            playerMovement.EnableMove();
+            player.EnableMove();
         }
         if (rb.velocity != Vector2.zero)
         {
@@ -41,13 +41,13 @@ public class PlayerMeleeCombat : PlayerAttack
             isAttacking = false;
         }
 
-        if (!IsNormalAttacking())
+        /*if (!IsAttackingAnimation() && !player.CanMove)
         {
-            playerMovement.EnableMove();
-        }
+            player.EnableMove();
+        }*/
     }
 
-    protected override bool IsNormalAttacking()
+    /*protected override bool IsAttackingAnimation()
     {
         for (int i = 1; i <= normalATKCount; i++)
         {
@@ -57,32 +57,36 @@ public class PlayerMeleeCombat : PlayerAttack
             }
         }
         return false;
-    }
+    }*/
 
     public override void NormalAttack(InputAction.CallbackContext context)
     {
-        if (!playerMovement.IsDashing && canAttack /*&& !isAttacking*/ && normalATKCombo < normalATKCount)
+        if (!player.IsDashing && canAttack /*&& !isAttacking*/ && normalATKCombo < normalAttack.Count)
         {
-            //Debug.Log(context.ReadValue<>());
-            //canAttack = true;  
-            if (playerMovement.IsGrounded)
+            if (player.IsGrounded)
             {
                 animatorStateInfo = playerAnimation.GetCurrentAnimatorStateInfo();
-                if (normalATKCombo == 0 || (IsNormalAttacking() && animatorStateInfo.normalizedTime < 0.8f))
+                if (normalATKCombo == 0 || (IsNormalAttacking() && IsAttackingAnimation() && animatorStateInfo.normalizedTime < 0.8f))
                 {
-                    rb.velocity = Vector2.zero;
                     isAttacking = true;
                     normalATKCombo++;
-                    normalATKCombo = Mathf.Clamp(normalATKCombo, 1, normalATKCount);
-                    playerAnimation.PlayAnim("NormalATK" + normalATKCombo);
-                }               
+                    normalATKCombo = Mathf.Clamp(normalATKCombo, 1, normalAttack.Count);
+                    currentSkill = normalAttack[normalATKCombo - 1];
+                    SetupBeforeSkill();
+                    if (currentSkill.CanPeform(player.IsGrounded))
+                        currentSkill.Execute();
+                    //playerAnimation.PlayAnim("NormalATK" + normalATKCombo);
+                }
             }
             else
             {
                 isAttacking = true;
-                playerAnimation.PlayAnim("JumpNormalATK");
+                currentSkill = normalJumpAttack;
+                SetupBeforeSkill();
+                if (currentSkill.CanPeform(player.IsGrounded))
+                    currentSkill.Execute();
             }
-            
+
         }
     }
 }

@@ -35,7 +35,7 @@ public abstract class Skill : ScriptableObject
         else
         {
             if (canPerformOnAir)
-                return false;
+                return true;
         }
 
         return false;

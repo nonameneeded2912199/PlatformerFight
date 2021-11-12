@@ -1,5 +1,4 @@
 using Cinemachine;
-using Core.EventSystem;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -19,7 +18,6 @@ public class GameManager : Singleton<GameManager>
 
     void Update()
     {
-        GameEventManager.Update();
     }
 
     public void RestartLevel()

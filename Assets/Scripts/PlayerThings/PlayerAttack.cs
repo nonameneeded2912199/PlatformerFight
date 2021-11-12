@@ -7,7 +7,7 @@ public abstract class PlayerAttack : MonoBehaviour
 {
     [Header("Component")]
     protected Rigidbody2D rb;
-    protected Player playerMovement;
+    protected Player player;
     protected PlayerAnimation playerAnimation;
 
     protected AnimatorStateInfo animatorStateInfo;
@@ -41,10 +41,10 @@ public abstract class PlayerAttack : MonoBehaviour
     public Skill skill4;
 
     [SerializeField]
-    private List<Skill> listSkill;
+    protected List<Skill> listSkill;
 
     [SerializeField]
-    private Skill currentSkill;
+    protected Skill currentSkill;
 
     public Transform AttackPoint;
 
@@ -60,25 +60,43 @@ public abstract class PlayerAttack : MonoBehaviour
     protected virtual void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        playerMovement = GetComponent<Player>();
+        player = GetComponent<Player>();
         playerAnimation = GetComponent<PlayerAnimation>();
         canAttack = true;
     }
 
     public abstract void NormalAttack(InputAction.CallbackContext context);
 
-    protected abstract bool IsNormalAttacking();
+    protected virtual bool IsAttackingAnimation()
+    {
+        if (currentSkill != null)
+        {
+            return animatorStateInfo.IsName(currentSkill.animationName);
+        }
+        return false;
+    }
+
+    protected virtual bool IsNormalAttacking()
+    {
+        for (int i = 0; i < normalAttack.Count; i++)
+        {
+            if (animatorStateInfo.IsName(normalAttack[i].animationName))
+            {
+                return true;
+            }
+        }
+        return false;
+    }
 
     public void SkillButton1(InputAction.CallbackContext context)
     {
         if (skill1 != null && context.performed && !isAttacking/* && !isNormalAttacking && !isSkillAttacking*/)
         {
-            if (skill1.CanPeform(playerMovement.IsGrounded))
+            if (skill1.CanPeform(player.IsGrounded))
             {
                 currentSkill = skill1;
-                currentSkill.attackPoint = AttackPoint;
+                SetupBeforeSkill();
                 isAttacking = true;
-                isSkillAttacking = true;
                 rb.velocity = Vector2.zero;
                 playerAnimation.PlayAnim(skill1.animationName);
             }
@@ -89,10 +107,10 @@ public abstract class PlayerAttack : MonoBehaviour
     {
         if (skill2 != null && context.performed && !isAttacking)
         {
-            if (skill2.CanPeform(playerMovement.IsGrounded))
+            if (skill2.CanPeform(player.IsGrounded))
             {
                 currentSkill = skill2;
-                currentSkill.attackPoint = AttackPoint;
+                SetupBeforeSkill();
                 isAttacking = true;
                 rb.velocity = Vector2.zero;
                 playerAnimation.PlayAnim(skill2.animationName);
@@ -104,10 +122,10 @@ public abstract class PlayerAttack : MonoBehaviour
     {
         if (skill3 != null && context.performed && !isAttacking)
         {
-            if (skill3.CanPeform(playerMovement.IsGrounded))
+            if (skill3.CanPeform(player.IsGrounded))
             {
                 currentSkill = skill3;
-                currentSkill.attackPoint = AttackPoint;
+                SetupBeforeSkill();
                 isAttacking = true;
                 rb.velocity = Vector2.zero;
                 playerAnimation.PlayAnim(skill3.animationName);
@@ -119,14 +137,23 @@ public abstract class PlayerAttack : MonoBehaviour
     {
         if (skill4 != null && context.performed && !isAttacking)
         {
-            if (skill4.CanPeform(playerMovement.IsGrounded))
+            if (skill4.CanPeform(player.IsGrounded))
             {
                 currentSkill = skill4;
-                currentSkill.attackPoint = AttackPoint;
+                SetupBeforeSkill();
                 isAttacking = true;
                 rb.velocity = Vector2.zero;
                 playerAnimation.PlayAnim(skill4.animationName);
             }
+        }
+    }
+
+    protected virtual void SetupBeforeSkill()
+    {
+        if (currentSkill != null)
+        {
+            currentSkill.executor = player;
+            currentSkill.attackPoint = AttackPoint;
         }
     }
 

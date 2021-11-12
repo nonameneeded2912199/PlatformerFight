@@ -13108,8 +13108,11 @@ MonoBehaviour:
   isNormalAttacking: 0
   isSkillAttacking: 0
   canAttack: 1
-  normalAttack: {fileID: 0}
-  normalJumpAttack: {fileID: 0}
+  normalAttack:
+  - {fileID: 11400000, guid: 755f33ee805bb1944ac977f8f6a61e19, type: 2}
+  - {fileID: 11400000, guid: c30fee44997fa704a81516255a281985, type: 2}
+  - {fileID: 11400000, guid: b2f36ecfcb77f944f82d2f7617eef6b1, type: 2}
+  normalJumpAttack: {fileID: 11400000, guid: aa0c370839aa7654198729dcfcdf5c81, type: 2}
   skill1: {fileID: 0}
   skill2: {fileID: 0}
   skill3: {fileID: 0}

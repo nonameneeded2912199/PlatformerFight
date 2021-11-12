@@ -22,13 +22,13 @@ public class PlayerRangedAttack : PlayerAttack
         {
             isAttacking = false;
             canAttack = true;
-            playerMovement.EnableMove();
+            player.EnableMove();
         }
     }
 
     public override void NormalAttack(InputAction.CallbackContext context)
     {
-        if (!playerMovement.IsDashing && canAttack /*&& !isAttacking*/)
+        if (!player.IsDashing && canAttack /*&& !isAttacking*/)
         {
             canAttack = false;
             rb.velocity = Vector2.zero;
@@ -44,7 +44,7 @@ public class PlayerRangedAttack : PlayerAttack
 
     public void PerformShot()
     {
-        Bullet.GetBullet(BulletOwner.Player, AttackPoint.position, 3, playerMovement.facingRight ? 0 : Mathf.PI,
+        Bullet.GetBullet(BulletOwner.Player, AttackPoint.position, 3, player.facingRight ? 0 : Mathf.PI,
             0, 5, BulletType.Kunai, BulletColor.RED);
     }
 }

@@ -14,12 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   executor: {fileID: 0}
   attackPoint: {fileID: 0}
-  skillName: 
-  animationName: 
+  skillName: Normal Jump ATK
+  animationName: JumpNormalATK
   cooldownTime: 0
   apCost: 0
   attackMultiplier: 0
-  canPerformOnAir: 0
-  canPerformOnGround: 1
+  canPerformOnAir: 1
+  canPerformOnGround: 0
   attackRadius: 0
   invicibleTime: 0

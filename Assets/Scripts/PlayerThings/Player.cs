@@ -32,7 +32,6 @@ public class Player : BaseCharacter
     [Space]
     [Header("Checkers")]
     public bool canMove;
-    public bool wallJumped;
     public bool wallSlide;
     public bool isDashing;
     public bool jumpStop;
@@ -78,8 +77,6 @@ public class Player : BaseCharacter
         base.Start();
         betterJumping = GetComponent<BetterJumping>();
         
-
-        //playerInput.
 
         availableJumps = totalJumps;
     }
@@ -157,8 +154,11 @@ public class Player : BaseCharacter
 
     public void MovementInput(InputAction.CallbackContext context)
     {
-        if (canMove && !isDashing)
+        if (canMove && !isDashing && !wallSlide)
+        {
             horizontal = context.ReadValue<Vector2>().x;
+            rb.velocity = new Vector2(horizontal * movementSpeed, rb.velocity.y);
+        }
         else
             horizontal = 0;
     }
@@ -252,6 +252,7 @@ public class Player : BaseCharacter
 
         StopCoroutine(DisableMovement(0));
         StartCoroutine(DisableMovement(.1f));
+        //canMove = false;
 
         Vector2 wallDir = onRightWall ? Vector2.left : Vector2.right;
 
@@ -265,6 +266,8 @@ public class Player : BaseCharacter
 
         if (!canMove)
             return;
+
+        betterJumping.enabled = false;
 
         bool pushingWall = false;
         if ((rb.velocity.x > 0 && onRightWall) || (rb.velocity.x < 0 && !onRightWall))
@@ -295,6 +298,7 @@ public class Player : BaseCharacter
     IEnumerator DisableMovement(float time)
     {
         canMove = false;
+        Debug.Log("Stopped");
         yield return new WaitForSeconds(time);
         canMove = true;
     }
