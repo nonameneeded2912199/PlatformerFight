@@ -4,7 +4,6 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Weapon
   - Enemy
   - Bullet
   - Checkpoint
@@ -13,6 +12,9 @@ TagManager:
   - ScenesManager
   - GameManager
   - StageManager
+  - Player2
+  - Player3
+  - Player4
   layers:
   - Default
   - TransparentFX

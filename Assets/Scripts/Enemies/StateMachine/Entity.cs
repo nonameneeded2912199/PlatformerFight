@@ -1,3 +1,4 @@
+using CharacterThings;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -43,8 +44,6 @@ public class Entity : BaseCharacter
     protected bool isStunned;
 
     protected bool isDead;
-
-    protected bool isInvincible;
 
     protected AttackDetails touchAttackDetails;
 
@@ -105,12 +104,6 @@ public class Entity : BaseCharacter
     {
         stateMachine.CurrentState?.LateUpdate();
     }    
-
-    public virtual void SetInvincibility(bool invincibility)
-    {
-        isInvincible = invincibility;
-    }    
-
 
     public virtual bool CheckLedge()
     {
@@ -174,13 +167,17 @@ public class Entity : BaseCharacter
 
     public virtual void TakeDamage(AttackDetails attackDetails)
     {
-        if (isInvincible)
+        if (IsInvincible)
             return;
 
         lastDamageTime = Time.time;
 
         currentHP -= attackDetails.damageAmount;
         currentStunResistance -= attackDetails.stunDamageAmount;
+
+        GameObject damageOBJ = PoolManager.SpawnObject(GameManager.Instance.DamagePopup);
+        DamagePopup damagePopup = damageOBJ.GetComponent<DamagePopup>();
+        damagePopup.SetPopup((int)attackDetails.damageAmount, DamageType.NormalDamage, transform.position);
 
         DamageHop(entityData.damageHopSpeed);
 
@@ -201,22 +198,13 @@ public class Entity : BaseCharacter
 
     public virtual void DamageHop(float velocity)
     {
-        velocityWorkspace.Set(rb.velocity.x, velocity);
-        rb.velocity = velocityWorkspace;
-    }
-
-    public virtual void Flip()
-    {
-        facingRight = !facingRight;
-
-        Vector3 theScale = transform.localScale;
-        theScale.x *= -1;
-        transform.localScale = theScale;
+        velocityWorkspace.Set(Rigidbody.velocity.x, velocity);
+        Rigidbody.velocity = velocityWorkspace;
     }
 
     private IEnumerator BecomeInvicible(float seconds)
     {
-        isInvincible = true;
+        SetInvincibility(true);
         SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
         for (float i = 0; i < seconds; i += seconds / 10)
         {
@@ -232,7 +220,7 @@ public class Entity : BaseCharacter
             yield return new WaitForSeconds(seconds / 10);
         }
         spriteRenderer.enabled = true;
-        isInvincible = false;
+        SetInvincibility(false);
     }
 
     public virtual void Respawn()
@@ -252,6 +240,7 @@ public class Entity : BaseCharacter
 
         GetComponent<SpriteRenderer>().enabled = true;
         gameObject.SetActive(true);
+        SetInvincibility(false);
     }
 
     protected override void OnDrawGizmos()

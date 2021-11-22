@@ -77,37 +77,37 @@ public class Stage1Boss_SpecialAttack1 : RangedAttackState
         Vector2 position = boss.specialAttack1LeftPoint.position;
         for (int i = 0; i < 10; i++)
         {
-            switch (GameManager.Instance.currentGameDifficulty)
-            {
-                case GameDifficulty.EASY:
-                    for (float j = Mathf.PI / 4; j < 2 * Mathf.PI; j += Mathf.PI / 2)
-                    {
-                        Bullet.GetBullet(BulletOwner.Enemy, position, stateData.bulletShootTypes[0].bulletSpeed, j, stateData.bulletShootTypes[0].bulletLifeSpan, stateData.bulletShootTypes[0].bulletDamage,
-                            stateData.bulletShootTypes[0].bulletType, stateData.bulletShootTypes[0].bulletColor, stateData.bulletShootTypes[0].destroyOnInvisible);
-                    }
-                    break;
-                case GameDifficulty.NORMAL:
-                    for (float j = 0; j < 2 * Mathf.PI; j += Mathf.PI / 8)
-                    {
-                        Bullet.GetBullet(BulletOwner.Enemy, position, stateData.bulletShootTypes[0].bulletSpeed, j, stateData.bulletShootTypes[0].bulletLifeSpan, stateData.bulletShootTypes[0].bulletDamage,
-                            stateData.bulletShootTypes[0].bulletType, stateData.bulletShootTypes[0].bulletColor, stateData.bulletShootTypes[0].destroyOnInvisible);
-                    }
-                    break;
-                case GameDifficulty.HARD:
-                    for (float j = 0; j < 2 * Mathf.PI; j += Mathf.PI / 12)
-                    {
-                        Bullet.GetBullet(BulletOwner.Enemy, position, stateData.bulletShootTypes[0].bulletSpeed, j, stateData.bulletShootTypes[0].bulletLifeSpan, stateData.bulletShootTypes[0].bulletDamage,
-                            stateData.bulletShootTypes[0].bulletType, stateData.bulletShootTypes[0].bulletColor, stateData.bulletShootTypes[0].destroyOnInvisible);
-                    }
-                    break;
-                case GameDifficulty.LUNATIC:
-                    for (float j = 0; j < 2 * Mathf.PI; j += Mathf.PI / 20)
-                    {
-                        Bullet.GetBullet(BulletOwner.Enemy, position, stateData.bulletShootTypes[0].bulletSpeed, j, stateData.bulletShootTypes[0].bulletLifeSpan, stateData.bulletShootTypes[0].bulletDamage,
-                            stateData.bulletShootTypes[0].bulletType, stateData.bulletShootTypes[0].bulletColor, stateData.bulletShootTypes[0].destroyOnInvisible);
-                    }
-                    break;
-            }           
+            //switch (GameManager.Instance.currentGameDifficulty)
+            //{
+            //    case GameDifficulty.EASY:
+            //        for (float j = Mathf.PI / 4; j < 2 * Mathf.PI; j += Mathf.PI / 2)
+            //        {
+            //            Bullet.GetBullet(BulletOwner.Enemy, position, stateData.bulletShootTypes[0].bulletSpeed, j, stateData.bulletShootTypes[0].bulletLifeSpan, stateData.bulletShootTypes[0].bulletDamage,
+            //                stateData.bulletShootTypes[0].bulletType, stateData.bulletShootTypes[0].bulletColor, stateData.bulletShootTypes[0].destroyOnInvisible);
+            //        }
+            //        break;
+            //    case GameDifficulty.NORMAL:
+            //        for (float j = 0; j < 2 * Mathf.PI; j += Mathf.PI / 8)
+            //        {
+            //            Bullet.GetBullet(BulletOwner.Enemy, position, stateData.bulletShootTypes[0].bulletSpeed, j, stateData.bulletShootTypes[0].bulletLifeSpan, stateData.bulletShootTypes[0].bulletDamage,
+            //                stateData.bulletShootTypes[0].bulletType, stateData.bulletShootTypes[0].bulletColor, stateData.bulletShootTypes[0].destroyOnInvisible);
+            //        }
+            //        break;
+            //    case GameDifficulty.HARD:
+            //        for (float j = 0; j < 2 * Mathf.PI; j += Mathf.PI / 12)
+            //        {
+            //            Bullet.GetBullet(BulletOwner.Enemy, position, stateData.bulletShootTypes[0].bulletSpeed, j, stateData.bulletShootTypes[0].bulletLifeSpan, stateData.bulletShootTypes[0].bulletDamage,
+            //                stateData.bulletShootTypes[0].bulletType, stateData.bulletShootTypes[0].bulletColor, stateData.bulletShootTypes[0].destroyOnInvisible);
+            //        }
+            //        break;
+            //    case GameDifficulty.LUNATIC:
+            //        for (float j = 0; j < 2 * Mathf.PI; j += Mathf.PI / 20)
+            //        {
+            //            Bullet.GetBullet(BulletOwner.Enemy, position, stateData.bulletShootTypes[0].bulletSpeed, j, stateData.bulletShootTypes[0].bulletLifeSpan, stateData.bulletShootTypes[0].bulletDamage,
+            //                stateData.bulletShootTypes[0].bulletType, stateData.bulletShootTypes[0].bulletColor, stateData.bulletShootTypes[0].destroyOnInvisible);
+            //        }
+            //        break;
+            //}           
 
             yield return new WaitForSeconds(0.5f);
             position.x += 1.5f * Mathf.Cos(0f);
@@ -118,37 +118,37 @@ public class Stage1Boss_SpecialAttack1 : RangedAttackState
         position = boss.specialAttack1RightPoint.position;
         for (int i = 0; i < 10; i++)
         {
-            switch (GameManager.Instance.currentGameDifficulty)
-            {
-                case GameDifficulty.EASY:
-                    for (float j = Mathf.PI / 4; j < 2 * Mathf.PI; j += Mathf.PI / 2)
-                    {
-                        Bullet.GetBullet(BulletOwner.Enemy, position, stateData.bulletShootTypes[0].bulletSpeed, j, stateData.bulletShootTypes[0].bulletLifeSpan, stateData.bulletShootTypes[0].bulletDamage,
-                            stateData.bulletShootTypes[0].bulletType, stateData.bulletShootTypes[0].bulletColor, stateData.bulletShootTypes[0].destroyOnInvisible);
-                    }
-                    break;
-                case GameDifficulty.NORMAL:
-                    for (float j = 0; j < 2 * Mathf.PI; j += Mathf.PI / 8)
-                    {
-                        Bullet.GetBullet(BulletOwner.Enemy, position, stateData.bulletShootTypes[0].bulletSpeed, j, stateData.bulletShootTypes[0].bulletLifeSpan, stateData.bulletShootTypes[0].bulletDamage,
-                            stateData.bulletShootTypes[0].bulletType, stateData.bulletShootTypes[0].bulletColor, stateData.bulletShootTypes[0].destroyOnInvisible);
-                    }
-                    break;
-                case GameDifficulty.HARD:
-                    for (float j = 0; j < 2 * Mathf.PI; j += Mathf.PI / 12)
-                    {
-                        Bullet.GetBullet(BulletOwner.Enemy, position, stateData.bulletShootTypes[0].bulletSpeed, j, stateData.bulletShootTypes[0].bulletLifeSpan, stateData.bulletShootTypes[0].bulletDamage,
-                            stateData.bulletShootTypes[0].bulletType, stateData.bulletShootTypes[0].bulletColor, stateData.bulletShootTypes[0].destroyOnInvisible);
-                    }
-                    break;
-                case GameDifficulty.LUNATIC:
-                    for (float j = 0; j < 2 * Mathf.PI; j += Mathf.PI / 20)
-                    {
-                        Bullet.GetBullet(BulletOwner.Enemy, position, stateData.bulletShootTypes[0].bulletSpeed, j, stateData.bulletShootTypes[0].bulletLifeSpan, stateData.bulletShootTypes[0].bulletDamage,
-                            stateData.bulletShootTypes[0].bulletType, stateData.bulletShootTypes[0].bulletColor, stateData.bulletShootTypes[0].destroyOnInvisible);
-                    }
-                    break;
-            }
+            //switch (GameManager.Instance.currentGameDifficulty)
+            //{
+            //    case GameDifficulty.EASY:
+            //        for (float j = Mathf.PI / 4; j < 2 * Mathf.PI; j += Mathf.PI / 2)
+            //        {
+            //            Bullet.GetBullet(BulletOwner.Enemy, position, stateData.bulletShootTypes[0].bulletSpeed, j, stateData.bulletShootTypes[0].bulletLifeSpan, stateData.bulletShootTypes[0].bulletDamage,
+            //                stateData.bulletShootTypes[0].bulletType, stateData.bulletShootTypes[0].bulletColor, stateData.bulletShootTypes[0].destroyOnInvisible);
+            //        }
+            //        break;
+            //    case GameDifficulty.NORMAL:
+            //        for (float j = 0; j < 2 * Mathf.PI; j += Mathf.PI / 8)
+            //        {
+            //            Bullet.GetBullet(BulletOwner.Enemy, position, stateData.bulletShootTypes[0].bulletSpeed, j, stateData.bulletShootTypes[0].bulletLifeSpan, stateData.bulletShootTypes[0].bulletDamage,
+            //                stateData.bulletShootTypes[0].bulletType, stateData.bulletShootTypes[0].bulletColor, stateData.bulletShootTypes[0].destroyOnInvisible);
+            //        }
+            //        break;
+            //    case GameDifficulty.HARD:
+            //        for (float j = 0; j < 2 * Mathf.PI; j += Mathf.PI / 12)
+            //        {
+            //            Bullet.GetBullet(BulletOwner.Enemy, position, stateData.bulletShootTypes[0].bulletSpeed, j, stateData.bulletShootTypes[0].bulletLifeSpan, stateData.bulletShootTypes[0].bulletDamage,
+            //                stateData.bulletShootTypes[0].bulletType, stateData.bulletShootTypes[0].bulletColor, stateData.bulletShootTypes[0].destroyOnInvisible);
+            //        }
+            //        break;
+            //    case GameDifficulty.LUNATIC:
+            //        for (float j = 0; j < 2 * Mathf.PI; j += Mathf.PI / 20)
+            //        {
+            //            Bullet.GetBullet(BulletOwner.Enemy, position, stateData.bulletShootTypes[0].bulletSpeed, j, stateData.bulletShootTypes[0].bulletLifeSpan, stateData.bulletShootTypes[0].bulletDamage,
+            //                stateData.bulletShootTypes[0].bulletType, stateData.bulletShootTypes[0].bulletColor, stateData.bulletShootTypes[0].destroyOnInvisible);
+            //        }
+            //        break;
+            //}
 
             yield return new WaitForSeconds(0.5f);
             position.x += 1.5f * Mathf.Cos(Mathf.PI);
@@ -164,37 +164,37 @@ public class Stage1Boss_SpecialAttack1 : RangedAttackState
         Vector2 position = boss.specialAttack1RightPoint.position;
         for (int i = 0; i < 10; i++)
         {
-            switch (GameManager.Instance.currentGameDifficulty)
-            {
-                case GameDifficulty.EASY:
-                    for (float j = Mathf.PI / 4; j < 2 * Mathf.PI; j += Mathf.PI / 2)
-                    {
-                        Bullet.GetBullet(BulletOwner.Enemy, position, stateData.bulletShootTypes[0].bulletSpeed, j, stateData.bulletShootTypes[0].bulletLifeSpan, stateData.bulletShootTypes[0].bulletDamage,
-                            stateData.bulletShootTypes[0].bulletType, stateData.bulletShootTypes[0].bulletColor, stateData.bulletShootTypes[0].destroyOnInvisible);
-                    }
-                    break;
-                case GameDifficulty.NORMAL:
-                    for (float j = 0; j < 2 * Mathf.PI; j += Mathf.PI / 8)
-                    {
-                        Bullet.GetBullet(BulletOwner.Enemy, position, stateData.bulletShootTypes[0].bulletSpeed, j, stateData.bulletShootTypes[0].bulletLifeSpan, stateData.bulletShootTypes[0].bulletDamage,
-                            stateData.bulletShootTypes[0].bulletType, stateData.bulletShootTypes[0].bulletColor, stateData.bulletShootTypes[0].destroyOnInvisible);
-                    }
-                    break;
-                case GameDifficulty.HARD:
-                    for (float j = 0; j < 2 * Mathf.PI; j += Mathf.PI / 12)
-                    {
-                        Bullet.GetBullet(BulletOwner.Enemy, position, stateData.bulletShootTypes[0].bulletSpeed, j, stateData.bulletShootTypes[0].bulletLifeSpan, stateData.bulletShootTypes[0].bulletDamage,
-                            stateData.bulletShootTypes[0].bulletType, stateData.bulletShootTypes[0].bulletColor, stateData.bulletShootTypes[0].destroyOnInvisible);
-                    }
-                    break;
-                case GameDifficulty.LUNATIC:
-                    for (float j = 0; j < 2 * Mathf.PI; j += Mathf.PI / 20)
-                    {
-                        Bullet.GetBullet(BulletOwner.Enemy, position, stateData.bulletShootTypes[0].bulletSpeed, j, stateData.bulletShootTypes[0].bulletLifeSpan, stateData.bulletShootTypes[0].bulletDamage,
-                            stateData.bulletShootTypes[0].bulletType, stateData.bulletShootTypes[0].bulletColor, stateData.bulletShootTypes[0].destroyOnInvisible);
-                    }
-                    break;
-            }
+            //switch (GameManager.Instance.currentGameDifficulty)
+            //{
+            //    case GameDifficulty.EASY:
+            //        for (float j = Mathf.PI / 4; j < 2 * Mathf.PI; j += Mathf.PI / 2)
+            //        {
+            //            Bullet.GetBullet(BulletOwner.Enemy, position, stateData.bulletShootTypes[0].bulletSpeed, j, stateData.bulletShootTypes[0].bulletLifeSpan, stateData.bulletShootTypes[0].bulletDamage,
+            //                stateData.bulletShootTypes[0].bulletType, stateData.bulletShootTypes[0].bulletColor, stateData.bulletShootTypes[0].destroyOnInvisible);
+            //        }
+            //        break;
+            //    case GameDifficulty.NORMAL:
+            //        for (float j = 0; j < 2 * Mathf.PI; j += Mathf.PI / 8)
+            //        {
+            //            Bullet.GetBullet(BulletOwner.Enemy, position, stateData.bulletShootTypes[0].bulletSpeed, j, stateData.bulletShootTypes[0].bulletLifeSpan, stateData.bulletShootTypes[0].bulletDamage,
+            //                stateData.bulletShootTypes[0].bulletType, stateData.bulletShootTypes[0].bulletColor, stateData.bulletShootTypes[0].destroyOnInvisible);
+            //        }
+            //        break;
+            //    case GameDifficulty.HARD:
+            //        for (float j = 0; j < 2 * Mathf.PI; j += Mathf.PI / 12)
+            //        {
+            //            Bullet.GetBullet(BulletOwner.Enemy, position, stateData.bulletShootTypes[0].bulletSpeed, j, stateData.bulletShootTypes[0].bulletLifeSpan, stateData.bulletShootTypes[0].bulletDamage,
+            //                stateData.bulletShootTypes[0].bulletType, stateData.bulletShootTypes[0].bulletColor, stateData.bulletShootTypes[0].destroyOnInvisible);
+            //        }
+            //        break;
+            //    case GameDifficulty.LUNATIC:
+            //        for (float j = 0; j < 2 * Mathf.PI; j += Mathf.PI / 20)
+            //        {
+            //            Bullet.GetBullet(BulletOwner.Enemy, position, stateData.bulletShootTypes[0].bulletSpeed, j, stateData.bulletShootTypes[0].bulletLifeSpan, stateData.bulletShootTypes[0].bulletDamage,
+            //                stateData.bulletShootTypes[0].bulletType, stateData.bulletShootTypes[0].bulletColor, stateData.bulletShootTypes[0].destroyOnInvisible);
+            //        }
+            //        break;
+            //}
 
             yield return new WaitForSeconds(0.5f);
             position.x += 1.5f * Mathf.Cos(Mathf.PI);
@@ -205,37 +205,37 @@ public class Stage1Boss_SpecialAttack1 : RangedAttackState
         position = boss.specialAttack1LeftPoint.position;
         for (int i = 0; i < 10; i++)
         {
-            switch (GameManager.Instance.currentGameDifficulty)
-            {
-                case GameDifficulty.EASY:
-                    for (float j = Mathf.PI / 4; j < 2 * Mathf.PI; j += Mathf.PI / 2)
-                    {
-                        Bullet.GetBullet(BulletOwner.Enemy, position, stateData.bulletShootTypes[0].bulletSpeed, j, stateData.bulletShootTypes[0].bulletLifeSpan, stateData.bulletShootTypes[0].bulletDamage,
-                            stateData.bulletShootTypes[0].bulletType, stateData.bulletShootTypes[0].bulletColor, stateData.bulletShootTypes[0].destroyOnInvisible);
-                    }
-                    break;
-                case GameDifficulty.NORMAL:
-                    for (float j = 0; j < 2 * Mathf.PI; j += Mathf.PI / 8)
-                    {
-                        Bullet.GetBullet(BulletOwner.Enemy, position, stateData.bulletShootTypes[0].bulletSpeed, j, stateData.bulletShootTypes[0].bulletLifeSpan, stateData.bulletShootTypes[0].bulletDamage,
-                            stateData.bulletShootTypes[0].bulletType, stateData.bulletShootTypes[0].bulletColor, stateData.bulletShootTypes[0].destroyOnInvisible);
-                    }
-                    break;
-                case GameDifficulty.HARD:
-                    for (float j = 0; j < 2 * Mathf.PI; j += Mathf.PI / 12)
-                    {
-                        Bullet.GetBullet(BulletOwner.Enemy, position, stateData.bulletShootTypes[0].bulletSpeed, j, stateData.bulletShootTypes[0].bulletLifeSpan, stateData.bulletShootTypes[0].bulletDamage,
-                            stateData.bulletShootTypes[0].bulletType, stateData.bulletShootTypes[0].bulletColor, stateData.bulletShootTypes[0].destroyOnInvisible);
-                    }
-                    break;
-                case GameDifficulty.LUNATIC:
-                    for (float j = 0; j < 2 * Mathf.PI; j += Mathf.PI / 20)
-                    {
-                        Bullet.GetBullet(BulletOwner.Enemy, position, stateData.bulletShootTypes[0].bulletSpeed, j, stateData.bulletShootTypes[0].bulletLifeSpan, stateData.bulletShootTypes[0].bulletDamage,
-                            stateData.bulletShootTypes[0].bulletType, stateData.bulletShootTypes[0].bulletColor, stateData.bulletShootTypes[0].destroyOnInvisible);
-                    }
-                    break;
-            }
+            //switch (GameManager.Instance.currentGameDifficulty)
+            //{
+            //    case GameDifficulty.EASY:
+            //        for (float j = Mathf.PI / 4; j < 2 * Mathf.PI; j += Mathf.PI / 2)
+            //        {
+            //            Bullet.GetBullet(BulletOwner.Enemy, position, stateData.bulletShootTypes[0].bulletSpeed, j, stateData.bulletShootTypes[0].bulletLifeSpan, stateData.bulletShootTypes[0].bulletDamage,
+            //                stateData.bulletShootTypes[0].bulletType, stateData.bulletShootTypes[0].bulletColor, stateData.bulletShootTypes[0].destroyOnInvisible);
+            //        }
+            //        break;
+            //    case GameDifficulty.NORMAL:
+            //        for (float j = 0; j < 2 * Mathf.PI; j += Mathf.PI / 8)
+            //        {
+            //            Bullet.GetBullet(BulletOwner.Enemy, position, stateData.bulletShootTypes[0].bulletSpeed, j, stateData.bulletShootTypes[0].bulletLifeSpan, stateData.bulletShootTypes[0].bulletDamage,
+            //                stateData.bulletShootTypes[0].bulletType, stateData.bulletShootTypes[0].bulletColor, stateData.bulletShootTypes[0].destroyOnInvisible);
+            //        }
+            //        break;
+            //    case GameDifficulty.HARD:
+            //        for (float j = 0; j < 2 * Mathf.PI; j += Mathf.PI / 12)
+            //        {
+            //            Bullet.GetBullet(BulletOwner.Enemy, position, stateData.bulletShootTypes[0].bulletSpeed, j, stateData.bulletShootTypes[0].bulletLifeSpan, stateData.bulletShootTypes[0].bulletDamage,
+            //                stateData.bulletShootTypes[0].bulletType, stateData.bulletShootTypes[0].bulletColor, stateData.bulletShootTypes[0].destroyOnInvisible);
+            //        }
+            //        break;
+            //    case GameDifficulty.LUNATIC:
+            //        for (float j = 0; j < 2 * Mathf.PI; j += Mathf.PI / 20)
+            //        {
+            //            Bullet.GetBullet(BulletOwner.Enemy, position, stateData.bulletShootTypes[0].bulletSpeed, j, stateData.bulletShootTypes[0].bulletLifeSpan, stateData.bulletShootTypes[0].bulletDamage,
+            //                stateData.bulletShootTypes[0].bulletType, stateData.bulletShootTypes[0].bulletColor, stateData.bulletShootTypes[0].destroyOnInvisible);
+            //        }
+            //        break;
+            //}
 
             yield return new WaitForSeconds(0.5f);
             position.x += 1.5f * Mathf.Cos(0f);

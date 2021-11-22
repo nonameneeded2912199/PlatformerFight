@@ -167,8 +167,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 2044142151
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 8165333002277163974, guid: 6714762f651ba194691a7fd704c3e8aa, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -212,15 +212,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf05164a804677b488f3fac3e46bc813, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  groundRaycastLength: 0
+  groundRaycastOffset: {x: 0, y: 0, z: 0}
+  wallRaycastLength: 0
+  onWall: 0
+  onRightWall: 0
+  platformLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  facingRight: 1
   currentHP: 0
   goRight: 0
   touchDamage: 5
   touchDamageWidth: 0.5
   touchDamageHeight: 0.5
-  wallPoint: {fileID: 6826909798258021558}
   ledgePoint: {fileID: 6826909798258021558}
   playerCheckPoint: {fileID: 6826909798258021558}
-  groundPoint: {fileID: 6826909796733078164}
   touchDamagePoint: {fileID: 6826909797254641159}
   entityData: {fileID: 11400000, guid: 6f723b3c771df6049b1aa179e5c0efab, type: 2}
   moveStateData: {fileID: 11400000, guid: b84921c83d220e747846a0da5b34827c, type: 2}

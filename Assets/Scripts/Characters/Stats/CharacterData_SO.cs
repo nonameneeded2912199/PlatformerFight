@@ -8,12 +8,14 @@ namespace CharacterThings
     public class CharacterData_SO : ScriptableObject
     {
         [Header("Stats Info")]
-        public int maxHP;
+        public float baseHP;
 
-        public int currentHP;
+        public float baseAP;
 
-        public int baseDEF;
+        public float baseATK;
 
-        public int currentDEF;
+        public float baseDEF;
+
+        public float apRecoveryRate;
     }
 }

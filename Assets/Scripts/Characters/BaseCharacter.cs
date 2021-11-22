@@ -2,114 +2,129 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class BaseCharacter : MonoBehaviour
+namespace CharacterThings
 {
-    public Rigidbody2D rb { get; private set; }
-    public SpriteRenderer spriteRender { get; private set; }
-    //public Animator animator { get; private set; }
-
-    public CharacterAnimation characterAnimation { get; private set; }
-
-    protected Vector2 velocityWorkspace;
-
-    [Space]
-    [Header("Ground Collision Check")]
-    [SerializeField]
-    private float groundRaycastLength;
-    [SerializeField]
-    private Vector3 groundRaycastOffset;
-
-    [Header("Wall Collision Check")]
-    [SerializeField]
-    private float wallRaycastLength;
-    public bool onWall;
-    public bool onRightWall;
-
-    [Space]
-    [Header("Layer")]
-    [SerializeField]
-    private LayerMask platformLayer;
-
-    protected bool isGrounded;
-    public bool IsGrounded { get => isGrounded; }
-    public bool facingRight = true;
-
-    private List<string> outdatedBuff;
-    private Dictionary<string, BaseBuff> buffs;
-
-    protected virtual void Start()
+    public abstract class BaseCharacter : MonoBehaviour
     {
-        rb = GetComponent<Rigidbody2D>();
-        spriteRender = GetComponent<SpriteRenderer>();
-        //animator = GetComponent<Animator>();
-        characterAnimation = GetComponent<CharacterAnimation>();
-        buffs = new Dictionary<string, BaseBuff>();
-    }
+        public Rigidbody2D Rigidbody { get; private set; }
+        public SpriteRenderer SpriteRenderer { get; private set; }
 
-    protected virtual void Update()
-    {
-        outdatedBuff = new List<string>();
-        foreach (var buff in buffs)
+        public CharacterBuffManager characterBuffManager { get; private set; }
+
+        public CharacterStats CharacterStats { get; private set; }
+        //public Animator animator { get; private set; }
+
+        [SerializeField]
+        protected bool IsInvincible { get; private set; }
+
+        public CharacterAnimation characterAnimation { get; private set; }
+
+        protected Vector2 velocityWorkspace;
+
+        [Space]
+        [Header("Ground Collision Check")]
+        [SerializeField]
+        private float groundRaycastLength;
+        [SerializeField]
+        private Vector3 groundRaycastOffset;
+
+        [Header("Wall Collision Check")]
+        [SerializeField]
+        private float wallRaycastLength;
+        public bool onWall;
+        public bool onRightWall;
+
+        [Space]
+        [Header("Layer")]
+        [SerializeField]
+        private LayerMask platformLayer;
+
+        protected bool isGrounded;
+        public bool IsGrounded { get => isGrounded; }
+        public bool facingRight = true;
+
+        protected virtual void Awake()
         {
-            var resBuff = buff.Value.Tick(Time.deltaTime);
-            if (!resBuff.Item2)
-            {
-                outdatedBuff.Add(buff.Key);
-            }    
-        }    
+            Rigidbody = GetComponent<Rigidbody2D>();
+            SpriteRenderer = GetComponent<SpriteRenderer>();
+            CharacterStats = GetComponent<CharacterStats>();
+            characterAnimation = GetComponent<CharacterAnimation>();
+            characterBuffManager = GetComponent<CharacterBuffManager>();
+        }
 
-        foreach (var buff in outdatedBuff)
+        protected virtual void Start()
         {
-            buffs.Remove(buff);
-        }    
-    }    
+            
+        }
 
-    protected virtual void FixedUpdate()
-    {
-        HandleCollision();
-    }
+        protected virtual void Update()
+        {
+            
+        }
 
-    protected virtual void HandleCollision()
-    {
-        // Ground collision
-        isGrounded = Physics2D.Raycast(transform.position + groundRaycastOffset, Vector2.down, groundRaycastLength, platformLayer)
-            || Physics2D.Raycast(transform.position - groundRaycastOffset, Vector2.down, groundRaycastLength, platformLayer);
+        protected virtual void FixedUpdate()
+        {
+            HandleCollision();
+        }
 
-        // Wall collision
-        onWall = Physics2D.Raycast(transform.position, Vector2.right, wallRaycastLength, platformLayer)
-            || Physics2D.Raycast(transform.position, Vector2.left, wallRaycastLength, platformLayer);
+        protected virtual void HandleCollision()
+        {
+            // Ground collision
+            isGrounded = Physics2D.Raycast(transform.position + groundRaycastOffset, Vector2.down, groundRaycastLength, platformLayer)
+                || Physics2D.Raycast(transform.position - groundRaycastOffset, Vector2.down, groundRaycastLength, platformLayer);
 
-        onRightWall = Physics2D.Raycast(transform.position, Vector2.right, wallRaycastLength, platformLayer);
-    }
-    public virtual void SetVelocity(float velocity)
-    {
-        int facingDirection = facingRight ? 1 : -1;
-        velocityWorkspace.Set(facingDirection * velocity, rb.velocity.y);
-        rb.velocity = velocityWorkspace;
-    }
+            // Wall collision
+            onWall = Physics2D.Raycast(transform.position, Vector2.right, wallRaycastLength, platformLayer)
+                || Physics2D.Raycast(transform.position, Vector2.left, wallRaycastLength, platformLayer);
 
-    public virtual void SetVelocity(float velocity, Vector2 angle)
-    {
-        angle.Normalize();
-        int facingDirection = facingRight ? 1 : -1;
-        velocityWorkspace.Set(angle.x * velocity * facingDirection, angle.y * velocity);
-        rb.velocity = velocityWorkspace;
-    }
+            onRightWall = Physics2D.Raycast(transform.position, Vector2.right, wallRaycastLength, platformLayer);
+        }
+        public virtual void SetVelocity(float velocity)
+        {
+            int facingDirection = facingRight ? 1 : -1;
+            velocityWorkspace.Set(facingDirection * velocity, Rigidbody.velocity.y);
+            Rigidbody.velocity = velocityWorkspace;
+        }
 
-    public virtual void SetVelocity(float velocity, Vector2 angle, int direction)
-    {
-        angle.Normalize();
-        velocityWorkspace.Set(angle.x * velocity * direction, angle.y * velocity);
-        rb.velocity = velocityWorkspace;
-    }
+        public virtual void SetVelocity(float velocity, Vector2 angle)
+        {
+            angle.Normalize();
+            int facingDirection = facingRight ? 1 : -1;
+            velocityWorkspace.Set(angle.x * velocity * facingDirection, angle.y * velocity);
+            Rigidbody.velocity = velocityWorkspace;
+        }
 
-    protected virtual void OnDrawGizmos()
-    {
-        Gizmos.DrawLine(transform.position + groundRaycastOffset, transform.position + groundRaycastOffset + Vector3.down * groundRaycastLength);
-        Gizmos.DrawLine(transform.position - groundRaycastOffset, transform.position - groundRaycastOffset + Vector3.down * groundRaycastLength);
+        public virtual void SetVelocity(float velocity, Vector2 angle, int direction)
+        {
+            angle.Normalize();
+            velocityWorkspace.Set(angle.x * velocity * direction, angle.y * velocity);
+            Rigidbody.velocity = velocityWorkspace;
+        }
 
-        // Wall Check
-        Gizmos.DrawLine(transform.position, transform.position + Vector3.right * wallRaycastLength);
-        Gizmos.DrawLine(transform.position, transform.position + Vector3.left * wallRaycastLength);
+        public void SetInvincibility(bool invincibility)
+        {
+            IsInvincible = invincibility;
+        }
+
+        public void Flip()
+        {
+            facingRight = !facingRight;
+            transform.rotation = Quaternion.Euler(0f, facingRight ? 0 : 180f, 0f);
+        }
+
+        public void AddBuff(string name, BaseBuff buff)
+        {
+            characterBuffManager.AddBuff(name, buff);
+        }
+
+        protected virtual void OnDrawGizmos()
+        {
+            Gizmos.DrawLine(transform.position + groundRaycastOffset, transform.position + groundRaycastOffset + Vector3.down * groundRaycastLength);
+            Gizmos.DrawLine(transform.position - groundRaycastOffset, transform.position - groundRaycastOffset + Vector3.down * groundRaycastLength);
+
+            // Wall Check
+            Gizmos.DrawLine(transform.position, transform.position + Vector3.right * wallRaycastLength);
+            Gizmos.DrawLine(transform.position, transform.position + Vector3.left * wallRaycastLength);
+        }
     }
 }

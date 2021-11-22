@@ -17,10 +17,10 @@ public class ScenesManager : Singleton<ScenesManager>
     private float maxFadingTime;
     private float fadingTimer;
 
-    protected override void Awake()
+    void Awake()
     {
-        base.Awake();
-        DontDestroyOnLoad(gameObject);
+        /*base.Awake();
+        DontDestroyOnLoad(gameObject);*/
 
         fadingGroup = GetComponentInChildren<CanvasGroup>();
     }

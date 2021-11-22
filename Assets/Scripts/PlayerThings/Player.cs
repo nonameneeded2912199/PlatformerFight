@@ -1,3 +1,4 @@
+using CharacterThings;
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -13,8 +14,6 @@ public class Player : BaseCharacter
     private BetterJumping betterJumping;
     private PlayerInputAction playerInputAction;
 
-    private bool isInvincible;
-
     private float horizontal;
 
     [Space]
@@ -25,9 +24,9 @@ public class Player : BaseCharacter
     public float slideSpeed = 5;
     public float wallJumpLerp = 10;
     public float dashSpeed = 20;
-    public int totalJumps = 2;
+    public int extraJumps = 1;
     [SerializeField]
-    private int availableJumps;
+    private int availableExtraJumps;
 
     [Space]
     [Header("Checkers")]
@@ -45,6 +44,20 @@ public class Player : BaseCharacter
     public bool canDoubleJump;
     public bool canDash;
 
+    [Space]
+    [Header("Health and action points")]
+    [SerializeField]
+    public Image imageHP;
+
+    [SerializeField]
+    private Text textHP;
+
+    [SerializeField]
+    private Image imageAP;
+
+    [SerializeField]
+    private Text textAP;
+
     #region Properties
     public float Horizontal => horizontal;
 
@@ -56,8 +69,9 @@ public class Player : BaseCharacter
     #endregion
 
 
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         if (Instance == null)
         {
             Instance = this;
@@ -76,9 +90,12 @@ public class Player : BaseCharacter
     {
         base.Start();
         betterJumping = GetComponent<BetterJumping>();
-        
 
-        availableJumps = totalJumps;
+        HandleHPBar();
+        HandleAPBar();
+
+
+        availableExtraJumps = extraJumps;
     }
 
     // Update is called once per frame
@@ -108,8 +125,8 @@ public class Player : BaseCharacter
                 hasDashed = false;
                 isDashing = false;
                 jumpStop = false;
-                if (!(rb.velocity.y > 0f))
-                    availableJumps = totalJumps;
+                if (!(Rigidbody.velocity.y > 0f))
+                    availableExtraJumps = extraJumps;
             }
             else
             {
@@ -118,7 +135,7 @@ public class Player : BaseCharacter
                     if (horizontal != 0)
                     {
                         wallSlide = true;
-                        availableJumps = totalJumps;
+                        availableExtraJumps = extraJumps;
                         WallSliding();
                     }
                     else
@@ -135,7 +152,7 @@ public class Player : BaseCharacter
         if (!canMove)
             return;
 
-        rb.velocity = new Vector2(horizontal * movementSpeed, rb.velocity.y);
+        Rigidbody.velocity = new Vector2(horizontal * movementSpeed, Rigidbody.velocity.y);
     }
 
     private void HandleFlip()
@@ -146,18 +163,12 @@ public class Player : BaseCharacter
         }
     }
 
-    private void Flip()
-    {
-        facingRight = !facingRight;
-        transform.rotation = Quaternion.Euler(0f, facingRight ? 0 : 180f, 0f);
-    }
-
     public void MovementInput(InputAction.CallbackContext context)
     {
         if (canMove && !isDashing && !wallSlide)
         {
             horizontal = context.ReadValue<Vector2>().x;
-            rb.velocity = new Vector2(horizontal * movementSpeed, rb.velocity.y);
+            Rigidbody.velocity = new Vector2(horizontal * movementSpeed, Rigidbody.velocity.y);
         }
         else
             horizontal = 0;
@@ -209,11 +220,11 @@ public class Player : BaseCharacter
 
         hasDashed = true;
 
-        rb.velocity = Vector2.zero;
+        Rigidbody.velocity = Vector2.zero;
         int direction = facingRight ? 1 : -1;
         Vector2 dir = new Vector2(direction, 0);
 
-        rb.velocity += dir.normalized * dashSpeed;
+        Rigidbody.velocity += dir.normalized * dashSpeed;
 
         StartCoroutine(DashWait());
     }
@@ -222,15 +233,15 @@ public class Player : BaseCharacter
     {
         StartCoroutine(GroundDash());
 
-        float originalGravity = rb.gravityScale;
+        float originalGravity = Rigidbody.gravityScale;
 
-        rb.gravityScale = 0;
+        Rigidbody.gravityScale = 0;
         betterJumping.enabled = false;
         isDashing = true;
 
         yield return new WaitForSeconds(0.3f);
 
-        rb.gravityScale = originalGravity;
+        Rigidbody.gravityScale = originalGravity;
         betterJumping.enabled = true;
 
         isDashing = false;
@@ -256,7 +267,7 @@ public class Player : BaseCharacter
 
         Vector2 wallDir = onRightWall ? Vector2.left : Vector2.right;
 
-        rb.velocity = new Vector2(wallDir.x * 0.25f * jumpForce, 0.75f * jumpForce);
+        Rigidbody.velocity = new Vector2(wallDir.x * 0.25f * jumpForce, 0.75f * jumpForce);
     }
 
     private void WallSliding()
@@ -270,27 +281,27 @@ public class Player : BaseCharacter
         betterJumping.enabled = false;
 
         bool pushingWall = false;
-        if ((rb.velocity.x > 0 && onRightWall) || (rb.velocity.x < 0 && !onRightWall))
+        if ((Rigidbody.velocity.x > 0 && onRightWall) || (Rigidbody.velocity.x < 0 && !onRightWall))
         {
             pushingWall = true;
         }
-        float push = pushingWall ? 0 : rb.velocity.x;
-        rb.velocity = new Vector2(push, -slideSpeed);
+        float push = pushingWall ? 0 : Rigidbody.velocity.x;
+        Rigidbody.velocity = new Vector2(push, -slideSpeed);
     }
 
     private void Jump()
     {
         if (isGrounded)
         {
-            availableJumps--;
-            rb.velocity = Vector2.up * jumpForce;
+            //availableJumps--;
+            Rigidbody.velocity = Vector2.up * jumpForce;
         }
         else
         {
-            if (availableJumps > 0)
+            if (availableExtraJumps > 0)
             {
-                availableJumps--;
-                rb.velocity = Vector2.up * jumpForce;
+                availableExtraJumps--;
+                Rigidbody.velocity = Vector2.up * jumpForce;
             }
         }
     }
@@ -311,5 +322,17 @@ public class Player : BaseCharacter
     public void DisableMove()
     {
         canMove = false;
+    }
+
+    public void HandleHPBar()
+    {
+        imageHP.fillAmount = (float)CharacterStats.CurrentHP / (float)CharacterStats.MaxHP;
+        textHP.text = CharacterStats.CurrentHP + " / " + CharacterStats.MaxHP;
+    }
+
+    public void HandleAPBar()
+    {
+        imageAP.fillAmount = (float)CharacterStats.CurrentAP / (float)CharacterStats.MaxAP;
+        textAP.text = (int)CharacterStats.CurrentAP + " / " + CharacterStats.MaxAP;
     }
 }

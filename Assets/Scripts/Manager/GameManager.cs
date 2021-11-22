@@ -2,6 +2,7 @@ using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 
 public class GameManager : Singleton<GameManager>
 {
@@ -10,10 +11,55 @@ public class GameManager : Singleton<GameManager>
 
     public GameDifficulty currentGameDifficulty = GameDifficulty.NORMAL;
 
-    protected override void Awake()
+    private GameObject bullet;
+
+    private GameObject damagePopup;
+    public GameObject CommonBullet
     {
-        base.Awake();
-        DontDestroyOnLoad(gameObject);  
+        get => bullet;
+    }
+
+    public GameObject DamagePopup
+    {
+        get => damagePopup;
+    }    
+
+    /*protected override*/
+    void Awake()
+    {
+        //base.Awake();
+        //DontDestroyOnLoad(gameObject);  
+        if (bullet == null)
+        {
+            Addressables.LoadAssetAsync<GameObject>("CommonBullet").Completed += AddressableAsyncLoadBullet;
+        }
+
+        if (damagePopup == null)
+        {
+            Addressables.LoadAssetAsync<GameObject>("CommonPopup").Completed += AddressableAsyncLoadPopup;
+        }
+    }
+
+    private void AddressableAsyncLoadBullet(UnityEngine.ResourceManagement.AsyncOperations.AsyncOperationHandle<GameObject> asyncOperation)
+    {
+        // Set things
+        bullet = asyncOperation.Result;
+
+
+        // Unregister event & Release asset
+        asyncOperation.Completed -= AddressableAsyncLoadBullet;
+        Addressables.Release(asyncOperation);
+    }
+
+    private void AddressableAsyncLoadPopup(UnityEngine.ResourceManagement.AsyncOperations.AsyncOperationHandle<GameObject> asyncOperation)
+    {
+        // Set things
+        damagePopup = asyncOperation.Result;
+
+
+        // Unregister event & Release asset
+        asyncOperation.Completed -= AddressableAsyncLoadPopup;
+        Addressables.Release(asyncOperation);
     }
 
     void Update()
@@ -45,7 +91,7 @@ public class GameManager : Singleton<GameManager>
             }
         }
 
-        PoolManager.Instance.ResetPool();
+        //PoolManager.Instance.ResetPool();
     }
 }
 

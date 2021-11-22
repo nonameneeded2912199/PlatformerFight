@@ -2,8 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
+using CharacterThings;
 
-public abstract class PlayerAttack : MonoBehaviour
+public class PlayerAttack : MonoBehaviour
 {
     [Header("Component")]
     protected Rigidbody2D rb;
@@ -18,9 +20,6 @@ public abstract class PlayerAttack : MonoBehaviour
     protected bool isAttacking;
 
     [SerializeField]
-    protected bool isNormalAttacking;
-
-    [SerializeField]
     protected bool isSkillAttacking;
 
     [SerializeField]
@@ -30,15 +29,25 @@ public abstract class PlayerAttack : MonoBehaviour
 
     [Header("Skills")]
     [SerializeField]
-    protected List<Skill> normalAttack;
+    protected Skill normalAttack;
 
     [SerializeField]
-    protected Skill normalJumpAttack;
+    private int normalATKCombo = 0;
+
+    public int Combo => normalATKCombo;
+
+    [SerializeField]
+    protected Skill normalAirAttack;
 
     public Skill skill1;
     public Skill skill2;
     public Skill skill3;
     public Skill skill4;
+
+    public Image imageSkill1;
+    public Image imageSkill2;
+    public Image imageSkill3;
+    public Image imageSkill4;
 
     [SerializeField]
     protected List<Skill> listSkill;
@@ -48,39 +57,182 @@ public abstract class PlayerAttack : MonoBehaviour
 
     public Transform AttackPoint;
 
+
     private void Awake()
     {
+        rb = GetComponent<Rigidbody2D>();
+        player = GetComponent<Player>();
+        playerAnimation = GetComponent<PlayerAnimation>();
+
+        if (skill1 != null)
+            imageSkill1.sprite = skill1.skillIcon;
+
+        if (skill2 != null)
+            imageSkill2.sprite = skill2.skillIcon;
+
+        if (skill3 != null)
+            imageSkill3.sprite = skill3.skillIcon;
+
+        if (skill4 != null)
+            imageSkill4.sprite = skill4.skillIcon;
+
         playerInputAction = new PlayerInputAction();
 
-        playerInputAction.Player.NormalATK.performed += ctx => NormalAttack(ctx);
+        playerInputAction.Player.NormalATK.performed += ctx => NormalAttackButton(ctx);
+        playerInputAction.Player.Skill1.performed += ctx => SkillButton1(ctx);
+        playerInputAction.Player.Skill2.performed += ctx => SkillButton2(ctx);
+        playerInputAction.Player.Skill3.performed += ctx => SkillButton3(ctx);
+        playerInputAction.Player.Skill4.performed += ctx => SkillButton4(ctx);
         playerInputAction.Enable();
     }
 
     // Start is called before the first frame update
     protected virtual void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
-        player = GetComponent<Player>();
-        playerAnimation = GetComponent<PlayerAnimation>();
         canAttack = true;
     }
 
-    public abstract void NormalAttack(InputAction.CallbackContext context);
+    private void Update()
+    {
+        animatorStateInfo = playerAnimation.GetCurrentAnimatorStateInfo();
+        if (animatorStateInfo.normalizedTime >= 0.9f && (IsAttackingAnimation() || IsNormalAttacking()))
+        {
+            normalATKCombo = 0;
+
+            if (isSkillAttacking)
+                isSkillAttacking = false;
+
+            if (!player.CanMove)
+                player.EnableMove();
+
+            if (isAttacking)
+                isAttacking = false;
+
+            StartCoroutine(CanRecoverAP());
+        }
+
+        if (skill1 != null)
+        {
+            if (skill1.cooldownRate > 0)
+                skill1.CoolingDown(Time.deltaTime);
+            imageSkill1.fillAmount = 1 - skill1.cooldownRate;
+        }
+
+        if (skill2 != null)
+        {
+            if (skill2.cooldownRate > 0)
+                skill2.CoolingDown(Time.deltaTime);
+            imageSkill2.fillAmount = 1 - skill2.cooldownRate;
+        }
+
+        if (skill3 != null)
+        {
+            if (skill3.cooldownRate > 0)
+                skill3.CoolingDown(Time.deltaTime);
+            imageSkill3.fillAmount = 1 - skill3.cooldownRate;
+        }
+
+        if (skill4 != null)
+        {
+            if (skill4.cooldownRate > 0)
+                skill4.CoolingDown(Time.deltaTime);
+            imageSkill1.fillAmount = 1 - skill4.cooldownRate;
+        }
+
+
+    }
+
+    private void LateUpdate()
+    {
+        player.HandleAPBar();
+    }
+
+    public void NormalAttackButton(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            NormalAttack();
+        }
+    }
+
+    public void NormalAttack()
+    {
+        if (!player.IsDashing && canAttack && !isSkillAttacking)
+        {
+            if (player.IsGrounded)
+            {
+                animatorStateInfo = playerAnimation.GetCurrentAnimatorStateInfo();
+                if (normalATKCombo == 0 || (IsNormalAttacking() && IsAttackingAnimation() && animatorStateInfo.normalizedTime < 0.8f) && normalAttack != null)
+                {
+                    if (normalAttack.CanPeform(player.IsGrounded, player) && normalATKCombo < normalAttack.variations.Count)
+                    {
+                        normalATKCombo++;
+                        normalATKCombo = Mathf.Clamp(normalATKCombo, 1, normalAttack.variations.Count);
+                        currentSkill = normalAttack;
+                        currentSkill.SkillVariation(normalATKCombo - 1);
+                        SetupBeforeSkill();
+                        if (currentSkill.Execute() == true)
+                        {
+                            isAttacking = true;
+                            player.CharacterStats.SetAPRecovery(false);
+                            StopCoroutine(CanRecoverAP());
+                        }
+                    }
+                }
+            }
+            else
+            {
+                if (normalAirAttack != null)
+                    if (normalAirAttack.CanPeform(player.IsGrounded, player))
+                    {
+                        currentSkill = normalAirAttack;
+                        SetupBeforeSkill();
+                        if (currentSkill.Execute())
+                        {
+                            isAttacking = true;
+                            player.CharacterStats.SetAPRecovery(false);
+                            StopCoroutine(CanRecoverAP());
+                        }
+                    }                   
+            }
+            player.HandleAPBar();
+        }
+    }
+
+    public void APSet()
+    {
+        player.CharacterStats.SetAPRecovery(false);
+        StartCoroutine(CanRecoverAP());
+    }
+
+    private IEnumerator CanRecoverAP()
+    {
+        yield return new WaitForSeconds(1f);
+
+        if (isAttacking && (IsAttackingAnimation() || IsNormalAttacking()))
+        {
+            player.CharacterStats.SetAPRecovery(false);
+        }
+        else
+        {
+            player.CharacterStats.SetAPRecovery(true);
+        }
+    }
 
     protected virtual bool IsAttackingAnimation()
     {
         if (currentSkill != null)
         {
-            return animatorStateInfo.IsName(currentSkill.animationName);
+            return animatorStateInfo.IsName(currentSkill.currentVariation.animationName);
         }
         return false;
     }
 
     protected virtual bool IsNormalAttacking()
     {
-        for (int i = 0; i < normalAttack.Count; i++)
+        for (int i = 0; i < normalAttack.variations.Count; i++)
         {
-            if (animatorStateInfo.IsName(normalAttack[i].animationName))
+            if (animatorStateInfo.IsName(normalAttack.variations[i].animationName))
             {
                 return true;
             }
@@ -90,60 +242,116 @@ public abstract class PlayerAttack : MonoBehaviour
 
     public void SkillButton1(InputAction.CallbackContext context)
     {
-        if (skill1 != null && context.performed && !isAttacking/* && !isNormalAttacking && !isSkillAttacking*/)
+        if (context.performed)
         {
-            if (skill1.CanPeform(player.IsGrounded))
-            {
-                currentSkill = skill1;
-                SetupBeforeSkill();
-                isAttacking = true;
-                rb.velocity = Vector2.zero;
-                playerAnimation.PlayAnim(skill1.animationName);
-            }
-        }
+            PerformSkill1();
+        }        
     }
 
     public void SkillButton2(InputAction.CallbackContext context)
     {
-        if (skill2 != null && context.performed && !isAttacking)
+        if (context.performed)
         {
-            if (skill2.CanPeform(player.IsGrounded))
-            {
-                currentSkill = skill2;
-                SetupBeforeSkill();
-                isAttacking = true;
-                rb.velocity = Vector2.zero;
-                playerAnimation.PlayAnim(skill2.animationName);
-            }
+            PerformSkill2();
         }
     }
 
     public void SkillButton3(InputAction.CallbackContext context)
     {
-        if (skill3 != null && context.performed && !isAttacking)
+        if (context.performed)
         {
-            if (skill3.CanPeform(player.IsGrounded))
-            {
-                currentSkill = skill3;
-                SetupBeforeSkill();
-                isAttacking = true;
-                rb.velocity = Vector2.zero;
-                playerAnimation.PlayAnim(skill3.animationName);
-            }
+            PerformSkill3();
         }
     }
 
     public void SkillButton4(InputAction.CallbackContext context)
     {
-        if (skill4 != null && context.performed && !isAttacking)
+        if (context.performed)
         {
-            if (skill4.CanPeform(player.IsGrounded))
+            PerformSkill4();
+        }
+    }
+
+    public void PerformSkill1()
+    {
+        if (skill1 != null && !isAttacking && !isSkillAttacking)
+        {
+            if (skill1.CanPeform(player.IsGrounded, player))
+            {
+                currentSkill = skill1;
+                SetupBeforeSkill();
+                if (currentSkill.Execute())
+                {
+                    skill1.EnterCooldown();
+                    isAttacking = true;
+                    isSkillAttacking = true;
+                    player.CharacterStats.SetAPRecovery(false);
+                    StopCoroutine(CanRecoverAP());
+                }
+                player.HandleAPBar();
+            }
+        }
+    }
+
+    public void PerformSkill2()
+    {
+        if (skill2 != null && !isAttacking && !isSkillAttacking)
+        {
+            if (skill2.CanPeform(player.IsGrounded, player))
+            {
+                currentSkill = skill2;
+                SetupBeforeSkill();
+                if (currentSkill.Execute())
+                {
+                    skill2.EnterCooldown();
+                    isAttacking = true;
+                    isSkillAttacking = true;
+                    player.CharacterStats.SetAPRecovery(false);
+                    StopCoroutine(CanRecoverAP());
+                }
+                player.HandleAPBar();
+            }
+        }
+    }
+
+    public void PerformSkill3()
+    {
+        if (skill3 != null && !isAttacking && !isSkillAttacking)
+        {
+            if (skill3.CanPeform(player.IsGrounded, player))
+            {
+                currentSkill = skill3;
+                SetupBeforeSkill();
+                if (currentSkill.Execute())
+                {
+                    skill3.EnterCooldown();
+                    isAttacking = true;
+                    isSkillAttacking = true;
+                    player.CharacterStats.SetAPRecovery(false);
+                    StopCoroutine(CanRecoverAP());
+                }
+                player.HandleAPBar();
+            }
+        }
+    }
+
+    public void PerformSkill4()
+    {
+        if (skill4 != null && !isAttacking && !isSkillAttacking)
+        {
+            if (skill4.CanPeform(player.IsGrounded, player))
             {
                 currentSkill = skill4;
                 SetupBeforeSkill();
-                isAttacking = true;
-                rb.velocity = Vector2.zero;
-                playerAnimation.PlayAnim(skill4.animationName);
+                if (currentSkill.Execute())
+                {
+                    skill4.EnterCooldown();
+                    isAttacking = true;
+                    isSkillAttacking = true;
+                    player.CharacterStats.SetAPRecovery(false);
+                    StopCoroutine(CanRecoverAP());
+                }
+                player.HandleAPBar();
             }
         }
     }
@@ -152,20 +360,20 @@ public abstract class PlayerAttack : MonoBehaviour
     {
         if (currentSkill != null)
         {
-            currentSkill.executor = player;
-            currentSkill.attackPoint = AttackPoint;
+            currentSkill.SetupBeforeSkill(player, AttackPoint);
         }
-    }
-
-    public void SetAttackState(bool state)
-    {
-        isAttacking = state;
     }
 
     public void SkillDamage()
     {
         if (currentSkill != null)
             currentSkill.Damage();
+    }
+
+    public void PerformShot()
+    {
+        if (currentSkill != null)
+            currentSkill.PerformShot();
     }
 
     private void OnDrawGizmos()

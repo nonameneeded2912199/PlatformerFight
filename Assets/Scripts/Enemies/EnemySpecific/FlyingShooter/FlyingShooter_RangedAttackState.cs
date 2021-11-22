@@ -84,31 +84,46 @@ public class FlyingShooter_RangedAttackState : RangedAttackState
             switch (GameManager.Instance.currentGameDifficulty)
             {
                 case GameDifficulty.EASY:
-                    Bullet.GetBullet(BulletOwner.Enemy, attackPosition.position, stateData.bulletShootTypes[0].bulletSpeed, angle, stateData.bulletShootTypes[0].bulletLifeSpan, 
-                        stateData.bulletShootTypes[0].bulletDamage, stateData.bulletShootTypes[0].bulletType, stateData.bulletShootTypes[0].bulletColor);
+                    /*Bullet.GetBullet(BulletOwner.Enemy, attackPosition.position, stateData.bulletShootTypes[0].bulletSpeed, angle, stateData.bulletShootTypes[0].bulletLifeSpan,
+                        stateData.bulletShootTypes[0].bulletDamage, stateData.bulletShootTypes[0].bulletType, stateData.bulletShootTypes[0].bulletColor);*/
+                    for (int i = 0; i < 1; i++)
+                    {
+                        var bulletCom = PoolManager.SpawnObject(GameManager.Instance.CommonBullet).GetComponent<Bullet>();
+                        bulletCom.SetAllegiance(enemy.tag);
+                        bulletCom.SetAttributes(attackPosition.position, 8, angle, 0, stateData.bulletShootTypes[0].bulletLifeSpan, stateData.bulletShootTypes[0].bulletDamage, 0.5f);
+                    }               
                     break;
                 case GameDifficulty.NORMAL:
                     for (float i = 0; i < 2 * Mathf.PI; i += (2f * Mathf.PI / 6))
                     {
-                        Bullet.GetBullet(BulletOwner.Enemy, attackPosition.position, stateData.bulletShootTypes[0].bulletSpeed, angle + i, stateData.bulletShootTypes[0].bulletLifeSpan,
-                         stateData.bulletShootTypes[0].bulletDamage, stateData.bulletShootTypes[0].bulletType, stateData.bulletShootTypes[0].bulletColor,
-                         stateData.bulletShootTypes[0].destroyOnInvisible);
+                        //Bullet.GetBullet(BulletOwner.Enemy, attackPosition.position, stateData.bulletShootTypes[0].bulletSpeed, angle + i, stateData.bulletShootTypes[0].bulletLifeSpan,
+                        // stateData.bulletShootTypes[0].bulletDamage, stateData.bulletShootTypes[0].bulletType, stateData.bulletShootTypes[0].bulletColor,
+                        // stateData.bulletShootTypes[0].destroyOnInvisible);
+                        var bulletCom = PoolManager.SpawnObject(GameManager.Instance.CommonBullet).GetComponent<Bullet>();
+                        bulletCom.SetAllegiance(enemy.tag);
+                        bulletCom.SetAttributes(attackPosition.position, 8, angle + i, 0, stateData.bulletShootTypes[0].bulletLifeSpan, stateData.bulletShootTypes[0].bulletDamage, 0.5f);
                     }
                     break;
                 case GameDifficulty.HARD:
                     for (float i = 0; i < 2 * Mathf.PI; i += (2f * Mathf.PI / 12))
                     {
-                        Bullet.GetBullet(BulletOwner.Enemy, attackPosition.position, stateData.bulletShootTypes[0].bulletSpeed, angle + i, stateData.bulletShootTypes[0].bulletLifeSpan,
-                        stateData.bulletShootTypes[0].bulletDamage * 1.5f, stateData.bulletShootTypes[0].bulletType, stateData.bulletShootTypes[0].bulletColor,
-                        stateData.bulletShootTypes[0].destroyOnInvisible);
+                        //Bullet.GetBullet(BulletOwner.Enemy, attackPosition.position, stateData.bulletShootTypes[0].bulletSpeed, angle + i, stateData.bulletShootTypes[0].bulletLifeSpan,
+                        //stateData.bulletShootTypes[0].bulletDamage * 1.5f, stateData.bulletShootTypes[0].bulletType, stateData.bulletShootTypes[0].bulletColor,
+                        //stateData.bulletShootTypes[0].destroyOnInvisible);
+                        var bulletCom = PoolManager.SpawnObject(GameManager.Instance.CommonBullet).GetComponent<Bullet>();
+                        bulletCom.SetAllegiance(enemy.tag);
+                        bulletCom.SetAttributes(attackPosition.position, 8, angle + i, 0, stateData.bulletShootTypes[0].bulletLifeSpan, stateData.bulletShootTypes[0].bulletDamage, 0.5f);
                     }
                     break;
                 case GameDifficulty.LUNATIC:
                     for (float i = 0; i < 2 * Mathf.PI; i += (2f * Mathf.PI / 18))
                     {
-                        Bullet.GetBullet(BulletOwner.Enemy, attackPosition.position, stateData.bulletShootTypes[0].bulletSpeed, angle + i, stateData.bulletShootTypes[0].bulletLifeSpan,
-                        stateData.bulletShootTypes[0].bulletDamage * 2f, stateData.bulletShootTypes[0].bulletType, stateData.bulletShootTypes[0].bulletColor,
-                        stateData.bulletShootTypes[0].destroyOnInvisible);
+                        //Bullet.GetBullet(BulletOwner.Enemy, attackPosition.position, stateData.bulletShootTypes[0].bulletSpeed, angle + i, stateData.bulletShootTypes[0].bulletLifeSpan,
+                        //stateData.bulletShootTypes[0].bulletDamage * 2f, stateData.bulletShootTypes[0].bulletType, stateData.bulletShootTypes[0].bulletColor,
+                        //stateData.bulletShootTypes[0].destroyOnInvisible);
+                        var bulletCom = PoolManager.SpawnObject(GameManager.Instance.CommonBullet).GetComponent<Bullet>();
+                        bulletCom.SetAllegiance(enemy.tag);
+                        bulletCom.SetAttributes(attackPosition.position, 8, angle + i, 0, stateData.bulletShootTypes[0].bulletLifeSpan, stateData.bulletShootTypes[0].bulletDamage, 0.5f);
                     }
                     break;
             }

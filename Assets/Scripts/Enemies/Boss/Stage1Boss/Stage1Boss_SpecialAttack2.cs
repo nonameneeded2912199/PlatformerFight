@@ -91,7 +91,7 @@ public class Stage1Boss_SpecialAttack2 : RangedAttackState
 
         while (Time.time <= startAttackTime + stateData.attackTime)
         {
-            Bullet.GetBullet(BulletOwner.Enemy, attackPosLeft, stateData.bulletShootTypes[0].bulletSpeed, angle, stateData.bulletShootTypes[0].bulletLifeSpan, stateData.bulletShootTypes[0].bulletDamage,
+            /*Bullet.GetBullet(BulletOwner.Enemy, attackPosLeft, stateData.bulletShootTypes[0].bulletSpeed, angle, stateData.bulletShootTypes[0].bulletLifeSpan, stateData.bulletShootTypes[0].bulletDamage,
                             stateData.bulletShootTypes[0].bulletType, stateData.bulletShootTypes[0].bulletColor, stateData.bulletShootTypes[0].destroyOnInvisible);
             Bullet.GetBullet(BulletOwner.Enemy, attackPosLeft, stateData.bulletShootTypes[0].bulletSpeed, angle + 2 * Mathf.PI / 3, stateData.bulletShootTypes[0].bulletLifeSpan, stateData.bulletShootTypes[0].bulletDamage,
                             stateData.bulletShootTypes[0].bulletType, stateData.bulletShootTypes[0].bulletColor, stateData.bulletShootTypes[0].destroyOnInvisible);
@@ -103,7 +103,7 @@ public class Stage1Boss_SpecialAttack2 : RangedAttackState
             Bullet.GetBullet(BulletOwner.Enemy, attackPosRight, stateData.bulletShootTypes[0].bulletSpeed, angle2 - 2 * Mathf.PI / 3, stateData.bulletShootTypes[0].bulletLifeSpan, stateData.bulletShootTypes[0].bulletDamage,
                             stateData.bulletShootTypes[0].bulletType, stateData.bulletShootTypes[0].bulletColor, stateData.bulletShootTypes[0].destroyOnInvisible);
             Bullet.GetBullet(BulletOwner.Enemy, attackPosRight, stateData.bulletShootTypes[0].bulletSpeed, angle2 - 4 * Mathf.PI / 3, stateData.bulletShootTypes[0].bulletLifeSpan, stateData.bulletShootTypes[0].bulletDamage,
-                            stateData.bulletShootTypes[0].bulletType, stateData.bulletShootTypes[0].bulletColor, stateData.bulletShootTypes[0].destroyOnInvisible);
+                            stateData.bulletShootTypes[0].bulletType, stateData.bulletShootTypes[0].bulletColor, stateData.bulletShootTypes[0].destroyOnInvisible);*/
 
             angle += Mathf.PI / 4;
 
@@ -126,19 +126,19 @@ public class Stage1Boss_SpecialAttack2 : RangedAttackState
 
         while (Time.time <= startAttackTime + stateData.attackTime)
         {
-            Bullet.GetBullet(BulletOwner.Enemy, attackPosLeft, stateData.bulletShootTypes[0].bulletSpeed, angle, stateData.bulletShootTypes[0].bulletLifeSpan, stateData.bulletShootTypes[0].bulletDamage,
-                            stateData.bulletShootTypes[0].bulletType, stateData.bulletShootTypes[0].bulletColor, stateData.bulletShootTypes[0].destroyOnInvisible);
-            Bullet.GetBullet(BulletOwner.Enemy, attackPosLeft, stateData.bulletShootTypes[0].bulletSpeed, angle + 2 * Mathf.PI / 3, stateData.bulletShootTypes[0].bulletLifeSpan, stateData.bulletShootTypes[0].bulletDamage,
-                            stateData.bulletShootTypes[0].bulletType, stateData.bulletShootTypes[0].bulletColor, stateData.bulletShootTypes[0].destroyOnInvisible);
-            Bullet.GetBullet(BulletOwner.Enemy, attackPosLeft, stateData.bulletShootTypes[0].bulletSpeed, angle + 4 * Mathf.PI / 3, stateData.bulletShootTypes[0].bulletLifeSpan, stateData.bulletShootTypes[0].bulletDamage,
-                            stateData.bulletShootTypes[0].bulletType, stateData.bulletShootTypes[0].bulletColor, stateData.bulletShootTypes[0].destroyOnInvisible);
+            //Bullet.GetBullet(BulletOwner.Enemy, attackPosLeft, stateData.bulletShootTypes[0].bulletSpeed, angle, stateData.bulletShootTypes[0].bulletLifeSpan, stateData.bulletShootTypes[0].bulletDamage,
+            //                stateData.bulletShootTypes[0].bulletType, stateData.bulletShootTypes[0].bulletColor, stateData.bulletShootTypes[0].destroyOnInvisible);
+            //Bullet.GetBullet(BulletOwner.Enemy, attackPosLeft, stateData.bulletShootTypes[0].bulletSpeed, angle + 2 * Mathf.PI / 3, stateData.bulletShootTypes[0].bulletLifeSpan, stateData.bulletShootTypes[0].bulletDamage,
+            //                stateData.bulletShootTypes[0].bulletType, stateData.bulletShootTypes[0].bulletColor, stateData.bulletShootTypes[0].destroyOnInvisible);
+            //Bullet.GetBullet(BulletOwner.Enemy, attackPosLeft, stateData.bulletShootTypes[0].bulletSpeed, angle + 4 * Mathf.PI / 3, stateData.bulletShootTypes[0].bulletLifeSpan, stateData.bulletShootTypes[0].bulletDamage,
+            //                stateData.bulletShootTypes[0].bulletType, stateData.bulletShootTypes[0].bulletColor, stateData.bulletShootTypes[0].destroyOnInvisible);
 
-            Bullet.GetBullet(BulletOwner.Enemy, attackPosRight, stateData.bulletShootTypes[0].bulletSpeed, angle2, stateData.bulletShootTypes[0].bulletLifeSpan, stateData.bulletShootTypes[0].bulletDamage,
-                            stateData.bulletShootTypes[0].bulletType, stateData.bulletShootTypes[0].bulletColor, stateData.bulletShootTypes[0].destroyOnInvisible);
-            Bullet.GetBullet(BulletOwner.Enemy, attackPosRight, stateData.bulletShootTypes[0].bulletSpeed, angle2 - 2 * Mathf.PI / 3, stateData.bulletShootTypes[0].bulletLifeSpan, stateData.bulletShootTypes[0].bulletDamage,
-                            stateData.bulletShootTypes[0].bulletType, stateData.bulletShootTypes[0].bulletColor, stateData.bulletShootTypes[0].destroyOnInvisible);
-            Bullet.GetBullet(BulletOwner.Enemy, attackPosRight, stateData.bulletShootTypes[0].bulletSpeed, angle2 - 4 * Mathf.PI / 3, stateData.bulletShootTypes[0].bulletLifeSpan, stateData.bulletShootTypes[0].bulletDamage,
-                            stateData.bulletShootTypes[0].bulletType, stateData.bulletShootTypes[0].bulletColor, stateData.bulletShootTypes[0].destroyOnInvisible);
+            //Bullet.GetBullet(BulletOwner.Enemy, attackPosRight, stateData.bulletShootTypes[0].bulletSpeed, angle2, stateData.bulletShootTypes[0].bulletLifeSpan, stateData.bulletShootTypes[0].bulletDamage,
+            //                stateData.bulletShootTypes[0].bulletType, stateData.bulletShootTypes[0].bulletColor, stateData.bulletShootTypes[0].destroyOnInvisible);
+            //Bullet.GetBullet(BulletOwner.Enemy, attackPosRight, stateData.bulletShootTypes[0].bulletSpeed, angle2 - 2 * Mathf.PI / 3, stateData.bulletShootTypes[0].bulletLifeSpan, stateData.bulletShootTypes[0].bulletDamage,
+            //                stateData.bulletShootTypes[0].bulletType, stateData.bulletShootTypes[0].bulletColor, stateData.bulletShootTypes[0].destroyOnInvisible);
+            //Bullet.GetBullet(BulletOwner.Enemy, attackPosRight, stateData.bulletShootTypes[0].bulletSpeed, angle2 - 4 * Mathf.PI / 3, stateData.bulletShootTypes[0].bulletLifeSpan, stateData.bulletShootTypes[0].bulletDamage,
+            //                stateData.bulletShootTypes[0].bulletType, stateData.bulletShootTypes[0].bulletColor, stateData.bulletShootTypes[0].destroyOnInvisible);
 
             angle += Mathf.PI / 8;
 
@@ -161,19 +161,19 @@ public class Stage1Boss_SpecialAttack2 : RangedAttackState
 
         while (Time.time <= startAttackTime + stateData.attackTime)
         {
-            Bullet.GetBullet(BulletOwner.Enemy, attackPosLeft, stateData.bulletShootTypes[0].bulletSpeed, angle, stateData.bulletShootTypes[0].bulletLifeSpan, stateData.bulletShootTypes[0].bulletDamage,
-                            stateData.bulletShootTypes[0].bulletType, stateData.bulletShootTypes[0].bulletColor, stateData.bulletShootTypes[0].destroyOnInvisible);
-            Bullet.GetBullet(BulletOwner.Enemy, attackPosLeft, stateData.bulletShootTypes[0].bulletSpeed, angle + 2 * Mathf.PI / 3, stateData.bulletShootTypes[0].bulletLifeSpan, stateData.bulletShootTypes[0].bulletDamage,
-                            stateData.bulletShootTypes[0].bulletType, stateData.bulletShootTypes[0].bulletColor, stateData.bulletShootTypes[0].destroyOnInvisible);
-            Bullet.GetBullet(BulletOwner.Enemy, attackPosLeft, stateData.bulletShootTypes[0].bulletSpeed, angle + 4 * Mathf.PI / 3, stateData.bulletShootTypes[0].bulletLifeSpan, stateData.bulletShootTypes[0].bulletDamage,
-                            stateData.bulletShootTypes[0].bulletType, stateData.bulletShootTypes[0].bulletColor, stateData.bulletShootTypes[0].destroyOnInvisible);
+            //Bullet.GetBullet(BulletOwner.Enemy, attackPosLeft, stateData.bulletShootTypes[0].bulletSpeed, angle, stateData.bulletShootTypes[0].bulletLifeSpan, stateData.bulletShootTypes[0].bulletDamage,
+            //                stateData.bulletShootTypes[0].bulletType, stateData.bulletShootTypes[0].bulletColor, stateData.bulletShootTypes[0].destroyOnInvisible);
+            //Bullet.GetBullet(BulletOwner.Enemy, attackPosLeft, stateData.bulletShootTypes[0].bulletSpeed, angle + 2 * Mathf.PI / 3, stateData.bulletShootTypes[0].bulletLifeSpan, stateData.bulletShootTypes[0].bulletDamage,
+            //                stateData.bulletShootTypes[0].bulletType, stateData.bulletShootTypes[0].bulletColor, stateData.bulletShootTypes[0].destroyOnInvisible);
+            //Bullet.GetBullet(BulletOwner.Enemy, attackPosLeft, stateData.bulletShootTypes[0].bulletSpeed, angle + 4 * Mathf.PI / 3, stateData.bulletShootTypes[0].bulletLifeSpan, stateData.bulletShootTypes[0].bulletDamage,
+            //                stateData.bulletShootTypes[0].bulletType, stateData.bulletShootTypes[0].bulletColor, stateData.bulletShootTypes[0].destroyOnInvisible);
 
-            Bullet.GetBullet(BulletOwner.Enemy, attackPosRight, stateData.bulletShootTypes[0].bulletSpeed, angle2, stateData.bulletShootTypes[0].bulletLifeSpan, stateData.bulletShootTypes[0].bulletDamage,
-                            stateData.bulletShootTypes[0].bulletType, stateData.bulletShootTypes[0].bulletColor, stateData.bulletShootTypes[0].destroyOnInvisible);
-            Bullet.GetBullet(BulletOwner.Enemy, attackPosRight, stateData.bulletShootTypes[0].bulletSpeed, angle2 - 2 * Mathf.PI / 3, stateData.bulletShootTypes[0].bulletLifeSpan, stateData.bulletShootTypes[0].bulletDamage,
-                            stateData.bulletShootTypes[0].bulletType, stateData.bulletShootTypes[0].bulletColor, stateData.bulletShootTypes[0].destroyOnInvisible);
-            Bullet.GetBullet(BulletOwner.Enemy, attackPosRight, stateData.bulletShootTypes[0].bulletSpeed, angle2 - 4 * Mathf.PI / 3, stateData.bulletShootTypes[0].bulletLifeSpan, stateData.bulletShootTypes[0].bulletDamage,
-                            stateData.bulletShootTypes[0].bulletType, stateData.bulletShootTypes[0].bulletColor, stateData.bulletShootTypes[0].destroyOnInvisible);
+            //Bullet.GetBullet(BulletOwner.Enemy, attackPosRight, stateData.bulletShootTypes[0].bulletSpeed, angle2, stateData.bulletShootTypes[0].bulletLifeSpan, stateData.bulletShootTypes[0].bulletDamage,
+            //                stateData.bulletShootTypes[0].bulletType, stateData.bulletShootTypes[0].bulletColor, stateData.bulletShootTypes[0].destroyOnInvisible);
+            //Bullet.GetBullet(BulletOwner.Enemy, attackPosRight, stateData.bulletShootTypes[0].bulletSpeed, angle2 - 2 * Mathf.PI / 3, stateData.bulletShootTypes[0].bulletLifeSpan, stateData.bulletShootTypes[0].bulletDamage,
+            //                stateData.bulletShootTypes[0].bulletType, stateData.bulletShootTypes[0].bulletColor, stateData.bulletShootTypes[0].destroyOnInvisible);
+            //Bullet.GetBullet(BulletOwner.Enemy, attackPosRight, stateData.bulletShootTypes[0].bulletSpeed, angle2 - 4 * Mathf.PI / 3, stateData.bulletShootTypes[0].bulletLifeSpan, stateData.bulletShootTypes[0].bulletDamage,
+            //                stateData.bulletShootTypes[0].bulletType, stateData.bulletShootTypes[0].bulletColor, stateData.bulletShootTypes[0].destroyOnInvisible);
 
             angle += Mathf.PI / 12;
 
@@ -196,19 +196,19 @@ public class Stage1Boss_SpecialAttack2 : RangedAttackState
 
         while (Time.time <= startAttackTime + stateData.attackTime)
         {
-            Bullet.GetBullet(BulletOwner.Enemy, attackPosLeft, stateData.bulletShootTypes[0].bulletSpeed, angle, stateData.bulletShootTypes[0].bulletLifeSpan, stateData.bulletShootTypes[0].bulletDamage,
-                            stateData.bulletShootTypes[0].bulletType, stateData.bulletShootTypes[0].bulletColor, stateData.bulletShootTypes[0].destroyOnInvisible);
-            Bullet.GetBullet(BulletOwner.Enemy, attackPosLeft, stateData.bulletShootTypes[0].bulletSpeed, angle + 2 * Mathf.PI / 3, stateData.bulletShootTypes[0].bulletLifeSpan, stateData.bulletShootTypes[0].bulletDamage,
-                            stateData.bulletShootTypes[0].bulletType, stateData.bulletShootTypes[0].bulletColor, stateData.bulletShootTypes[0].destroyOnInvisible);
-            Bullet.GetBullet(BulletOwner.Enemy, attackPosLeft, stateData.bulletShootTypes[0].bulletSpeed, angle + 4 * Mathf.PI / 3, stateData.bulletShootTypes[0].bulletLifeSpan, stateData.bulletShootTypes[0].bulletDamage,
-                            stateData.bulletShootTypes[0].bulletType, stateData.bulletShootTypes[0].bulletColor, stateData.bulletShootTypes[0].destroyOnInvisible);
+            //Bullet.GetBullet(BulletOwner.Enemy, attackPosLeft, stateData.bulletShootTypes[0].bulletSpeed, angle, stateData.bulletShootTypes[0].bulletLifeSpan, stateData.bulletShootTypes[0].bulletDamage,
+            //                stateData.bulletShootTypes[0].bulletType, stateData.bulletShootTypes[0].bulletColor, stateData.bulletShootTypes[0].destroyOnInvisible);
+            //Bullet.GetBullet(BulletOwner.Enemy, attackPosLeft, stateData.bulletShootTypes[0].bulletSpeed, angle + 2 * Mathf.PI / 3, stateData.bulletShootTypes[0].bulletLifeSpan, stateData.bulletShootTypes[0].bulletDamage,
+            //                stateData.bulletShootTypes[0].bulletType, stateData.bulletShootTypes[0].bulletColor, stateData.bulletShootTypes[0].destroyOnInvisible);
+            //Bullet.GetBullet(BulletOwner.Enemy, attackPosLeft, stateData.bulletShootTypes[0].bulletSpeed, angle + 4 * Mathf.PI / 3, stateData.bulletShootTypes[0].bulletLifeSpan, stateData.bulletShootTypes[0].bulletDamage,
+            //                stateData.bulletShootTypes[0].bulletType, stateData.bulletShootTypes[0].bulletColor, stateData.bulletShootTypes[0].destroyOnInvisible);
 
-            Bullet.GetBullet(BulletOwner.Enemy, attackPosRight, stateData.bulletShootTypes[0].bulletSpeed, angle2, stateData.bulletShootTypes[0].bulletLifeSpan, stateData.bulletShootTypes[0].bulletDamage,
-                            stateData.bulletShootTypes[0].bulletType, stateData.bulletShootTypes[0].bulletColor, stateData.bulletShootTypes[0].destroyOnInvisible);
-            Bullet.GetBullet(BulletOwner.Enemy, attackPosRight, stateData.bulletShootTypes[0].bulletSpeed, angle2 - 2 * Mathf.PI / 3, stateData.bulletShootTypes[0].bulletLifeSpan, stateData.bulletShootTypes[0].bulletDamage,
-                            stateData.bulletShootTypes[0].bulletType, stateData.bulletShootTypes[0].bulletColor, stateData.bulletShootTypes[0].destroyOnInvisible);
-            Bullet.GetBullet(BulletOwner.Enemy, attackPosRight, stateData.bulletShootTypes[0].bulletSpeed, angle2 - 4 * Mathf.PI / 3, stateData.bulletShootTypes[0].bulletLifeSpan, stateData.bulletShootTypes[0].bulletDamage,
-                            stateData.bulletShootTypes[0].bulletType, stateData.bulletShootTypes[0].bulletColor, stateData.bulletShootTypes[0].destroyOnInvisible);
+            //Bullet.GetBullet(BulletOwner.Enemy, attackPosRight, stateData.bulletShootTypes[0].bulletSpeed, angle2, stateData.bulletShootTypes[0].bulletLifeSpan, stateData.bulletShootTypes[0].bulletDamage,
+            //                stateData.bulletShootTypes[0].bulletType, stateData.bulletShootTypes[0].bulletColor, stateData.bulletShootTypes[0].destroyOnInvisible);
+            //Bullet.GetBullet(BulletOwner.Enemy, attackPosRight, stateData.bulletShootTypes[0].bulletSpeed, angle2 - 2 * Mathf.PI / 3, stateData.bulletShootTypes[0].bulletLifeSpan, stateData.bulletShootTypes[0].bulletDamage,
+            //                stateData.bulletShootTypes[0].bulletType, stateData.bulletShootTypes[0].bulletColor, stateData.bulletShootTypes[0].destroyOnInvisible);
+            //Bullet.GetBullet(BulletOwner.Enemy, attackPosRight, stateData.bulletShootTypes[0].bulletSpeed, angle2 - 4 * Mathf.PI / 3, stateData.bulletShootTypes[0].bulletLifeSpan, stateData.bulletShootTypes[0].bulletDamage,
+            //                stateData.bulletShootTypes[0].bulletType, stateData.bulletShootTypes[0].bulletColor, stateData.bulletShootTypes[0].destroyOnInvisible);
 
             angle += Mathf.PI / 18;
 

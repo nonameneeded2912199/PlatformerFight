@@ -2,62 +2,65 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CharacterAnimation : MonoBehaviour
+namespace CharacterThings
 {
-    public Animator animator { get; private set; }
-    public Rigidbody2D rb { get; private set; }
-
-    private bool isPlayingTillEnd;
-
-    public string currentState;
-
-    protected virtual void Start()
+    public class CharacterAnimation : MonoBehaviour
     {
-        animator = GetComponent<Animator>();
-        rb = GetComponent<Rigidbody2D>();
-    }
+        public Animator animator { get; private set; }
+        public Rigidbody2D rb { get; private set; }
 
-    protected virtual void Update()
-    {
-        animator.SetFloat("YVelocity", rb.velocity.y);
-    }
+        private bool isPlayingTillEnd;
 
-    public void PlayAnim(string newState)
-    {
-        if (currentState == newState)
-            return;
+        public string currentState;
 
-        animator.Play(newState);
-        currentState = newState;
-    }
-
-    public void ResetAnimationState(string newState)
-    {
-        animator.Play(newState, 0, 0f);
-        currentState = newState;
-    }
-
-    protected IEnumerator PlayAttackAnimationTillEnd(string newState)
-    {
-        if (currentState == newState)
-            yield return null;
-
-        animator.Play(newState);
-        currentState = newState;
-
-        yield return new WaitForEndOfFrame();
-
-        while (animator.GetCurrentAnimatorStateInfo(0).normalizedTime < 1 &&
-            animator.GetCurrentAnimatorStateInfo(0).IsName(newState))
+        protected virtual void Start()
         {
-            yield return new WaitForEndOfFrame();
+            animator = GetComponent<Animator>();
+            rb = GetComponent<Rigidbody2D>();
         }
 
-        //playerCombat.SetAttackState(false);
-    }
+        protected virtual void Update()
+        {
+            animator.SetFloat("YVelocity", rb.velocity.y);
+        }
 
-    public AnimatorStateInfo GetCurrentAnimatorStateInfo()
-    {
-        return animator.GetCurrentAnimatorStateInfo(0);
+        public void PlayAnim(string newState)
+        {
+            if (currentState == newState)
+                return;
+
+            animator.Play(newState);
+            currentState = newState;
+        }
+
+        public void ResetAnimationState(string newState)
+        {
+            animator.Play(newState, 0, 0f);
+            currentState = newState;
+        }
+
+        protected IEnumerator PlayAttackAnimationTillEnd(string newState)
+        {
+            if (currentState == newState)
+                yield return null;
+
+            animator.Play(newState);
+            currentState = newState;
+
+            yield return new WaitForEndOfFrame();
+
+            while (animator.GetCurrentAnimatorStateInfo(0).normalizedTime < 1 &&
+                animator.GetCurrentAnimatorStateInfo(0).IsName(newState))
+            {
+                yield return new WaitForEndOfFrame();
+            }
+
+            //playerCombat.SetAttackState(false);
+        }
+
+        public AnimatorStateInfo GetCurrentAnimatorStateInfo()
+        {
+            return animator.GetCurrentAnimatorStateInfo(0);
+        }
     }
 }

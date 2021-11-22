@@ -8,29 +8,41 @@ namespace CharacterThings
     {
         public CharacterData_SO characterData;
 
-        public int MaxHP 
+        public float BaseHP 
         {
             get
             {
                 if (characterData != null)
-                    return characterData.maxHP;
+                    return characterData.baseHP;
                 return 0;
             }
-            set => characterData.maxHP = value;
+            //set => characterData.baseHP = value;
         }
 
-        public int CurrentHP
+        public float BaseAP
         {
             get
             {
                 if (characterData != null)
-                    return characterData.currentHP;
+                    return characterData.baseAP;
                 return 0;
             }
-            set => characterData.currentHP = value;
+            //set => characterData.baseAP = value;
         }
 
-        public int BaseDEF
+        public float BaseATK
+        {
+            get
+            {
+                if (characterData != null)
+                    return characterData.baseATK;
+                return 0;
+            }
+            //set => characterData.baseATK = value;
+        }
+
+
+        public float BaseDEF
         {
             get
             {
@@ -38,18 +50,93 @@ namespace CharacterThings
                     return characterData.baseDEF;
                 return 0;
             }
-            set => characterData.baseDEF = value;
+            //set => characterData.baseDEF = value;
         }
 
-        public int CurrentDEF
+        public float BaseAPRecoveryRate
         {
             get
             {
                 if (characterData != null)
-                    return characterData.currentDEF;
+                    return characterData.apRecoveryRate;
                 return 0;
             }
-            set => characterData.currentDEF = value;
+            //set => characterData.apRecoveryRate = value;
+        }
+
+        private float maxHP;
+        public float MaxHP { get => maxHP; set => maxHP = value; }
+
+        private float currentHP;
+        public float CurrentHP { get => currentHP; set => currentHP = Mathf.Clamp(value, 0, MaxHP); }
+
+        private float maxAP;
+        public float MaxAP { get => maxAP; set => maxAP = value; }
+
+        private float currentAP;
+        public float CurrentAP { get => currentAP; set => currentAP = Mathf.Clamp(value, 0, maxAP); }
+
+        private float attack;
+        public float Attack { get => attack; }
+
+        private float defense;
+        public float Defense { get => defense; }
+
+        private float apRecoveryRate;
+
+        public float APRecoveryRate { get => apRecoveryRate; set => apRecoveryRate = value; }
+
+        private bool rechargeEnergy = true;
+
+        void Awake()
+        {
+            if (characterData != null)
+            {
+                maxHP = BaseHP;
+                maxAP = BaseAP;
+                currentHP = maxHP;
+                currentAP = maxAP;
+
+                attack = BaseATK;
+                defense = BaseDEF;
+
+                apRecoveryRate = BaseAPRecoveryRate;
+            }
+
+            
+        }
+
+        private void Update()
+        {
+            if (rechargeEnergy)
+            {
+                currentAP = Mathf.MoveTowards(currentAP, maxAP, Time.deltaTime * apRecoveryRate);
+            }
+            else
+            {
+                currentAP += 0f;
+            }
+
+            if (currentAP > maxAP)
+            {
+                currentAP = maxAP;
+            }
+            else if (currentAP < 0f)
+            {
+                currentAP = 0f;
+            }
+        }
+
+        public void ConsumeAP(float ap)
+        {
+            currentAP -= ap;
+            if (currentAP < 0)
+                currentAP = 0;
+        }
+
+        public void SetAPRecovery(bool recover)
+        {
+            rechargeEnergy = recover;
         }
     }
 }
