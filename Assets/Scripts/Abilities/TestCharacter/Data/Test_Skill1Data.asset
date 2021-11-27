@@ -16,12 +16,14 @@ MonoBehaviour:
   attackPoint: {fileID: 0}
   variations:
   - animationName: Skill1
-    attackMultiplier: 0.3
-    invicibleTime: 0.05
+    attackMultiplier: 0.5
+    invicibleTime: 0.0001
     circularHitbox: 0
     attackRadius: 0
     horizontalSize: 2
     verticalSize: 0.5
+    moveWhileExecuting: 0
+    movingVelocity: {x: 0, y: 0}
   skillName: Raijngeki
   canPerformOnAir: 0
   canPerformOnGround: 1

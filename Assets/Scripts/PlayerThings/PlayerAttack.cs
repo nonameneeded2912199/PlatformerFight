@@ -95,6 +95,16 @@ public class PlayerAttack : MonoBehaviour
     private void Update()
     {
         animatorStateInfo = playerAnimation.GetCurrentAnimatorStateInfo();
+        if (player.IsKnockback && IsAttacking)
+        {
+            if (isSkillAttacking)
+                isSkillAttacking = false;
+
+            if (isAttacking)
+                isAttacking = false;
+
+            StartCoroutine(CanRecoverAP());
+        }
         if (animatorStateInfo.normalizedTime >= 0.9f && (IsAttackingAnimation() || IsNormalAttacking()))
         {
             normalATKCombo = 0;
@@ -102,7 +112,7 @@ public class PlayerAttack : MonoBehaviour
             if (isSkillAttacking)
                 isSkillAttacking = false;
 
-            if (!player.CanMove)
+            if (!player.canMove)
                 player.EnableMove();
 
             if (isAttacking)
@@ -136,7 +146,7 @@ public class PlayerAttack : MonoBehaviour
         {
             if (skill4.cooldownRate > 0)
                 skill4.CoolingDown(Time.deltaTime);
-            imageSkill1.fillAmount = 1 - skill4.cooldownRate;
+            imageSkill4.fillAmount = 1 - skill4.cooldownRate;
         }
 
 

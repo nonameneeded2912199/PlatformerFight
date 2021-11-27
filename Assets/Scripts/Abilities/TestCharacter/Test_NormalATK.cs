@@ -10,8 +10,10 @@ public class Test_NormalATK : Skill
         if (executor.CharacterStats.CurrentAP >= apCost)
         {
             executor.Rigidbody.velocity = Vector2.zero;
-            executor.characterAnimation.PlayAnim(currentVariation.animationName);
+            executor.CharacterAnimation.PlayAnim(currentVariation.animationName);
             executor.CharacterStats.ConsumeAP(apCost);
+            if (currentVariation.moveWhileExecuting)
+                executor.SetVelocity(currentVariation.movingVelocity);
             return true;
         }
         return false;        
@@ -29,7 +31,7 @@ public class Test_NormalATK : Skill
 
             AttackDetails attackDetails = new AttackDetails();
             attackDetails.position = executor.transform.position;
-            attackDetails.damageAmount = executor.CharacterStats.BaseATK * currentVariation.attackMultiplier;
+            attackDetails.damageAmount = executor.CharacterStats.CurrentAttack * currentVariation.attackMultiplier;
             attackDetails.invincibleTime = currentVariation.invicibleTime;
             attackDetails.stunDamageAmount = 0;
             foreach (Collider2D enemy in hitEnemies)

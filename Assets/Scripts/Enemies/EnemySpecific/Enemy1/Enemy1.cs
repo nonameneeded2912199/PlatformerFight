@@ -69,7 +69,7 @@ public class Enemy1 : Entity
         Gizmos.DrawWireSphere(meleeAttackPosition.position, meleeAttackStateData.attackRadius);
     }
 
-    public override void TakeDamage(AttackDetails attackDetails)
+    protected override void TakeDamage(AttackDetails attackDetails)
     {
         base.TakeDamage(attackDetails);
 

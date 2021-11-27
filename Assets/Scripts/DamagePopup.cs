@@ -29,7 +29,6 @@ public class DamagePopup : MonoBehaviour
     public void SetPopup(int damage, DamageType damageType, Vector2 position)
     {
         transform.position = position;
-        Debug.Log(damage);
         text.text = System.Convert.ToString(damage);
         switch (damageType)
         {

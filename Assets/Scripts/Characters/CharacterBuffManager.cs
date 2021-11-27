@@ -6,12 +6,15 @@ namespace CharacterThings
 {
     public class CharacterBuffManager : MonoBehaviour
     {
-        private List<string> outdatedBuff;
-        private Dictionary<string, BaseBuff> buffs;
+        private List<BaseBuff> outdatedBuff;
+        private Dictionary<ScriptableBuff, BaseBuff> buffs;
+
+        [SerializeField]
+        private Transform gridTransform;
 
         private void Awake()
         {
-            buffs = new Dictionary<string, BaseBuff>();
+            buffs = new Dictionary<ScriptableBuff, BaseBuff>();
         }
 
         // Start is called before the first frame update
@@ -20,27 +23,39 @@ namespace CharacterThings
 
         }
 
-        public void AddBuff(string buffName, BaseBuff buff)
+        public void AddBuff(BaseBuff buff)
         {
-            buffs.Add(buffName, buff);
+            if (buffs.ContainsKey(buff.Buff))
+            {
+                buffs[buff.Buff].Active(false);
+                Destroy(buff.BuffIconPrefab);
+            }
+            else
+            {
+                buffs.Add(buff.Buff, buff);
+                buff.BuffIconPrefab.transform.SetParent(gridTransform);
+                buff.Active(true);
+            }                
         }
 
         // Update is called once per frame
         void Update()
         {
-            outdatedBuff = new List<string>();
+            outdatedBuff = new List<BaseBuff>();
             foreach (var buff in buffs)
             {
-                var resBuff = buff.Value.Tick(Time.deltaTime);
-                if (!resBuff.Item2)
+                var resBuff = buff.Value;
+                resBuff.Tick(Time.deltaTime);
+                if (resBuff.isFinished)
                 {
-                    outdatedBuff.Add(buff.Key);
+                    resBuff.ApplyOnEnd();
+                    outdatedBuff.Add(resBuff);
                 }
             }
 
             foreach (var buff in outdatedBuff)
             {
-                buffs.Remove(buff);
+                buffs.Remove(buff.Buff);
             }
         }
     }

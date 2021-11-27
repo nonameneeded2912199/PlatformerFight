@@ -7,12 +7,17 @@ public class PlayerAnimation : CharacterAnimation
 {
     private Player player;
     private PlayerAttack playerCombat;
-    // Start is called before the first frame update
-    protected override void Start()
+
+    protected override void Awake()
     {
-        base.Start();
+        base.Awake();
         player = GetComponent<Player>();
         playerCombat = GetComponent<PlayerAttack>();
+    }
+
+    protected override void Start()
+    {
+        base.Start();       
     }
 
     // Update is called once per frame
@@ -22,35 +27,42 @@ public class PlayerAnimation : CharacterAnimation
         animator.SetFloat("YVelocity", rb.velocity.y);
         if (playerCombat.IsAttacking)
             return;
-        if (!player.IsDashing)
+        if (player.IsKnockback)
         {
-            if (player.IsGrounded)
+            PlayAnim("Hurt");
+        }
+        else
+        {
+            if (!player.IsDashing)
             {
-                if (player.Horizontal != 0)
+                if (player.IsGrounded)
                 {
-                    PlayAnim("Move");
+                    if (player.Horizontal != 0)
+                    {
+                        PlayAnim("Move");
+                    }
+                    else
+                    {
+                        PlayAnim("Idle");
+                    }
                 }
                 else
                 {
-                    PlayAnim("Idle");
+                    if (player.WallSlide)
+                    {
+                        PlayAnim("WallGrab");
+                    }
+                    else
+                    {
+                        PlayAnim("Jump / Fall");
+                    }
                 }
             }
             else
             {
-                if (player.WallSlide)
-                {
-                    PlayAnim("WallGrab");
-                }
-                else
-                {
-                    PlayAnim("Jump / Fall");
-                }
+                PlayAnim("Dash");
             }
-        }
-        else
-        {
-            PlayAnim("Dash");
-        }
+        }       
     }
     
     public void SetAttackAnimation(string newState)

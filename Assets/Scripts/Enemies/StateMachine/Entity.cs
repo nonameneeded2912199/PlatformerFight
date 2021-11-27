@@ -9,12 +9,6 @@ public class Entity : BaseCharacter
 
     private Vector3 initialPosition;
 
-    protected float maxHP;
-    public float MaxHP { get => maxHP; }
-
-    [SerializeField]
-    protected float currentHP;
-    public float CurrentHP { get => currentHP; }
     private float currentStunResistance;
     private float lastDamageTime;
 
@@ -53,22 +47,6 @@ public class Entity : BaseCharacter
         initialPosition = transform.position;
 
         facingRight = true;
-
-        switch (GameManager.Instance.currentGameDifficulty)
-        {
-            case GameDifficulty.EASY:
-            case GameDifficulty.NORMAL:
-                maxHP = entityData.maxHP;
-                break;
-            case GameDifficulty.HARD:
-                maxHP = entityData.maxHP * 1.5f;
-                break;
-            case GameDifficulty.LUNATIC:
-                maxHP = entityData.maxHP * 2.0f;
-                break;
-        }
-
-        currentHP = maxHP;
 
         currentStunResistance = entityData.stunResistance;
 
@@ -165,19 +143,23 @@ public class Entity : BaseCharacter
         currentStunResistance = entityData.stunResistance;
     }
 
-    public virtual void TakeDamage(AttackDetails attackDetails)
+    protected override void TakeDamage(AttackDetails attackDetails)
     {
         if (IsInvincible)
             return;
 
         lastDamageTime = Time.time;
 
-        currentHP -= attackDetails.damageAmount;
+        float reduction = CharacterStats.CurrentDefense / (CharacterStats.CurrentDefense + 500);
+        float multiplier = 1 - reduction;
+        int incomingDMG = (int)(attackDetails.damageAmount * multiplier);
+
+        CharacterStats.CurrentHP -= incomingDMG;
         currentStunResistance -= attackDetails.stunDamageAmount;
 
         GameObject damageOBJ = PoolManager.SpawnObject(GameManager.Instance.DamagePopup);
         DamagePopup damagePopup = damageOBJ.GetComponent<DamagePopup>();
-        damagePopup.SetPopup((int)attackDetails.damageAmount, DamageType.NormalDamage, transform.position);
+        damagePopup.SetPopup(incomingDMG, DamageType.NormalDamage, transform.position);
 
         DamageHop(entityData.damageHopSpeed);
 
@@ -190,7 +172,7 @@ public class Entity : BaseCharacter
             isStunned = true;
         }
 
-        if (currentHP <= 0)
+        if (CharacterStats.CurrentHP <= 0)
         {
             isDead = true;
         }
@@ -232,7 +214,7 @@ public class Entity : BaseCharacter
         localScale.x = Mathf.Abs(localScale.x);
         transform.localScale = localScale;
 
-        currentHP = entityData.maxHP;
+        CharacterStats.CurrentHP = CharacterStats.MaxHP;
         isDead = false;
         currentStunResistance = entityData.stunResistance;
         if (!goRight)

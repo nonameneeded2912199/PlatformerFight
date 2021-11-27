@@ -2,14 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Test_SwordBeamData", menuName = "Skill/TestCharacter/SwordBeam")]
-public class Test_SwordBeam : Skill
+[CreateAssetMenu(fileName = "Test_SlashUpwardData", menuName = "Skill/TestCharacter/SlashUpward")]
+public class Test_SlashUpward : Skill
 {
-    public float bulletMultiplier;
-
-    public GameObject swordbeamOBJ;
-    
-
     public override void Damage()
     {
         Collider2D[] hitEnemies;
@@ -33,42 +28,17 @@ public class Test_SwordBeam : Skill
         }
     }
 
-    public override void PerformShot()
-    {
-        float direction = 0;
-        if (currentVariation == variations[0])
-        {
-            direction = executor.facingRight ? 0 : Mathf.PI;
-        }
-        else
-        {
-            direction = executor.facingRight ? -Mathf.PI / 4 : -3 * Mathf.PI / 4;
-        }
-
-        var bullet = PoolManager.SpawnObject(swordbeamOBJ).GetComponent<Bullet>();
-        bullet.SetAllegiance(executor.tag);
-        bullet.SetAttributes(attackPoint.position, 8, direction, 0, 0, bulletMultiplier * executor.CharacterStats.BaseATK, 0.5f);
-
-        //GameObject bullet = Bullet.GetBullet(BulletOwner.Player, attackPoint.position, 8, direction, 0, bulletMultiplier * executor.CharacterStats.BaseATK, BulletType.Arrow,
-        //    BulletColor.GREEN);
-    }
-
     public override bool Execute()
     {
-        if (executor.IsGrounded)
-        {
-            SkillVariation(0);
-            //executor.Rigidbody.velocity = Vector2.zero;
-        }
-        else SkillVariation(1);
         if (executor.CharacterStats.CurrentAP >= apCost)
         {
-            if (currentVariation == variations[0])
-                executor.Rigidbody.velocity = Vector2.zero;
-            if (currentVariation.moveWhileExecuting)
-                executor.SetVelocity(currentVariation.movingVelocity);
+            SkillVariation(0);
+            executor.Rigidbody.velocity = Vector2.zero;
             executor.CharacterAnimation.PlayAnim(currentVariation.animationName);
             executor.CharacterStats.ConsumeAP(apCost);
+            executor.CharacterBuffManager.AddBuff(buffsToExecutor[0].InitializeBuff(executor));
+            if (currentVariation.moveWhileExecuting)
+                executor.SetVelocity(currentVariation.movingVelocity);
             return true;
         }
         return false;

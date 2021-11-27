@@ -13,10 +13,14 @@ namespace CharacterThings
 
         public string currentState;
 
-        protected virtual void Start()
+        protected virtual void Awake()
         {
             animator = GetComponent<Animator>();
             rb = GetComponent<Rigidbody2D>();
+        }
+
+        protected virtual void Start()
+        {
         }
 
         protected virtual void Update()

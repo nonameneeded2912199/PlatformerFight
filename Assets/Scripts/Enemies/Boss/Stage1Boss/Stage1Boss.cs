@@ -106,7 +106,7 @@ public class Stage1Boss : Boss
         HandleHPBar();
     }
 
-    public override void TakeDamage(AttackDetails attackDetails)
+    protected override void TakeDamage(AttackDetails attackDetails)
     {
         base.TakeDamage(attackDetails);
 
@@ -139,8 +139,8 @@ public class Stage1Boss : Boss
 
     private void HandleHPBar()
     {
-        imageHP.fillAmount = currentHP / maxHP;
-        textHP.text = currentHP + " / " + maxHP;
+        imageHP.fillAmount = CharacterStats.CurrentHP / CharacterStats.MaxHP;
+        textHP.text = CharacterStats.CurrentHP + " / " + CharacterStats.MaxHP;
     }
     public override void OnDefeat()
     {

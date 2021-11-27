@@ -65,7 +65,6 @@ public class Player : BaseCharacter
 
     public bool WallSlide => wallSlide;
 
-    public bool CanMove => canMove;
     #endregion
 
 
@@ -112,6 +111,7 @@ public class Player : BaseCharacter
             wallSlide = false;
 
         HandleFlip();
+        CheckKnockback();
     }
 
     protected override void FixedUpdate()
@@ -263,6 +263,7 @@ public class Player : BaseCharacter
 
         StopCoroutine(DisableMovement(0));
         StartCoroutine(DisableMovement(.1f));
+
         //canMove = false;
 
         Vector2 wallDir = onRightWall ? Vector2.left : Vector2.right;
@@ -305,13 +306,89 @@ public class Player : BaseCharacter
             }
         }
     }
-
-    IEnumerator DisableMovement(float time)
+    protected IEnumerator DisableMovement(float time)
     {
         canMove = false;
-        Debug.Log("Stopped");
         yield return new WaitForSeconds(time);
         canMove = true;
+    }
+    public override void SetVelocity(float velocity)
+    {
+        StopCoroutine(DisableMovement(0));
+        StartCoroutine(DisableMovement(.5f));
+        base.SetVelocity(velocity);
+    }
+
+    public override void SetVelocity(Vector2 velocity)
+    {
+        StopCoroutine(DisableMovement(0));
+        StartCoroutine(DisableMovement(.5f));
+        base.SetVelocity(velocity);
+    }
+
+    public override void SetVelocity(Vector2 velocity, int direction)
+    {
+        StopCoroutine(DisableMovement(0));
+        StartCoroutine(DisableMovement(.5f));
+        base.SetVelocity(velocity, direction);
+    }
+
+    public override void SetVelocity(float velocity, Vector2 angle)
+    {
+        StopCoroutine(DisableMovement(0));
+        StartCoroutine(DisableMovement(.5f));
+        base.SetVelocity(velocity, angle);
+    }
+
+    public override void SetVelocity(float velocity, Vector2 angle, int direction)
+    {
+        StopCoroutine(DisableMovement(0));
+        StartCoroutine(DisableMovement(.5f));
+        base.SetVelocity(velocity, angle, direction);
+    }
+
+    protected override void TakeDamage(AttackDetails attackDetails)
+    {
+        if (!IsInvincible)
+        {
+            float reduction = CharacterStats.CurrentDefense / (CharacterStats.CurrentDefense + 500);
+            float multiplier = 1 - reduction;
+            int incomingDMG = (int)(attackDetails.damageAmount * multiplier);
+
+            CharacterStats.CurrentHP -= incomingDMG;
+
+            HandleHPBar();
+
+            GameObject damageOBJ = PoolManager.SpawnObject(GameManager.Instance.DamagePopup);
+            DamagePopup damagePopup = damageOBJ.GetComponent<DamagePopup>();
+            damagePopup.SetPopup(incomingDMG, DamageType.NormalDamage, transform.position);
+
+            if (CharacterStats.CurrentHP > 0)
+            {
+                StartCoroutine(BecomeInvicible(1.5f));
+                int direction = attackDetails.position.x < transform.position.x ? 1 : -1;
+
+                Knockback(direction);
+            }
+        }
+    }
+
+    public override void Knockback(int direction)
+    {
+        knockback = true;
+        DisableMove();
+        knockbackStartTime = Time.time;
+        Rigidbody.velocity = new Vector2(knockbackSpeed.x * direction, knockbackSpeed.y);
+    }
+
+    protected override void CheckKnockback()
+    {
+        if (Time.time >= knockbackStartTime + knockbackDuration && knockback)
+        {
+            knockback = false;
+            Rigidbody.velocity = new Vector2(0.0f, Rigidbody.velocity.y);
+            EnableMove();           
+        }
     }
 
     public void EnableMove()

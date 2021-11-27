@@ -9,7 +9,7 @@ namespace CharacterThings
         public Rigidbody2D Rigidbody { get; private set; }
         public SpriteRenderer SpriteRenderer { get; private set; }
 
-        public CharacterBuffManager characterBuffManager { get; private set; }
+        public CharacterBuffManager CharacterBuffManager { get; private set; }
 
         public CharacterStats CharacterStats { get; private set; }
         //public Animator animator { get; private set; }
@@ -17,7 +17,7 @@ namespace CharacterThings
         [SerializeField]
         protected bool IsInvincible { get; private set; }
 
-        public CharacterAnimation characterAnimation { get; private set; }
+        public CharacterAnimation CharacterAnimation { get; private set; }
 
         protected Vector2 velocityWorkspace;
 
@@ -34,6 +34,20 @@ namespace CharacterThings
         public bool onWall;
         public bool onRightWall;
 
+        [Header("Knockback")]
+        [SerializeField]
+        protected bool knockback;
+
+        public bool IsKnockback { get => knockback; }
+
+        [SerializeField]
+        protected Vector2 knockbackSpeed;
+
+        [SerializeField]
+        protected float knockbackDuration;
+
+        protected float knockbackStartTime;
+
         [Space]
         [Header("Layer")]
         [SerializeField]
@@ -48,8 +62,8 @@ namespace CharacterThings
             Rigidbody = GetComponent<Rigidbody2D>();
             SpriteRenderer = GetComponent<SpriteRenderer>();
             CharacterStats = GetComponent<CharacterStats>();
-            characterAnimation = GetComponent<CharacterAnimation>();
-            characterBuffManager = GetComponent<CharacterBuffManager>();
+            CharacterAnimation = GetComponent<CharacterAnimation>();
+            CharacterBuffManager = GetComponent<CharacterBuffManager>();
         }
 
         protected virtual void Start()
@@ -86,6 +100,21 @@ namespace CharacterThings
             Rigidbody.velocity = velocityWorkspace;
         }
 
+        public virtual void SetVelocity(Vector2 velocity, int direction)
+        {
+            int facingDirection = direction == 1 ? 1 : -1;
+            velocityWorkspace.Set(facingDirection * velocity.x, velocity.y);
+            Rigidbody.velocity = velocityWorkspace;
+        }
+
+        public virtual void SetVelocity(Vector2 velocity)
+        {
+            int facingDirection = facingRight ? 1 : -1;
+            velocityWorkspace.Set(facingDirection * velocity.x, velocity.y);
+            Rigidbody.velocity = velocityWorkspace;
+        }
+
+
         public virtual void SetVelocity(float velocity, Vector2 angle)
         {
             angle.Normalize();
@@ -101,6 +130,12 @@ namespace CharacterThings
             Rigidbody.velocity = velocityWorkspace;
         }
 
+        public virtual void MoveY(float y)
+        {
+            Rigidbody.velocity = new Vector2(Rigidbody.velocity.x, y);
+        }
+            
+
         public void SetInvincibility(bool invincibility)
         {
             IsInvincible = invincibility;
@@ -112,9 +147,43 @@ namespace CharacterThings
             transform.rotation = Quaternion.Euler(0f, facingRight ? 0 : 180f, 0f);
         }
 
-        public void AddBuff(string name, BaseBuff buff)
+        protected IEnumerator BecomeInvicible(float seconds, bool blinking = true)
         {
-            characterBuffManager.AddBuff(name, buff);
+            IsInvincible = true;
+            SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
+            for (float i = 0; i < seconds; i += seconds / 10)
+            {
+                if (spriteRenderer.enabled)
+                {
+                    spriteRenderer.enabled = false;
+                }
+                else
+                {
+                    spriteRenderer.enabled = true;
+                }
+
+                yield return new WaitForSeconds(seconds / 10);
+            }
+            spriteRenderer.enabled = true;
+            IsInvincible = false;
+        }
+
+        public virtual void Knockback(int direction)
+        {
+        }
+
+        protected virtual void CheckKnockback()
+        {
+        }
+
+        protected virtual void TakeDamage(AttackDetails attackDetails)
+        {
+
+        }
+
+        public void AddBuff(BaseBuff buff)
+        {
+            CharacterBuffManager.AddBuff(buff);
         }
 
         protected virtual void OnDrawGizmos()

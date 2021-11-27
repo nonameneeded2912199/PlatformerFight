@@ -76,8 +76,19 @@ namespace CharacterThings
         private float currentAP;
         public float CurrentAP { get => currentAP; set => currentAP = Mathf.Clamp(value, 0, maxAP); }
 
-        private float attack;
-        public float Attack { get => attack; }
+
+        private float bonusAttack;
+
+        public float BonusAttack { get => bonusAttack; set => bonusAttack = value; }
+
+        public float CurrentAttack { get => BaseATK + bonusAttack; }
+
+        private float bonusDefense;
+
+        public float BonusDefense { get => bonusDefense; set => bonusDefense = value; }
+
+        public float CurrentDefense { get => BaseDEF + bonusDefense; }
+
 
         private float defense;
         public float Defense { get => defense; }
@@ -97,8 +108,8 @@ namespace CharacterThings
                 currentHP = maxHP;
                 currentAP = maxAP;
 
-                attack = BaseATK;
-                defense = BaseDEF;
+                bonusAttack = 0;
+                bonusDefense = 0;
 
                 apRecoveryRate = BaseAPRecoveryRate;
             }

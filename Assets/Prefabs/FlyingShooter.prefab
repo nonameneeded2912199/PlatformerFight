@@ -105,6 +105,7 @@ GameObject:
   - component: {fileID: 6826909798196500052}
   - component: {fileID: 6826909798196500053}
   - component: {fileID: 6826909798196500059}
+  - component: {fileID: 1737306707563311063}
   m_Layer: 8
   m_Name: FlyingShooter
   m_TagString: Untagged
@@ -217,11 +218,13 @@ MonoBehaviour:
   wallRaycastLength: 0
   onWall: 0
   onRightWall: 0
+  knockback: 0
+  knockbackSpeed: {x: 0, y: 0}
+  knockbackDuration: 0
   platformLayer:
     serializedVersion: 2
     m_Bits: 0
   facingRight: 1
-  currentHP: 0
   goRight: 0
   touchDamage: 5
   touchDamageWidth: 0.5
@@ -294,6 +297,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48c24418042707f459ed9db4d7fb1800, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1737306707563311063
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6826909798196500050}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3e97f22690e6364bb04cf710d839584, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterData: {fileID: 11400000, guid: 75ddb2c9758523c41a0f38cdb2defa6c, type: 2}
 --- !u!1 &6826909798258021559
 GameObject:
   m_ObjectHideFlags: 0

@@ -74,6 +74,10 @@ public abstract class Skill : ScriptableObject
 
     public Sprite skillIcon;
 
+    public ScriptableBuff[] buffsToExecutor;
+
+    public ScriptableBuff[] buffsInflict;
+
     /// <summary>
     /// Check if the skill can be used in ground, in mid-air, or both
     /// </summary>
@@ -202,4 +206,9 @@ public class SkillVariation
     public float horizontalSize;
     [ConditionalField("circularHitbox", false), Tooltip("Rectangular hitbox vertical size")]
     public float verticalSize;
+
+    public bool moveWhileExecuting;
+
+    [ConditionalField("moveWhileExecuting", true), Tooltip("Rectangular hitbox vertical size")]
+    public Vector2 movingVelocity;
 }
