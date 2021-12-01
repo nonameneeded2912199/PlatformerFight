@@ -71,6 +71,7 @@ MonoBehaviour:
   m_LabelTable:
     m_LabelNames:
     - default
+    - Recurring
   m_SchemaTemplates: []
   m_GroupTemplateObjects:
   - {fileID: 11400000, guid: 78781c9e1a6835d419d3bc992fdb845e, type: 2}

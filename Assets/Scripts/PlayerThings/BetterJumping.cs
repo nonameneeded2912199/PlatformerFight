@@ -2,26 +2,29 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BetterJumping : MonoBehaviour
+namespace CharacterThings
 {
-    private Rigidbody2D rb;
-    public float fallMultiplier;
-    public float lowJumpMultiplier;
-
-    void Start()
+    public class BetterJumping : MonoBehaviour
     {
-        rb = GetComponent<Rigidbody2D>();
-    }
+        private Rigidbody2D rb;
+        public float fallMultiplier;
+        public float lowJumpMultiplier;
 
-    void FixedUpdate()
-    {
-        if (rb.velocity.y < 0)
+        void Start()
         {
-            rb.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
+            rb = GetComponent<Rigidbody2D>();
         }
-        else if (rb.velocity.y > 0 && GetComponent<Player>().jumpStop)
+
+        void FixedUpdate()
         {
-            rb.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
+            if (rb.velocity.y < 0)
+            {
+                rb.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
+            }
+            else if (rb.velocity.y > 0 && GetComponent<Player>().jumpStop)
+            {
+                rb.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
+            }
         }
     }
 }

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FlyingShooter : Entity
+public class FlyingShooter : BaseEnemy
 {
     public FlyingShooter_MoveState moveState { get; private set; }
 
@@ -44,12 +44,5 @@ public class FlyingShooter : Entity
         {
             stateMachine.ChangeState(deadState);
         }
-    }
-
-    public override void Respawn()
-    {
-        base.Respawn();
-        stateMachine.Initialize(moveState);
-        Debug.Log("Respawned");
     }
 }

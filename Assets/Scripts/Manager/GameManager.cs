@@ -11,8 +11,10 @@ public class GameManager : Singleton<GameManager>
 
     public GameDifficulty currentGameDifficulty = GameDifficulty.NORMAL;
 
+    [SerializeField]
     private GameObject bullet;
 
+    [SerializeField]
     private GameObject damagePopup;
     public GameObject CommonBullet
     {
@@ -29,7 +31,7 @@ public class GameManager : Singleton<GameManager>
     {
         //base.Awake();
         //DontDestroyOnLoad(gameObject);  
-        if (bullet == null)
+        /*if (bullet == null)
         {
             Addressables.LoadAssetAsync<GameObject>("CommonBullet").Completed += AddressableAsyncLoadBullet;
         }
@@ -37,7 +39,7 @@ public class GameManager : Singleton<GameManager>
         if (damagePopup == null)
         {
             Addressables.LoadAssetAsync<GameObject>("CommonPopup").Completed += AddressableAsyncLoadPopup;
-        }
+        }*/
     }
 
     private void AddressableAsyncLoadBullet(UnityEngine.ResourceManagement.AsyncOperations.AsyncOperationHandle<GameObject> asyncOperation)

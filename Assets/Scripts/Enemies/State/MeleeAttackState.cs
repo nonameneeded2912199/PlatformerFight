@@ -8,7 +8,7 @@ public class MeleeAttackState : AttackState
 
     protected AttackDetails attackDetails;
 
-    public MeleeAttackState(FiniteStateMachine stateMachine, Entity entity, string animBoolName, Transform attackPosition, D_MeleeAttackState stateData) 
+    public MeleeAttackState(FiniteStateMachine stateMachine, BaseEnemy entity, string animBoolName, Transform attackPosition, D_MeleeAttackState stateData) 
         : base(stateMachine, entity, animBoolName, attackPosition)
     {
         this.stateData = stateData;

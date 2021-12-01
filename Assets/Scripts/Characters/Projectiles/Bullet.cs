@@ -120,6 +120,17 @@ public class Bullet : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         attackDetails.position = transform.position;
+
+        int damagableLayer = 0;
+        damagableLayer |= (1 << LayerMask.NameToLayer("Shield"));
+        damagableLayer |= (1 << LayerMask.NameToLayer("Damagable"));
+
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Shield") && !gameObject.CompareTag(collision.tag))
+        {
+            BackToPool();
+            return;
+        }
+
         //attackDetails.stunDamageAmount = 0;
         switch (gameObject.tag)
         {
@@ -188,10 +199,13 @@ public class Bullet : MonoBehaviour
             ResetAttributes();
             
         }
-        if (!PoolManager.ReleaseObject(gameObject))
-        {
-            Destroy(gameObject);
-        }
+
+        bool returnToPool = PoolManager.ReleaseObject(gameObject);
+        //Debug.Log(returnToPool);
+        //if (!returnToPool)
+        //{
+        //    Destroy(gameObject);
+        //}
     }    
 
     public static float GetAngle(Vector3 o, Vector3 vector)

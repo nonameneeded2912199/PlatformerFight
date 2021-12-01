@@ -6,12 +6,12 @@ using UnityEngine;
 public class State
 {
     protected FiniteStateMachine stateMachine;
-    protected Entity entity;
+    protected BaseEnemy entity;
     public float startTime { get; private set; }
 
     protected string animBoolName;
 
-    public State(FiniteStateMachine stateMachine, Entity entity, string animBoolName)
+    public State(FiniteStateMachine stateMachine, BaseEnemy entity, string animBoolName)
     {
         this.stateMachine = stateMachine;
         this.entity = entity;
@@ -23,6 +23,7 @@ public class State
         startTime = Time.time;
         //entity.animator.SetBool(animBoolName, true);
         //entity.characterAnimation.animator.SetBool(animBoolName, true);
+        entity.CharacterAnimation.PlayAnim(animBoolName);
         DoChecks();
     }
 

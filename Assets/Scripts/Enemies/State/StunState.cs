@@ -12,7 +12,7 @@ public class StunState : State
     protected bool performCloseRangeAction;
     protected bool isPlayerInMinAgroRange;
 
-    public StunState(FiniteStateMachine stateMachine, Entity entity, string animBoolName, D_StunState stateData) 
+    public StunState(FiniteStateMachine stateMachine, BaseEnemy entity, string animBoolName, D_StunState stateData) 
         : base(stateMachine, entity, animBoolName)
     {
         this.stateData = stateData;

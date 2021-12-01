@@ -12,7 +12,7 @@ public class MoveState : State
 
     protected bool playerInMinAgroRangeCheck;
 
-    public MoveState(FiniteStateMachine stateMachine, Entity entity, string animBoolName, D_MoveState stateData) 
+    public MoveState(FiniteStateMachine stateMachine, BaseEnemy entity, string animBoolName, D_MoveState stateData) 
         : base(stateMachine, entity, animBoolName)
     {
         this.stateData = stateData;

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy2 : Entity
+public class Enemy2 : BaseEnemy
 {
     public E2_MoveState moveState { get; private set; }
 

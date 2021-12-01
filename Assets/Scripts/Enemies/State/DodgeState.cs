@@ -14,7 +14,7 @@ public class DodgeState : State
 
     protected bool isDodgeOver;
 
-    public DodgeState(FiniteStateMachine stateMachine, Entity entity, string animBoolName, D_DodgeState stateData) 
+    public DodgeState(FiniteStateMachine stateMachine, BaseEnemy entity, string animBoolName, D_DodgeState stateData) 
         : base(stateMachine, entity, animBoolName)
     {
         this.stateData = stateData;

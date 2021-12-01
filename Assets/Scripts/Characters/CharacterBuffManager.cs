@@ -33,7 +33,10 @@ namespace CharacterThings
             else
             {
                 buffs.Add(buff.Buff, buff);
-                buff.BuffIconPrefab.transform.SetParent(gridTransform);
+                if (gridTransform != null)
+                    buff.BuffIconPrefab.transform.SetParent(gridTransform);
+                else
+                    Destroy(buff.BuffIconPrefab);
                 buff.Active(true);
             }                
         }

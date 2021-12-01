@@ -16,7 +16,7 @@ public class ChargeState : State
 
     protected bool performCloseRangeAction;
 
-    public ChargeState(FiniteStateMachine stateMachine, Entity entity, string animBoolName, D_ChargeState stateData) 
+    public ChargeState(FiniteStateMachine stateMachine, BaseEnemy entity, string animBoolName, D_ChargeState stateData) 
         : base(stateMachine, entity, animBoolName)
     {
         this.stateData = stateData;

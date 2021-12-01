@@ -149,15 +149,15 @@ public class PoolManager : Singleton<PoolManager>
         //instanceLookup.Clear();
     }
 
-    //void OnGUI()
-    //{
-    //    GUI.skin.label.normal.textColor = new Color(1f, 1f, 1f, 1f);
-    //    GUI.skin.label.fontSize = 16;
-    //    GUI.Label(new Rect((Screen.width - 120f) / 2f, 10, 120f, 40f), $"Prefab lookup Count: {prefabLookup.Count}");
-    //    GUI.Label(new Rect(40f, 10f, 120f, 40f), $"Instance loopup Count: {instanceLookup.Count}");
+    void OnGUI()
+    {
+        GUI.skin.label.normal.textColor = new Color(1f, 1f, 1f, 1f);
+        GUI.skin.label.fontSize = 32;
+        GUI.Label(new Rect((Screen.width - 120f) / 2f, 10, 500f, 500f), $"Prefab lookup Count: {prefabLookup.Count}");
+        GUI.Label(new Rect(40f, 10f, 500f, 500f), $"Instance lookup Count: {instanceLookup.Count}");
     //    //GUI.Label(new Rect(Screen.width - 160f, Screen.height - 50f, 120f, 40f), Difficulty.ToString());
     //    //GUI.Label(new Rect(Screen.width - 320f, 10f, 300f, 40f), "物理[三体运动]");
-    //}
+    }
 
 
 

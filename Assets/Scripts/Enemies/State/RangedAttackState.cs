@@ -8,7 +8,7 @@ public class RangedAttackState : AttackState
 
     protected bool allowAttack;
 
-    public RangedAttackState(FiniteStateMachine stateMachine, Entity entity, string animBoolName, Transform attackPosition, D_RangedAttackState stateData) 
+    public RangedAttackState(FiniteStateMachine stateMachine, BaseEnemy entity, string animBoolName, Transform attackPosition, D_RangedAttackState stateData) 
         : base(stateMachine, entity, animBoolName, attackPosition)
     {
         this.stateData = stateData;

@@ -20,15 +20,24 @@ MonoBehaviour:
   - m_GUID: 94c4b08f8e9fb0e45ada47329c352ad0
     m_Address: CommonBullet
     m_ReadOnly: 0
-    m_SerializedLabels: []
+    m_SerializedLabels:
+    - Recurring
     m_MainAsset: {fileID: 6493238816708972781, guid: 94c4b08f8e9fb0e45ada47329c352ad0, type: 3}
     m_TargetAsset: {fileID: 6493238816708972781, guid: 94c4b08f8e9fb0e45ada47329c352ad0, type: 3}
   - m_GUID: 9e3389788cfc47049981cd0fe3dc2065
     m_Address: CommonPopup
     m_ReadOnly: 0
-    m_SerializedLabels: []
+    m_SerializedLabels:
+    - Recurring
     m_MainAsset: {fileID: 7322542312116579965, guid: 9e3389788cfc47049981cd0fe3dc2065, type: 3}
     m_TargetAsset: {fileID: 7322542312116579965, guid: 9e3389788cfc47049981cd0fe3dc2065, type: 3}
+  - m_GUID: a62f573dae442b942ba4c84352195174
+    m_Address: WhiteMat
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Recurring
+    m_MainAsset: {fileID: 2100000, guid: a62f573dae442b942ba4c84352195174, type: 2}
+    m_TargetAsset: {fileID: 2100000, guid: a62f573dae442b942ba4c84352195174, type: 2}
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 79756e5974eec8c42b93e9a2074b8a15, type: 2}
   m_SchemaSet:

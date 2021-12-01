@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 
 namespace CharacterThings
 {
@@ -14,7 +15,13 @@ namespace CharacterThings
         public CharacterStats CharacterStats { get; private set; }
         //public Animator animator { get; private set; }
 
+        [Header("Invincibility Stuff")]
         [SerializeField]
+        private Material normalMat;
+
+        [SerializeField]
+        private Material whiteMat;
+
         protected bool IsInvincible { get; private set; }
 
         public CharacterAnimation CharacterAnimation { get; private set; }
@@ -36,6 +43,9 @@ namespace CharacterThings
 
         [Header("Knockback")]
         [SerializeField]
+        protected bool canBeKnockedback;
+
+        [SerializeField]
         protected bool knockback;
 
         public bool IsKnockback { get => knockback; }
@@ -46,13 +56,14 @@ namespace CharacterThings
         [SerializeField]
         protected float knockbackDuration;
 
-        protected float knockbackStartTime;
+        public float KnockbackDuration { get => knockbackDuration; }
 
         [Space]
         [Header("Layer")]
         [SerializeField]
-        private LayerMask platformLayer;
+        protected LayerMask platformLayer;
 
+        [SerializeField]
         protected bool isGrounded;
         public bool IsGrounded { get => isGrounded; }
         public bool facingRight = true;
@@ -64,6 +75,9 @@ namespace CharacterThings
             CharacterStats = GetComponent<CharacterStats>();
             CharacterAnimation = GetComponent<CharacterAnimation>();
             CharacterBuffManager = GetComponent<CharacterBuffManager>();
+            normalMat = GetComponent<SpriteRenderer>().sharedMaterial;
+
+            Addressables.LoadAssetAsync<Material>("WhiteMat").Completed += AddressableAsyncLoadWhiteMat;
         }
 
         protected virtual void Start()
@@ -147,32 +161,38 @@ namespace CharacterThings
             transform.rotation = Quaternion.Euler(0f, facingRight ? 0 : 180f, 0f);
         }
 
-        protected IEnumerator BecomeInvicible(float seconds, bool blinking = true)
+        protected IEnumerator BecomeInvincible(float seconds, bool blinking = true)
         {
             IsInvincible = true;
             SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
             for (float i = 0; i < seconds; i += seconds / 10)
             {
-                if (spriteRenderer.enabled)
+                /*if (spriteRenderer.enabled)
                 {
                     spriteRenderer.enabled = false;
                 }
                 else
                 {
                     spriteRenderer.enabled = true;
+                }*/
+
+                if (spriteRenderer.sharedMaterial == normalMat)
+                {
+                    spriteRenderer.sharedMaterial = whiteMat;
                 }
+                else if (spriteRenderer.sharedMaterial == whiteMat)
+                {
+                    spriteRenderer.sharedMaterial = normalMat;
+                }    
 
                 yield return new WaitForSeconds(seconds / 10);
             }
-            spriteRenderer.enabled = true;
+            //spriteRenderer.enabled = true;
+            spriteRenderer.sharedMaterial = normalMat;
             IsInvincible = false;
         }
 
         public virtual void Knockback(int direction)
-        {
-        }
-
-        protected virtual void CheckKnockback()
         {
         }
 
@@ -194,6 +214,17 @@ namespace CharacterThings
             // Wall Check
             Gizmos.DrawLine(transform.position, transform.position + Vector3.right * wallRaycastLength);
             Gizmos.DrawLine(transform.position, transform.position + Vector3.left * wallRaycastLength);
+        }
+
+        private void AddressableAsyncLoadWhiteMat(UnityEngine.ResourceManagement.AsyncOperations.AsyncOperationHandle<Material> asyncOperation)
+        {
+            // Set things
+            whiteMat = asyncOperation.Result;
+
+
+            // Unregister event & Release asset
+            asyncOperation.Completed -= AddressableAsyncLoadWhiteMat;
+            Addressables.Release(asyncOperation);
         }
     }
 }

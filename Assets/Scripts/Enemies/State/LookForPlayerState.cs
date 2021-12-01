@@ -8,6 +8,7 @@ public class LookForPlayerState : State
 
     protected bool turnImmediately;
     protected bool isPlayerInMinAgroRange;
+    protected bool isPlayerInMaxAgroRange;
     protected bool isAllTurnsDone;
     protected bool isAllTurnsTimeDone;
 
@@ -15,7 +16,7 @@ public class LookForPlayerState : State
 
     protected int amountOfTurnsDone;
 
-    public LookForPlayerState(FiniteStateMachine stateMachine, Entity entity, string animBoolName, D_LookForPlayerState stateData) 
+    public LookForPlayerState(FiniteStateMachine stateMachine, BaseEnemy entity, string animBoolName, D_LookForPlayerState stateData) 
         : base(stateMachine, entity, animBoolName)
     {
         this.stateData = stateData;
@@ -26,6 +27,7 @@ public class LookForPlayerState : State
         base.DoChecks();
 
         isPlayerInMinAgroRange = entity.CheckPlayerInMinArgoRange();
+        isPlayerInMaxAgroRange = entity.CheckPlayerInMaxArgoRange();
     }
 
     public override void Enter()
