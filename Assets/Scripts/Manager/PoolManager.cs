@@ -1,9 +1,9 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum PoolObjectType
+/*public enum PoolObjectType
 {
     Bullet,
     Shadow
@@ -19,99 +19,237 @@ public class PoolInfo
 
     //[HideInInspector]
     public List<GameObject> pool = new List<GameObject>();
-}
+}*/
 
 public class PoolManager : Singleton<PoolManager>
 {
-    [SerializeField]
-    List<PoolInfo> listOfPool;
+    public bool logStatus;
+    public Transform root;
 
-    protected override void Awake()
+    private Dictionary<GameObject, ObjectPool<GameObject>> prefabLookup;
+    private Dictionary<GameObject, ObjectPool<GameObject>> instanceLookup;
+
+    private bool dirty = false;
+
+    #region Static API
+
+    public static void warmPool(GameObject prefab, int size)
     {
-        base.Awake();
+        Instance.WarmPool(prefab, size);
     }
 
-    // Start is called before the first frame update
-    void Start()
+    public static GameObject SpawnObject(GameObject prefab)
     {
-        ResetPool();
-
-        for (int i = 0; i < listOfPool.Count; i++)
-        {
-            Populate(listOfPool[i]);
-        }    
+        return Instance.spawnObject(prefab);
     }
 
-    void Populate(PoolInfo info)
+    public static GameObject SpawnObject(GameObject prefab, Vector3 position, Quaternion rotation)
     {
-        for (int i = 0; i < info.amount; i++)
+        return Instance.spawnObject(prefab, position, rotation);
+    }
+
+    public static bool ReleaseObject(GameObject clone)
+    {
+        return Instance.releaseObject(clone);
+    }
+
+    #endregion
+
+
+    private void Awake()
+    {
+        prefabLookup = new Dictionary<GameObject, ObjectPool<GameObject>>();
+        instanceLookup = new Dictionary<GameObject, ObjectPool<GameObject>>();
+    }
+
+    private void Update()
+    {
+        if (logStatus && dirty)
         {
-            GameObject objInstance = Instantiate(info.prefab, info.container.transform);
-            objInstance.gameObject.SetActive(false);
-            objInstance.transform.position = new Vector3(0, 0, 0);
-            if (!info.pool.Contains(objInstance))
-            {
-                info.pool.Add(objInstance);
-            }
+            dirty = false;
         }
     }
 
-    public GameObject GetPoolObject(PoolObjectType type)
+    public void WarmPool(GameObject prefab, int size)
     {
-        PoolInfo selected = GetPoolByType(type);
-        List<GameObject> pool = selected.pool;
-
-        GameObject objInstance = null;
-        if (pool.Count > 0)
+        if (prefabLookup.ContainsKey(prefab))
         {
-            objInstance = pool[pool.Count - 1];
-            pool.Remove(objInstance);
+            throw new Exception("Pool for prefab " + prefab.name + " has already been created");
+        }
+
+        var pool = new ObjectPool<GameObject>(() =>
+        {
+            return InstantiatePrefab(prefab);
+        }, size);
+
+        prefabLookup[prefab] = pool;
+        dirty = true;
+    }
+
+    public GameObject spawnObject(GameObject prefab)
+    {
+        return spawnObject(prefab, Vector3.zero, Quaternion.identity);
+    }
+
+    public GameObject spawnObject(GameObject prefab, Vector3 position, Quaternion rotation)
+    {
+        if (!prefabLookup.ContainsKey(prefab))
+        {
+            WarmPool(prefab, 1);
+        }
+
+        var pool = prefabLookup[prefab];
+
+        var clone = pool.GetItem();
+        clone.transform.SetPositionAndRotation(position, rotation);
+        clone.SetActive(true);
+
+        instanceLookup.Add(clone, pool);
+        dirty = true;
+        return clone;
+    }
+
+    public bool releaseObject(GameObject clone)
+    {
+        clone.SetActive(false);
+
+        if (instanceLookup.ContainsKey(clone))
+        {
+            instanceLookup[clone].ReleaseItem(clone);
+            instanceLookup.Remove(clone);
+            dirty = true;
+            return true;
         }
         else
         {
-            objInstance = Instantiate(selected.prefab, selected.container);
-        }
-
-        return objInstance;
-    }
-
-    private PoolInfo GetPoolByType(PoolObjectType type)
-    {
-        foreach (PoolInfo info in listOfPool)
-        {
-            if (info.type == type)
-            {
-                return info;
-            }
-        }
-
-        return null;
-    }
-
-    public void CoolObject(GameObject ob, PoolObjectType type)
-    {
-        ob.SetActive(false);
-        ob.transform.position = new Vector3(0, 0, 0);
-
-        PoolInfo selected = GetPoolByType(type);
-        List<GameObject> pool = selected.pool;
-
-        if (!pool.Contains(ob))
-        {
-            pool.Add(ob);
+            Debug.LogWarning("No pool contains the object:" + clone.name);
+            return false;
         }
     }
 
-    public void ResetPool()
+    private GameObject InstantiatePrefab(GameObject prefab)
     {
-        for (int i = 0; i < listOfPool.Count; i++)
+        var go = Instantiate(prefab) as GameObject;
+        if (root != null)
+            go.transform.parent = root;
+        return go;
+    }
+
+    public void PrintStatus()
+    {
+        foreach (KeyValuePair<GameObject, ObjectPool<GameObject>> keyVal in prefabLookup)
         {
-            foreach (Transform child in listOfPool[i].container)
-            {
-                Destroy(child.gameObject);
-            }
-            listOfPool[i].pool.Clear();
+            Debug.Log(string.Format("Object Pool for Prefab: {0} In Use: {1} Total {2}", keyVal.Key.name, keyVal.Value.CountUsedItems, keyVal.Value.Count));
         }
-        Debug.Log("Reset!");
-    }    
+    }
+
+    private void OnDestroy()
+    {
+        //prefabLookup.Clear();
+        //instanceLookup.Clear();
+    }
+
+    void OnGUI()
+    {
+        GUI.skin.label.normal.textColor = new Color(1f, 1f, 1f, 1f);
+        GUI.skin.label.fontSize = 32;
+        GUI.Label(new Rect((Screen.width - 120f) / 2f, 10, 500f, 500f), $"Prefab lookup Count: {prefabLookup.Count}");
+        GUI.Label(new Rect(40f, 10f, 500f, 500f), $"Instance lookup Count: {instanceLookup.Count}");
+    //    //GUI.Label(new Rect(Screen.width - 160f, Screen.height - 50f, 120f, 40f), Difficulty.ToString());
+    //    //GUI.Label(new Rect(Screen.width - 320f, 10f, 300f, 40f), "物理[三体运动]");
+    }
+
+
+
+    //[SerializeField]
+    //List<PoolInfo> listOfPool;
+
+    ///*protected override void Awake()
+    //{
+    //    base.Awake();
+    //}*/
+
+    //// Start is called before the first frame update
+    //void Start()
+    //{
+    //    ResetPool();
+
+    //    for (int i = 0; i < listOfPool.Count; i++)
+    //    {
+    //        Populate(listOfPool[i]);
+    //    }    
+    //}
+
+    //void Populate(PoolInfo info)
+    //{
+    //    for (int i = 0; i < info.amount; i++)
+    //    {
+    //        GameObject objInstance = Instantiate(info.prefab, info.container.transform);
+    //        objInstance.gameObject.SetActive(false);
+    //        objInstance.transform.position = new Vector3(0, 0, 0);
+    //        if (!info.pool.Contains(objInstance))
+    //        {
+    //            info.pool.Add(objInstance);
+    //        }
+    //    }
+    //}
+
+    //public GameObject GetPoolObject(PoolObjectType type)
+    //{
+    //    PoolInfo selected = GetPoolByType(type);
+    //    List<GameObject> pool = selected.pool;
+
+    //    GameObject objInstance = null;
+    //    if (pool.Count > 0)
+    //    {
+    //        objInstance = pool[pool.Count - 1];
+    //        pool.Remove(objInstance);
+    //    }
+    //    else
+    //    {
+    //        objInstance = Instantiate(selected.prefab, selected.container);
+    //    }
+
+    //    return objInstance;
+    //}
+
+    //private PoolInfo GetPoolByType(PoolObjectType type)
+    //{
+    //    foreach (PoolInfo info in listOfPool)
+    //    {
+    //        if (info.type == type)
+    //        {
+    //            return info;
+    //        }
+    //    }
+
+    //    return null;
+    //}
+
+    //public void CoolObject(GameObject ob, PoolObjectType type)
+    //{
+    //    ob.SetActive(false);
+    //    ob.transform.position = new Vector3(0, 0, 0);
+
+    //    PoolInfo selected = GetPoolByType(type);
+    //    List<GameObject> pool = selected.pool;
+
+    //    if (!pool.Contains(ob))
+    //    {
+    //        pool.Add(ob);
+    //    }
+    //}
+
+    //public void ResetPool()
+    //{
+    //    for (int i = 0; i < listOfPool.Count; i++)
+    //    {
+    //        foreach (Transform child in listOfPool[i].container)
+    //        {
+    //            Destroy(child.gameObject);
+    //        }
+    //        listOfPool[i].pool.Clear();
+    //    }
+    //    Debug.Log("Reset!");
+    //}    
 }

@@ -5,7 +5,7 @@ using UnityEngine;
 public class DeadState : State
 {
     protected D_DeadState stateData;
-    public DeadState(FiniteStateMachine stateMachine, Entity entity, string animBoolName, D_DeadState stateData) 
+    public DeadState(FiniteStateMachine stateMachine, BaseEnemy entity, string animBoolName, D_DeadState stateData) 
         : base(stateMachine, entity, animBoolName)
     {
         this.stateData = stateData;
@@ -25,10 +25,7 @@ public class DeadState : State
 
         entity.gameObject.SetActive(false);
 
-        if (entity.entityData.allowRespawn)
-        {
-            entity.Invoke("Respawn", entity.entityData.respawnTime);
-        }   
+        GameObject.Destroy(entity);
     }
 
     public override void Exit()

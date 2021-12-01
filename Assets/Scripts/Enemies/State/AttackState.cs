@@ -10,7 +10,7 @@ public class AttackState : State
     protected bool isAnimationFinished;
     protected bool isPlayerInMinAgroRange;
 
-    public AttackState(FiniteStateMachine stateMachine, Entity entity, string animBoolName, Transform attackPosition) 
+    public AttackState(FiniteStateMachine stateMachine, BaseEnemy entity, string animBoolName, Transform attackPosition) 
         : base(stateMachine, entity, animBoolName)
     {
         this.attackPosition = attackPosition;

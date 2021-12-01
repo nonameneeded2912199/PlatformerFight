@@ -78,7 +78,7 @@ public class Stage1Boss : Boss
 
     public Text stageCompleteText;
 
-    public override void Start()
+    protected override void Start()
     {
         base.Start();
 
@@ -100,13 +100,13 @@ public class Stage1Boss : Boss
         deadState = new Stage1Boss_Dead(stateMachine, this, "Dead", deadStateData);
     }
 
-    public override void Update()
+    protected override void Update()
     {
         base.Update();
         HandleHPBar();
     }
 
-    public override void TakeDamage(AttackDetails attackDetails)
+    protected override void TakeDamage(AttackDetails attackDetails)
     {
         base.TakeDamage(attackDetails);
 
@@ -117,7 +117,7 @@ public class Stage1Boss : Boss
         }
     }
 
-    public override void OnDrawGizmos()
+    protected override void OnDrawGizmos()
     {
         base.OnDrawGizmos();
 
@@ -139,8 +139,8 @@ public class Stage1Boss : Boss
 
     private void HandleHPBar()
     {
-        imageHP.fillAmount = currentHP / maxHP;
-        textHP.text = currentHP + " / " + maxHP;
+        imageHP.fillAmount = CharacterStats.CurrentHP / CharacterStats.MaxHP;
+        textHP.text = CharacterStats.CurrentHP + " / " + CharacterStats.MaxHP;
     }
     public override void OnDefeat()
     {

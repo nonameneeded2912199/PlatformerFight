@@ -12,7 +12,7 @@ public class PlayerDetectedState : State
     protected bool performCloseRangeAction;
     protected bool isDetectingLedge;
 
-    public PlayerDetectedState(FiniteStateMachine stateMachine, Entity entity, string animBoolName, D_PlayerDetectedState stateData) 
+    public PlayerDetectedState(FiniteStateMachine stateMachine, BaseEnemy entity, string animBoolName, D_PlayerDetectedState stateData) 
         : base(stateMachine, entity, animBoolName)
     {
         this.stateData = stateData;

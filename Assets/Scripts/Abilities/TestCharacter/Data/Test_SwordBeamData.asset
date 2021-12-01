@@ -1,0 +1,45 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4dc72ec9501cbf446928526c327c9d8d, type: 3}
+  m_Name: Test_SwordBeamData
+  m_EditorClassIdentifier: 
+  executor: {fileID: 0}
+  attackPoint: {fileID: 0}
+  variations:
+  - animationName: GroundedSwordBeam
+    attackMultiplier: 1
+    invicibleTime: 0.5
+    circularHitbox: 1
+    attackRadius: 0.5
+    horizontalSize: 0
+    verticalSize: 0
+    moveWhileExecuting: 0
+    movingVelocity: {x: 0, y: 0}
+  - animationName: JumpNormalATK
+    attackMultiplier: 1
+    invicibleTime: 0.5
+    circularHitbox: 1
+    attackRadius: 0.5
+    horizontalSize: 0
+    verticalSize: 0
+    moveWhileExecuting: 1
+    movingVelocity: {x: -4, y: 8}
+  skillName: SwordBeam
+  canPerformOnAir: 1
+  canPerformOnGround: 1
+  apCost: 6
+  cooldownTime: 2
+  skillIcon: {fileID: 21300000, guid: 31ff2f3c7c438d9438017414cbe8ea3a, type: 3}
+  buffsToExecutor: []
+  buffsInflict: []
+  bulletMultiplier: 0.5
+  swordbeamOBJ: {fileID: 6493238816708972781, guid: 0a078036f8c277d4a8eba1f1f7372087, type: 3}

@@ -33,9 +33,9 @@ public class Solid : MonoBehaviour
 
     private void OnDisable()
     {
-        if (PoolManager.Instance != null)
+        /*if (PoolManager.Instance != null)
             PoolManager.Instance.CoolObject(this.gameObject, PoolObjectType.Shadow);
         else
-            Destroy(gameObject);        
+            Destroy(gameObject);*/        
     }
 }

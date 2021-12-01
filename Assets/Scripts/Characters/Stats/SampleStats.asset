@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07b0095d8859939498febce17e4588c8, type: 3}
   m_Name: SampleStats
   m_EditorClassIdentifier: 
-  maxHP: 0
-  currentHP: 0
-  baseDEF: 0
-  currentDEF: 0
+  baseHP: 100
+  baseAP: 50
+  baseATK: 7
+  baseDEF: 5
+  apRecoveryRate: 20

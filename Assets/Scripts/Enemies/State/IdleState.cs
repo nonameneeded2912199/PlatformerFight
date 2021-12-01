@@ -14,7 +14,7 @@ public class IdleState : State
 
     protected float idleTime;
 
-    public IdleState(FiniteStateMachine stateMachine, Entity entity, string animBoolName, D_IdleState stateData) 
+    public IdleState(FiniteStateMachine stateMachine, BaseEnemy entity, string animBoolName, D_IdleState stateData) 
         : base(stateMachine, entity, animBoolName)
     {
         this.stateData = stateData;

@@ -135,3 +135,9 @@ public enum BulletColor
     DEEPGRAY,
     GRAY,
 }
+
+public enum BulletOwner
+{
+    Player,
+    Enemy
+}

@@ -58,7 +58,7 @@ public class E2_RangedAttackState : RangedAttackState
     {
         base.TriggerAttack();
 
-        float direction = entity.facingDirection == 1 ? 0 : Mathf.PI;
+        float direction = entity.facingRight ? 0 : Mathf.PI;
 
         for (float i = 0; i < 2 * Mathf.PI; i += (2 * Mathf.PI / 36))
         {

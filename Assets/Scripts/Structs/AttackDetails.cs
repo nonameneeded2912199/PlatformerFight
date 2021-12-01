@@ -8,4 +8,7 @@ public struct AttackDetails
     public float damageAmount;
     public float invincibleTime;
     public float stunDamageAmount;
+    public float increasedKnockbackTime;
+    public Vector2 increasedKnockbackSpeed;
+    public List<CharacterThings.BaseBuff> buffInflicts;
 }

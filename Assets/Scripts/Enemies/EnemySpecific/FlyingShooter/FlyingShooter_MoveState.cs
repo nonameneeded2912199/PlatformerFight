@@ -7,6 +7,7 @@ public class FlyingShooter_MoveState : MoveState
     private FlyingShooter enemy;
     private bool isPlayerInCircleRange;
 
+
     public FlyingShooter_MoveState(FiniteStateMachine stateMachine, FlyingShooter enemy, string animBoolName, D_MoveState stateData) :
         base(stateMachine, enemy, animBoolName, stateData)
     {
@@ -40,7 +41,8 @@ public class FlyingShooter_MoveState : MoveState
 
         if (wallCheck)
         {
-            enemy.Flip();
+            if ((enemy.facingRight && enemy.onRightWall) || (!enemy.facingRight && !enemy.onRightWall))
+                enemy.Flip();
             enemy.SetVelocity(stateData.movementSpeed);
         }
     }

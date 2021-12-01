@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy2 : Entity
+public class Enemy2 : BaseEnemy
 {
     public E2_MoveState moveState { get; private set; }
 
@@ -56,7 +56,7 @@ public class Enemy2 : Entity
     [SerializeField]
     private Transform rangedAttackPosition;
 
-    public override void Start()
+    protected override void Start()
     {
         base.Start();
 
@@ -73,7 +73,7 @@ public class Enemy2 : Entity
         stateMachine.Initialize(moveState);
     }
 
-    public override void TakeDamage(AttackDetails attackDetails)
+    protected override void TakeDamage(AttackDetails attackDetails)
     {
         base.TakeDamage(attackDetails);
 
@@ -99,7 +99,7 @@ public class Enemy2 : Entity
         }
     }
 
-    public override void OnDrawGizmos()
+    protected override void OnDrawGizmos()
     {
         base.OnDrawGizmos();
 

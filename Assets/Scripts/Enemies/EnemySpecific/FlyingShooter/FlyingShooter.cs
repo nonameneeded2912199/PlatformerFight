@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FlyingShooter : Entity
+public class FlyingShooter : BaseEnemy
 {
     public FlyingShooter_MoveState moveState { get; private set; }
 
@@ -25,7 +25,7 @@ public class FlyingShooter : Entity
     [SerializeField]
     private Transform playerCircleDetector;
 
-    public override void Start()
+    protected override void Start()
     {
         base.Start();
 
@@ -36,7 +36,7 @@ public class FlyingShooter : Entity
         stateMachine.Initialize(moveState);
     }
 
-    public override void TakeDamage(AttackDetails attackDetails)
+    protected override void TakeDamage(AttackDetails attackDetails)
     {
         base.TakeDamage(attackDetails);
 
@@ -44,12 +44,5 @@ public class FlyingShooter : Entity
         {
             stateMachine.ChangeState(deadState);
         }
-    }
-
-    public override void Respawn()
-    {
-        base.Respawn();
-        stateMachine.Initialize(moveState);
-        Debug.Log("Respawned");
     }
 }

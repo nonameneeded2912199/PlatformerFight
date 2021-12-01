@@ -77,21 +77,21 @@ public class Stage1Boss_SpecialAttack3 : MoveState
         {
             for (float i = 0; i < 2 * Mathf.PI; i += 2 * Mathf.PI / 4)
             {
-                GameObject bulletOBJ = Bullet.GetBullet(boss.transform.position, rangedData.bulletShootTypes[0].bulletSpeed, i, rangedData.bulletShootTypes[0].bulletAcceleration,
-                        rangedData.bulletShootTypes[0].bulletLifeSpan, rangedData.bulletShootTypes[0].bulletDamage, rangedData.bulletShootTypes[0].bulletType,
-                        rangedData.bulletShootTypes[0].bulletColor, rangedData.bulletShootTypes[0].destroyOnInvisible);
+                //GameObject bulletOBJ = Bullet.GetBullet(BulletOwner.Enemy, boss.transform.position, rangedData.bulletShootTypes[0].bulletSpeed, i, rangedData.bulletShootTypes[0].bulletAcceleration,
+                //        rangedData.bulletShootTypes[0].bulletLifeSpan, rangedData.bulletShootTypes[0].bulletDamage, rangedData.bulletShootTypes[0].bulletType,
+                //        rangedData.bulletShootTypes[0].bulletColor, rangedData.bulletShootTypes[0].destroyOnInvisible);
 
-                BulletCommand bulletCommand = bulletOBJ.AddComponent<BulletCommand>();
-                void update()
-                {
-                    Bullet bulletCom = bulletOBJ.GetComponent<Bullet>();
-                    if (bulletCommand.frame >= 30)
-                    {
-                        bulletCom.Direction += Mathf.Deg2Rad;
-                    }
-                }
+                //BulletCommand bulletCommand = bulletOBJ.AddComponent<BulletCommand>();
+                //void update()
+                //{
+                //    Bullet bulletCom = bulletOBJ.GetComponent<Bullet>();
+                //    if (bulletCommand.frame >= 30)
+                //    {
+                //        bulletCom.Direction += Mathf.Deg2Rad;
+                //    }
+                //}
 
-                bulletCommand.update = update;
+                //bulletCommand.update = update;
             }
             yield return new WaitForSeconds(4f);
         }
@@ -103,21 +103,21 @@ public class Stage1Boss_SpecialAttack3 : MoveState
         {
             for (float i = 0; i < 2 * Mathf.PI; i += 2 * Mathf.PI / 8)
             {
-                GameObject bulletOBJ = Bullet.GetBullet(boss.transform.position, rangedData.bulletShootTypes[0].bulletSpeed, i, rangedData.bulletShootTypes[0].bulletAcceleration,
-                        rangedData.bulletShootTypes[0].bulletLifeSpan, rangedData.bulletShootTypes[0].bulletDamage, rangedData.bulletShootTypes[0].bulletType,
-                        rangedData.bulletShootTypes[0].bulletColor, rangedData.bulletShootTypes[0].destroyOnInvisible);
+                //GameObject bulletOBJ = Bullet.GetBullet(BulletOwner.Enemy, boss.transform.position, rangedData.bulletShootTypes[0].bulletSpeed, i, rangedData.bulletShootTypes[0].bulletAcceleration,
+                //        rangedData.bulletShootTypes[0].bulletLifeSpan, rangedData.bulletShootTypes[0].bulletDamage, rangedData.bulletShootTypes[0].bulletType,
+                //        rangedData.bulletShootTypes[0].bulletColor, rangedData.bulletShootTypes[0].destroyOnInvisible);
 
-                BulletCommand bulletCommand = bulletOBJ.AddComponent<BulletCommand>();
-                void update()
-                {
-                    Bullet bulletCom = bulletOBJ.GetComponent<Bullet>();
-                    if (bulletCommand.frame >= 30)
-                    {
-                        bulletCom.Direction += Mathf.Deg2Rad;
-                    }
-                }
+                //BulletCommand bulletCommand = bulletOBJ.AddComponent<BulletCommand>();
+                //void update()
+                //{
+                //    Bullet bulletCom = bulletOBJ.GetComponent<Bullet>();
+                //    if (bulletCommand.frame >= 30)
+                //    {
+                //        bulletCom.Direction += Mathf.Deg2Rad;
+                //    }
+                //}
 
-                bulletCommand.update = update;
+                //bulletCommand.update = update;
             }
             yield return new WaitForSeconds(3f);
         }
@@ -129,21 +129,21 @@ public class Stage1Boss_SpecialAttack3 : MoveState
         {
             for (float i = 0; i < 2 * Mathf.PI; i += 2 * Mathf.PI / 12)
             {
-                GameObject bulletOBJ = Bullet.GetBullet(boss.transform.position, rangedData.bulletShootTypes[0].bulletSpeed, i, rangedData.bulletShootTypes[0].bulletAcceleration,
-                        rangedData.bulletShootTypes[0].bulletLifeSpan, rangedData.bulletShootTypes[0].bulletDamage, rangedData.bulletShootTypes[0].bulletType,
-                        rangedData.bulletShootTypes[0].bulletColor, rangedData.bulletShootTypes[0].destroyOnInvisible);
+                //GameObject bulletOBJ = Bullet.GetBullet(BulletOwner.Enemy, boss.transform.position, rangedData.bulletShootTypes[0].bulletSpeed, i, rangedData.bulletShootTypes[0].bulletAcceleration,
+                //        rangedData.bulletShootTypes[0].bulletLifeSpan, rangedData.bulletShootTypes[0].bulletDamage, rangedData.bulletShootTypes[0].bulletType,
+                //        rangedData.bulletShootTypes[0].bulletColor, rangedData.bulletShootTypes[0].destroyOnInvisible);
 
-                BulletCommand bulletCommand = bulletOBJ.AddComponent<BulletCommand>();
-                void update()
-                {
-                    Bullet bulletCom = bulletOBJ.GetComponent<Bullet>();
-                    if (bulletCommand.frame >= 30)
-                    {
-                        bulletCom.Direction += Mathf.Deg2Rad;
-                    }
-                }
+                //BulletCommand bulletCommand = bulletOBJ.AddComponent<BulletCommand>();
+                //void update()
+                //{
+                //    Bullet bulletCom = bulletOBJ.GetComponent<Bullet>();
+                //    if (bulletCommand.frame >= 30)
+                //    {
+                //        bulletCom.Direction += Mathf.Deg2Rad;
+                //    }
+                //}
 
-                bulletCommand.update = update;
+                //bulletCommand.update = update;
             }
             yield return new WaitForSeconds(2f);
         }
@@ -155,21 +155,21 @@ public class Stage1Boss_SpecialAttack3 : MoveState
         {
             for (float i = 0; i < 2 * Mathf.PI; i += 2 * Mathf.PI / 16)
             {
-                GameObject bulletOBJ = Bullet.GetBullet(boss.transform.position, rangedData.bulletShootTypes[0].bulletSpeed, i, rangedData.bulletShootTypes[0].bulletAcceleration,
-                        rangedData.bulletShootTypes[0].bulletLifeSpan, rangedData.bulletShootTypes[0].bulletDamage, rangedData.bulletShootTypes[0].bulletType,
-                        rangedData.bulletShootTypes[0].bulletColor, rangedData.bulletShootTypes[0].destroyOnInvisible);
+                //GameObject bulletOBJ = Bullet.GetBullet(BulletOwner.Enemy, boss.transform.position, rangedData.bulletShootTypes[0].bulletSpeed, i, rangedData.bulletShootTypes[0].bulletAcceleration,
+                //        rangedData.bulletShootTypes[0].bulletLifeSpan, rangedData.bulletShootTypes[0].bulletDamage, rangedData.bulletShootTypes[0].bulletType,
+                //        rangedData.bulletShootTypes[0].bulletColor, rangedData.bulletShootTypes[0].destroyOnInvisible);
 
-                BulletCommand bulletCommand = bulletOBJ.AddComponent<BulletCommand>();
-                void update()
-                {
-                    Bullet bulletCom = bulletOBJ.GetComponent<Bullet>();
-                    if (bulletCommand.frame >= 30)
-                    {
-                        bulletCom.Direction += Mathf.Deg2Rad;
-                    }
-                }
+                //BulletCommand bulletCommand = bulletOBJ.AddComponent<BulletCommand>();
+                //void update()
+                //{
+                //    Bullet bulletCom = bulletOBJ.GetComponent<Bullet>();
+                //    if (bulletCommand.frame >= 30)
+                //    {
+                //        bulletCom.Direction += Mathf.Deg2Rad;
+                //    }
+                //}
 
-                bulletCommand.update = update;
+                //bulletCommand.update = update;
             }
             yield return new WaitForSeconds(1f);
         }           
