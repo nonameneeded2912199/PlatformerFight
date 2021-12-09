@@ -2,13 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace CharacterThings
+namespace PlatformerFight.CharacterThings
 {
     public class CharacterStats : MonoBehaviour
     {
         public CharacterData_SO characterData;
 
-        public float BaseHP 
+        public float BaseHP
         {
             get
             {
@@ -114,7 +114,7 @@ namespace CharacterThings
                 apRecoveryRate = BaseAPRecoveryRate;
             }
 
-            
+
         }
 
         private void Update()

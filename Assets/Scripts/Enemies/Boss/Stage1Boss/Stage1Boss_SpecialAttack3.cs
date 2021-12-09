@@ -20,21 +20,21 @@ public class Stage1Boss_SpecialAttack3 : MoveState
         base.Enter();
         attackDuration = Random.Range(stateData.minMoveTime, stateData.maxMoveTime);
 
-        switch (GameManager.Instance.currentGameDifficulty)
-        {
-            case GameDifficulty.EASY:
-                boss.StartCoroutine(CyclingBarrierEasy());
-                break;
-            case GameDifficulty.NORMAL:
-                boss.StartCoroutine(CyclingBarrierNormal());
-                break;
-            case GameDifficulty.HARD:
-                boss.StartCoroutine(CyclingBarrierHard());
-                break;
-            case GameDifficulty.LUNATIC:
-                boss.StartCoroutine(CyclingBarrierLunatic());
-                break;
-        }    
+        //switch (GameManager.Instance.currentGameDifficulty)
+        //{
+        //    case GameDifficulty.EASY:
+        //        boss.StartCoroutine(CyclingBarrierEasy());
+        //        break;
+        //    case GameDifficulty.NORMAL:
+        //        boss.StartCoroutine(CyclingBarrierNormal());
+        //        break;
+        //    case GameDifficulty.HARD:
+        //        boss.StartCoroutine(CyclingBarrierHard());
+        //        break;
+        //    case GameDifficulty.LUNATIC:
+        //        boss.StartCoroutine(CyclingBarrierLunatic());
+        //        break;
+        //}    
     }
 
     public override void Exit()

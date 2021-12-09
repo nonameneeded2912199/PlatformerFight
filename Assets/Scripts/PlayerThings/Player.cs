@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
-namespace CharacterThings
+namespace PlatformerFight.CharacterThings
 {
     public class Player : BaseCharacter
     {
@@ -68,10 +68,10 @@ namespace CharacterThings
             playerAttack = GetComponent<PlayerAttack>();
             playerInputAction = new PlayerInputAction();
 
-            playerInputAction.Player.Move.performed += ctx => MovementInput(ctx);
-            playerInputAction.Player.Jump.performed += ctx => OnJumpPerformedInput();
-            playerInputAction.Player.Jump.canceled += ctx => OnJumpCancelledInput();
-            playerInputAction.Player.Dash.performed += ctx => Dash();
+            playerInputAction.Gameplay.Move.performed += ctx => MovementInput(ctx);
+            playerInputAction.Gameplay.Jump.performed += ctx => OnJumpPerformedInput();
+            playerInputAction.Gameplay.Jump.canceled += ctx => OnJumpCancelledInput();
+            playerInputAction.Gameplay.Dash.performed += ctx => Dash();
 
             playerInputAction.Enable();
         }
@@ -89,9 +89,9 @@ namespace CharacterThings
         {
             base.Update();
             int layer = 0;
-            layer |= (1 << LayerMask.NameToLayer("Shield"));
-            layer |= (1 << LayerMask.NameToLayer("Damagable"));
-            
+            layer |= 1 << LayerMask.NameToLayer("Shield");
+            layer |= 1 << LayerMask.NameToLayer("Damagable");
+
             if (isGrounded && !isDashing)
             {
                 //wallJumped = false;
@@ -351,9 +351,11 @@ namespace CharacterThings
 
                 CharacterStats.CurrentHP -= incomingDMG;
 
-                GameObject damageOBJ = PoolManager.SpawnObject(GameManager.Instance.DamagePopup);
-                DamagePopup damagePopup = damageOBJ.GetComponent<DamagePopup>();
-                damagePopup.SetPopup(incomingDMG, DamageType.NormalDamage, transform.position);
+                //GameObject damageOBJ = PoolManager.SpawnObject(DamagePopup.OriginalDamagePopup);
+                //DamagePopup damagePopup = damageOBJ.GetComponent<DamagePopup>();
+                //damagePopup.SetPopup(incomingDMG, DamageType.NormalDamage, transform.position);
+
+                popupEventChannel.RaiseTextPopupEvent(incomingDMG.ToString(), transform.position);
 
                 if (CharacterStats.CurrentHP > 0)
                 {

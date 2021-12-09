@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace CharacterThings
+namespace PlatformerFight.CharacterThings
 {
     [CreateAssetMenu(fileName = "NewCharacterDataSO", menuName = "Characters/Character Stats/Data")]
     public class CharacterData_SO : ScriptableObject

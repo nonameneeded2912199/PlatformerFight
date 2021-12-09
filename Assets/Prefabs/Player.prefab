@@ -661,17 +661,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f4fd012997b7a74290d27def26c429b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  normalMat: {fileID: 0}
+  whiteMat: {fileID: 0}
   groundRaycastLength: 0.64
   groundRaycastOffset: {x: 0.19, y: 0, z: 0}
   wallRaycastLength: 0.24
   onWall: 0
   onRightWall: 0
+  canBeKnockedback: 0
   knockback: 0
   knockbackSpeed: {x: 1, y: 5}
   knockbackDuration: 0.5
   platformLayer:
     serializedVersion: 2
     m_Bits: 128
+  popupEventChannel: {fileID: 11400000, guid: 86e2776f5bd02d54bab1caecc4dbd9f3, type: 2}
+  isGrounded: 0
   facingRight: 1
   movementSpeed: 5
   jumpForce: 15

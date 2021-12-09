@@ -1,3 +1,4 @@
+using PlatformerFight.Buffs;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,5 +11,5 @@ public struct AttackDetails
     public float stunDamageAmount;
     public float increasedKnockbackTime;
     public Vector2 increasedKnockbackSpeed;
-    public List<CharacterThings.BaseBuff> buffInflicts;
+    public List<BaseBuff> buffInflicts;
 }

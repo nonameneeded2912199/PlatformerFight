@@ -1,3 +1,4 @@
+using PlatformerFight.CharacterThings;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,7 +15,7 @@ public class DeathTrap : MonoBehaviour
             //collision.gameObject.GetComponent<CharacterController>().Die();
             //UnityEngine.SceneManagement.SceneManager.LoadScene(0);
             collision.gameObject.transform.position = spawnPoint.position;
-            collision.gameObject.GetComponent<CharacterThings.CharacterStats>().CurrentHP = collision.gameObject.GetComponent<CharacterThings.CharacterStats>().MaxHP;
+            collision.gameObject.GetComponent<CharacterStats>().CurrentHP = collision.gameObject.GetComponent<CharacterStats>().MaxHP;
         }    
     }
 }

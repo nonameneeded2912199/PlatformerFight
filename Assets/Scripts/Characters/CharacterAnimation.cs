@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace CharacterThings
+namespace PlatformerFight.CharacterThings
 {
     public class CharacterAnimation : MonoBehaviour
     {

@@ -67,21 +67,21 @@ public class Stage1Boss_SpecialAttack2 : RangedAttackState
     {
         base.TriggerAttack();
         startAttackTime = Time.time;
-        switch (GameManager.Instance.currentGameDifficulty)
-        {
-            case GameDifficulty.EASY:
-                boss.StartCoroutine(AttackEasy());
-                break;
-            case GameDifficulty.NORMAL:
-                boss.StartCoroutine(AttackNormal());
-                break;
-            case GameDifficulty.HARD:
-                boss.StartCoroutine(AttackHard());
-                break;
-            case GameDifficulty.LUNATIC:
-                boss.StartCoroutine(AttackLunatic());
-                break;
-        }
+        //switch (GameManager.Instance.currentGameDifficulty)
+        //{
+        //    case GameDifficulty.EASY:
+        //        boss.StartCoroutine(AttackEasy());
+        //        break;
+        //    case GameDifficulty.NORMAL:
+        //        boss.StartCoroutine(AttackNormal());
+        //        break;
+        //    case GameDifficulty.HARD:
+        //        boss.StartCoroutine(AttackHard());
+        //        break;
+        //    case GameDifficulty.LUNATIC:
+        //        boss.StartCoroutine(AttackLunatic());
+        //        break;
+        //}
     }
 
     private IEnumerator AttackEasy()

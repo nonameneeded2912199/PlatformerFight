@@ -1,10 +1,11 @@
+using PlatformerFight.CharacterThings;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace CharacterThings
+namespace PlatformerFight.Buffs
 {
     public abstract class BaseBuff : AbilityEffect
     {
@@ -34,7 +35,7 @@ namespace CharacterThings
             timed = Buff.Timed;
             maxStacks = Buff.maxStacks;
 
-            BuffIconPrefab = GameObject.Instantiate(Buff.buffIconPrefab);
+            BuffIconPrefab = UnityEngine.Object.Instantiate(Buff.buffIconPrefab);
 
             IconSkill = BuffIconPrefab.GetComponentInChildren<Image>();
             IconSkill.sprite = Buff.icon;

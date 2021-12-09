@@ -26,7 +26,7 @@ public class PlayerData : IDataManager
     {
         checkPointName = DataOnCheckPoint.CheckPointName;
 
-        difficulty = (int)GameManager.Instance.currentGameDifficulty;
+        //difficulty = (int)GameManager.Instance.currentGameDifficulty;
 
         sceneName = DataOnCheckPoint.sceneName;
     }

@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
-using CharacterThings.Abilities;
+using PlatformerFight.Abilities;
 
-namespace CharacterThings
+namespace PlatformerFight.CharacterThings
 {
     public class PlayerAttack : MonoBehaviour
     {
@@ -66,6 +66,10 @@ namespace CharacterThings
         [SerializeField]
         protected Skill currentSkill;
 
+        public delegate void OnSkillEnd();
+
+        public OnSkillEnd onSkillEndAction;
+
         public Transform AttackPoint;
 
 
@@ -105,11 +109,11 @@ namespace CharacterThings
 
             playerInputAction = new PlayerInputAction();
 
-            playerInputAction.Player.NormalATK.performed += ctx => NormalAttackButton(ctx);
-            playerInputAction.Player.Skill1.performed += ctx => SkillButton1(ctx);
-            playerInputAction.Player.Skill2.performed += ctx => SkillButton2(ctx);
-            playerInputAction.Player.Skill3.performed += ctx => SkillButton3(ctx);
-            playerInputAction.Player.Skill4.performed += ctx => SkillButton4(ctx);
+            playerInputAction.Gameplay.NormalATK.performed += ctx => NormalAttackButton(ctx);
+            playerInputAction.Gameplay.Skill1.performed += ctx => SkillButton1(ctx);
+            playerInputAction.Gameplay.Skill2.performed += ctx => SkillButton2(ctx);
+            playerInputAction.Gameplay.Skill3.performed += ctx => SkillButton3(ctx);
+            playerInputAction.Gameplay.Skill4.performed += ctx => SkillButton4(ctx);
             playerInputAction.Enable();
         }
 
@@ -255,8 +259,11 @@ namespace CharacterThings
         protected virtual bool IsAttackingAnimation()
         {
             if (currentSkill != null)
-            {
-                return animatorStateInfo.IsName(currentSkill.currentVariation.animationName);
+            {             
+                foreach (string animationName in currentSkill.currentVariation.animationName)
+                {
+                    return animatorStateInfo.IsName(animationName);
+                }
             }
             return false;
         }
@@ -265,9 +272,9 @@ namespace CharacterThings
         {
             for (int i = 0; i < normalAttack.Variations.Count; i++)
             {
-                if (animatorStateInfo.IsName(normalAttack.Variations[i].animationName))
+                foreach (string animationName in normalAttack.Variations[i].animationName)
                 {
-                    return true;
+                    return animatorStateInfo.IsName(animationName);
                 }
             }
             return false;
@@ -384,6 +391,12 @@ namespace CharacterThings
                 }
             }
         }
+
+        public void EndAttack()
+        {
+            isAttacking = false;
+            isSkillAttacking = false;
+        }    
 
         /*protected virtual void SetupBeforeSkill()
         {

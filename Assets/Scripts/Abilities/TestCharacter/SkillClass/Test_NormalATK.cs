@@ -1,9 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using CharacterThings;
+using PlatformerFight.CharacterThings;
 
-namespace CharacterThings.Abilities
+namespace PlatformerFight.Abilities
 {
     public class Test_NormalATK : Skill
     {
@@ -11,7 +11,7 @@ namespace CharacterThings.Abilities
         public Test_NormalATK(ScriptableSkill scriptableSkill, BaseCharacter executor, Transform attackPoint)
             : base(scriptableSkill, executor, attackPoint)
         {
-            
+
         }
 
         public override bool Execute()
@@ -19,7 +19,7 @@ namespace CharacterThings.Abilities
             if (Executor.CharacterStats.CurrentAP >= APCost)
             {
                 Executor.Rigidbody.velocity = Vector2.zero;
-                Executor.CharacterAnimation.PlayAnim(currentVariation.animationName);
+                Executor.CharacterAnimation.PlayAnim(currentVariation.animationName[0]);
                 Executor.CharacterStats.ConsumeAP(APCost);
                 if (currentVariation.moveWhileExecuting)
                     Executor.SetVelocity(currentVariation.movingVelocity);
@@ -36,15 +36,15 @@ namespace CharacterThings.Abilities
                 HashSet<GameObject> ignoreList = new HashSet<GameObject>();
 
                 int damagableLayer = 0;
-                damagableLayer |= (1 << LayerMask.NameToLayer("Shield"));
-                damagableLayer |= (1 << LayerMask.NameToLayer("Damagable"));
+                damagableLayer |= 1 << LayerMask.NameToLayer("Shield");
+                damagableLayer |= 1 << LayerMask.NameToLayer("Damagable");
 
-                if (currentVariation.circularHitbox)                
-                    hitEnemies = Physics2D.OverlapCircleAll(AttackPoint.position, currentVariation.attackRadius, damagableLayer);                
-                else                
-                    hitEnemies = Physics2D.OverlapAreaAll(topLeft, bottomRight, damagableLayer);                
+                if (currentVariation.circularHitbox)
+                    hitEnemies = Physics2D.OverlapCircleAll(AttackPoint.position, currentVariation.attackRadius, damagableLayer);
+                else
+                    hitEnemies = Physics2D.OverlapAreaAll(topLeft, bottomRight, damagableLayer);
 
-                foreach(Collider2D hitEnemy in hitEnemies)
+                foreach (Collider2D hitEnemy in hitEnemies)
                 {
                     if (hitEnemy.gameObject.layer == LayerMask.NameToLayer("Shield"))
                     {

@@ -1,4 +1,4 @@
-using CharacterThings;
+using PlatformerFight.CharacterThings;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -59,21 +59,21 @@ public class Stage1Boss_RangedAttack : RangedAttackState
     public override void TriggerAttack()
     {
         base.TriggerAttack();
-        switch (GameManager.Instance.currentGameDifficulty)
-        {
-            case GameDifficulty.EASY:
-                boss.StartCoroutine(AttackEasy());
-                break;
-            case GameDifficulty.NORMAL:
-                boss.StartCoroutine(AttackNormal());
-                break;
-            case GameDifficulty.HARD:
-                boss.StartCoroutine(AttackHard());
-                break;
-            case GameDifficulty.LUNATIC:
-                boss.StartCoroutine(AttackLunatic());
-                break;
-        }
+        //switch (GameManager.Instance.currentGameDifficulty)
+        //{
+        //    case GameDifficulty.EASY:
+        //        boss.StartCoroutine(AttackEasy());
+        //        break;
+        //    case GameDifficulty.NORMAL:
+        //        boss.StartCoroutine(AttackNormal());
+        //        break;
+        //    case GameDifficulty.HARD:
+        //        boss.StartCoroutine(AttackHard());
+        //        break;
+        //    case GameDifficulty.LUNATIC:
+        //        boss.StartCoroutine(AttackLunatic());
+        //        break;
+        //}
     }
 
     public IEnumerator AttackEasy()

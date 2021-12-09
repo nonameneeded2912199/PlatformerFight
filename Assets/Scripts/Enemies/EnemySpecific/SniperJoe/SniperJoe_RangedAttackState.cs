@@ -73,40 +73,29 @@ public class SniperJoe_RangedAttackState : RangedAttackState
         isAttacking = true;
         float targetAngle = enemy.facingRight ? 0 : Mathf.PI;
         float startingAngle = 0;
+        BulletDetails[] bulletDetails = stateData.bulletDetails;
 
-        switch (GameManager.Instance.currentGameDifficulty)
+        switch (enemy.GameStateSO.CurrentDifficulty)
         {
             case GameDifficulty.EASY:
                 /*Bullet.GetBullet(BulletOwner.Enemy, attackPosition.position, stateData.bulletShootTypes[0].bulletSpeed, angle, stateData.bulletShootTypes[0].bulletLifeSpan,
                     stateData.bulletShootTypes[0].bulletDamage, stateData.bulletShootTypes[0].bulletType, stateData.bulletShootTypes[0].bulletColor);*/
-                for (int i = 0; i < 1; i++)
-                {
-                    var bulletCom = PoolManager.SpawnObject(GameManager.Instance.CommonBullet).GetComponent<Bullet>();
-                    bulletCom.SetAllegiance(enemy.tag);
-                    bulletCom.SetAttributes(attackPosition.position, stateData.bulletShootTypes[0].bulletSpeed, targetAngle, 0, stateData.bulletShootTypes[0].bulletLifeSpan, enemy.CharacterStats.CurrentAttack / 2, 0.5f);
-                }
+                enemy.BulletEventChannel.RaiseBulletEvent(entity.tag, attackPosition.position, bulletDetails[0].bulletSpeed, targetAngle, bulletDetails[0].bulletAcceleration,
+                    bulletDetails[0].bulletLifeSpan, bulletDetails[0].damageMultiplier * enemy.CharacterStats.CurrentAttack / 2, 0.5f, bulletDetails[0].hitRadius, 
+                    bulletDetails[0].bulletSprite, bulletDetails[0].animatorOverrideController);               
                 break;
             case GameDifficulty.NORMAL:
-                for (int i = 0; i < 1; i++)
-                {
-                    //Bullet.GetBullet(BulletOwner.Enemy, attackPosition.position, stateData.bulletShootTypes[0].bulletSpeed, angle + i, stateData.bulletShootTypes[0].bulletLifeSpan,
-                    // stateData.bulletShootTypes[0].bulletDamage, stateData.bulletShootTypes[0].bulletType, stateData.bulletShootTypes[0].bulletColor,
-                    // stateData.bulletShootTypes[0].destroyOnInvisible);
-                    var bulletCom = PoolManager.SpawnObject(GameManager.Instance.CommonBullet).GetComponent<Bullet>();
-                    bulletCom.SetAllegiance(enemy.tag);
-                    bulletCom.SetAttributes(attackPosition.position, stateData.bulletShootTypes[0].bulletSpeed, targetAngle, 0, stateData.bulletShootTypes[0].bulletLifeSpan, enemy.CharacterStats.CurrentAttack, 0.5f);
-                }
+                enemy.BulletEventChannel.RaiseBulletEvent(entity.tag, attackPosition.position, bulletDetails[0].bulletSpeed, targetAngle, bulletDetails[0].bulletAcceleration,
+                    bulletDetails[0].bulletLifeSpan, bulletDetails[0].damageMultiplier * enemy.CharacterStats.CurrentAttack, 0.5f, bulletDetails[0].hitRadius,
+                    bulletDetails[0].bulletSprite, bulletDetails[0].animatorOverrideController);                
                 break;
             case GameDifficulty.HARD:
                 startingAngle = targetAngle - Mathf.PI / 18;
                 for (float i = 0; i < 3; i++)
                 {
-                    //Bullet.GetBullet(BulletOwner.Enemy, attackPosition.position, stateData.bulletShootTypes[0].bulletSpeed, angle + i, stateData.bulletShootTypes[0].bulletLifeSpan,
-                    //stateData.bulletShootTypes[0].bulletDamage * 1.5f, stateData.bulletShootTypes[0].bulletType, stateData.bulletShootTypes[0].bulletColor,
-                    //stateData.bulletShootTypes[0].destroyOnInvisible);
-                    var bulletCom = PoolManager.SpawnObject(GameManager.Instance.CommonBullet).GetComponent<Bullet>();
-                    bulletCom.SetAllegiance(enemy.tag);
-                    bulletCom.SetAttributes(attackPosition.position, stateData.bulletShootTypes[0].bulletSpeed, startingAngle, 0, stateData.bulletShootTypes[0].bulletLifeSpan, enemy.CharacterStats.CurrentAttack, 0.5f);
+                    enemy.BulletEventChannel.RaiseBulletEvent(entity.tag, attackPosition.position, bulletDetails[0].bulletSpeed, startingAngle, bulletDetails[0].bulletAcceleration,
+                    bulletDetails[0].bulletLifeSpan, bulletDetails[0].damageMultiplier * enemy.CharacterStats.CurrentAttack, 0.5f, bulletDetails[0].hitRadius,
+                    bulletDetails[0].bulletSprite, bulletDetails[0].animatorOverrideController);                    
                     startingAngle += Mathf.PI / 18;
                 }
                 break;
@@ -115,12 +104,9 @@ public class SniperJoe_RangedAttackState : RangedAttackState
                 float delta = Mathf.PI / 16;
                 for (float i = 0; i < 8; i++)
                 {
-                    //Bullet.GetBullet(BulletOwner.Enemy, attackPosition.position, stateData.bulletShootTypes[0].bulletSpeed, angle + i, stateData.bulletShootTypes[0].bulletLifeSpan,
-                    //stateData.bulletShootTypes[0].bulletDamage * 2f, stateData.bulletShootTypes[0].bulletType, stateData.bulletShootTypes[0].bulletColor,
-                    //stateData.bulletShootTypes[0].destroyOnInvisible);
-                    var bulletCom = PoolManager.SpawnObject(GameManager.Instance.CommonBullet).GetComponent<Bullet>();
-                    bulletCom.SetAllegiance(enemy.tag);
-                    bulletCom.SetAttributes(attackPosition.position, stateData.bulletShootTypes[0].bulletSpeed * 4, startingAngle, 0, stateData.bulletShootTypes[0].bulletLifeSpan, enemy.CharacterStats.CurrentAttack * 2, 0.5f);
+                    enemy.BulletEventChannel.RaiseBulletEvent(entity.tag, attackPosition.position, bulletDetails[0].bulletSpeed * 2, startingAngle, bulletDetails[0].bulletAcceleration,
+                    bulletDetails[0].bulletLifeSpan, bulletDetails[0].damageMultiplier * enemy.CharacterStats.CurrentAttack * 2, 0.5f, bulletDetails[0].hitRadius,
+                    bulletDetails[0].bulletSprite, bulletDetails[0].animatorOverrideController);                   
                     startingAngle += delta;
                 }
                 break;

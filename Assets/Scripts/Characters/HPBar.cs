@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace CharacterThings
+namespace PlatformerFight.CharacterThings
 {
     public class HPBar : MonoBehaviour
     {

@@ -1,8 +1,9 @@
+using PlatformerFight.CharacterThings;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace CharacterThings.Abilities
+namespace PlatformerFight.Abilities
 {
     public class Test_NormalAirATK : Skill
     {
@@ -26,7 +27,7 @@ namespace CharacterThings.Abilities
             }
             if (Executor.CharacterStats.CurrentAP >= APCost)
             {
-                Executor.CharacterAnimation.PlayAnim(currentVariation.animationName);
+                Executor.CharacterAnimation.PlayAnim(currentVariation.animationName[0]);
                 Executor.CharacterStats.ConsumeAP(APCost);
                 if (currentVariation.moveWhileExecuting)
                     Executor.SetVelocity(currentVariation.movingVelocity);
@@ -43,8 +44,8 @@ namespace CharacterThings.Abilities
                 HashSet<GameObject> ignoreList = new HashSet<GameObject>();
 
                 int damagableLayer = 0;
-                damagableLayer |= (1 << LayerMask.NameToLayer("Shield"));
-                damagableLayer |= (1 << LayerMask.NameToLayer("Damagable"));
+                damagableLayer |= 1 << LayerMask.NameToLayer("Shield");
+                damagableLayer |= 1 << LayerMask.NameToLayer("Damagable");
 
                 if (currentVariation.circularHitbox)
                     hitEnemies = Physics2D.OverlapCircleAll(AttackPoint.position, currentVariation.attackRadius, damagableLayer);

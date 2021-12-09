@@ -17,7 +17,7 @@ public class D_RangedAttackState : ScriptableObject
     [Header("Owner's attribute")]
     public float attackTime;
 
-    public BulletShootType[] bulletShootTypes;
+    public BulletDetails[] bulletDetails;
 }
 
 [System.Serializable]

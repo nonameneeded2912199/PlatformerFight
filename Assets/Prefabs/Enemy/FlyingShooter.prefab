@@ -499,6 +499,7 @@ MonoBehaviour:
   platformLayer:
     serializedVersion: 2
     m_Bits: 128
+  popupEventChannel: {fileID: 11400000, guid: 86e2776f5bd02d54bab1caecc4dbd9f3, type: 2}
   isGrounded: 0
   facingRight: 1
   goRight: 0
@@ -509,6 +510,8 @@ MonoBehaviour:
   playerCheckPoint: {fileID: 6826909798258021558}
   touchDamagePoint: {fileID: 6826909797254641159}
   canDestroy: 1
+  bulletEventChannel: {fileID: 11400000, guid: cf839519a667d8e47b35d9a9ad557afc, type: 2}
+  gameStateSO: {fileID: 11400000, guid: 263447437fcf8ef48a8e9e12136177ff, type: 2}
   entityData: {fileID: 11400000, guid: 6f723b3c771df6049b1aa179e5c0efab, type: 2}
   moveStateData: {fileID: 11400000, guid: b84921c83d220e747846a0da5b34827c, type: 2}
   deadStateData: {fileID: 11400000, guid: 18801f77c371fed4a9bf6c718de95b5c, type: 2}

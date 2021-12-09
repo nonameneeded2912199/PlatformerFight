@@ -35,7 +35,6 @@ public class SniperJoe_LookForPlayerState : LookForPlayerState
             lastTurnTime = Time.time;
         }
 
-        Debug.Log(entity.CheckPlayerInMaxArgoRange());
 
         if (isPlayerInMaxAgroRange)
         {

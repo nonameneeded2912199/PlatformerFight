@@ -22,14 +22,16 @@ MonoBehaviour:
   m_maxConcurrentWebRequests: 500
   m_ContiguousBundles: 0
   m_RemoteCatalogBuildPath:
-    m_Id: 675462d453d9c4b44b68e3b82e3b948f
+    m_Id: 30df0ca7272c8d04bb90ed90ac0bc9bd
   m_RemoteCatalogLoadPath:
-    m_Id: 89aa8828cc126e34ba323d78fe8bd81d
+    m_Id: 6ec568386b158bb4d8400640c5e44c09
   m_overridePlayerVersion: 
   m_GroupAssets:
   - {fileID: 11400000, guid: b2d5aa265ff7acf42907149b635ce758, type: 2}
   - {fileID: 11400000, guid: b98758a6c4ca4ae469f3ab0261e70e5e, type: 2}
-  - {fileID: 11400000, guid: 4422f10809932e140a85ac6cefb0ca9f, type: 2}
+  - {fileID: 11400000, guid: 1189f0dc3a0be9041864052488ffe9ab, type: 2}
+  - {fileID: 11400000, guid: 3f0987675fdd8c74995b2428fc16c677, type: 2}
+  - {fileID: 11400000, guid: 4ed07c47e45c3fa479fca6d6561b0bd4, type: 2}
   m_BuildSettings:
     m_CompileScriptsInVirtualMode: 0
     m_CleanupStreamingAssetsAfterBuilds: 1
@@ -71,7 +73,6 @@ MonoBehaviour:
   m_LabelTable:
     m_LabelNames:
     - default
-    - Recurring
   m_SchemaTemplates: []
   m_GroupTemplateObjects:
   - {fileID: 11400000, guid: 78781c9e1a6835d419d3bc992fdb845e, type: 2}

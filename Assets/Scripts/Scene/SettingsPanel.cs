@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SettingsPanel : MonoBehaviour, TouchOutsideInterface
+public class SettingsPanel : MonoBehaviour
 {
     [SerializeField]
     Slider slider;
@@ -17,17 +17,10 @@ public class SettingsPanel : MonoBehaviour, TouchOutsideInterface
 
     public void SetBGMVolume(float f)
     {
-        BGMManager.Instance.bgmSource.volume = f;
-        PlayerPrefs.SetFloat("Volume", f);
     }
 
     public void CancelBtn()
     {
         gameObject.SetActive(false);
-    }
-
-    public void TouchOutside()
-    {
-        CancelBtn();
     }
 }

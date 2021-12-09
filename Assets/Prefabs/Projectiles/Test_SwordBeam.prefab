@@ -49,7 +49,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &8722212491035834099
 Transform:
   m_ObjectHideFlags: 0
@@ -133,6 +133,7 @@ MonoBehaviour:
     m_Bits: 128
   damageRadius: 0.1
   hitBox: {fileID: 7290700121375870578}
+  bulletEventChannel: {fileID: 11400000, guid: cf839519a667d8e47b35d9a9ad557afc, type: 2}
 --- !u!95 &7957669205656786220
 Animator:
   serializedVersion: 3

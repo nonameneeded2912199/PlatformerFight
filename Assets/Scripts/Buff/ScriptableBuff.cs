@@ -1,9 +1,10 @@
+using PlatformerFight.CharacterThings;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace CharacterThings
+namespace PlatformerFight.Buffs
 {
     public abstract class ScriptableBuff : ScriptableObject
     {

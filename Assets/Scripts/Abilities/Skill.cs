@@ -1,8 +1,10 @@
+using PlatformerFight.Buffs;
+using PlatformerFight.CharacterThings;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace CharacterThings.Abilities
+namespace PlatformerFight.Abilities
 {
     public abstract class Skill
     {

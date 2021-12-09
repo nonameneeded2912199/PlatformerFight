@@ -8,7 +8,7 @@ public class PauseManager : MonoBehaviour
 
     void Update()
     {
-        #if UNITY_EDITOR || UNITY_STANDALONE_WIN
+        /*#if UNITY_EDITOR || UNITY_STANDALONE_WIN
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (!pauseScreen.activeInHierarchy)
@@ -16,7 +16,7 @@ public class PauseManager : MonoBehaviour
             else
                 Continue();
         }    
-        #endif
+        #endif*/
     }
 
     public void PauseButton()
@@ -34,6 +34,5 @@ public class PauseManager : MonoBehaviour
     public void ToMenu()
     {
         Time.timeScale = 1;
-        ScenesManager.Instance.LoadScene("TitleScreen", UnityEngine.SceneManagement.LoadSceneMode.Single);
     }    
 }

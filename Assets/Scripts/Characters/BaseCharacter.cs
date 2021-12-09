@@ -1,9 +1,10 @@
+using PlatformerFight.Buffs;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 
-namespace CharacterThings
+namespace PlatformerFight.CharacterThings
 {
     public abstract class BaseCharacter : MonoBehaviour
     {
@@ -63,6 +64,10 @@ namespace CharacterThings
         [SerializeField]
         protected LayerMask platformLayer;
 
+        [Space]
+        [SerializeField]
+        protected TextPopupEventChannelSO popupEventChannel = default;
+
         [SerializeField]
         protected bool isGrounded;
         public bool IsGrounded { get => isGrounded; }
@@ -75,19 +80,16 @@ namespace CharacterThings
             CharacterStats = GetComponent<CharacterStats>();
             CharacterAnimation = GetComponent<CharacterAnimation>();
             CharacterBuffManager = GetComponent<CharacterBuffManager>();
-            normalMat = GetComponent<SpriteRenderer>().sharedMaterial;
-
-            Addressables.LoadAssetAsync<Material>("WhiteMat").Completed += AddressableAsyncLoadWhiteMat;
         }
 
         protected virtual void Start()
         {
-            
+
         }
 
         protected virtual void Update()
         {
-            
+
         }
 
         protected virtual void FixedUpdate()
@@ -148,7 +150,7 @@ namespace CharacterThings
         {
             Rigidbody.velocity = new Vector2(Rigidbody.velocity.x, y);
         }
-            
+
 
         public void SetInvincibility(bool invincibility)
         {
@@ -183,7 +185,7 @@ namespace CharacterThings
                 else if (spriteRenderer.sharedMaterial == whiteMat)
                 {
                     spriteRenderer.sharedMaterial = normalMat;
-                }    
+                }
 
                 yield return new WaitForSeconds(seconds / 10);
             }
@@ -214,17 +216,6 @@ namespace CharacterThings
             // Wall Check
             Gizmos.DrawLine(transform.position, transform.position + Vector3.right * wallRaycastLength);
             Gizmos.DrawLine(transform.position, transform.position + Vector3.left * wallRaycastLength);
-        }
-
-        private void AddressableAsyncLoadWhiteMat(UnityEngine.ResourceManagement.AsyncOperations.AsyncOperationHandle<Material> asyncOperation)
-        {
-            // Set things
-            whiteMat = asyncOperation.Result;
-
-
-            // Unregister event & Release asset
-            asyncOperation.Completed -= AddressableAsyncLoadWhiteMat;
-            Addressables.Release(asyncOperation);
         }
     }
 }

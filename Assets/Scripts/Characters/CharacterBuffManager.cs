@@ -1,8 +1,9 @@
+using PlatformerFight.Buffs;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace CharacterThings
+namespace PlatformerFight.CharacterThings
 {
     public class CharacterBuffManager : MonoBehaviour
     {
@@ -38,7 +39,7 @@ namespace CharacterThings
                 else
                     Destroy(buff.BuffIconPrefab);
                 buff.Active(true);
-            }                
+            }
         }
 
         // Update is called once per frame

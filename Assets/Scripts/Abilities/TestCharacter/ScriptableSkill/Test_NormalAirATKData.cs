@@ -1,8 +1,9 @@
+using PlatformerFight.CharacterThings;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace CharacterThings.Abilities
+namespace PlatformerFight.Abilities
 {
     [CreateAssetMenu(fileName = "Test_NormalAirATKData", menuName = "Skill/TestCharacter/NormalAirATK")]
 

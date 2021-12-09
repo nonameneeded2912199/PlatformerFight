@@ -1,15 +1,16 @@
+using PlatformerFight.CharacterThings;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace CharacterThings
+namespace PlatformerFight.Buffs
 {
     public class AttackPercentBuff : BaseBuff
     {
         private readonly CharacterStats characterStats;
 
-        public AttackPercentBuff(ScriptableBuff buff, BaseCharacter host) 
+        public AttackPercentBuff(ScriptableBuff buff, BaseCharacter host)
             : base(buff, host)
         {
             characterStats = host.CharacterStats;
@@ -33,25 +34,25 @@ namespace CharacterThings
         public override void ApplyOnEnd()
         {
             ScriptableAttackPercentBuff attackBuff = Buff as ScriptableAttackPercentBuff;
-            characterStats.BonusAttack -= (attackBuff.attackIncreasePercentage * characterStats.BaseATK / 100) * effectStacks;
+            characterStats.BonusAttack -= attackBuff.attackIncreasePercentage * characterStats.BaseATK / 100 * effectStacks;
             effectStacks = 0;
-            GameObject.Destroy(BuffIconPrefab);
+            Object.Destroy(BuffIconPrefab);
         }
 
         public override void ApplyOnSkillAttacking()
         {
-            
+
         }
 
         public override void ApplyOnStart()
         {
             ScriptableAttackPercentBuff attackBuff = Buff as ScriptableAttackPercentBuff;
-            characterStats.BonusAttack += (attackBuff.attackIncreasePercentage * characterStats.BaseATK / 100);
+            characterStats.BonusAttack += attackBuff.attackIncreasePercentage * characterStats.BaseATK / 100;
         }
 
         public override void ApplyOnUpdate()
         {
-            
+
         }
     }
 }

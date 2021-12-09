@@ -1,10 +1,11 @@
-using CharacterThings;
+using PlatformerFight.Buffs;
+using PlatformerFight.CharacterThings;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace CharacterThings.Abilities
+namespace PlatformerFight.Abilities
 {
     public abstract class ScriptableSkill : ScriptableObject
     {
@@ -33,17 +34,18 @@ namespace CharacterThings.Abilities
 
         public ScriptableBuff[] buffsToExecutor;
 
-        public ScriptableBuff[] buffsInflict;      
+        public ScriptableBuff[] buffsInflict;
 
         public abstract Skill InitializeSkill(BaseCharacter executor, Transform attackPoint);
     }
+
     /// <summary>
     /// Variation of the skill
     /// </summary>
     [System.Serializable]
     public class SkillVariation
     {
-        public string animationName;
+        public string[] animationName;
 
         /// <summary>
         /// Attack multiplier based on ATK or sth

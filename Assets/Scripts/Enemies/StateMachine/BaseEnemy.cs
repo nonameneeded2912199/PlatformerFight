@@ -1,4 +1,4 @@
-using CharacterThings;
+using PlatformerFight.CharacterThings;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -31,6 +31,16 @@ public class BaseEnemy : BaseCharacter
 
     [SerializeField]
     protected bool canDestroy;
+
+    [SerializeField]
+    protected BulletEventChannelSO bulletEventChannel;
+
+    public BulletEventChannelSO BulletEventChannel => bulletEventChannel;
+
+    [SerializeField]
+    protected GameStateSO gameStateSO;
+
+    public GameStateSO GameStateSO => gameStateSO;
 
     public FiniteStateMachine stateMachine;
 
@@ -174,9 +184,11 @@ public class BaseEnemy : BaseCharacter
             currentKnockbackResistance--;
         currentStunResistance -= attackDetails.stunDamageAmount;
 
-        GameObject damageOBJ = PoolManager.SpawnObject(GameManager.Instance.DamagePopup);
-        DamagePopup damagePopup = damageOBJ.GetComponent<DamagePopup>();
-        damagePopup.SetPopup(incomingDMG, DamageType.NormalDamage, transform.position);
+        //GameObject damageOBJ = PoolManager.SpawnObject(DamagePopup.OriginalDamagePopup);
+        //DamagePopup damagePopup = damageOBJ.GetComponent<DamagePopup>();
+        //damagePopup.SetPopup(incomingDMG, DamageType.NormalDamage, transform.position);
+
+        popupEventChannel.RaiseTextPopupEvent(incomingDMG.ToString(), transform.position);
 
         StartCoroutine(BecomeInvincible(attackDetails.invincibleTime));
 

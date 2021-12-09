@@ -132,8 +132,6 @@ public class Stage1Boss : Boss
 
         HPBarsOBJ.SetActive(true);
 
-        BGMManager.Instance.PlayBGM("Stage1Boss");
-
         stateMachine.Initialize(initialState);
     }
 
@@ -156,6 +154,5 @@ public class Stage1Boss : Boss
     private void ToNextStage()
     {
         SaveManager.SceneName = "Stage2-1";
-        ScenesManager.Instance.RestartScene();
     }
 }

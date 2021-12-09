@@ -1,20 +1,21 @@
+using PlatformerFight.CharacterThings;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace CharacterThings.Abilities
+namespace PlatformerFight.Abilities
 {
     public class Test_SwordBeam : Skill
     {
-        public float BulletMultiplier { get; private set; }
+        public BulletDetails SwordBeamDetail { get; private set; }
 
-        public GameObject SwordbeamOBJ { get; private set; }
+        private BulletEventChannelSO bulletEventChannel = default;
 
-        public Test_SwordBeam(ScriptableSkill scriptableSkill, BaseCharacter executor, Transform attackPoint, float BulletMultiplier, GameObject SwordbeamOBJ)
+        public Test_SwordBeam(ScriptableSkill scriptableSkill, BaseCharacter executor, Transform attackPoint, BulletDetails swordBeamDetail, BulletEventChannelSO bulletEventChannel)
             : base(scriptableSkill, executor, attackPoint)
         {
-            this.BulletMultiplier = BulletMultiplier;
-            this.SwordbeamOBJ = SwordbeamOBJ;
+            SwordBeamDetail = swordBeamDetail;
+            this.bulletEventChannel = bulletEventChannel;
         }
 
         public override void Damage()
@@ -25,8 +26,8 @@ namespace CharacterThings.Abilities
                 HashSet<GameObject> ignoreList = new HashSet<GameObject>();
 
                 int damagableLayer = 0;
-                damagableLayer |= (1 << LayerMask.NameToLayer("Shield"));
-                damagableLayer |= (1 << LayerMask.NameToLayer("Damagable"));
+                damagableLayer |= 1 << LayerMask.NameToLayer("Shield");
+                damagableLayer |= 1 << LayerMask.NameToLayer("Damagable");
 
                 if (currentVariation.circularHitbox)
                     hitEnemies = Physics2D.OverlapCircleAll(AttackPoint.position, currentVariation.attackRadius, damagableLayer);
@@ -72,12 +73,15 @@ namespace CharacterThings.Abilities
                 direction = Executor.facingRight ? -Mathf.PI / 4 : -3 * Mathf.PI / 4;
             }
 
-            var bullet = PoolManager.SpawnObject(SwordbeamOBJ).GetComponent<Bullet>();
-            bullet.SetAllegiance(Executor.tag);
-            bullet.SetAttributes(AttackPoint.position, 8, direction, 0, 0, BulletMultiplier * Executor.CharacterStats.BaseATK, 0.5f);
+            //var bullet = PoolManager.SpawnObject(SwordbeamOBJ).GetComponent<Bullet>();
+            //bullet.SetAllegiance(Executor.tag);
+            //bullet.SetAttributes(AttackPoint.position, 8, direction, 0, 0, BulletMultiplier * Executor.CharacterStats.BaseATK, 0.5f);
 
             //GameObject bullet = Bullet.GetBullet(BulletOwner.Player, attackPoint.position, 8, direction, 0, bulletMultiplier * executor.CharacterStats.BaseATK, BulletType.Arrow,
             //    BulletColor.GREEN);
+            bulletEventChannel.RaiseBulletEvent(Executor.tag, AttackPoint.position, SwordBeamDetail.bulletSpeed, direction, SwordBeamDetail.bulletAcceleration,
+                SwordBeamDetail.bulletLifeSpan, SwordBeamDetail.damageMultiplier * Executor.CharacterStats.CurrentAttack, 0.5f, SwordBeamDetail.hitRadius,
+                SwordBeamDetail.bulletSprite, SwordBeamDetail.animatorOverrideController);
         }
 
         public override bool Execute()
@@ -94,7 +98,7 @@ namespace CharacterThings.Abilities
                     Executor.Rigidbody.velocity = Vector2.zero;
                 if (currentVariation.moveWhileExecuting)
                     Executor.SetVelocity(currentVariation.movingVelocity);
-                Executor.CharacterAnimation.PlayAnim(currentVariation.animationName);
+                Executor.CharacterAnimation.PlayAnim(currentVariation.animationName[0]);
                 Executor.CharacterStats.ConsumeAP(APCost);
                 return true;
             }

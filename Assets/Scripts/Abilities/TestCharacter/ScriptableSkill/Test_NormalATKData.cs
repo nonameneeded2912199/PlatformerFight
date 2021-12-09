@@ -1,9 +1,9 @@
-using CharacterThings;
+using PlatformerFight.CharacterThings;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace CharacterThings.Abilities
+namespace PlatformerFight.Abilities
 {
     [CreateAssetMenu(fileName = "Test_NormalATKData", menuName = "Skill/TestCharacter/NormalATK")]
     public class Test_NormalATKData : ScriptableSkill
