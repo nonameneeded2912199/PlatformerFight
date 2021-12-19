@@ -5,29 +5,35 @@ using UnityEngine;
 public class Checkpoint : MonoBehaviour
 {
     [SerializeField]
-    private string checkPointName;
+    private GameStateSO _gameStateSO;
 
-    public string CheckPointName { get => checkPointName; }
+    [SerializeField]
+    private string checkpointName;
+
+    public string CheckpointName => checkpointName;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
-            if (DataOnCheckPoint.CheckPointName != checkPointName)
-            {
-                DataOnCheckPoint.CheckPointName = checkPointName;
+            //if (DataOnCheckPoint.CheckPointName != checkPointName)
+            //{
+            //    DataOnCheckPoint.CheckPointName = checkPointName;
 
-                DataOnCheckPoint.sceneName = gameObject.scene.name;
+            //    DataOnCheckPoint.sceneName = gameObject.scene.name;
 
-                SaveManager.CheckPointName = checkPointName;
+            //    SaveManager.CheckPointName = checkPointName;
 
-                SaveManager.SceneName = gameObject.scene.name;
+            //    SaveManager.SceneName = gameObject.scene.name;
 
-                SaveManager.SaveGame();
+            //    SaveManager.SaveGame();
 
-                Debug.Log("Checked Point: " + transform.position);
-            }
+            //    Debug.Log("Checked Point: " + transform.position);
+
+            //}
             //CharacterController.Instance.Regenerate();
+            if (_gameStateSO.LastCheckpoint != checkpointName)
+                _gameStateSO.SetCheckpoint(checkpointName);
         }
     }
 }

@@ -2,7 +2,7 @@ using PlatformerFight.Buffs;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AddressableAssets;
+using DG.Tweening;
 
 namespace PlatformerFight.CharacterThings
 {
@@ -80,6 +80,8 @@ namespace PlatformerFight.CharacterThings
             CharacterStats = GetComponent<CharacterStats>();
             CharacterAnimation = GetComponent<CharacterAnimation>();
             CharacterBuffManager = GetComponent<CharacterBuffManager>();
+
+            Rigidbody.gravityScale = CharacterStats.OriginalGravityScale;
         }
 
         protected virtual void Start()
@@ -163,34 +165,35 @@ namespace PlatformerFight.CharacterThings
             transform.rotation = Quaternion.Euler(0f, facingRight ? 0 : 180f, 0f);
         }
 
-        protected IEnumerator BecomeInvincible(float seconds, bool blinking = true)
+        public void CreateDamagePopup(string text, Vector3 position)
+        {
+            popupEventChannel.RaiseTextPopupEvent(text, position);
+        }
+
+        public IEnumerator BecomeInvincible(float seconds, bool blinking = true)
         {
             IsInvincible = true;
             SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
+            bool faded = false;
             for (float i = 0; i < seconds; i += seconds / 10)
             {
-                /*if (spriteRenderer.enabled)
+                if (!faded)
                 {
-                    spriteRenderer.enabled = false;
+                    spriteRenderer.DOFade(0, (float)(seconds / 10));
+                    faded = true;
                 }
                 else
                 {
-                    spriteRenderer.enabled = true;
-                }*/
+                    spriteRenderer.DOFade(1, (float)(seconds / 10));
+                    faded = false;
+                }
 
-                if (spriteRenderer.sharedMaterial == normalMat)
-                {
-                    spriteRenderer.sharedMaterial = whiteMat;
-                }
-                else if (spriteRenderer.sharedMaterial == whiteMat)
-                {
-                    spriteRenderer.sharedMaterial = normalMat;
-                }
 
                 yield return new WaitForSeconds(seconds / 10);
             }
             //spriteRenderer.enabled = true;
-            spriteRenderer.sharedMaterial = normalMat;
+            spriteRenderer.DOFade(1, 0f);
+            //spriteRenderer.sharedMaterial = normalMat;
             IsInvincible = false;
         }
 

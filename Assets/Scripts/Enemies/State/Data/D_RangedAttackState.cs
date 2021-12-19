@@ -19,17 +19,3 @@ public class D_RangedAttackState : ScriptableObject
 
     public BulletDetails[] bulletDetails;
 }
-
-[System.Serializable]
-public class BulletShootType
-{
-    public float bulletSpeed;
-    public float bulletAcceleration;
-    public float bulletDamage;
-    public float bulletLifeSpan;
-
-    public bool destroyOnInvisible = true;
-
-    public BulletType bulletType;
-    public BulletColor bulletColor;
-}

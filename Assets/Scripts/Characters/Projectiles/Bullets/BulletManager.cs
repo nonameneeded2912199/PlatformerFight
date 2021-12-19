@@ -1,6 +1,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
+using System.Threading.Tasks;
 using UnityEngine;
 
 public class BulletManager : MonoBehaviour
@@ -35,16 +37,16 @@ public class BulletManager : MonoBehaviour
     }
 
     private Bullet SpawnBullet(string allegiance, Vector2 position, float speed, float direction, float acceleration, float lifeSpan, float damage, 
-        float invincibleTime, float radius, Sprite sprite, AnimatorOverrideController animatorOverrideController, bool destroyOnInvisible = true)
+        float invincibleTime, float radius, Sprite sprite, AnimatorOverrideController animatorOverrideController, float delay = 0, bool destroyOnInvisible = true)
     {
         Bullet bullet = bulletPool.Request();
         bullet.SetAllegiance(allegiance);
         bullet.ChangeSprite(sprite, animatorOverrideController);
         bullet.ChangeHitRadius(radius);
-        bullet.SetAttributes(position, speed, direction, acceleration, lifeSpan, damage, invincibleTime, destroyOnInvisible);
+        bullet.SetAttributes(position, speed, direction, acceleration, lifeSpan, damage, invincibleTime, delay, destroyOnInvisible);
 
         return bullet;
-    }  
+    }   
     
     private bool RetrieveBullet(Bullet bullet)
     {

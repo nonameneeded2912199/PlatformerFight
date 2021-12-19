@@ -5,10 +5,9 @@ using UnityEngine.Events;
 
 public class UI_DifficultSelectorPanel : MonoBehaviour
 {
-    public UnityAction OnCloseDifficultyPanel;
+    public UnityAction OnChooseDifficulty;
 
-    [SerializeField]
-    private VoidEventChannelSO _startNewGameEvent = default;
+    public UnityAction OnCloseDifficultyPanel;
 
     [SerializeField]
     private InputReader _inputReader = default;
@@ -26,28 +25,38 @@ public class UI_DifficultSelectorPanel : MonoBehaviour
         _inputReader.UICancelEvent -= CancelDifficultyPanel;
     }
 
+    public void DifficultySelected(GameDifficulty gameDifficulty)
+    {
+        gameStateSO.SetDifficulty(gameDifficulty);
+        OnChooseDifficulty.Invoke();
+    }
+
     public void EasyBtn()
     {
         gameStateSO.SetDifficulty(GameDifficulty.EASY);
-        _startNewGameEvent.RaiseEvent();
+        OnChooseDifficulty.Invoke();
+        //_startNewGameEvent.RaiseEvent();
     }
 
     public void NormalBtn()
     {
         gameStateSO.SetDifficulty(GameDifficulty.NORMAL);
-        _startNewGameEvent.RaiseEvent();
+        OnChooseDifficulty.Invoke();
+        //_startNewGameEvent.RaiseEvent();
     }
 
     public void HardBtn()
     {
         gameStateSO.SetDifficulty(GameDifficulty.HARD);
-        _startNewGameEvent.RaiseEvent();
+        OnChooseDifficulty.Invoke();
+        //_startNewGameEvent.RaiseEvent();
     }
 
     public void LunaticBtn()
     {
         gameStateSO.SetDifficulty(GameDifficulty.LUNATIC);
-        _startNewGameEvent.RaiseEvent();
+        OnChooseDifficulty.Invoke();
+        //_startNewGameEvent.RaiseEvent();
     }
 
     private void CancelDifficultyPanel()

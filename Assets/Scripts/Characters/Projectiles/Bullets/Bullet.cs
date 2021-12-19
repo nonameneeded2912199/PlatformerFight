@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[Serializable]
 public class Bullet : MonoBehaviour
 {
     private float lifeTime;
@@ -32,79 +33,14 @@ public class Bullet : MonoBehaviour
 
     public bool destroyOnInvisible { get; set; } = true;
 
+    public bool IsDelayed { get; set; } = false;
+
     private void Awake()
     {
         bulletCollider = GetComponent<CircleCollider2D>();
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
-
-    /*public static GameObject GetBullet(BulletOwner owner, Vector2 position, float speed, float direction, float lifeSpan, float damage, 
-        BulletType bulletType, BulletColor bulletColor, bool destroyOnInvisible = true)
-    {
-        GameObject bulletObj = PoolManager.Instance.GetPoolObject(PoolObjectType.Bullet);
-        switch (owner)
-        {
-            case BulletOwner.Player:
-                bulletObj.tag = "Player";
-                break;
-            case BulletOwner.Enemy:
-            default:
-                bulletObj.tag = "Enemy";
-                break;
-        }
-        bulletObj.transform.position = position;
-        Bullet bulletCom = bulletObj.GetComponent<Bullet>();
-        bulletCom.Speed = speed;
-        bulletCom.Direction = direction;
-
-        if (lifeSpan > 0)
-        {
-            bulletCom.LifeSpan = lifeSpan;
-            bulletCom.hasLifeSpan = true;
-        }
-
-        bulletCom.ChangeSprite(bulletType, bulletColor);
-
-        bulletCom.attackDetails.damageAmount = damage;
-        bulletObj.SetActive(true);
-        bulletCom.destroyOnInvisible = destroyOnInvisible;
-        return bulletObj;
-    }
-
-    public static GameObject GetBullet(BulletOwner owner, Vector2 position, float speed, float direction, float acceleration, float lifeSpan, float damage,
-        BulletType bulletType, BulletColor bulletColor, bool destroyOnInvisible = true)
-    {
-        GameObject bulletObj = PoolManager.Instance.GetPoolObject(PoolObjectType.Bullet);
-        switch (owner)
-        {
-            case BulletOwner.Player:
-                bulletObj.tag = "Player";
-                break;
-            case BulletOwner.Enemy:
-            default:
-                bulletObj.tag = "Enemy";
-                break;
-        }
-        bulletObj.transform.position = position;
-        Bullet bulletCom = bulletObj.GetComponent<Bullet>();
-        bulletCom.Speed = speed;
-        bulletCom.Direction = direction;
-        bulletCom.Acceleration = acceleration;
-
-        if (lifeSpan > 0)
-        {
-            bulletCom.LifeSpan = lifeSpan;
-            bulletCom.hasLifeSpan = true;
-        }
-
-        bulletCom.ChangeSprite(bulletType, bulletColor);
-
-        bulletCom.attackDetails.damageAmount = damage;
-        bulletObj.SetActive(true);
-        bulletCom.destroyOnInvisible = destroyOnInvisible;
-        return bulletObj;
-    }*/
 
     // Update is called once per frame
     void Update()
@@ -156,7 +92,7 @@ public class Bullet : MonoBehaviour
 
     private void LateUpdate()
     {
-        if (hasLifeSpan)
+        if (hasLifeSpan && !IsDelayed)
         {
             lifeTime += Time.deltaTime;
             if (lifeTime >= LifeSpan)
@@ -169,25 +105,12 @@ public class Bullet : MonoBehaviour
 
     private void OnBecameInvisible()
     {
+        if (IsDelayed)
+            return;
+
         if (destroyOnInvisible)
             BackToPool();
     }
-
-    //private void OnDisable()
-    //{
-    //    if (enabled)
-    //    {
-    //        hasLifeSpan = false;
-    //        BulletCommand[] bulletCommands = gameObject.GetComponents<BulletCommand>();
-    //        foreach (BulletCommand bc in bulletCommands)
-    //        {
-    //            Destroy(bc);
-    //        }
-
-    //        ResetAttributes();
-
-    //    }    
-    //}
 
     private void BackToPool()
     {
@@ -205,30 +128,12 @@ public class Bullet : MonoBehaviour
         }
 
         bulletEventChannel.RaiseReturnBulletEvent(this);
-        //bool returnToPool = PoolManager.ReleaseObject(gameObject);
     }    
 
-    public static float GetAngle(Vector3 o, Vector3 vector)
+    public void EndBullet()
     {
-        float angle;
-        vector -= o;
-        Vector3 cross = Vector3.Cross(Vector3.right, vector);
-        angle = Vector2.Angle(Vector3.right, vector) * Mathf.Deg2Rad;
-        return cross.z > 0 ? angle : -angle;
-    }
-
-    public static float GetAngle(Vector3 vector)
-    {
-        float angle;
-        Vector3 cross = Vector3.Cross(Vector3.right, vector);
-        angle = Vector2.Angle(Vector3.right, vector) * Mathf.Deg2Rad;
-        return cross.z > 0 ? angle : -angle;
-    }
-
-    public Vector2 GetSpeedVector()
-    {
-        return new Vector2(Speed * Mathf.Cos(Direction), Speed * Mathf.Sin(Direction));
-    }  
+        BackToPool();
+    } 
 
     public void ChangeSprite(Sprite sprite, AnimatorOverrideController animatorOverrideController)
     {
@@ -241,55 +146,19 @@ public class Bullet : MonoBehaviour
         bulletCollider.radius = radius;
     }
 
-    public void ChangeSprite(BulletType bulletType, BulletColor bulletColor)
+    public void ExitDelay()
     {
-        //switch (bulletType)
-        //{
-        //    case BulletType.Arrow:
-        //    case BulletType.Ball:
-        //    case BulletType.Ball2:
-        //        damageRadius = 0.1f;
-        //        hitBox.localPosition = Vector2.zero;
-        //        break;
-        //    case BulletType.Bullet:
-        //        damageRadius = 0.08f;
-        //        hitBox.localPosition = Vector2.zero;
-        //        break;
-        //    case BulletType.Ice:
-        //        damageRadius = 0.06f;
-        //        hitBox.localPosition = Vector2.zero;
-        //        break;
-        //    case BulletType.Inverted:
-        //        damageRadius = 0.07f; 
-        //        hitBox.localPosition = Vector2.zero;
-        //        break;
-        //    case BulletType.Kunai:
-        //        damageRadius = 0.07f;
-        //        hitBox.localPosition = new Vector2(0.03f, 0);
-        //        break;
-        //    case BulletType.Rice:
-        //        damageRadius = 0.07f;
-        //        hitBox.localPosition = Vector2.zero;
-        //        break;
-        //    case BulletType.Square:
-        //        damageRadius = 0.1f;
-        //        hitBox.localPosition = Vector2.zero;
-        //        break;
-        //    case BulletType.Star:
-        //        damageRadius = 0.07f;
-        //        hitBox.localPosition = Vector2.zero;
-        //        break;
-        //}
-
-        //GetComponent<SpriteRenderer>().sprite = BulletGraphicLoader.Instance.GetBulletGraphics(bulletType, bulletColor);
-    }   
+        gameObject.SetActive(true);
+        IsDelayed = false;
+    }
     
     public void SetAllegiance(string owner)
     {
         gameObject.tag = owner;
     }
 
-    public void SetAttributes(Vector2 position, float speed, float direction, float acceleration, float lifeSpan, float damage, float invincibleTime, bool destroyOnInvisible = true)
+    public void SetAttributes(Vector2 position, float speed, float direction, float acceleration, float lifeSpan, float damage, float invincibleTime, 
+        float delay = 0, bool destroyOnInvisible = true)
     {
         ResetAttributes();
 
@@ -297,6 +166,13 @@ public class Bullet : MonoBehaviour
         Speed = speed;
         Direction = direction;
         Acceleration = acceleration;
+
+        if (delay > 0)
+        {
+            IsDelayed = true;
+            gameObject.SetActive(false);
+            Invoke("ExitDelay", delay);
+        }
 
         if (lifeSpan > 0)
         {

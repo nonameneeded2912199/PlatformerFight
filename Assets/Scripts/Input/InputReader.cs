@@ -204,8 +204,6 @@ public class InputReader : DescriptionBaseSO, PlayerInputAction.IGameplayActions
 	{
 		if (context.phase == InputActionPhase.Performed)
 			UICancelEvent.Invoke();
-
-		Debug.LogWarning("Kike");
 	}
 
 	public void OnTrackedDevicePosition(InputAction.CallbackContext context)

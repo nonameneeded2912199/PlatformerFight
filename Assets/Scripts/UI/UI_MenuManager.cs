@@ -10,6 +10,10 @@ public class UI_MenuManager : MonoBehaviour
 	//[SerializeField] private UICredits _creditsPanel = default;
 	[SerializeField]
 	private UI_DifficultSelectorPanel difficultyPanel = default;
+
+	[SerializeField]
+	private UI_CharacterSelector characterSelect = default;
+
 	[SerializeField] 
 	private UI_MainMenu _mainMenuPanel = default;
 
@@ -109,14 +113,28 @@ public class UI_MenuManager : MonoBehaviour
 	public void OpenDifficultySelect()
     {
 		difficultyPanel.gameObject.SetActive(true);
+		difficultyPanel.OnChooseDifficulty += OpenCharacterSelect;
 		difficultyPanel.OnCloseDifficultyPanel += CloseDifficultySelect;
+    }
+
+	public void OpenCharacterSelect()
+    {
+		characterSelect.gameObject.SetActive(true);
+		characterSelect.OnCloseCharacterSelectPanel += OpenDifficultySelect;
     }
 
 	public void CloseDifficultySelect()
     {
 		difficultyPanel.OnCloseDifficultyPanel -= CloseDifficultySelect;
+		difficultyPanel.OnChooseDifficulty -= OpenCharacterSelect;
 		difficultyPanel.gameObject.SetActive(false);
-    }		
+    }
+
+	public void CloseCharacterSelect()
+	{		
+		characterSelect.OnCloseCharacterSelectPanel -= OpenDifficultySelect;
+		characterSelect.gameObject.SetActive(false);
+	}
 
 	public void OpenSettingsScreen()
 	{

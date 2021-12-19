@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b6bfd151f8a11f428bfe0e8d6dddaa7, type: 3}
+  m_Name: Char1
+  m_EditorClassIdentifier: 
+  characterID: 0
+  playerGameObject: {fileID: 3207587796168577084, guid: cd66f93b45c70d34c8d9fee8324fc86d, type: 3}
+  characterStats: {fileID: 11400000, guid: 2e6ca1a7e96f8bb49b47482b4ad348b3, type: 2}
+  characterName: Char1
+  characterDescription: Generic melee fighter
+  characterSprite: {fileID: 4466170692160701470, guid: 9f4a56457db6edc4fbc58031b37a4535, type: 3}

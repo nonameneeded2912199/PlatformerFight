@@ -1,0 +1,3882 @@
+fileFormatVersion: 2
+guid: 067eba84aa94d2840b091e145dedf240
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 5127255310220555082
+    second: PC Computer - MegaMari Marisa no Yabou - Main Bosses_0
+  - first:
+      213: 7715665693705950018
+    second: PC Computer - MegaMari Marisa no Yabou - Main Bosses_1
+  - first:
+      213: 9185944695008846319
+    second: PC Computer - MegaMari Marisa no Yabou - Main Bosses_2
+  - first:
+      213: 7754049595254533579
+    second: PC Computer - MegaMari Marisa no Yabou - Main Bosses_3
+  - first:
+      213: 5432715002584754272
+    second: PC Computer - MegaMari Marisa no Yabou - Main Bosses_4
+  - first:
+      213: 4509390845466595223
+    second: PC Computer - MegaMari Marisa no Yabou - Main Bosses_5
+  - first:
+      213: 4877364378281382017
+    second: PC Computer - MegaMari Marisa no Yabou - Main Bosses_6
+  - first:
+      213: -6064388725147872442
+    second: PC Computer - MegaMari Marisa no Yabou - Main Bosses_7
+  - first:
+      213: -9026456800190212160
+    second: PC Computer - MegaMari Marisa no Yabou - Main Bosses_8
+  - first:
+      213: 5024530481752142151
+    second: PC Computer - MegaMari Marisa no Yabou - Main Bosses_9
+  - first:
+      213: -8145478794145361621
+    second: PC Computer - MegaMari Marisa no Yabou - Main Bosses_10
+  - first:
+      213: 8740633141301249733
+    second: PC Computer - MegaMari Marisa no Yabou - Main Bosses_11
+  - first:
+      213: -135948125257987538
+    second: PC Computer - MegaMari Marisa no Yabou - Main Bosses_12
+  - first:
+      213: -147129770868572057
+    second: PC Computer - MegaMari Marisa no Yabou - Main Bosses_13
+  - first:
+      213: 6897343238254348201
+    second: PC Computer - MegaMari Marisa no Yabou - Main Bosses_14
+  - first:
+      213: -8007075620699951819
+    second: PC Computer - MegaMari Marisa no Yabou - Main Bosses_15
+  - first:
+      213: 2820624147502128793
+    second: PC Computer - MegaMari Marisa no Yabou - Main Bosses_16
+  - first:
+      213: -1552269699738811948
+    second: PC Computer - MegaMari Marisa no Yabou - Main Bosses_17
+  - first:
+      213: 1952248575710849589
+    second: PC Computer - MegaMari Marisa no Yabou - Main Bosses_18
+  - first:
+      213: 8584491713463961529
+    second: PC Computer - MegaMari Marisa no Yabou - Main Bosses_19
+  - first:
+      213: -2114105535491940361
+    second: PC Computer - MegaMari Marisa no Yabou - Main Bosses_20
+  - first:
+      213: 1963030568150706020
+    second: PC Computer - MegaMari Marisa no Yabou - Main Bosses_21
+  - first:
+      213: 3694364451845469443
+    second: PC Computer - MegaMari Marisa no Yabou - Main Bosses_22
+  - first:
+      213: -3309160105942745938
+    second: PC Computer - MegaMari Marisa no Yabou - Main Bosses_23
+  - first:
+      213: 4574948900657805136
+    second: PC Computer - MegaMari Marisa no Yabou - Main Bosses_24
+  - first:
+      213: -450573663427513693
+    second: PC Computer - MegaMari Marisa no Yabou - Main Bosses_25
+  - first:
+      213: -7728258432681644468
+    second: PC Computer - MegaMari Marisa no Yabou - Main Bosses_26
+  - first:
+      213: 7535148262087776434
+    second: PC Computer - MegaMari Marisa no Yabou - Main Bosses_27
+  - first:
+      213: -4927399022955399989
+    second: PC Computer - MegaMari Marisa no Yabou - Main Bosses_28
+  - first:
+      213: -134371333351388521
+    second: PC Computer - MegaMari Marisa no Yabou - Main Bosses_29
+  - first:
+      213: -802852115627827404
+    second: PC Computer - MegaMari Marisa no Yabou - Main Bosses_30
+  - first:
+      213: -6975785303615429543
+    second: PC Computer - MegaMari Marisa no Yabou - Main Bosses_31
+  - first:
+      213: 6403828179671224934
+    second: PC Computer - MegaMari Marisa no Yabou - Main Bosses_32
+  - first:
+      213: -1480953313177865531
+    second: PC Computer - MegaMari Marisa no Yabou - Main Bosses_33
+  - first:
+      213: -605996004666540277
+    second: PC Computer - MegaMari Marisa no Yabou - Main Bosses_34
+  - first:
+      213: 5612157288936228369
+    second: PC Computer - MegaMari Marisa no Yabou - Main Bosses_35
+  - first:
+      213: -8681158768636127848
+    second: PC Computer - MegaMari Marisa no Yabou - Main Bosses_36
+  - first:
+      213: 516797452507123847
+    second: PC Computer - MegaMari Marisa no Yabou - Main Bosses_37
+  - first:
+      213: 5221297921180255293
+    second: PC Computer - MegaMari Marisa no Yabou - Main Bosses_38
+  - first:
+      213: -7339139287496832943
+    second: PC Computer - MegaMari Marisa no Yabou - Main Bosses_39
+  - first:
+      213: -3450418560088235486
+    second: PC Computer - MegaMari Marisa no Yabou - Main Bosses_40
+  - first:
+      213: -2314388252982685380
+    second: PC Computer - MegaMari Marisa no Yabou - Main Bosses_41
+  - first:
+      213: -3474561053138876304
+    second: PC Computer - MegaMari Marisa no Yabou - Main Bosses_42
+  - first:
+      213: -7951780622020743961
+    second: PC Computer - MegaMari Marisa no Yabou - Main Bosses_43
+  - first:
+      213: -1649412033641221655
+    second: PC Computer - MegaMari Marisa no Yabou - Main Bosses_44
+  - first:
+      213: 3228003664930208149
+    second: PC Computer - MegaMari Marisa no Yabou - Main Bosses_45
+  - first:
+      213: -348664161806327072
+    second: PC Computer - MegaMari Marisa no Yabou - Main Bosses_46
+  - first:
+      213: -6741460066516648166
+    second: PC Computer - MegaMari Marisa no Yabou - Main Bosses_47
+  - first:
+      213: 8445201052864532758
+    second: PC Computer - MegaMari Marisa no Yabou - Main Bosses_48
+  - first:
+      213: 787686037382797012
+    second: PC Computer - MegaMari Marisa no Yabou - Main Bosses_49
+  - first:
+      213: -9209108376782040174
+    second: PC Computer - MegaMari Marisa no Yabou - Main Bosses_50
+  - first:
+      213: 5263986657346652953
+    second: PC Computer - MegaMari Marisa no Yabou - Main Bosses_51
+  - first:
+      213: 7877433111446626188
+    second: PC Computer - MegaMari Marisa no Yabou - Main Bosses_52
+  - first:
+      213: 5776292972903377570
+    second: PC Computer - MegaMari Marisa no Yabou - Main Bosses_53
+  - first:
+      213: -1282497956231629718
+    second: PC Computer - MegaMari Marisa no Yabou - Main Bosses_54
+  - first:
+      213: -3005740221740382758
+    second: PC Computer - MegaMari Marisa no Yabou - Main Bosses_55
+  - first:
+      213: 311074052833039778
+    second: PC Computer - MegaMari Marisa no Yabou - Main Bosses_56
+  - first:
+      213: -4579263814715932395
+    second: PC Computer - MegaMari Marisa no Yabou - Main Bosses_57
+  - first:
+      213: 3877414124965979450
+    second: PC Computer - MegaMari Marisa no Yabou - Main Bosses_58
+  - first:
+      213: -5047555529815880797
+    second: PC Computer - MegaMari Marisa no Yabou - Main Bosses_59
+  - first:
+      213: 5185319656947855835
+    second: PC Computer - MegaMari Marisa no Yabou - Main Bosses_60
+  - first:
+      213: 46364699033720726
+    second: PC Computer - MegaMari Marisa no Yabou - Main Bosses_61
+  - first:
+      213: 1049518458965646789
+    second: PC Computer - MegaMari Marisa no Yabou - Main Bosses_62
+  - first:
+      213: -5508597048709114579
+    second: PC Computer - MegaMari Marisa no Yabou - Main Bosses_63
+  - first:
+      213: -645926507654710831
+    second: PC Computer - MegaMari Marisa no Yabou - Main Bosses_64
+  - first:
+      213: 2642532253698802671
+    second: PC Computer - MegaMari Marisa no Yabou - Main Bosses_65
+  - first:
+      213: 7962712921320473329
+    second: PC Computer - MegaMari Marisa no Yabou - Main Bosses_66
+  - first:
+      213: -8119993869862393745
+    second: PC Computer - MegaMari Marisa no Yabou - Main Bosses_67
+  - first:
+      213: -1316455349615305761
+    second: PC Computer - MegaMari Marisa no Yabou - Main Bosses_68
+  - first:
+      213: -4006181559638824334
+    second: PC Computer - MegaMari Marisa no Yabou - Main Bosses_69
+  - first:
+      213: 6791518653884977317
+    second: PC Computer - MegaMari Marisa no Yabou - Main Bosses_70
+  - first:
+      213: 4541161945159870997
+    second: PC Computer - MegaMari Marisa no Yabou - Main Bosses_71
+  - first:
+      213: 7820555331084266615
+    second: PC Computer - MegaMari Marisa no Yabou - Main Bosses_72
+  - first:
+      213: 8688551766293640219
+    second: PC Computer - MegaMari Marisa no Yabou - Main Bosses_73
+  - first:
+      213: 8025559331242421190
+    second: PC Computer - MegaMari Marisa no Yabou - Main Bosses_74
+  - first:
+      213: 8027057371251840346
+    second: PC Computer - MegaMari Marisa no Yabou - Main Bosses_75
+  - first:
+      213: -4456788343968137244
+    second: PC Computer - MegaMari Marisa no Yabou - Main Bosses_76
+  - first:
+      213: -8623260690981249743
+    second: PC Computer - MegaMari Marisa no Yabou - Main Bosses_77
+  - first:
+      213: -8831074622072279172
+    second: PC Computer - MegaMari Marisa no Yabou - Main Bosses_78
+  - first:
+      213: 341828505243993663
+    second: PC Computer - MegaMari Marisa no Yabou - Main Bosses_79
+  - first:
+      213: -992152454531116531
+    second: PC Computer - MegaMari Marisa no Yabou - Main Bosses_80
+  - first:
+      213: -8569087286495613079
+    second: PC Computer - MegaMari Marisa no Yabou - Main Bosses_81
+  - first:
+      213: -4348360842763855162
+    second: PC Computer - MegaMari Marisa no Yabou - Main Bosses_82
+  - first:
+      213: 7533603110521483085
+    second: PC Computer - MegaMari Marisa no Yabou - Main Bosses_83
+  - first:
+      213: 2181203814682031904
+    second: PC Computer - MegaMari Marisa no Yabou - Main Bosses_84
+  - first:
+      213: 7396401183922845440
+    second: PC Computer - MegaMari Marisa no Yabou - Main Bosses_85
+  - first:
+      213: 3750685646477604333
+    second: PC Computer - MegaMari Marisa no Yabou - Main Bosses_86
+  - first:
+      213: -6863797116222739478
+    second: PC Computer - MegaMari Marisa no Yabou - Main Bosses_87
+  - first:
+      213: 2066340775457173468
+    second: PC Computer - MegaMari Marisa no Yabou - Main Bosses_88
+  - first:
+      213: -6161119394105886143
+    second: PC Computer - MegaMari Marisa no Yabou - Main Bosses_89
+  - first:
+      213: -6379500687098421333
+    second: PC Computer - MegaMari Marisa no Yabou - Main Bosses_90
+  - first:
+      213: 7295940797748976764
+    second: PC Computer - MegaMari Marisa no Yabou - Main Bosses_91
+  - first:
+      213: 8480134329075216868
+    second: PC Computer - MegaMari Marisa no Yabou - Main Bosses_92
+  - first:
+      213: -7895642338472544542
+    second: PC Computer - MegaMari Marisa no Yabou - Main Bosses_93
+  - first:
+      213: -6952187890635185273
+    second: PC Computer - MegaMari Marisa no Yabou - Main Bosses_94
+  - first:
+      213: -4533204330126850332
+    second: PC Computer - MegaMari Marisa no Yabou - Main Bosses_95
+  - first:
+      213: -5235746151162755026
+    second: PC Computer - MegaMari Marisa no Yabou - Main Bosses_96
+  - first:
+      213: 5578976457773457219
+    second: PC Computer - MegaMari Marisa no Yabou - Main Bosses_97
+  - first:
+      213: -8306846434626320237
+    second: PC Computer - MegaMari Marisa no Yabou - Main Bosses_98
+  - first:
+      213: 1945263059055260162
+    second: PC Computer - MegaMari Marisa no Yabou - Main Bosses_99
+  - first:
+      213: -2477740324654249175
+    second: PC Computer - MegaMari Marisa no Yabou - Main Bosses_100
+  - first:
+      213: 1752560871145428084
+    second: PC Computer - MegaMari Marisa no Yabou - Main Bosses_101
+  - first:
+      213: -7276735245578732827
+    second: PC Computer - MegaMari Marisa no Yabou - Main Bosses_102
+  - first:
+      213: 6738336364368697930
+    second: PC Computer - MegaMari Marisa no Yabou - Main Bosses_103
+  - first:
+      213: -2807657220774291673
+    second: PC Computer - MegaMari Marisa no Yabou - Main Bosses_104
+  - first:
+      213: 2859341174404759798
+    second: PC Computer - MegaMari Marisa no Yabou - Main Bosses_105
+  - first:
+      213: 8333981704826491156
+    second: PC Computer - MegaMari Marisa no Yabou - Main Bosses_106
+  - first:
+      213: -8767328236574088388
+    second: PC Computer - MegaMari Marisa no Yabou - Main Bosses_107
+  - first:
+      213: 5983454928300240726
+    second: PC Computer - MegaMari Marisa no Yabou - Main Bosses_108
+  - first:
+      213: 1943109094099731399
+    second: PC Computer - MegaMari Marisa no Yabou - Main Bosses_109
+  - first:
+      213: -1480663448551009657
+    second: PC Computer - MegaMari Marisa no Yabou - Main Bosses_110
+  - first:
+      213: -5727247204441247736
+    second: PC Computer - MegaMari Marisa no Yabou - Main Bosses_111
+  - first:
+      213: -4549227695212504514
+    second: PC Computer - MegaMari Marisa no Yabou - Main Bosses_112
+  - first:
+      213: -3236607383219508983
+    second: PC Computer - MegaMari Marisa no Yabou - Main Bosses_113
+  - first:
+      213: 9203042774511018364
+    second: PC Computer - MegaMari Marisa no Yabou - Main Bosses_114
+  - first:
+      213: 537246988332654590
+    second: PC Computer - MegaMari Marisa no Yabou - Main Bosses_115
+  - first:
+      213: 8920851861824376296
+    second: PC Computer - MegaMari Marisa no Yabou - Main Bosses_116
+  - first:
+      213: 276050576113237017
+    second: PC Computer - MegaMari Marisa no Yabou - Main Bosses_117
+  - first:
+      213: 7830731643935607874
+    second: PC Computer - MegaMari Marisa no Yabou - Main Bosses_118
+  - first:
+      213: 6920518518954033666
+    second: PC Computer - MegaMari Marisa no Yabou - Main Bosses_119
+  - first:
+      213: -8932049591880861511
+    second: PC Computer - MegaMari Marisa no Yabou - Main Bosses_120
+  - first:
+      213: 3317736024881623317
+    second: PC Computer - MegaMari Marisa no Yabou - Main Bosses_121
+  - first:
+      213: 5788893289636589084
+    second: PC Computer - MegaMari Marisa no Yabou - Main Bosses_122
+  - first:
+      213: 8910005408199627370
+    second: PC Computer - MegaMari Marisa no Yabou - Main Bosses_123
+  - first:
+      213: 7338516659967720302
+    second: PC Computer - MegaMari Marisa no Yabou - Main Bosses_124
+  - first:
+      213: 8760047151651614086
+    second: PC Computer - MegaMari Marisa no Yabou - Main Bosses_125
+  - first:
+      213: -501387173848656070
+    second: PC Computer - MegaMari Marisa no Yabou - Main Bosses_126
+  - first:
+      213: -809543668436162257
+    second: PC Computer - MegaMari Marisa no Yabou - Main Bosses_127
+  - first:
+      213: -1814037110078993502
+    second: PC Computer - MegaMari Marisa no Yabou - Main Bosses_128
+  - first:
+      213: 2752375518467724205
+    second: PC Computer - MegaMari Marisa no Yabou - Main Bosses_129
+  - first:
+      213: -8814082351403727649
+    second: PC Computer - MegaMari Marisa no Yabou - Main Bosses_130
+  - first:
+      213: 7466269374216322144
+    second: PC Computer - MegaMari Marisa no Yabou - Main Bosses_131
+  - first:
+      213: -5301287649574223350
+    second: PC Computer - MegaMari Marisa no Yabou - Main Bosses_132
+  - first:
+      213: 394507430065252238
+    second: PC Computer - MegaMari Marisa no Yabou - Main Bosses_133
+  - first:
+      213: -6818238679108582723
+    second: PC Computer - MegaMari Marisa no Yabou - Main Bosses_134
+  - first:
+      213: -4495671961740516231
+    second: PC Computer - MegaMari Marisa no Yabou - Main Bosses_135
+  - first:
+      213: 3172602725368697120
+    second: PC Computer - MegaMari Marisa no Yabou - Main Bosses_136
+  - first:
+      213: 7958312351187612859
+    second: PC Computer - MegaMari Marisa no Yabou - Main Bosses_137
+  - first:
+      213: -7844032020091083781
+    second: PC Computer - MegaMari Marisa no Yabou - Main Bosses_138
+  - first:
+      213: 2683751363150575615
+    second: PC Computer - MegaMari Marisa no Yabou - Main Bosses_139
+  - first:
+      213: 2511224621780884433
+    second: PC Computer - MegaMari Marisa no Yabou - Main Bosses_140
+  - first:
+      213: -8688799733118207701
+    second: PC Computer - MegaMari Marisa no Yabou - Main Bosses_141
+  - first:
+      213: -8773923404008504283
+    second: PC Computer - MegaMari Marisa no Yabou - Main Bosses_142
+  - first:
+      213: -3250117006324448145
+    second: PC Computer - MegaMari Marisa no Yabou - Main Bosses_143
+  - first:
+      213: -7724513808070217614
+    second: PC Computer - MegaMari Marisa no Yabou - Main Bosses_144
+  - first:
+      213: 8749139376950163801
+    second: PC Computer - MegaMari Marisa no Yabou - Main Bosses_145
+  - first:
+      213: -7271095781746431054
+    second: PC Computer - MegaMari Marisa no Yabou - Main Bosses_146
+  - first:
+      213: -6387020514983023310
+    second: PC Computer - MegaMari Marisa no Yabou - Main Bosses_147
+  - first:
+      213: -7414621846899868713
+    second: PC Computer - MegaMari Marisa no Yabou - Main Bosses_148
+  - first:
+      213: 7477514331061976975
+    second: PC Computer - MegaMari Marisa no Yabou - Main Bosses_149
+  - first:
+      213: 5204892155102575825
+    second: PC Computer - MegaMari Marisa no Yabou - Main Bosses_150
+  - first:
+      213: -939836325682278394
+    second: PC Computer - MegaMari Marisa no Yabou - Main Bosses_151
+  - first:
+      213: 731200223646421281
+    second: PC Computer - MegaMari Marisa no Yabou - Main Bosses_152
+  - first:
+      213: -900196324464622180
+    second: PC Computer - MegaMari Marisa no Yabou - Main Bosses_153
+  - first:
+      213: -6526870206494885685
+    second: PC Computer - MegaMari Marisa no Yabou - Main Bosses_154
+  - first:
+      213: -5678732821851330457
+    second: PC Computer - MegaMari Marisa no Yabou - Main Bosses_155
+  - first:
+      213: 3886428684720289330
+    second: PC Computer - MegaMari Marisa no Yabou - Main Bosses_156
+  - first:
+      213: -1692339590685239082
+    second: PC Computer - MegaMari Marisa no Yabou - Main Bosses_157
+  - first:
+      213: 621047694901798016
+    second: PC Computer - MegaMari Marisa no Yabou - Main Bosses_158
+  - first:
+      213: 3822934211105721233
+    second: PC Computer - MegaMari Marisa no Yabou - Main Bosses_159
+  - first:
+      213: 4757271664939937049
+    second: PC Computer - MegaMari Marisa no Yabou - Main Bosses_160
+  - first:
+      213: -1305911685552202354
+    second: PC Computer - MegaMari Marisa no Yabou - Main Bosses_161
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 50
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: PC Computer - MegaMari Marisa no Yabou - Main Bosses_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1361.8823
+        width: 64.166664
+        height: 85.117645
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a437e6e0a8ba72740800000000000000
+      internalID: 5127255310220555082
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MegaMari Marisa no Yabou - Main Bosses_1
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 1361.8823
+        width: 64.166664
+        height: 85.117645
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 243d20fa11d831b60800000000000000
+      internalID: 7715665693705950018
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MegaMari Marisa no Yabou - Main Bosses_2
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 1361.8823
+        width: 64.166664
+        height: 85.117645
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fe1e268e7080b7f70800000000000000
+      internalID: 9185944695008846319
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MegaMari Marisa no Yabou - Main Bosses_3
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 1361.8823
+        width: 64.166664
+        height: 85.117645
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bcd68ef260beb9b60800000000000000
+      internalID: 7754049595254533579
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MegaMari Marisa no Yabou - Main Bosses_4
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 1361.8823
+        width: 64.166664
+        height: 85.117645
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 068eff6d281e46b40800000000000000
+      internalID: 5432715002584754272
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MegaMari Marisa no Yabou - Main Bosses_5
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 1361.8823
+        width: 64.166664
+        height: 85.117645
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 79f4f690513949e30800000000000000
+      internalID: 4509390845466595223
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MegaMari Marisa no Yabou - Main Bosses_6
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 1361.8823
+        width: 64.166664
+        height: 85.117645
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1801b978f01efa340800000000000000
+      internalID: 4877364378281382017
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MegaMari Marisa no Yabou - Main Bosses_7
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 1361.8823
+        width: 64.166664
+        height: 85.117645
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6435da1c596f6dba0800000000000000
+      internalID: -6064388725147872442
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MegaMari Marisa no Yabou - Main Bosses_8
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 1361.8823
+        width: 64.166664
+        height: 85.117645
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0c7d04c4d559bb280800000000000000
+      internalID: -9026456800190212160
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MegaMari Marisa no Yabou - Main Bosses_9
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 1361.8823
+        width: 64.166664
+        height: 85.117645
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 74175ff1ad7bab540800000000000000
+      internalID: 5024530481752142151
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MegaMari Marisa no Yabou - Main Bosses_10
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 1361.8823
+        width: 64.166664
+        height: 85.117645
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b211d7d713275fe80800000000000000
+      internalID: -8145478794145361621
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MegaMari Marisa no Yabou - Main Bosses_11
+      rect:
+        serializedVersion: 2
+        x: 704
+        y: 1361.8823
+        width: 64.166664
+        height: 85.117645
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5c6844b3887fc4970800000000000000
+      internalID: 8740633141301249733
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MegaMari Marisa no Yabou - Main Bosses_12
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1276.8823
+        width: 64.166664
+        height: 85.117645
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e2a0e1e76e30d1ef0800000000000000
+      internalID: -135948125257987538
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MegaMari Marisa no Yabou - Main Bosses_13
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 1276.8823
+        width: 64.166664
+        height: 85.117645
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7608e7fb04a45fdf0800000000000000
+      internalID: -147129770868572057
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MegaMari Marisa no Yabou - Main Bosses_14
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 1276.8823
+        width: 64.166664
+        height: 85.117645
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9a7c71aa12948bf50800000000000000
+      internalID: 6897343238254348201
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MegaMari Marisa no Yabou - Main Bosses_15
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 1276.8823
+        width: 64.166664
+        height: 85.117645
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 53d2d72752721e090800000000000000
+      internalID: -8007075620699951819
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MegaMari Marisa no Yabou - Main Bosses_16
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 1276.8823
+        width: 64.166664
+        height: 85.117645
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 99ed0c4c7bed42720800000000000000
+      internalID: 2820624147502128793
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MegaMari Marisa no Yabou - Main Bosses_17
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 1276.8823
+        width: 64.166664
+        height: 85.117645
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4d1477faeea357ae0800000000000000
+      internalID: -1552269699738811948
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MegaMari Marisa no Yabou - Main Bosses_18
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 1276.8823
+        width: 64.166664
+        height: 85.117645
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 53ae1847cb7c71b10800000000000000
+      internalID: 1952248575710849589
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MegaMari Marisa no Yabou - Main Bosses_19
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 1276.8823
+        width: 64.166664
+        height: 85.117645
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9b7cd461bbd322770800000000000000
+      internalID: 8584491713463961529
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MegaMari Marisa no Yabou - Main Bosses_20
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 1276.8823
+        width: 64.166664
+        height: 85.117645
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7ffd05b673039a2e0800000000000000
+      internalID: -2114105535491940361
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MegaMari Marisa no Yabou - Main Bosses_21
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1191.8823
+        width: 64.166664
+        height: 85.117645
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4672bd1b6e51e3b10800000000000000
+      internalID: 1963030568150706020
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MegaMari Marisa no Yabou - Main Bosses_22
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 1191.8823
+        width: 64.166664
+        height: 85.117645
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 305741735e4054330800000000000000
+      internalID: 3694364451845469443
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MegaMari Marisa no Yabou - Main Bosses_23
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 1191.8823
+        width: 64.166664
+        height: 85.117645
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eac73649a608312d0800000000000000
+      internalID: -3309160105942745938
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MegaMari Marisa no Yabou - Main Bosses_24
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 1191.8823
+        width: 64.166664
+        height: 85.117645
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 057b54939cb7d7f30800000000000000
+      internalID: 4574948900657805136
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MegaMari Marisa no Yabou - Main Bosses_25
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 1191.8823
+        width: 64.166664
+        height: 85.117645
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3a2b14ee3ad3fb9f0800000000000000
+      internalID: -450573663427513693
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MegaMari Marisa no Yabou - Main Bosses_26
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 1191.8823
+        width: 64.166664
+        height: 85.117645
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c4ee79bc6e5bfb490800000000000000
+      internalID: -7728258432681644468
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MegaMari Marisa no Yabou - Main Bosses_27
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 1191.8823
+        width: 64.166664
+        height: 85.117645
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2b8d4a3eb69329860800000000000000
+      internalID: 7535148262087776434
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MegaMari Marisa no Yabou - Main Bosses_28
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 1191.8823
+        width: 64.166664
+        height: 85.117645
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bc4f222f1bc5e9bb0800000000000000
+      internalID: -4927399022955399989
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MegaMari Marisa no Yabou - Main Bosses_29
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 1191.8823
+        width: 64.166664
+        height: 85.117645
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 79a4897fbfd922ef0800000000000000
+      internalID: -134371333351388521
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MegaMari Marisa no Yabou - Main Bosses_30
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 1191.8823
+        width: 64.166664
+        height: 85.117645
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 43f15d82142bbd4f0800000000000000
+      internalID: -802852115627827404
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MegaMari Marisa no Yabou - Main Bosses_31
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 1191.8823
+        width: 64.166664
+        height: 85.117645
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 954ac94c938013f90800000000000000
+      internalID: -6975785303615429543
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MegaMari Marisa no Yabou - Main Bosses_32
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1106.8823
+        width: 64.166664
+        height: 85.117645
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 66290fbecc7fed850800000000000000
+      internalID: 6403828179671224934
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MegaMari Marisa no Yabou - Main Bosses_33
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 1106.8823
+        width: 64.166664
+        height: 85.117645
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5c2781fdec8927be0800000000000000
+      internalID: -1480953313177865531
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MegaMari Marisa no Yabou - Main Bosses_34
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 1106.8823
+        width: 64.166664
+        height: 85.117645
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b0f7b8e28d11797f0800000000000000
+      internalID: -605996004666540277
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MegaMari Marisa no Yabou - Main Bosses_35
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 1106.8823
+        width: 64.166664
+        height: 85.117645
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 116c9aed15362ed40800000000000000
+      internalID: 5612157288936228369
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MegaMari Marisa no Yabou - Main Bosses_36
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 1106.8823
+        width: 64.166664
+        height: 85.117645
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8951dac3814568780800000000000000
+      internalID: -8681158768636127848
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MegaMari Marisa no Yabou - Main Bosses_37
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 1106.8823
+        width: 64.166664
+        height: 85.117645
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 78093818b880c2700800000000000000
+      internalID: 516797452507123847
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MegaMari Marisa no Yabou - Main Bosses_38
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 1106.8823
+        width: 64.166664
+        height: 85.117645
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d344f62bbc6c57840800000000000000
+      internalID: 5221297921180255293
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MegaMari Marisa no Yabou - Main Bosses_39
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 1106.8823
+        width: 64.166664
+        height: 85.117645
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 15843a3d3b3262a90800000000000000
+      internalID: -7339139287496832943
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MegaMari Marisa no Yabou - Main Bosses_40
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 1106.8823
+        width: 64.166664
+        height: 85.117645
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 222a687c996ad10d0800000000000000
+      internalID: -3450418560088235486
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MegaMari Marisa no Yabou - Main Bosses_41
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 1106.8823
+        width: 64.166664
+        height: 85.117645
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c3151a46524a1efd0800000000000000
+      internalID: -2314388252982685380
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MegaMari Marisa no Yabou - Main Bosses_42
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 1106.8823
+        width: 64.166664
+        height: 85.117645
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 07800459121e7cfc0800000000000000
+      internalID: -3474561053138876304
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MegaMari Marisa no Yabou - Main Bosses_43
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1021.8823
+        width: 64.166664
+        height: 85.117645
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7ec6e9497a995a190800000000000000
+      internalID: -7951780622020743961
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MegaMari Marisa no Yabou - Main Bosses_44
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 1021.8823
+        width: 64.166664
+        height: 85.117645
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9e17f8e8e7c1c19e0800000000000000
+      internalID: -1649412033641221655
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MegaMari Marisa no Yabou - Main Bosses_45
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 1021.8823
+        width: 64.166664
+        height: 85.117645
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 599f2d50b3c2ccc20800000000000000
+      internalID: 3228003664930208149
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MegaMari Marisa no Yabou - Main Bosses_46
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 1021.8823
+        width: 64.166664
+        height: 85.117645
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0e2ef99cacb492bf0800000000000000
+      internalID: -348664161806327072
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MegaMari Marisa no Yabou - Main Bosses_47
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 1021.8823
+        width: 64.166664
+        height: 85.117645
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a1f3bcb89c58172a0800000000000000
+      internalID: -6741460066516648166
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MegaMari Marisa no Yabou - Main Bosses_48
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 1021.8823
+        width: 64.166664
+        height: 85.117645
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 611debcec91633570800000000000000
+      internalID: 8445201052864532758
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MegaMari Marisa no Yabou - Main Bosses_49
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 1021.8823
+        width: 64.166664
+        height: 85.117645
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4d69cb4174c6eea00800000000000000
+      internalID: 787686037382797012
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MegaMari Marisa no Yabou - Main Bosses_50
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 1021.8823
+        width: 64.166664
+        height: 85.117645
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 29315d729bca23080800000000000000
+      internalID: -9209108376782040174
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MegaMari Marisa no Yabou - Main Bosses_51
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 1021.8823
+        width: 64.166664
+        height: 85.117645
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 91b0b8d99ff6d0940800000000000000
+      internalID: 5263986657346652953
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MegaMari Marisa no Yabou - Main Bosses_52
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 1021.8823
+        width: 64.166664
+        height: 85.117645
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c8f1dadada3425d60800000000000000
+      internalID: 7877433111446626188
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MegaMari Marisa no Yabou - Main Bosses_53
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 936.8823
+        width: 64.166664
+        height: 85.117645
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2aaad70dad3892050800000000000000
+      internalID: 5776292972903377570
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MegaMari Marisa no Yabou - Main Bosses_54
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 936.8823
+        width: 64.166664
+        height: 85.117645
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a6436ad57e6a33ee0800000000000000
+      internalID: -1282497956231629718
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MegaMari Marisa no Yabou - Main Bosses_55
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 936.8823
+        width: 64.166664
+        height: 85.117645
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ad58f0481377946d0800000000000000
+      internalID: -3005740221740382758
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MegaMari Marisa no Yabou - Main Bosses_56
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 936.8823
+        width: 64.166664
+        height: 85.117645
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2a554f1f338215400800000000000000
+      internalID: 311074052833039778
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MegaMari Marisa no Yabou - Main Bosses_57
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 936.8823
+        width: 64.166664
+        height: 85.117645
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5118e0f82df2370c0800000000000000
+      internalID: -4579263814715932395
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MegaMari Marisa no Yabou - Main Bosses_58
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 851.8823
+        width: 64.166664
+        height: 85.117645
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a35edad6a975fc530800000000000000
+      internalID: 3877414124965979450
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MegaMari Marisa no Yabou - Main Bosses_59
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 851.8823
+        width: 64.166664
+        height: 85.117645
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3ab044d1dfa73f9b0800000000000000
+      internalID: -5047555529815880797
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MegaMari Marisa no Yabou - Main Bosses_60
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 851.8823
+        width: 64.166664
+        height: 85.117645
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bd13a3741c4f5f740800000000000000
+      internalID: 5185319656947855835
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MegaMari Marisa no Yabou - Main Bosses_61
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 851.8823
+        width: 64.166664
+        height: 85.117645
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 697d508b278b4a000800000000000000
+      internalID: 46364699033720726
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MegaMari Marisa no Yabou - Main Bosses_62
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 851.8823
+        width: 64.166664
+        height: 85.117645
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5cddcd35a73a09e00800000000000000
+      internalID: 1049518458965646789
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MegaMari Marisa no Yabou - Main Bosses_63
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 851.8823
+        width: 64.166664
+        height: 85.117645
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d259de48b288d83b0800000000000000
+      internalID: -5508597048709114579
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MegaMari Marisa no Yabou - Main Bosses_64
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 851.8823
+        width: 64.166664
+        height: 85.117645
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1d97b3873453907f0800000000000000
+      internalID: -645926507654710831
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MegaMari Marisa no Yabou - Main Bosses_65
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 851.8823
+        width: 64.166664
+        height: 85.117645
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fe3ca3185192ca420800000000000000
+      internalID: 2642532253698802671
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MegaMari Marisa no Yabou - Main Bosses_66
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 851.8823
+        width: 64.166664
+        height: 85.117645
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1f248b3b63d318e60800000000000000
+      internalID: 7962712921320473329
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MegaMari Marisa no Yabou - Main Bosses_67
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 851.8823
+        width: 64.166664
+        height: 85.117645
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f68a080d89cff4f80800000000000000
+      internalID: -8119993869862393745
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MegaMari Marisa no Yabou - Main Bosses_68
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 851.8823
+        width: 64.166664
+        height: 85.117645
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fdb548b95d20bbde0800000000000000
+      internalID: -1316455349615305761
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MegaMari Marisa no Yabou - Main Bosses_69
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 766.8823
+        width: 64.166664
+        height: 85.117645
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 27ae100e81f2768c0800000000000000
+      internalID: -4006181559638824334
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MegaMari Marisa no Yabou - Main Bosses_70
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 766.8823
+        width: 64.166664
+        height: 85.117645
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5a0d0429b32504e50800000000000000
+      internalID: 6791518653884977317
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MegaMari Marisa no Yabou - Main Bosses_71
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 766.8823
+        width: 64.166664
+        height: 85.117645
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 51aa6c0aab2750f30800000000000000
+      internalID: 4541161945159870997
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MegaMari Marisa no Yabou - Main Bosses_72
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 766.8823
+        width: 64.166664
+        height: 85.117645
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 77ca09773a1388c60800000000000000
+      internalID: 7820555331084266615
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MegaMari Marisa no Yabou - Main Bosses_73
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 766.8823
+        width: 64.166664
+        height: 85.117645
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b14768a2ccfe39870800000000000000
+      internalID: 8688551766293640219
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MegaMari Marisa no Yabou - Main Bosses_74
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 766.8823
+        width: 64.166664
+        height: 85.117645
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6cba686c0b3806f60800000000000000
+      internalID: 8025559331242421190
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MegaMari Marisa no Yabou - Main Bosses_75
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 766.8823
+        width: 64.166664
+        height: 85.117645
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a5595256626d56f60800000000000000
+      internalID: 8027057371251840346
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MegaMari Marisa no Yabou - Main Bosses_76
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 681.8823
+        width: 64.166664
+        height: 85.117645
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4ef7dae3d9e4622c0800000000000000
+      internalID: -4456788343968137244
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MegaMari Marisa no Yabou - Main Bosses_77
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 681.8823
+        width: 64.166664
+        height: 85.117645
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 13d197ce616045880800000000000000
+      internalID: -8623260690981249743
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MegaMari Marisa no Yabou - Main Bosses_78
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 681.8823
+        width: 64.166664
+        height: 85.117645
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c7f2a669b68b17580800000000000000
+      internalID: -8831074622072279172
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MegaMari Marisa no Yabou - Main Bosses_79
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 681.8823
+        width: 64.166664
+        height: 85.117645
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f36cb25e63b6eb400800000000000000
+      internalID: 341828505243993663
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MegaMari Marisa no Yabou - Main Bosses_80
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 681.8823
+        width: 64.166664
+        height: 85.117645
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d0214a8699a2b32f0800000000000000
+      internalID: -992152454531116531
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MegaMari Marisa no Yabou - Main Bosses_81
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 681.8823
+        width: 64.166664
+        height: 85.117645
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 96fec1f838c741980800000000000000
+      internalID: -8569087286495613079
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MegaMari Marisa no Yabou - Main Bosses_82
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 681.8823
+        width: 64.166664
+        height: 85.117645
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6ca97d32ad487a3c0800000000000000
+      internalID: -4348360842763855162
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MegaMari Marisa no Yabou - Main Bosses_83
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 681.8823
+        width: 64.166664
+        height: 85.117645
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d4f29614d1cbc8860800000000000000
+      internalID: 7533603110521483085
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MegaMari Marisa no Yabou - Main Bosses_84
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 681.8823
+        width: 64.166664
+        height: 85.117645
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 02779dc1051354e10800000000000000
+      internalID: 2181203814682031904
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MegaMari Marisa no Yabou - Main Bosses_85
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 681.8823
+        width: 64.166664
+        height: 85.117645
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 007ffff50bb45a660800000000000000
+      internalID: 7396401183922845440
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MegaMari Marisa no Yabou - Main Bosses_86
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 596.8823
+        width: 64.166664
+        height: 85.117645
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: de5347639bc1d0430800000000000000
+      internalID: 3750685646477604333
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MegaMari Marisa no Yabou - Main Bosses_87
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 596.8823
+        width: 64.166664
+        height: 85.117645
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aeb613583e4eeb0a0800000000000000
+      internalID: -6863797116222739478
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MegaMari Marisa no Yabou - Main Bosses_88
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 596.8823
+        width: 64.166664
+        height: 85.117645
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cdfa702ccfd1dac10800000000000000
+      internalID: 2066340775457173468
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MegaMari Marisa no Yabou - Main Bosses_89
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 596.8823
+        width: 64.166664
+        height: 85.117645
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 14a7c87dd8e4f7aa0800000000000000
+      internalID: -6161119394105886143
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MegaMari Marisa no Yabou - Main Bosses_90
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 596.8823
+        width: 64.166664
+        height: 85.117645
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: baf5325dce57777a0800000000000000
+      internalID: -6379500687098421333
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MegaMari Marisa no Yabou - Main Bosses_91
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 511.88235
+        width: 64.166664
+        height: 85.117645
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c7c9b100083604560800000000000000
+      internalID: 7295940797748976764
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MegaMari Marisa no Yabou - Main Bosses_92
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 511.88235
+        width: 64.166664
+        height: 85.117645
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4e1bf1c1e3d7fa570800000000000000
+      internalID: 8480134329075216868
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MegaMari Marisa no Yabou - Main Bosses_93
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 511.88235
+        width: 64.166664
+        height: 85.117645
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2e63fc5402b0d6290800000000000000
+      internalID: -7895642338472544542
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MegaMari Marisa no Yabou - Main Bosses_94
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 511.88235
+        width: 64.166664
+        height: 85.117645
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 783eaee92fdd48f90800000000000000
+      internalID: -6952187890635185273
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MegaMari Marisa no Yabou - Main Bosses_95
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 511.88235
+        width: 64.166664
+        height: 85.117645
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4e6c6800ea2d611c0800000000000000
+      internalID: -4533204330126850332
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MegaMari Marisa no Yabou - Main Bosses_96
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 511.88235
+        width: 64.166664
+        height: 85.117645
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e2843dd9d94e657b0800000000000000
+      internalID: -5235746151162755026
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MegaMari Marisa no Yabou - Main Bosses_97
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 511.88235
+        width: 64.166664
+        height: 85.117645
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 34f9ad797818c6d40800000000000000
+      internalID: 5578976457773457219
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MegaMari Marisa no Yabou - Main Bosses_98
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 511.88235
+        width: 64.166664
+        height: 85.117645
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 398c064ed2728bc80800000000000000
+      internalID: -8306846434626320237
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MegaMari Marisa no Yabou - Main Bosses_99
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 511.88235
+        width: 64.166664
+        height: 85.117645
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 202bdad1276fefa10800000000000000
+      internalID: 1945263059055260162
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MegaMari Marisa no Yabou - Main Bosses_100
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 511.88235
+        width: 64.166664
+        height: 85.117645
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 92b82576d4c4d9dd0800000000000000
+      internalID: -2477740324654249175
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MegaMari Marisa no Yabou - Main Bosses_101
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 426.88235
+        width: 64.166664
+        height: 85.117645
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4745fdba3d8525810800000000000000
+      internalID: 1752560871145428084
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MegaMari Marisa no Yabou - Main Bosses_102
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 426.88235
+        width: 64.166664
+        height: 85.117645
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5eaf6b219d7d30b90800000000000000
+      internalID: -7276735245578732827
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MegaMari Marisa no Yabou - Main Bosses_103
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 426.88235
+        width: 64.166664
+        height: 85.117645
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a4a1b4fd831638d50800000000000000
+      internalID: 6738336364368697930
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MegaMari Marisa no Yabou - Main Bosses_104
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 426.88235
+        width: 64.166664
+        height: 85.117645
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 72710b022a23909d0800000000000000
+      internalID: -2807657220774291673
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MegaMari Marisa no Yabou - Main Bosses_105
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 426.88235
+        width: 64.166664
+        height: 85.117645
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6f04b0016ab6ea720800000000000000
+      internalID: 2859341174404759798
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MegaMari Marisa no Yabou - Main Bosses_106
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 426.88235
+        width: 64.166664
+        height: 85.117645
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 41199c8843048a370800000000000000
+      internalID: 8333981704826491156
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MegaMari Marisa no Yabou - Main Bosses_107
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 341.88235
+        width: 64.166664
+        height: 85.117645
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c33efbd8b61345680800000000000000
+      internalID: -8767328236574088388
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MegaMari Marisa no Yabou - Main Bosses_108
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 341.88235
+        width: 64.166664
+        height: 85.117645
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 65f65ea3e80890350800000000000000
+      internalID: 5983454928300240726
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MegaMari Marisa no Yabou - Main Bosses_109
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 341.88235
+        width: 64.166664
+        height: 85.117645
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7c345a11d6f47fa10800000000000000
+      internalID: 1943109094099731399
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MegaMari Marisa no Yabou - Main Bosses_110
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 341.88235
+        width: 64.166664
+        height: 85.117645
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 782563d3070a37be0800000000000000
+      internalID: -1480663448551009657
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MegaMari Marisa no Yabou - Main Bosses_111
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 341.88235
+        width: 64.166664
+        height: 85.117645
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8003e66030bb480b0800000000000000
+      internalID: -5727247204441247736
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MegaMari Marisa no Yabou - Main Bosses_112
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 341.88235
+        width: 64.166664
+        height: 85.117645
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e3a5d789385edd0c0800000000000000
+      internalID: -4549227695212504514
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MegaMari Marisa no Yabou - Main Bosses_113
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 341.88235
+        width: 64.166664
+        height: 85.117645
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9096bc5bbb24513d0800000000000000
+      internalID: -3236607383219508983
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MegaMari Marisa no Yabou - Main Bosses_114
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 341.88235
+        width: 64.166664
+        height: 85.117645
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c716473c4a6c7bf70800000000000000
+      internalID: 9203042774511018364
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MegaMari Marisa no Yabou - Main Bosses_115
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 341.88235
+        width: 64.166664
+        height: 85.117645
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eff57381a4fa47700800000000000000
+      internalID: 537246988332654590
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MegaMari Marisa no Yabou - Main Bosses_116
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 341.88235
+        width: 64.166664
+        height: 85.117645
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8ed8cede08b3dcb70800000000000000
+      internalID: 8920851861824376296
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MegaMari Marisa no Yabou - Main Bosses_117
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 341.88235
+        width: 64.166664
+        height: 85.117645
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 91c7541598ab4d300800000000000000
+      internalID: 276050576113237017
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MegaMari Marisa no Yabou - Main Bosses_118
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 256.88235
+        width: 64.166664
+        height: 85.117645
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 24c4130f0f85cac60800000000000000
+      internalID: 7830731643935607874
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MegaMari Marisa no Yabou - Main Bosses_119
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 256.88235
+        width: 64.166664
+        height: 85.117645
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 20284cf2dee9a0060800000000000000
+      internalID: 6920518518954033666
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MegaMari Marisa no Yabou - Main Bosses_120
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 256.88235
+        width: 64.166664
+        height: 85.117645
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9b8b4cf583cfa0480800000000000000
+      internalID: -8932049591880861511
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MegaMari Marisa no Yabou - Main Bosses_121
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 256.88235
+        width: 64.166664
+        height: 85.117645
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 511f5952657fa0e20800000000000000
+      internalID: 3317736024881623317
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MegaMari Marisa no Yabou - Main Bosses_122
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 256.88235
+        width: 64.166664
+        height: 85.117645
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c1e6e6ba6c7465050800000000000000
+      internalID: 5788893289636589084
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MegaMari Marisa no Yabou - Main Bosses_123
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 256.88235
+        width: 64.166664
+        height: 85.117645
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a625c8626b2b6ab70800000000000000
+      internalID: 8910005408199627370
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MegaMari Marisa no Yabou - Main Bosses_124
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 171.88235
+        width: 64.166664
+        height: 85.117645
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e6b79a76506a7d560800000000000000
+      internalID: 7338516659967720302
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MegaMari Marisa no Yabou - Main Bosses_125
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 171.88235
+        width: 64.166664
+        height: 85.117645
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 68dedd1c870f19970800000000000000
+      internalID: 8760047151651614086
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MegaMari Marisa no Yabou - Main Bosses_126
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 171.88235
+        width: 64.166664
+        height: 85.117645
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a3750d79507ba09f0800000000000000
+      internalID: -501387173848656070
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MegaMari Marisa no Yabou - Main Bosses_127
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 171.88235
+        width: 64.166664
+        height: 85.117645
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f2922bc925ce3c4f0800000000000000
+      internalID: -809543668436162257
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MegaMari Marisa no Yabou - Main Bosses_128
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 171.88235
+        width: 64.166664
+        height: 85.117645
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2ab8d5c0cde33d6e0800000000000000
+      internalID: -1814037110078993502
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MegaMari Marisa no Yabou - Main Bosses_129
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 171.88235
+        width: 64.166664
+        height: 85.117645
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: da310ca83f6623620800000000000000
+      internalID: 2752375518467724205
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MegaMari Marisa no Yabou - Main Bosses_130
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 171.88235
+        width: 64.166664
+        height: 85.117645
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fd48a87ecc61ea580800000000000000
+      internalID: -8814082351403727649
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MegaMari Marisa no Yabou - Main Bosses_131
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 171.88235
+        width: 64.166664
+        height: 85.117645
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 06cba8710748d9760800000000000000
+      internalID: 7466269374216322144
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MegaMari Marisa no Yabou - Main Bosses_132
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 171.88235
+        width: 64.166664
+        height: 85.117645
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a0286fa58fa0e66b0800000000000000
+      internalID: -5301287649574223350
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MegaMari Marisa no Yabou - Main Bosses_133
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 171.88235
+        width: 64.166664
+        height: 85.117645
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e87aa4eda62997500800000000000000
+      internalID: 394507430065252238
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MegaMari Marisa no Yabou - Main Bosses_134
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 171.88235
+        width: 64.166664
+        height: 85.117645
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: db287e1cb00c061a0800000000000000
+      internalID: -6818238679108582723
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MegaMari Marisa no Yabou - Main Bosses_135
+      rect:
+        serializedVersion: 2
+        x: 704
+        y: 171.88235
+        width: 64.166664
+        height: 85.117645
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 974e5cd7b2a2c91c0800000000000000
+      internalID: -4495671961740516231
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MegaMari Marisa no Yabou - Main Bosses_136
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 86.882355
+        width: 64.166664
+        height: 85.117645
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 021990b9e59570c20800000000000000
+      internalID: 3172602725368697120
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MegaMari Marisa no Yabou - Main Bosses_137
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 86.882355
+        width: 64.166664
+        height: 85.117645
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bb434202bea917e60800000000000000
+      internalID: 7958312351187612859
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MegaMari Marisa no Yabou - Main Bosses_138
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 86.882355
+        width: 64.166664
+        height: 85.117645
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bf36eabef66642390800000000000000
+      internalID: -7844032020091083781
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MegaMari Marisa no Yabou - Main Bosses_139
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 86.882355
+        width: 64.166664
+        height: 85.117645
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ff77f0a45a99e3520800000000000000
+      internalID: 2683751363150575615
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MegaMari Marisa no Yabou - Main Bosses_140
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 86.882355
+        width: 64.166664
+        height: 85.117645
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1dbd67c0d79a9d220800000000000000
+      internalID: 2511224621780884433
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MegaMari Marisa no Yabou - Main Bosses_141
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 86.882355
+        width: 64.166664
+        height: 85.117645
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b29fafe8dae2b6780800000000000000
+      internalID: -8688799733118207701
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MegaMari Marisa no Yabou - Main Bosses_142
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 86.882355
+        width: 64.166664
+        height: 85.117645
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 52446997623cc3680800000000000000
+      internalID: -8773923404008504283
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MegaMari Marisa no Yabou - Main Bosses_143
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 86.882355
+        width: 64.166664
+        height: 85.117645
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f6443977dc345e2d0800000000000000
+      internalID: -3250117006324448145
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MegaMari Marisa no Yabou - Main Bosses_144
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 86.882355
+        width: 64.166664
+        height: 85.117645
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 270ff572e930dc490800000000000000
+      internalID: -7724513808070217614
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MegaMari Marisa no Yabou - Main Bosses_145
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 86.882355
+        width: 64.166664
+        height: 85.117645
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9593f7d88ef2b6970800000000000000
+      internalID: 8749139376950163801
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MegaMari Marisa no Yabou - Main Bosses_146
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 86.882355
+        width: 64.166664
+        height: 85.117645
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2bba92119e0e71b90800000000000000
+      internalID: -7271095781746431054
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MegaMari Marisa no Yabou - Main Bosses_147
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1.8823547
+        width: 64.166664
+        height: 85.117645
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 23ded477eaebc57a0800000000000000
+      internalID: -6387020514983023310
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MegaMari Marisa no Yabou - Main Bosses_148
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 1.8823547
+        width: 64.166664
+        height: 85.117645
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7dbbeafe6b8f91990800000000000000
+      internalID: -7414621846899868713
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MegaMari Marisa no Yabou - Main Bosses_149
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 1.8823547
+        width: 64.166664
+        height: 85.117645
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f8f77d1aaa775c760800000000000000
+      internalID: 7477514331061976975
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MegaMari Marisa no Yabou - Main Bosses_150
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 1.8823547
+        width: 64.166664
+        height: 85.117645
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1dc3b1f96dd7b3840800000000000000
+      internalID: 5204892155102575825
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MegaMari Marisa no Yabou - Main Bosses_151
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 1.8823547
+        width: 64.166664
+        height: 85.117645
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 60013bc57d705f2f0800000000000000
+      internalID: -939836325682278394
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MegaMari Marisa no Yabou - Main Bosses_152
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 1.8823547
+        width: 64.166664
+        height: 85.117645
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1219126babeb52a00800000000000000
+      internalID: 731200223646421281
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MegaMari Marisa no Yabou - Main Bosses_153
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 1.8823547
+        width: 64.166664
+        height: 85.117645
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c958c2c563cd183f0800000000000000
+      internalID: -900196324464622180
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MegaMari Marisa no Yabou - Main Bosses_154
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 1.8823547
+        width: 64.166664
+        height: 85.117645
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bc8bac6c026eb65a0800000000000000
+      internalID: -6526870206494885685
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MegaMari Marisa no Yabou - Main Bosses_155
+      rect:
+        serializedVersion: 2
+        x: 704
+        y: 1.8823547
+        width: 64.166664
+        height: 85.117645
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7682333f5961131b0800000000000000
+      internalID: -5678732821851330457
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

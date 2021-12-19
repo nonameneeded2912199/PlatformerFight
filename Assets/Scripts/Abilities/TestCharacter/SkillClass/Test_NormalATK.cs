@@ -70,5 +70,20 @@ namespace PlatformerFight.Abilities
                 }
             }
         }
+
+        public override void SkillUpdate(float deltaTime)
+        {
+            
+        }
+
+        public override void SkillEnd()
+        {
+            
+        }
+
+        public override void SkillCancel()
+        {
+            
+        }
     }
 }

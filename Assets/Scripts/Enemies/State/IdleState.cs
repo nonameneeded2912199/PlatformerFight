@@ -1,3 +1,4 @@
+using PlatformerFight.CharacterThings;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,7 +15,7 @@ public class IdleState : State
 
     protected float idleTime;
 
-    public IdleState(FiniteStateMachine stateMachine, BaseEnemy entity, string animBoolName, D_IdleState stateData) 
+    public IdleState(FiniteStateMachine stateMachine, BaseEnemy entity, string animBoolName, D_IdleState stateData = default) 
         : base(stateMachine, entity, animBoolName)
     {
         this.stateData = stateData;
@@ -67,6 +68,7 @@ public class IdleState : State
 
     private void SetRandomIdleTime()
     {
-        idleTime = Random.Range(stateData.minIdleTime, stateData.maxIdleTime);
+        if (stateData != null)
+            idleTime = Random.Range(stateData.minIdleTime, stateData.maxIdleTime);
     }
 }

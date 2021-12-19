@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ef67efa808b01f43952debc7934cce5, type: 3}
+  m_Name: Stage1Midboss_Phase1Data
+  m_EditorClassIdentifier: 
+  enemyName: Fake Ice Fairy
+  phaseStats: {fileID: 11400000, guid: 2cc02d1ddcd2b774195bab5efc6aebb8, type: 2}
+  scoreYield: 25000
+  phaseType: 0
+  phaseName: Untitled
+  phaseBonusTime: 0
+  initialStateData: {fileID: 11400000, guid: e9b1e0ff5016f8e488bcf2023db2d0c4, type: 2}
+  teleportInStateData: {fileID: 11400000, guid: ae1a226576819f84491d9b554094143e, type: 2}
+  spiralAttackStateData: {fileID: 11400000, guid: 4a486471d163faa458a09eb8cbb16db3, type: 2}
+  chasingAttackStateData: {fileID: 11400000, guid: bdd74466627a588499fbf25c32af5251, type: 2}

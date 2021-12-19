@@ -15,8 +15,8 @@ public class SceneLoader : MonoBehaviour
 	[SerializeField] private InputReader _inputReader = default;
 
 	[Header("Listening to")]
-	[SerializeField] private LoadEventChannelSO _loadLocation = default;
-	[SerializeField] private LoadEventChannelSO _loadMenu = default;
+	[SerializeField] private LoadEventChannelSO loadStage = default;
+	[SerializeField] private LoadEventChannelSO loadMenu = default;
 	[SerializeField] private LoadEventChannelSO _coldStartupLocation = default;
 
 	[Header("Broadcasting on")]
@@ -38,8 +38,8 @@ public class SceneLoader : MonoBehaviour
 
 	private void OnEnable()
 	{
-		_loadLocation.OnLoadingRequested += LoadLocation;
-		_loadMenu.OnLoadingRequested += LoadMenu;
+		loadStage.OnLoadingRequested += LoadLocation;
+		loadMenu.OnLoadingRequested += LoadMenu;
 #if UNITY_EDITOR
 		_coldStartupLocation.OnLoadingRequested += LocationColdStartup;
 #endif
@@ -47,8 +47,8 @@ public class SceneLoader : MonoBehaviour
 
 	private void OnDisable()
 	{
-		_loadLocation.OnLoadingRequested -= LoadLocation;
-		_loadMenu.OnLoadingRequested -= LoadMenu;
+		loadStage.OnLoadingRequested -= LoadLocation;
+		loadMenu.OnLoadingRequested -= LoadMenu;
 #if UNITY_EDITOR
 		_coldStartupLocation.OnLoadingRequested -= LocationColdStartup;
 #endif

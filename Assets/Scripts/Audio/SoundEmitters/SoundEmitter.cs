@@ -11,6 +11,9 @@ public class SoundEmitter : MonoBehaviour
 
 	public event UnityAction<SoundEmitter> OnSoundFinishedPlaying;
 
+	[SerializeField]
+	private float time = 0;
+
 	private void Awake()
 	{
 		_audioSource = this.GetComponent<AudioSource>();
@@ -18,15 +21,21 @@ public class SoundEmitter : MonoBehaviour
 		_audioSource.spatialBlend = 0.0f;
 	}
 
-	/// <summary>
-	/// Instructs the AudioSource to play a single clip, with optional looping, in a position in 3D space.
-	/// </summary>
-	/// <param name="clip"></param>
-	/// <param name="settings"></param>
-	/// <param name="hasToLoop"></param>
-	/// <param name="position"></param>
-	public void PlayAudioClip(AudioClip clip, AudioConfigurationSO settings, bool hasToLoop, Vector3 position = default)
+    private void Update()
+    {
+		time = _audioSource.time;
+    }
+
+    /// <summary>
+    /// Instructs the AudioSource to play a single clip, with optional looping, in a position in 3D space.
+    /// </summary>
+    /// <param name="clip"></param>
+    /// <param name="settings"></param>
+    /// <param name="hasToLoop"></param>
+    /// <param name="position"></param>
+    public void PlayAudioClip(AudioClip clip, AudioConfigurationSO settings, bool hasToLoop, Vector3 position = default)
 	{
+		Debug.Log(_audioSource.name + " played");
 		_audioSource.clip = clip;
 		settings.ApplyTo(_audioSource);
 		_audioSource.transform.position = position;

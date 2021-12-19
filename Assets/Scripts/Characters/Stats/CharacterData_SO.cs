@@ -16,6 +16,8 @@ namespace PlatformerFight.CharacterThings
 
         public float baseDEF;
 
+        public float originalGravityScale;
+
         public float apRecoveryRate;
     }
 }

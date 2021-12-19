@@ -103,7 +103,7 @@ public class FlyingShooter_RangedAttackState : RangedAttackState
                     {                        
                         entity.BulletEventChannel.RaiseBulletEvent(enemy.tag, attackPosition.position, bulletDetails.bulletSpeed, angle + i, 
                             bulletDetails.bulletAcceleration, bulletDetails.bulletLifeSpan, bulletDetails.damageMultiplier * enemy.CharacterStats.CurrentAttack, 
-                            0.5f, bulletDetails.hitRadius, bulletDetails.bulletSprite, bulletDetails.animatorOverrideController);                      
+                            0.5f, bulletDetails.hitRadius, bulletDetails.bulletSprite, bulletDetails.animatorOverrideController, 1);                      
                     }
                     break;
                 case GameDifficulty.HARD:
@@ -111,7 +111,7 @@ public class FlyingShooter_RangedAttackState : RangedAttackState
                     {
                         entity.BulletEventChannel.RaiseBulletEvent(enemy.tag, attackPosition.position, bulletDetails.bulletSpeed, angle + i, 
                             bulletDetails.bulletAcceleration, bulletDetails.bulletLifeSpan, bulletDetails.damageMultiplier * enemy.CharacterStats.CurrentAttack, 
-                            0.5f, bulletDetails.hitRadius, bulletDetails.bulletSprite, bulletDetails.animatorOverrideController);                        
+                            0.5f, bulletDetails.hitRadius, bulletDetails.bulletSprite, bulletDetails.animatorOverrideController, 1);                        
                     }
                     break;
                 case GameDifficulty.LUNATIC:
@@ -119,7 +119,7 @@ public class FlyingShooter_RangedAttackState : RangedAttackState
                     {
                         entity.BulletEventChannel.RaiseBulletEvent(enemy.tag, attackPosition.position, bulletDetails.bulletSpeed, angle + i, 
                             bulletDetails.bulletAcceleration, bulletDetails.bulletLifeSpan, bulletDetails.damageMultiplier * enemy.CharacterStats.CurrentAttack * 2, 0.5f, 
-                            bulletDetails.hitRadius, bulletDetails.bulletSprite, bulletDetails.animatorOverrideController);                       
+                            bulletDetails.hitRadius, bulletDetails.bulletSprite, bulletDetails.animatorOverrideController, 1);                       
                     }
                     break;
             }

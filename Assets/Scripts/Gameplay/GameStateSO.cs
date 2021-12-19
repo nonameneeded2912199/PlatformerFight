@@ -33,12 +33,17 @@ public class GameStateSO : DescriptionBaseSO
 	[Header("Game difficulty")]
 	[SerializeField] private GameDifficulty currentDifficulty = default;
 
-	/*[Header("Broadcasting on")]
-	[SerializeField] private BoolEventChannelSO _onCombatStateEvent = default;*/
+	[Header("Selected protagonist")]
+	[SerializeField]
+	private PlayableCharacterInfo chosenPlayer;
 
-	private void Start()
-	{
-	}
+	public PlayableCharacterInfo ChosenPlayer => chosenPlayer;
+
+	[Header("Checkpoint manager")]
+	[SerializeField]
+	private string lastCheckpoint;
+
+	public string LastCheckpoint => lastCheckpoint;
 
 	public void SetDifficulty(GameDifficulty difficulty)
     {
@@ -56,6 +61,17 @@ public class GameStateSO : DescriptionBaseSO
 		_previousGameState = _currentGameState;
 		_currentGameState = newGameState;
 	}
+
+	public void SelectCharacter(PlayableCharacterInfo chosenPlayer)
+    {
+		this.chosenPlayer = chosenPlayer;
+		//lastCheckpoint = null;
+    }
+
+	public void SetCheckpoint(string lastCheckpoint)
+    {
+		this.lastCheckpoint = lastCheckpoint;
+    }
 
 	public void ResetToPreviousGameState()
 	{

@@ -11,6 +11,10 @@ namespace PlatformerFight.CharacterThings
     {
         public static Player Instance { get; private set; }
 
+        [Header("Event Channels")]
+        [SerializeField]
+        private InputReader _inputReader = default;
+
         [Header("Component")]
         private BetterJumping betterJumping;
         private PlayerInputAction playerInputAction;
@@ -48,6 +52,9 @@ namespace PlatformerFight.CharacterThings
         public bool canDoubleJump;
         public bool canDash;
 
+        private Coroutine movingCoroutine;
+        private Coroutine recoverAPCoroutine;
+
         #region Properties
         public float Horizontal => horizontal;
 
@@ -66,14 +73,22 @@ namespace PlatformerFight.CharacterThings
                 Instance = this;
             }
             playerAttack = GetComponent<PlayerAttack>();
-            playerInputAction = new PlayerInputAction();
+        }
 
-            playerInputAction.Gameplay.Move.performed += ctx => MovementInput(ctx);
-            playerInputAction.Gameplay.Jump.performed += ctx => OnJumpPerformedInput();
-            playerInputAction.Gameplay.Jump.canceled += ctx => OnJumpCancelledInput();
-            playerInputAction.Gameplay.Dash.performed += ctx => Dash();
+        private void OnEnable()
+        {
+            _inputReader.MoveEvent += MovementInput;
+            _inputReader.JumpEvent += OnJumpPerformedInput;
+            _inputReader.JumpCanceledEvent += OnJumpCancelledInput;
+            _inputReader.DashEvent += Dash;
+        }
 
-            playerInputAction.Enable();
+        private void OnDisable()
+        {
+            _inputReader.MoveEvent -= MovementInput;
+            _inputReader.JumpEvent -= OnJumpPerformedInput;
+            _inputReader.JumpCanceledEvent -= OnJumpCancelledInput;
+            _inputReader.DashEvent -= Dash;
         }
 
         protected override void Start()
@@ -123,7 +138,7 @@ namespace PlatformerFight.CharacterThings
                 {
                     if (onWall && !isGrounded)
                     {
-                        if (horizontal != 0)
+                        if (horizontal != 0 && canMove)
                         {
                             wallSlide = true;
                             availableExtraJumps = extraJumps;
@@ -154,12 +169,12 @@ namespace PlatformerFight.CharacterThings
             }
         }
 
-        public void MovementInput(InputAction.CallbackContext context)
+        public void MovementInput(Vector2 movement)
         {
             if (canMove && !isDashing && !wallSlide)
             {
-                horizontal = context.ReadValue<Vector2>().x;
-                Rigidbody.velocity = new Vector2(horizontal * movementSpeed, Rigidbody.velocity.y);
+                horizontal = movement.x;
+                //Rigidbody.velocity = new Vector2(horizontal * movementSpeed, Rigidbody.velocity.y);
             }
             else
                 horizontal = 0;
@@ -182,10 +197,13 @@ namespace PlatformerFight.CharacterThings
 
         public void OnJumpPerformedInput()
         {
-            if (!wallSlide)
-                Jump();
-            else
-                WallJump();
+            if (canMove)
+            {
+                if (!wallSlide)
+                    Jump();
+                else
+                    WallJump();
+            }
         }
 
         public void OnJumpCancelledInput()
@@ -238,7 +256,9 @@ namespace PlatformerFight.CharacterThings
             betterJumping.enabled = true;
 
             isDashing = false;
-            CharacterStats.SetAPRecovery(true);
+            if (recoverAPCoroutine != null)
+                StopCoroutine(recoverAPCoroutine);
+            recoverAPCoroutine = StartCoroutine(CanRecoverAP());
         }
 
         IEnumerator GroundDash()
@@ -255,8 +275,10 @@ namespace PlatformerFight.CharacterThings
             if (!canGrab)
                 return;
 
-            StopCoroutine(DisableMovement(0));
-            StartCoroutine(DisableMovement(.1f));
+            //StopCoroutine(DisableMovement(0));
+            if (movingCoroutine != null)
+                StopCoroutine(movingCoroutine);
+            movingCoroutine = StartCoroutine(DisableMovement(.1f));
 
             //canMove = false;
 
@@ -308,36 +330,46 @@ namespace PlatformerFight.CharacterThings
         }
         public override void SetVelocity(float velocity)
         {
-            StopCoroutine(DisableMovement(0));
-            StartCoroutine(DisableMovement(.5f));
+            //StopCoroutine(DisableMovement(0));
+            if (movingCoroutine != null)
+                StopCoroutine(movingCoroutine);
+            movingCoroutine = StartCoroutine(DisableMovement(.5f));
             base.SetVelocity(velocity);
         }
 
         public override void SetVelocity(Vector2 velocity)
         {
-            StopCoroutine(DisableMovement(0));
-            StartCoroutine(DisableMovement(.5f));
+            //StopCoroutine(DisableMovement(0));
+            if (movingCoroutine != null)
+                StopCoroutine(movingCoroutine);
+            movingCoroutine = StartCoroutine(DisableMovement(.5f));
             base.SetVelocity(velocity);
         }
 
         public override void SetVelocity(Vector2 velocity, int direction)
         {
-            StopCoroutine(DisableMovement(0));
-            StartCoroutine(DisableMovement(.5f));
+            //StopCoroutine(DisableMovement(0));
+            if (movingCoroutine != null)
+                StopCoroutine(movingCoroutine);
+            movingCoroutine = StartCoroutine(DisableMovement(.5f));
             base.SetVelocity(velocity, direction);
         }
 
         public override void SetVelocity(float velocity, Vector2 angle)
         {
-            StopCoroutine(DisableMovement(0));
-            StartCoroutine(DisableMovement(.5f));
+            //StopCoroutine(DisableMovement(0));
+            if (movingCoroutine != null)
+                StopCoroutine(movingCoroutine);
+            movingCoroutine = StartCoroutine(DisableMovement(.5f));
             base.SetVelocity(velocity, angle);
         }
 
         public override void SetVelocity(float velocity, Vector2 angle, int direction)
         {
-            StopCoroutine(DisableMovement(0));
-            StartCoroutine(DisableMovement(.5f));
+            //StopCoroutine(DisableMovement(0));
+            if (movingCoroutine != null)
+                StopCoroutine(movingCoroutine);
+            movingCoroutine = StartCoroutine(DisableMovement(.5f));
             base.SetVelocity(velocity, angle, direction);
         }
 
@@ -383,6 +415,19 @@ namespace PlatformerFight.CharacterThings
                 knockback = false;
                 Rigidbody.velocity = new Vector2(0.0f, Rigidbody.velocity.y);
                 Invoke("EnableMove", 0.05f);
+            }
+        }
+        private IEnumerator CanRecoverAP()
+        {
+            yield return new WaitForSeconds(1f);
+
+            if (isDashing)
+            {
+                CharacterStats.SetAPRecovery(false);
+            }
+            else
+            {
+                CharacterStats.SetAPRecovery(true);
             }
         }
 

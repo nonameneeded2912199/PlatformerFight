@@ -120,7 +120,9 @@ namespace PlatformerFight.Abilities
         public void EnterCooldown()
         {
             if (CooldownTime > 0)
+            {
                 cooldownCount = CooldownTime;
+            }                    
         }
 
         public void CoolingDown(float deltaTime)
@@ -175,5 +177,11 @@ namespace PlatformerFight.Abilities
                 Gizmos.DrawLine(bottomLeft, bottomRight);
             }
         }
+
+        public abstract void SkillUpdate(float deltaTime);
+
+        public abstract void SkillCancel();
+
+        public abstract void SkillEnd();
     }
 }

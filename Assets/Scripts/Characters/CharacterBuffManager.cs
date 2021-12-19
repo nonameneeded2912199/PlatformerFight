@@ -7,11 +7,11 @@ namespace PlatformerFight.CharacterThings
 {
     public class CharacterBuffManager : MonoBehaviour
     {
+        [SerializeField]
+        private BuffEventChannelSO _onBuffDisplay;
+
         private List<BaseBuff> outdatedBuff;
         private Dictionary<ScriptableBuff, BaseBuff> buffs;
-
-        [SerializeField]
-        private Transform gridTransform;
 
         private void Awake()
         {
@@ -34,8 +34,9 @@ namespace PlatformerFight.CharacterThings
             else
             {
                 buffs.Add(buff.Buff, buff);
-                if (gridTransform != null)
-                    buff.BuffIconPrefab.transform.SetParent(gridTransform);
+                if (_onBuffDisplay != null)
+                    //buff.BuffIconPrefab.transform.SetParent(gridTransform);
+                    _onBuffDisplay.RaiseEvent(buff);
                 else
                     Destroy(buff.BuffIconPrefab);
                 buff.Active(true);

@@ -9,6 +9,22 @@ namespace PlatformerFight.CharacterThings
 {
     public class PlayerAttack : MonoBehaviour
     {
+        [Header("Event channels")]
+        [SerializeField]
+        private InputReader _inputReader = default;
+
+        [SerializeField]
+        private SkillEventChannelSO _onSkill1Set = default;
+
+        [SerializeField]
+        private SkillEventChannelSO _onSkill2Set = default;
+
+        [SerializeField]
+        private SkillEventChannelSO _onSkill3Set = default;
+
+        [SerializeField]
+        private SkillEventChannelSO _onSkill4Set = default;
+
         [Header("Component")]
         protected Rigidbody2D rb;
         protected Player player;
@@ -41,21 +57,18 @@ namespace PlatformerFight.CharacterThings
 
         public int Combo => normalATKCombo;
 
+        private Coroutine recoverAPCoroutine;
+
         [SerializeField]
         protected ScriptableSkill normalAirATKScriptable;
 
         [SerializeField]
         protected Skill normalAirAttack;
 
-        public Skill skill1;
-        public Skill skill2;
-        public Skill skill3;
-        public Skill skill4;
-
-        public Image imageSkill1;
-        public Image imageSkill2;
-        public Image imageSkill3;
-        public Image imageSkill4;
+        private Skill skill1;
+        private Skill skill2;
+        private Skill skill3;
+        private Skill skill4;
 
         [SerializeField]
         protected List<Skill> listSkill;
@@ -66,9 +79,15 @@ namespace PlatformerFight.CharacterThings
         [SerializeField]
         protected Skill currentSkill;
 
+        public delegate void OnSkillBegin();
+        public delegate void OnSkillUpdate(float deltaTime);
         public delegate void OnSkillEnd();
+        public delegate void OnSkillCancel();
 
+        public OnSkillBegin onSkillBeginAction;
+        public OnSkillUpdate onSkillUpdate;
         public OnSkillEnd onSkillEndAction;
+        public OnSkillCancel onSkillCancelAction;
 
         public Transform AttackPoint;
 
@@ -94,27 +113,33 @@ namespace PlatformerFight.CharacterThings
             skill2 = listSkill[1];
             skill3 = listSkill[2];
             skill4 = listSkill[0];
+        }
 
-            if (skill1 != null)
-                imageSkill1.sprite = skill1.SkillIcon;
+        private void OnEnable()
+        {
+            _inputReader.NormalAttackEvent += NormalAttack;
+            _inputReader.Skill1Event += PerformSkill1;
+            _inputReader.Skill2Event += PerformSkill2;
+            _inputReader.Skill3Event += PerformSkill3;
+            _inputReader.Skill4Event += PerformSkill4;
 
-            if (skill2 != null)
-                imageSkill2.sprite = skill2.SkillIcon;
+            _onSkill1Set.RaiseEvent(skill1);
+            _onSkill2Set.RaiseEvent(skill2);
+            _onSkill3Set.RaiseEvent(skill3);
+            _onSkill4Set.RaiseEvent(skill4);
+        }
 
-            if (skill3 != null)
-                imageSkill3.sprite = skill3.SkillIcon;
+        private void OnDisable()
+        {
+            //DiscardCurrentSkill();
 
-            if (skill4 != null)
-                imageSkill4.sprite = skill4.SkillIcon;
+            DiscardAllSkill();
 
-            playerInputAction = new PlayerInputAction();
-
-            playerInputAction.Gameplay.NormalATK.performed += ctx => NormalAttackButton(ctx);
-            playerInputAction.Gameplay.Skill1.performed += ctx => SkillButton1(ctx);
-            playerInputAction.Gameplay.Skill2.performed += ctx => SkillButton2(ctx);
-            playerInputAction.Gameplay.Skill3.performed += ctx => SkillButton3(ctx);
-            playerInputAction.Gameplay.Skill4.performed += ctx => SkillButton4(ctx);
-            playerInputAction.Enable();
+            _inputReader.NormalAttackEvent -= NormalAttack;
+            _inputReader.Skill1Event -= PerformSkill1;
+            _inputReader.Skill2Event -= PerformSkill2;
+            _inputReader.Skill3Event -= PerformSkill3;
+            _inputReader.Skill4Event -= PerformSkill4;
         }
 
         // Start is called before the first frame update
@@ -128,61 +153,44 @@ namespace PlatformerFight.CharacterThings
             animatorStateInfo = playerAnimation.GetCurrentAnimatorStateInfo();
             if (player.IsKnockback && IsAttacking)
             {
-                if (isSkillAttacking)
-                    isSkillAttacking = false;
-
-                if (isAttacking)
-                    isAttacking = false;
+                CancelAttack();
 
                 normalATKCombo = 0;
 
-                StartCoroutine(CanRecoverAP());
+                recoverAPCoroutine = StartCoroutine(CanRecoverAP());
             }
-            if (animatorStateInfo.normalizedTime >= 0.9f && (IsAttackingAnimation() || IsNormalAttacking()))
+            if (player.IsKnockback)
             {
-                normalATKCombo = 0;
-
-                if (isSkillAttacking)
-                    isSkillAttacking = false;
-
-                if (!player.canMove)
-                    player.EnableMove();
-
-                if (isAttacking)
-                    isAttacking = false;
-
-                StartCoroutine(CanRecoverAP());
+                canAttack = false;
+            }    
+            else
+            {
+                canAttack = true;
             }
 
             if (skill1 != null)
             {
                 if (skill1.CooldownRate > 0)
                     skill1.CoolingDown(Time.deltaTime);
-                imageSkill1.fillAmount = 1 - skill1.CooldownRate;
             }
 
             if (skill2 != null)
             {
                 if (skill2.CooldownRate > 0)
                     skill2.CoolingDown(Time.deltaTime);
-                imageSkill2.fillAmount = 1 - skill2.CooldownRate;
             }
 
             if (skill3 != null)
             {
                 if (skill3.CooldownRate > 0)
                     skill3.CoolingDown(Time.deltaTime);
-                imageSkill3.fillAmount = 1 - skill3.CooldownRate;
             }
 
             if (skill4 != null)
             {
                 if (skill4.CooldownRate > 0)
                     skill4.CoolingDown(Time.deltaTime);
-                imageSkill4.fillAmount = 1 - skill4.CooldownRate;
             }
-
-
         }
 
         public void NormalAttackButton(InputAction.CallbackContext context)
@@ -200,36 +208,40 @@ namespace PlatformerFight.CharacterThings
                 if (player.IsGrounded)
                 {
                     animatorStateInfo = playerAnimation.GetCurrentAnimatorStateInfo();
-                    if (normalATKCombo == 0 || IsNormalAttacking() && IsAttackingAnimation() && animatorStateInfo.normalizedTime < 0.8f && normalAttack != null)
+                    
+                    if (normalAttack != null)
                     {
                         if (normalAttack.CanPeform(player.IsGrounded, player) && normalATKCombo < normalAttack.Variations.Count)
                         {
                             normalATKCombo++;
                             normalATKCombo = Mathf.Clamp(normalATKCombo, 1, normalAttack.Variations.Count);
-                            currentSkill = normalAttack;
-                            currentSkill.SetVariation(normalATKCombo - 1);
-                            //SetupBeforeSkill();
-                            if (currentSkill.Execute() == true)
+                            normalAttack.SetVariation(normalATKCombo - 1);
+                            if (normalAttack.Execute())
                             {
+                                SetupSkill(normalAttack);
                                 isAttacking = true;
                                 player.CharacterStats.SetAPRecovery(false);
-                                StopCoroutine(CanRecoverAP());
+                                if (recoverAPCoroutine != null)
+                                    StopCoroutine(recoverAPCoroutine);
+                                CancelInvoke("ResetNormalAttack");
+                                Invoke("ResetNormalAttack", 0.5f);
                             }
                         }
                     }
+
                 }
                 else
                 {
                     if (normalAirAttack != null)
                         if (normalAirAttack.CanPeform(player.IsGrounded, player))
                         {
-                            currentSkill = normalAirAttack;
-                            //SetupBeforeSkill();
-                            if (currentSkill.Execute())
+                            if (normalAirAttack.Execute())
                             {
+                                SetupSkill(normalAirAttack);
                                 isAttacking = true;
                                 player.CharacterStats.SetAPRecovery(false);
-                                StopCoroutine(CanRecoverAP());
+                                if (recoverAPCoroutine != null)
+                                    StopCoroutine(recoverAPCoroutine);
                             }
                         }
                 }
@@ -239,7 +251,7 @@ namespace PlatformerFight.CharacterThings
         public void APSet()
         {
             player.CharacterStats.SetAPRecovery(false);
-            StartCoroutine(CanRecoverAP());
+            recoverAPCoroutine = StartCoroutine(CanRecoverAP());
         }
 
         private IEnumerator CanRecoverAP()
@@ -284,7 +296,7 @@ namespace PlatformerFight.CharacterThings
         {
             if (context.performed)
             {
-                PerformSkill1();
+                PerformSkill(skill1);
             }
         }
 
@@ -292,7 +304,7 @@ namespace PlatformerFight.CharacterThings
         {
             if (context.performed)
             {
-                PerformSkill2();
+                PerformSkill(skill2);
             }
         }
 
@@ -300,7 +312,7 @@ namespace PlatformerFight.CharacterThings
         {
             if (context.performed)
             {
-                PerformSkill3();
+                PerformSkill(skill3);
             }
         }
 
@@ -308,25 +320,45 @@ namespace PlatformerFight.CharacterThings
         {
             if (context.performed)
             {
-                PerformSkill4();
+                PerformSkill(skill4);
+            }
+        }
+
+        public void PerformSkill(Skill skill)
+        {
+            if (skill != null && !isAttacking && !isSkillAttacking && canAttack)
+            {
+                if (skill.CanPeform(player.IsGrounded, player))
+                {
+                    if (skill.Execute())
+                    {
+                        skill.EnterCooldown();
+                        SetupSkill(skill);
+                        isAttacking = true;
+                        isSkillAttacking = true;
+                        player.CharacterStats.SetAPRecovery(false);
+                        if (recoverAPCoroutine != null)
+                            StopCoroutine(recoverAPCoroutine);
+                    }
+                }
             }
         }
 
         public void PerformSkill1()
         {
-            if (skill1 != null && !isAttacking && !isSkillAttacking)
+            if (skill1 != null && !isAttacking && !isSkillAttacking && canAttack)
             {
                 if (skill1.CanPeform(player.IsGrounded, player))
                 {
-                    currentSkill = skill1;
-                    //SetupBeforeSkill();
-                    if (currentSkill.Execute())
+                    if (skill1.Execute())
                     {
                         skill1.EnterCooldown();
+                        SetupSkill(skill1);
                         isAttacking = true;
                         isSkillAttacking = true;
                         player.CharacterStats.SetAPRecovery(false);
-                        StopCoroutine(CanRecoverAP());
+                        if (recoverAPCoroutine != null)
+                            StopCoroutine(recoverAPCoroutine);
                     }
                 }
             }
@@ -334,19 +366,19 @@ namespace PlatformerFight.CharacterThings
 
         public void PerformSkill2()
         {
-            if (skill2 != null && !isAttacking && !isSkillAttacking)
+            if (skill2 != null && !isAttacking && !isSkillAttacking && canAttack)
             {
                 if (skill2.CanPeform(player.IsGrounded, player))
                 {
-                    currentSkill = skill2;
-                    //SetupBeforeSkill();
-                    if (currentSkill.Execute())
+                    if (skill2.Execute())
                     {
                         skill2.EnterCooldown();
+                        SetupSkill(skill2);
                         isAttacking = true;
                         isSkillAttacking = true;
                         player.CharacterStats.SetAPRecovery(false);
-                        StopCoroutine(CanRecoverAP());
+                        if (recoverAPCoroutine != null)
+                            StopCoroutine(recoverAPCoroutine);
                     }
                 }
             }
@@ -354,19 +386,19 @@ namespace PlatformerFight.CharacterThings
 
         public void PerformSkill3()
         {
-            if (skill3 != null && !isAttacking && !isSkillAttacking)
+            if (skill3 != null && !isAttacking && !isSkillAttacking && canAttack)
             {
                 if (skill3.CanPeform(player.IsGrounded, player))
                 {
-                    currentSkill = skill3;
-                    //SetupBeforeSkill();
-                    if (currentSkill.Execute())
+                    if (skill3.Execute())
                     {
                         skill3.EnterCooldown();
+                        SetupSkill(skill3);
                         isAttacking = true;
                         isSkillAttacking = true;
                         player.CharacterStats.SetAPRecovery(false);
-                        StopCoroutine(CanRecoverAP());
+                        if (recoverAPCoroutine != null)
+                            StopCoroutine(recoverAPCoroutine);
                     }
                 }
             }
@@ -374,37 +406,107 @@ namespace PlatformerFight.CharacterThings
 
         public void PerformSkill4()
         {
-            if (skill4 != null && !isAttacking && !isSkillAttacking)
+            if (skill4 != null && !isAttacking && !isSkillAttacking && canAttack)
             {
                 if (skill4.CanPeform(player.IsGrounded, player))
                 {
-                    currentSkill = skill4;
-                    //SetupBeforeSkill();
-                    if (currentSkill.Execute())
+                    if (skill4.Execute())
                     {
                         skill4.EnterCooldown();
+                        SetupSkill(skill4);
                         isAttacking = true;
                         isSkillAttacking = true;
                         player.CharacterStats.SetAPRecovery(false);
-                        StopCoroutine(CanRecoverAP());
+                        if (recoverAPCoroutine != null)
+                            StopCoroutine(recoverAPCoroutine);
                     }
                 }
             }
+        }
+
+        public void ResetNormalAttack()
+        {
+            normalATKCombo = 0;
         }
 
         public void EndAttack()
         {
             isAttacking = false;
             isSkillAttacking = false;
+            if (!player.canMove)
+            {
+                player.EnableMove();
+            }
+
+            if (currentSkill != null)
+            {
+                onSkillEndAction.Invoke();
+                DiscardCurrentSkill();
+            }
+
+            recoverAPCoroutine = StartCoroutine(CanRecoverAP());
         }    
 
-        /*protected virtual void SetupBeforeSkill()
+        public void CancelAttack()
+        {
+            isAttacking = false;
+            isSkillAttacking = false;
+            if (!player.canMove)
+            {
+                player.EnableMove();
+            }
+
+            if (currentSkill != null)
+            {
+                onSkillCancelAction.Invoke();
+                DiscardCurrentSkill();
+            }
+
+            recoverAPCoroutine = StartCoroutine(CanRecoverAP());
+        }   
+
+        protected void SetupSkill(Skill chosenSkill)
+        {
+            currentSkill = chosenSkill;
+
+            onSkillUpdate += chosenSkill.SkillUpdate;
+            onSkillEndAction += chosenSkill.SkillEnd;
+            onSkillCancelAction += chosenSkill.SkillCancel;
+        }
+
+        protected void DiscardSkill(Skill skill)
+        {
+            if (skill != null)
+            {
+                onSkillUpdate -= skill.SkillUpdate;
+                onSkillEndAction -= skill.SkillEnd;
+                onSkillCancelAction -= skill.SkillCancel;
+            }
+        }
+
+        protected void DiscardCurrentSkill()
         {
             if (currentSkill != null)
             {
-                currentSkill.SetupBeforeSkill(player, AttackPoint);
-            }
-        }*/
+                onSkillUpdate -= currentSkill.SkillUpdate;
+                onSkillEndAction -= currentSkill.SkillEnd;
+                onSkillCancelAction -= currentSkill.SkillCancel;
+
+                currentSkill = null;
+            }           
+        }
+
+        protected void DiscardAllSkill()
+        {
+            DiscardSkill(normalAttack);
+            DiscardSkill(normalAirAttack);
+            DiscardSkill(skill1);
+            DiscardSkill(skill2);
+            DiscardSkill(skill3);
+            DiscardSkill(skill4);
+
+            currentSkill = null;
+        }
 
         public void SkillDamage()
         {

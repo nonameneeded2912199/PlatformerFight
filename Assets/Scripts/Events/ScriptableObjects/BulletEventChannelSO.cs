@@ -6,7 +6,7 @@ using UnityEngine;
 public class BulletEventChannelSO : DescriptionBaseSO
 {
     public delegate Bullet BulletSpawnAction(string allegiance, Vector2 position, float speed, float direction, float acceleration, float lifeSpan, 
-        float damage, float invincibleTime, float radius, Sprite sprite, AnimatorOverrideController animatorOverrideController, bool destroyOnInvisible = true);
+        float damage, float invincibleTime, float radius, Sprite sprite, AnimatorOverrideController animatorOverrideController, float delay = 0, bool destroyOnInvisible = true);
 
     public delegate bool BulletBackToPoolAction(Bullet bullet);
 
@@ -14,13 +14,13 @@ public class BulletEventChannelSO : DescriptionBaseSO
     public BulletBackToPoolAction OnBulletBackToPoolRequested;
 
     public Bullet RaiseBulletEvent(string allegiance, Vector2 position, float speed, float direction, float acceleration, float lifeSpan, 
-        float damage, float invincibleTime, float radius, Sprite sprite, AnimatorOverrideController animatorOverrideController, bool destroyOnInvisible = true)
+        float damage, float invincibleTime, float radius, Sprite sprite, AnimatorOverrideController animatorOverrideController, float delay = 0, bool destroyOnInvisible = true)
     {
         Bullet bullet = default;
 
         if (OnBulletSpawnRequested != null)
         {
-            bullet = OnBulletSpawnRequested.Invoke(allegiance, position, speed, direction, acceleration, lifeSpan, damage, invincibleTime, radius, sprite, animatorOverrideController, destroyOnInvisible);
+            bullet = OnBulletSpawnRequested.Invoke(allegiance, position, speed, direction, acceleration, lifeSpan, damage, invincibleTime, radius, sprite, animatorOverrideController, delay, destroyOnInvisible);
         }
         else
         {

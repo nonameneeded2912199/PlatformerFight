@@ -31,7 +31,7 @@ public class StartGame : MonoBehaviour
 
     private void StartNewGame()
     {
-        loadLocation.RaiseEvent(stageToLoad, false);
+        loadLocation.RaiseEvent(stageToLoad, true, true);
     }
 
     private void ContinueGame()

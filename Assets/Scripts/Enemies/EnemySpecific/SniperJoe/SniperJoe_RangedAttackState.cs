@@ -5,11 +5,6 @@ using UnityEngine;
 public class SniperJoe_RangedAttackState : RangedAttackState
 {
     private SniperJoe enemy;
-    private float shootCooldown = 3f;
-    private float lastTimeShoot = 0;
-    private bool isAttacking = false;
-
-    private bool isPlayerInCircleRange;
 
     public SniperJoe_RangedAttackState(FiniteStateMachine stateMachine, SniperJoe enemy, string animBoolName, Transform attackPosition, D_RangedAttackState stateData)
         : base(stateMachine, enemy, animBoolName, attackPosition, stateData)
@@ -70,7 +65,6 @@ public class SniperJoe_RangedAttackState : RangedAttackState
 
     private IEnumerator ShootPlayer()
     {
-        isAttacking = true;
         float targetAngle = enemy.facingRight ? 0 : Mathf.PI;
         float startingAngle = 0;
         BulletDetails[] bulletDetails = stateData.bulletDetails;

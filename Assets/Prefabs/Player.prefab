@@ -678,6 +678,7 @@ MonoBehaviour:
   popupEventChannel: {fileID: 11400000, guid: 86e2776f5bd02d54bab1caecc4dbd9f3, type: 2}
   isGrounded: 0
   facingRight: 1
+  _inputReader: {fileID: 0}
   movementSpeed: 5
   jumpForce: 15
   wallJumpForce: 1.5
@@ -775,16 +776,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06eb690af71b27a4fb8e1c2ea42b714d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _inputReader: {fileID: 0}
+  _onSkill1Set: {fileID: 0}
+  _onSkill2Set: {fileID: 0}
+  _onSkill3Set: {fileID: 0}
+  _onSkill4Set: {fileID: 0}
   isAttacking: 0
   isSkillAttacking: 0
   canAttack: 1
   normalATKScriptable: {fileID: 11400000, guid: 9746b0caf0337554dbf150f341160a3c, type: 2}
   normalATKCombo: 0
   normalAirATKScriptable: {fileID: 11400000, guid: aa0c370839aa7654198729dcfcdf5c81, type: 2}
-  imageSkill1: {fileID: 5789039678815212669}
-  imageSkill2: {fileID: 5789039679329819932}
-  imageSkill3: {fileID: 5789039680011425082}
-  imageSkill4: {fileID: 5789039678713201688}
   presetSkill:
   - {fileID: 11400000, guid: 4ae45ace3e7388b41a2742c49eb8ef05, type: 2}
   - {fileID: 11400000, guid: 2e3feec63d02f224c8584453e28649b4, type: 2}
@@ -803,6 +805,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterData: {fileID: 11400000, guid: 2e6ca1a7e96f8bb49b47482b4ad348b3, type: 2}
+  _onPlayerStatUpdate: {fileID: 0}
 --- !u!114 &4149831728136949903
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -842,7 +845,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7bea0311ca986941a16b636b659c5d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridTransform: {fileID: 5789039678779014619}
+  _onBuffDisplay: {fileID: 0}
 --- !u!1 &5789039679180815976
 GameObject:
   m_ObjectHideFlags: 0
