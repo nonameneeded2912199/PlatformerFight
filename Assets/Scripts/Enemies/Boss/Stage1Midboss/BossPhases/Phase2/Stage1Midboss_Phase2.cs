@@ -52,8 +52,8 @@ public class Stage1Midboss_Phase2 : BossPhase
 
         owner.CharacterStats.SetCharacterStats(phaseData.phaseStats);
 
-        owner.stateMachine.ChangeState(initialState);
-        //owner.stateMachine.Initialize(initialState);
+        //owner.stateMachine.ChangeState(initialState);
+        owner.stateMachine.Initialize(initialState);
     }
 
     public void TakeDamage(AttackDetails attackDetails)

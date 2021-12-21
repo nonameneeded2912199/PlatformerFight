@@ -10,13 +10,13 @@ public class AudioCueEventChannelSO : DescriptionBaseSO
 	public AudioCueStopAction OnAudioCueStopRequested;
 	public AudioCueFinishAction OnAudioCueFinishRequested;
 
-	public AudioCueKey RaisePlayEvent(AudioCueSO audioCue, AudioConfigurationSO audioConfiguration, Vector3 positionInSpace = default)
+	public AudioCueKey RaisePlayEvent(AudioCueSO audioCue, AudioConfigurationSO audioConfiguration, Vector3 positionInSpace = default, bool playFromStart = true)
 	{
 		AudioCueKey audioCueKey = AudioCueKey.Invalid;
 
 		if (OnAudioCuePlayRequested != null)
 		{
-			audioCueKey = OnAudioCuePlayRequested.Invoke(audioCue, audioConfiguration, positionInSpace);
+			audioCueKey = OnAudioCuePlayRequested.Invoke(audioCue, audioConfiguration, positionInSpace, playFromStart);
 		}
 		else
 		{
@@ -65,6 +65,6 @@ public class AudioCueEventChannelSO : DescriptionBaseSO
 	}
 }
 
-public delegate AudioCueKey AudioCuePlayAction(AudioCueSO audioCue, AudioConfigurationSO audioConfiguration, Vector3 positionInSpace);
+public delegate AudioCueKey AudioCuePlayAction(AudioCueSO audioCue, AudioConfigurationSO audioConfiguration, Vector3 positionInSpace, bool playFromStart = true);
 public delegate bool AudioCueStopAction(AudioCueKey emitterKey);
 public delegate bool AudioCueFinishAction(AudioCueKey emitterKey);

@@ -14,24 +14,32 @@ public class MusicPlayer : MonoBehaviour
 	private void OnEnable()
 	{
 		_onPauseOpened.OnEventRaised += PlayPauseMusic;
-		_onSceneReady.OnEventRaised += PlayMusic;
+		_onSceneReady.OnEventRaised += PlayMusicFromStart;
 	}
 
 	private void OnDisable()
 	{
-		_onSceneReady.OnEventRaised -= PlayMusic;
+		_onSceneReady.OnEventRaised -= PlayMusicFromStart;
 		_onPauseOpened.OnEventRaised -= PlayPauseMusic;
+	}
+
+	private void PlayMusicFromStart()
+	{
+		_playMusicOn.RaisePlayEvent(_thisSceneSO.musicTrack, _audioConfig);
 	}
 
 	private void PlayMusic()
 	{
-		_playMusicOn.RaisePlayEvent(_thisSceneSO.musicTrack, _audioConfig);
+		_playMusicOn.RaisePlayEvent(_thisSceneSO.musicTrack, _audioConfig, default, false);
 	}
 
 	private void PlayPauseMusic(bool open)
 	{
 		if (open)
-			_playMusicOn.RaisePlayEvent(_pauseMusic, _audioConfig);
+		{
+			Debug.Log("Paused");
+			_playMusicOn.RaisePlayEvent(_pauseMusic, _audioConfig, default, false);
+		}
 		else
 			PlayMusic();
 	}

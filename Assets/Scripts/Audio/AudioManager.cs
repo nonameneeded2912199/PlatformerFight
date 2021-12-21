@@ -38,7 +38,7 @@ public class AudioManager : MonoBehaviour
 		_soundEmitterVault = new SoundEmitterVault();
 
 		_pool.Prewarm(_initialSize);
-		_pool.SetParent(transform);
+		_pool.SetParent(this.transform);
 	}
 
 	private void OnEnable()
@@ -131,23 +131,26 @@ public class AudioManager : MonoBehaviour
 		return (normalizedValue - 1f) * 80f;
 	}
 
-	private AudioCueKey PlayMusicTrack(AudioCueSO audioCue, AudioConfigurationSO audioConfiguration, Vector3 positionInSpace)
+	private AudioCueKey PlayMusicTrack(AudioCueSO audioCue, AudioConfigurationSO audioConfiguration, Vector3 positionInSpace, bool playFromStart = true)
 	{
-		float fadeDuration = 2f;
+		float fadeDuration = 0f;
 		float startTime = 0f;
 
 		if (_musicSoundEmitter != null && _musicSoundEmitter.IsPlaying())
 		{
 			AudioClip songToPlay = audioCue.GetClips()[0];
+			Debug.Log(songToPlay);
 			if (_musicSoundEmitter.GetClip() == songToPlay)
 				return AudioCueKey.Invalid;
 
 			//Music is already playing, need to fade it out
 			startTime = _musicSoundEmitter.FadeMusicOut(fadeDuration);
+			if (playFromStart)
+				startTime = 0;
 		}
 
 		_musicSoundEmitter = _pool.Request();
-		_musicSoundEmitter.FadeMusicIn(audioCue.GetClips()[0], audioConfiguration, 1f, startTime);
+		_musicSoundEmitter.FadeMusicIn(audioCue.GetClips()[0], audioConfiguration, 0f, startTime);
 		_musicSoundEmitter.OnSoundFinishedPlaying += StopMusicEmitter;
 
 		return AudioCueKey.Invalid; //No need to return a valid key for music
@@ -176,7 +179,7 @@ public class AudioManager : MonoBehaviour
 	/// <summary>
 	/// Plays an AudioCue by requesting the appropriate number of SoundEmitters from the pool.
 	/// </summary>
-	public AudioCueKey PlayAudioCue(AudioCueSO audioCue, AudioConfigurationSO settings, Vector3 position = default)
+	public AudioCueKey PlayAudioCue(AudioCueSO audioCue, AudioConfigurationSO settings, Vector3 position = default, bool playFromStart = true)
 	{
 		AudioClip[] clipsToPlay = audioCue.GetClips();
 		SoundEmitter[] soundEmitterArray = new SoundEmitter[clipsToPlay.Length];

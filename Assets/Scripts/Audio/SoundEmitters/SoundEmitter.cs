@@ -18,7 +18,6 @@ public class SoundEmitter : MonoBehaviour
 	{
 		_audioSource = this.GetComponent<AudioSource>();
 		_audioSource.playOnAwake = false;
-		_audioSource.spatialBlend = 0.0f;
 	}
 
     private void Update()
@@ -41,7 +40,6 @@ public class SoundEmitter : MonoBehaviour
 		_audioSource.transform.position = position;
 		_audioSource.loop = hasToLoop;
 		_audioSource.time = 0f; //Reset in case this AudioSource is being reused for a short SFX after being used for a long music track
-		_audioSource.spatialBlend = 0.0f;
 		_audioSource.Play();
 
 		if (!hasToLoop)

@@ -67,7 +67,6 @@ public class Stage1Midboss : Boss
         base.Update();
         currentPhase = "" + CurrentBossPhase;
         currentState = "" + stateMachine.CurrentState;
-        HandleHPBar();
     }
 
     protected override void TakeDamage(AttackDetails attackDetails)
@@ -89,35 +88,12 @@ public class Stage1Midboss : Boss
 
     public override void Activate()
     {
-        //base.Activate();
-
-        //doors.SetActive(true);
-
-        //HPBarsOBJ.SetActive(true);
-
-        //stateMachine.Initialize(initialState);
-
-        phase1.StartPhase();
+        phase2.StartPhase();
     }
 
-    private void HandleHPBar()
-    {
-        //imageHP.fillAmount = CharacterStats.CurrentHP / CharacterStats.MaxHP;
-        //textHP.text = CharacterStats.CurrentHP + " / " + CharacterStats.MaxHP;
-    }
     public override void OnDefeat()
     {
         Invoke("Fanfare", 5f);
         Invoke("ToNextStage", 10f);
-    }
-
-    private void Fanfare()
-    {
-        //stageCompleteText.gameObject.SetActive(true);
-    }
-
-    private void ToNextStage()
-    {
-        //SaveManager.SceneName = "Stage2-1";
     }
 }

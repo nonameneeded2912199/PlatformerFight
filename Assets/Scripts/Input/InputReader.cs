@@ -44,9 +44,6 @@ public class InputReader : DescriptionBaseSO, PlayerInputAction.IGameplayActions
 	public event UnityAction UICancelEvent = delegate { };
 	public event UnityAction<float> TabSwitched = delegate { };
 
-	// Cheats (has effect only in the Editor)
-	public event UnityAction CheatMenuEvent = delegate { };
-
 	private PlayerInputAction _gameInput;
 
 	private void OnEnable()
