@@ -167,8 +167,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f4fd012997b7a74290d27def26c429b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  normalMat: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
-  whiteMat: {fileID: 2100000, guid: a62f573dae442b942ba4c84352195174, type: 2}
   groundRaycastLength: 0.64
   groundRaycastOffset: {x: 0.19, y: 0, z: 0}
   wallRaycastLength: 0.24
@@ -184,7 +182,9 @@ MonoBehaviour:
   popupEventChannel: {fileID: 11400000, guid: 86e2776f5bd02d54bab1caecc4dbd9f3, type: 2}
   isGrounded: 0
   facingRight: 1
+  IsDead: 0
   _inputReader: {fileID: 11400000, guid: b1021248402db504987c4d14cac14357, type: 2}
+  _onDeath: {fileID: 11400000, guid: 753e6e6d699a46848b84264847c87976, type: 2}
   movementSpeed: 5
   jumpForce: 15
   wallJumpForce: 1.5
@@ -291,13 +291,19 @@ MonoBehaviour:
   isSkillAttacking: 0
   canAttack: 1
   normalATKScriptable: {fileID: 11400000, guid: 9746b0caf0337554dbf150f341160a3c, type: 2}
-  normalATKCombo: 0
   normalAirATKScriptable: {fileID: 11400000, guid: aa0c370839aa7654198729dcfcdf5c81, type: 2}
+  normalSlideATKScriptable: {fileID: 11400000, guid: a24f602ffaa38ba48833a9cc72511426, type: 2}
+  normalATKCombo: 0
   presetSkill:
   - {fileID: 11400000, guid: 4ae45ace3e7388b41a2742c49eb8ef05, type: 2}
   - {fileID: 11400000, guid: 2e3feec63d02f224c8584453e28649b4, type: 2}
   - {fileID: 11400000, guid: 18a26f2a38d62814bb1886de32723d80, type: 2}
+  - {fileID: 11400000, guid: a3abf948faaf15241a869aba6473f30b, type: 2}
   AttackPoint: {fileID: 8939369595288542290}
+  debugHitbox: 0
+  circleRadius: 0
+  horizontalSize: 0
+  verticalSize: 0
 --- !u!114 &5516913172120455392
 MonoBehaviour:
   m_ObjectHideFlags: 0

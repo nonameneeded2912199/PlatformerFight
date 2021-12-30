@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf595ea703fb1d24d8b058e3215657e1, type: 3}
+  m_Name: Test_DownwardThrustData
+  m_EditorClassIdentifier: 
+  variations:
+  - animationName:
+    - DownwardThrust
+    - DownwardThrustDone
+    attackMultiplier: 1.2
+    bonusKnockbackSpeed: {x: 0, y: 0}
+    bonusKnockbackTime: 0
+    invicibleTime: 1
+    circularHitbox: 0
+    attackRadius: 0
+    horizontalSize: 0.8
+    verticalSize: 1.2
+    moveWhileExecuting: 1
+    movingVelocity: {x: 0, y: 0.5}
+  skillName: Hyouretsuzan
+  canPerformOnAir: 1
+  canPerformOnGround: 1
+  apCost: 10
+  cooldownTime: 3
+  skillIcon: {fileID: 21300000, guid: 9987b816eaacc6847ac1faf299be6205, type: 3}
+  buffsToExecutor: []
+  buffsInflict: []

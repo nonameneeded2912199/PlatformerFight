@@ -43,7 +43,6 @@ namespace PlatformerFight.Pool
         {
             T member = base.Request();
             member.gameObject.SetActive(true);
-            amount = "" + Available.Count;
             return member;
         }
 
@@ -51,7 +50,6 @@ namespace PlatformerFight.Pool
         {
             member.transform.SetParent(PoolRoot.transform);
             member.gameObject.SetActive(false);
-            amount = "" + Available.Count;
             base.Return(member);
         }
 
@@ -60,8 +58,12 @@ namespace PlatformerFight.Pool
             T newMember = base.Create();
             newMember.transform.SetParent(PoolRoot.transform);
             newMember.gameObject.SetActive(false);
-            amount = "" + Available.Count;
             return newMember;
+        }
+
+        public void RequestResetPool()
+        {
+            HasBeenPrewarmed = false;
         }
 
         public override void OnDisable()

@@ -171,10 +171,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39b8b009bb60700499f8d9be12a5f981, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wallPoint: {fileID: 7317829358526683398}
+  groundRaycastLength: 0
+  groundRaycastOffset: {x: 0, y: 0, z: 0}
+  wallRaycastLength: 0
+  onWall: 0
+  onRightWall: 0
+  canBeKnockedback: 0
+  knockback: 0
+  knockbackSpeed: {x: 0, y: 0}
+  knockbackDuration: 0
+  platformLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  popupEventChannel: {fileID: 0}
+  isGrounded: 0
+  facingRight: 1
+  IsDead: 0
+  goRight: 0
+  touchDamage: 0
+  touchDamageWidth: 0
+  touchDamageHeight: 0
   ledgePoint: {fileID: 7317829358947742675}
   playerCheckPoint: {fileID: 7317829358328470530}
-  groundPoint: {fileID: 7317829358361380739}
+  touchDamagePoint: {fileID: 0}
+  canDestroy: 0
+  bulletEventChannel: {fileID: 11400000, guid: cf839519a667d8e47b35d9a9ad557afc, type: 2}
+  OnRequestDifficulty: {fileID: 11400000, guid: ee8f92610f098ac4c805296451700acf, type: 2}
   entityData: {fileID: 11400000, guid: 1acc25b08a5e9804787d0200ab53c5a6, type: 2}
   moveStateData: {fileID: 11400000, guid: 28094d843057fc7429a8a1ad09dec9a7, type: 2}
   idleStateData: {fileID: 11400000, guid: 34f3e2a7afcad4e4db6ac7ba3ec09dfd, type: 2}

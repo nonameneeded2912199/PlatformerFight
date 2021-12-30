@@ -35,28 +35,24 @@ public class UI_DifficultSelectorPanel : MonoBehaviour
     {
         gameStateSO.SetDifficulty(GameDifficulty.EASY);
         OnChooseDifficulty.Invoke();
-        //_startNewGameEvent.RaiseEvent();
     }
 
     public void NormalBtn()
     {
         gameStateSO.SetDifficulty(GameDifficulty.NORMAL);
         OnChooseDifficulty.Invoke();
-        //_startNewGameEvent.RaiseEvent();
     }
 
     public void HardBtn()
     {
         gameStateSO.SetDifficulty(GameDifficulty.HARD);
         OnChooseDifficulty.Invoke();
-        //_startNewGameEvent.RaiseEvent();
     }
 
     public void LunaticBtn()
     {
         gameStateSO.SetDifficulty(GameDifficulty.LUNATIC);
         OnChooseDifficulty.Invoke();
-        //_startNewGameEvent.RaiseEvent();
     }
 
     private void CancelDifficultyPanel()

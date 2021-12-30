@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyName: Fake Ice Fairy
   phaseStats: {fileID: 11400000, guid: 40a95779376720247b500df798b55ee5, type: 2}
-  scoreYield: 5000
+  scoreYield: 50000
   phaseType: 1
   phaseName: Full-blown Snowstorm
   phaseBonusTime: 0

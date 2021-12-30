@@ -78,9 +78,9 @@ public class Enemy2 : BaseEnemy
     {
         base.TakeDamage(attackDetails);
 
-        if (isDead)
+        if (IsDead)
         {
-            stateMachine.ChangeState(deadState);
+            Kill();
         }
 
         else if (isStunned && stateMachine.CurrentState != stunState)
@@ -98,6 +98,11 @@ public class Enemy2 : BaseEnemy
             lookForPlayerState.SetTurnImmediately(true);
             stateMachine.ChangeState(lookForPlayerState);
         }
+    }
+
+    public override void Kill()
+    {
+        stateMachine.ChangeState(deadState);
     }
 
     protected override void OnDrawGizmos()

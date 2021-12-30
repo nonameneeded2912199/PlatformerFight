@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UIGameplayManager : MonoBehaviour
 {
+
 	[Header("Scene UI")]
 	[SerializeField]
 	private UI_Pause _pauseScreen = default;
@@ -12,6 +14,8 @@ public class UIGameplayManager : MonoBehaviour
 	[SerializeField] private GameStateSO _gameStateManager = default;
 	[SerializeField] private MenuSO _mainMenu = default;
 	[SerializeField] private InputReader _inputReader = default;
+	[SerializeField]
+	private Button pauseButton = default;
 	//[SerializeField] private ActorSO _mainProtagonist = default;
 
 	[Header("Event channels")]
@@ -21,16 +25,21 @@ public class UIGameplayManager : MonoBehaviour
 	[SerializeField]
 	private LoadEventChannelSO _loadMenuEvent = default;
 
+	[SerializeField]
+	private DialogEventChannelSO _onDialogRequested = default;
+
     private void OnEnable()
     {
 		_onSceneReady.OnEventRaised += ResetUI;
 		_inputReader.UIPauseEvent += OpenUIPause;
+		pauseButton.onClick.AddListener(OpenUIPause);
     }
 
     private void OnDisable()
     {
 		_onSceneReady.OnEventRaised -= ResetUI;
 		_inputReader.UIPauseEvent -= OpenUIPause;
+		pauseButton.onClick.RemoveAllListeners();
     }
 
     private void ResetUI()
@@ -54,7 +63,6 @@ public class UIGameplayManager : MonoBehaviour
 
 		_pauseScreen.gameObject.SetActive(true);
 		_inputReader.EnableUIInput();
-		_gameStateManager.UpdateGameState(GameState.Pause);
     }
 
 	private void CloseUIPause()
@@ -71,17 +79,19 @@ public class UIGameplayManager : MonoBehaviour
 
 		_pauseScreen.gameObject.SetActive(false);
 
-		_gameStateManager.ResetToPreviousGameState();
-
-		if (_gameStateManager.CurrentGameState == GameState.Gameplay)
-        {
-			_inputReader.EnableGameplayInput();
-        }			
-    }
+		_inputReader.EnableGameplayInput();
+	}
 
 	private void BackToMainMenu()
     {
-		CloseUIPause();
-		_loadMenuEvent.RaiseEvent(_mainMenu, false);
+		_onDialogRequested.RaiseSaveAction().SetTitle("Back to menu?")
+			.SetText("Go back to the menu? Unsaved progress will be lost.")
+			.AddButton("Yes", () => 
+			{
+				CloseUIPause();
+				_loadMenuEvent.RaiseEvent(_mainMenu, true, true);
+			})
+			.AddCancelButton("No")
+			.Show();	
     }
 }

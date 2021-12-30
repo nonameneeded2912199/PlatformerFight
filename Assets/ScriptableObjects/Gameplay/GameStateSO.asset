@@ -14,5 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _guid: 263447437fcf8ef48a8e9e12136177ff
   description: Holds the current game state.
-  _currentGameState: 0
-  _previousGameState: 0
+  currentDifficulty: 0
+  chosenPlayerID: 0
+  currentStage: {fileID: 0}
+  lastCheckpoint: 
+  OnRequestDifficulty: {fileID: 11400000, guid: ee8f92610f098ac4c805296451700acf, type: 2}

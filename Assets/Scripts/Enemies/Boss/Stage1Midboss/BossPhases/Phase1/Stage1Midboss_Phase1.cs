@@ -51,6 +51,7 @@ public class Stage1Midboss_Phase1 : BossPhase
     public void EndPhase()
     {
         owner.CurrentBossPhase = null;
+        owner.OnAddScore.RaiseEvent(owner.CalculateScoreAfterDefeat(stage1Midboss_Phase1Data.scoreYield));
         owner.NextBossPhase = owner.phase2;
         owner._OnBossStatusEnd.RaiseEvent();
         owner.stateMachine.ChangeState(owner.phaseTransition);

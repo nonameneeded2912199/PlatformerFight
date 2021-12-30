@@ -6,7 +6,7 @@ using UnityEngine;
 [Serializable]
 public class Bullet : MonoBehaviour
 {
-    private float lifeTime;
+    private int lifeTime = 0;
     private AttackDetails attackDetails;
 
     [SerializeField]
@@ -29,6 +29,8 @@ public class Bullet : MonoBehaviour
 
     public float LifeSpan { get; set; }
 
+    public bool Pierce { get; set; }
+
     public bool hasLifeSpan { get; set; }
 
     public bool destroyOnInvisible { get; set; } = true;
@@ -45,7 +47,8 @@ public class Bullet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //attackDetails.position = transform.position;
+        if (Time.timeScale == 0)
+            return;
 
         Speed += Acceleration;
         //Direction += Curve;
@@ -65,10 +68,19 @@ public class Bullet : MonoBehaviour
         damagableLayer |= (1 << LayerMask.NameToLayer("Shield"));
         damagableLayer |= (1 << LayerMask.NameToLayer("Damagable"));
 
-        if (collision.gameObject.layer == LayerMask.NameToLayer("Shield") && !gameObject.CompareTag(collision.tag))
-        {
-            BackToPool();
+        if (!collision.CompareTag("Player") && !collision.CompareTag("Enemy"))
             return;
+
+        if (!gameObject.CompareTag(collision.tag))
+        {
+            if (collision.gameObject.GetComponent<PlatformerFight.CharacterThings.BaseCharacter>().IsDead)
+                return;
+
+            if (collision.gameObject.layer == LayerMask.NameToLayer("Shield"))
+            {
+                BackToPool();
+                return;
+            }
         }
 
         //attackDetails.stunDamageAmount = 0;
@@ -78,6 +90,8 @@ public class Bullet : MonoBehaviour
                 if (collision.CompareTag("Enemy"))
                 {
                     collision.SendMessage("TakeDamage", attackDetails);
+                    if (!Pierce)
+                        BackToPool();
                 }
                 break;
 
@@ -85,6 +99,8 @@ public class Bullet : MonoBehaviour
                 if (collision.CompareTag("Player"))
                 {
                     collision.SendMessage("TakeDamage", attackDetails);
+                    if (!Pierce)
+                        BackToPool();
                 }
                 break;
         }
@@ -92,15 +108,15 @@ public class Bullet : MonoBehaviour
 
     private void LateUpdate()
     {
-        if (hasLifeSpan && !IsDelayed)
+        /*if (hasLifeSpan && !IsDelayed && Time.timeScale != 0)
         {
-            lifeTime += Time.deltaTime;
+            lifeTime++;
             if (lifeTime >= LifeSpan)
             {
                 lifeTime = 0;
                 BackToPool();
             }    
-        }    
+        }*/    
     }
 
     private void OnBecameInvisible()
@@ -158,7 +174,7 @@ public class Bullet : MonoBehaviour
     }
 
     public void SetAttributes(Vector2 position, float speed, float direction, float acceleration, float lifeSpan, float damage, float invincibleTime, 
-        float delay = 0, bool destroyOnInvisible = true)
+        float delay = 0, bool pierce = false, bool destroyOnInvisible = true)
     {
         ResetAttributes();
 
@@ -166,6 +182,7 @@ public class Bullet : MonoBehaviour
         Speed = speed;
         Direction = direction;
         Acceleration = acceleration;
+        Pierce = pierce;
 
         if (delay > 0)
         {
@@ -177,6 +194,15 @@ public class Bullet : MonoBehaviour
         if (lifeSpan > 0)
         {
             LifeSpan = lifeSpan;
+            BulletCommand destroyCommand = gameObject.AddComponent<BulletCommand>();
+            destroyCommand.update = update;
+            void update()
+            {
+                if (destroyCommand.frame == LifeSpan)
+                {
+                    BackToPool();
+                }
+            }
             hasLifeSpan = true;
         }
         else

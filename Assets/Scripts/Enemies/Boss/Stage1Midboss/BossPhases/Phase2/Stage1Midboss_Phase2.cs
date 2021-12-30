@@ -29,9 +29,11 @@ public class Stage1Midboss_Phase2 : BossPhase
 
     public void EndPhase()
     {
+        owner.OnAddScore.RaiseEvent(owner.CalculateScoreAfterDefeat(phaseData.scoreYield));
+        owner.IsDead = true;
         owner.CurrentBossPhase = null;
         owner._OnBossStatusEnd.RaiseEvent();
-        owner.stateMachine.ChangeState(owner.deadState);
+        owner.Kill();
     }
 
     public void FixedUpdate(float deltaTime)

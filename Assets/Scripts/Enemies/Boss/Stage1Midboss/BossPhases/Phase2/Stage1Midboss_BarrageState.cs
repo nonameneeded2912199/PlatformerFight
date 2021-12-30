@@ -74,7 +74,7 @@ public class Stage1Midboss_BarrageState : RangedAttackState
     public override void TriggerAttack()
     {
         base.TriggerAttack();
-        switch (boss.GameStateSO.CurrentDifficulty)
+        switch (boss.thisDifficulty)
         {
             case GameDifficulty.EASY:
                 //attackingCoroutine = boss.StartCoroutine(BarrageEasy());

@@ -75,9 +75,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _inputReader: {fileID: 11400000, guid: b1021248402db504987c4d14cac14357, type: 2}
-  gameStateSO: {fileID: 11400000, guid: 263447437fcf8ef48a8e9e12136177ff, type: 2}
+  _gameStateSO: {fileID: 11400000, guid: 263447437fcf8ef48a8e9e12136177ff, type: 2}
+  _playableDatabaseSO: {fileID: 11400000, guid: 54f517984c74a65438074baaff7ea73f, type: 2}
   _playerTransformAnchor: {fileID: 11400000, guid: 64cf21d73d3ad1f45bc60f922f220514, type: 2}
   _playerSpawnedChannel: {fileID: 11400000, guid: 5137bb6f7f5a3ba4ba111875f31f14cc, type: 2}
   _onSceneReady: {fileID: 11400000, guid: 70292312a9245b34f9eaabda95a32dc2, type: 2}
-  _spawnLocations: []
+  _possibleSpawnLocation: []
   defaultSpawnPoint: {fileID: 8549622185728316760}

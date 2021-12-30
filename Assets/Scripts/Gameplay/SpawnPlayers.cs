@@ -7,10 +7,14 @@ using UnityEngine;
 public class SpawnPlayers : MonoBehaviour
 {
 	[Header("Asset References")]
-	[SerializeField] private InputReader _inputReader = default;
-	//[SerializeField] private Player _playerPrefab = default;
 	[SerializeField] 
-	private GameStateSO gameStateSO = default;
+	private InputReader _inputReader = default;
+
+	[SerializeField] 
+	private GameStateSO _gameStateSO = default;
+
+	[SerializeField]
+	private PlayableDatabaseSO _playableDatabaseSO = default;
 
 	[SerializeField] 
 	private TransformAnchor _playerTransformAnchor = default;
@@ -48,11 +52,11 @@ public class SpawnPlayers : MonoBehaviour
 
 	private Transform GetSpawnLocation()
 	{
-		if (_possibleSpawnLocation.Length <= 0 || gameStateSO.LastCheckpoint == null)
+		if (_possibleSpawnLocation.Length <= 0 || _gameStateSO.LastCheckpoint == null)
 			return defaultSpawnPoint;
 
 
-		int possibleSpawnPointIndex = Array.FindIndex(_possibleSpawnLocation, element => element.CheckpointName == gameStateSO.LastCheckpoint);
+		int possibleSpawnPointIndex = Array.FindIndex(_possibleSpawnLocation, element => element.CheckpointName == _gameStateSO.LastCheckpoint);
 		if (possibleSpawnPointIndex == -1)
         {
 			return defaultSpawnPoint;
@@ -66,7 +70,7 @@ public class SpawnPlayers : MonoBehaviour
 	private void SpawnPlayer()
 	{
 		Transform spawnLocation = GetSpawnLocation();
-		GameObject playerPrefab = gameStateSO.ChosenPlayer.playerGameObject;
+		GameObject playerPrefab = _playableDatabaseSO.GetPlayableInfo(_gameStateSO.ChosenPlayerID).playerGameObject;
 		GameObject playerClone = Instantiate(playerPrefab, spawnLocation.position, Quaternion.identity);
 
 		_playerSpawnedChannel.RaiseEvent(playerClone.transform);

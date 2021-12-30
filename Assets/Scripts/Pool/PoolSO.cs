@@ -11,9 +11,6 @@ namespace PlatformerFight.Pool
 	/// <typeparam name="T">Specifies the type of elements to pool.</typeparam>
 	public abstract class PoolSO<T> : ScriptableObject, IPool<T>
 	{
-		[SerializeField]
-		protected string amount;
-
 		protected readonly Stack<T> Available = new Stack<T>();
 		/// <summary>
 		/// The factory which will be used to create <typeparamref name="T"/> on demand.
@@ -40,8 +37,8 @@ namespace PlatformerFight.Pool
 			}
 			for (int i = 0; i < num; i++)
 			{
+				Available.Clear();
 				Available.Push(Create());
-				amount = "" + Available.Count;
 			}
 			HasBeenPrewarmed = true;
 		}

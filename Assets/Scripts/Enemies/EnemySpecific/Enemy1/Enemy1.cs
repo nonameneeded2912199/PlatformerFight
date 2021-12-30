@@ -70,13 +70,18 @@ public class Enemy1 : BaseEnemy
         Gizmos.DrawWireSphere(meleeAttackPosition.position, meleeAttackStateData.attackRadius);
     }
 
+    public override void Kill()
+    {
+        stateMachine.ChangeState(deadState);
+    }
+
     protected override void TakeDamage(AttackDetails attackDetails)
     {
         base.TakeDamage(attackDetails);
 
-        if (isDead)
+        if (IsDead)
         {
-            stateMachine.ChangeState(deadState);
+            Kill();
         }
 
         if (isStunned && stateMachine.CurrentState != stunState)

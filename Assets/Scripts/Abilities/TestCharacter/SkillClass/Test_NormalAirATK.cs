@@ -7,26 +7,17 @@ namespace PlatformerFight.Abilities
 {
     public class Test_NormalAirATK : Skill
     {
-        private Player player;
-
         public Test_NormalAirATK(ScriptableSkill scriptableSkill, BaseCharacter executor, Transform attackPoint)
             : base(scriptableSkill, executor, attackPoint)
         {
-            player = executor as Player;
+
         }
 
         public override bool Execute()
         {
-            if (player.wallSlide)
-            {
-                currentVariation = Variations[1];
-            }
-            else
-            {
-                currentVariation = Variations[0];
-            }
             if (Executor.CharacterStats.CurrentAP >= APCost)
             {
+                SetVariation(0);
                 Executor.CharacterAnimation.PlayAnim(currentVariation.animationName[0]);
                 Executor.CharacterStats.ConsumeAP(APCost);
                 if (currentVariation.moveWhileExecuting)

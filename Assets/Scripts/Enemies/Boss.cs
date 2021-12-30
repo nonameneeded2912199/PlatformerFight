@@ -54,6 +54,9 @@ namespace PlatformerFight.CharacterThings
 
         protected override void TakeDamage(AttackDetails attackDetails)
         {
+            if (IsDead)
+                return;
+
             if (IsInvincible)
                 return;
 

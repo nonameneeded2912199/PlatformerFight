@@ -34,16 +34,18 @@ public class BulletManager : MonoBehaviour
     {
         bulletEventChannel.OnBulletSpawnRequested -= SpawnBullet;
         bulletEventChannel.OnBulletBackToPoolRequested -= RetrieveBullet;
+
+        bulletPool.RequestResetPool();
     }
 
     private Bullet SpawnBullet(string allegiance, Vector2 position, float speed, float direction, float acceleration, float lifeSpan, float damage, 
-        float invincibleTime, float radius, Sprite sprite, AnimatorOverrideController animatorOverrideController, float delay = 0, bool destroyOnInvisible = true)
+        float invincibleTime, float radius, Sprite sprite, AnimatorOverrideController animatorOverrideController, float delay = 0, bool pierce = false, bool destroyOnInvisible = true)
     {
         Bullet bullet = bulletPool.Request();
         bullet.SetAllegiance(allegiance);
         bullet.ChangeSprite(sprite, animatorOverrideController);
         bullet.ChangeHitRadius(radius);
-        bullet.SetAttributes(position, speed, direction, acceleration, lifeSpan, damage, invincibleTime, delay, destroyOnInvisible);
+        bullet.SetAttributes(position, speed, direction, acceleration, lifeSpan, damage, invincibleTime, delay, pierce, destroyOnInvisible);
 
         return bullet;
     }   

@@ -19,4 +19,7 @@ public class D_Enemy : ScriptableObject
 
     [Header("Layers")]
     public LayerMask playerLayer;
+
+    [Header("Score")]
+    public long scoreYield;
 }

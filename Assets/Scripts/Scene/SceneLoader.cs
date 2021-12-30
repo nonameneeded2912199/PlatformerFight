@@ -11,13 +11,18 @@ using UnityEngine.SceneManagement;
 /// </summary>
 public class SceneLoader : MonoBehaviour
 {
-	[SerializeField] private GameSceneSO _gameplayScene = default;
-	[SerializeField] private InputReader _inputReader = default;
+	[SerializeField] 
+	private GameSceneSO _gameplayScene = default;
+	[SerializeField] 
+	private InputReader _inputReader = default;
 
 	[Header("Listening to")]
-	[SerializeField] private LoadEventChannelSO loadStage = default;
-	[SerializeField] private LoadEventChannelSO loadMenu = default;
-	[SerializeField] private LoadEventChannelSO _coldStartupLocation = default;
+	[SerializeField] 
+	private LoadEventChannelSO loadStage = default;
+	[SerializeField] 
+	private LoadEventChannelSO loadMenu = default;
+	[SerializeField] 
+	private LoadEventChannelSO _coldStartupLocation = default;
 
 	[Header("Broadcasting on")]
 	[SerializeField] private BoolEventChannelSO _toggleLoadingScreen = default;
@@ -38,7 +43,7 @@ public class SceneLoader : MonoBehaviour
 
 	private void OnEnable()
 	{
-		loadStage.OnLoadingRequested += LoadLocation;
+		loadStage.OnLoadingRequested += LoadStage;
 		loadMenu.OnLoadingRequested += LoadMenu;
 #if UNITY_EDITOR
 		_coldStartupLocation.OnLoadingRequested += LocationColdStartup;
@@ -47,7 +52,7 @@ public class SceneLoader : MonoBehaviour
 
 	private void OnDisable()
 	{
-		loadStage.OnLoadingRequested -= LoadLocation;
+		loadStage.OnLoadingRequested -= LoadStage;
 		loadMenu.OnLoadingRequested -= LoadMenu;
 #if UNITY_EDITOR
 		_coldStartupLocation.OnLoadingRequested -= LocationColdStartup;
@@ -62,7 +67,7 @@ public class SceneLoader : MonoBehaviour
 	{
 		_currentlyLoadedScene = currentlyOpenedLocation;
 
-		if (_currentlyLoadedScene.sceneType == GameSceneSO.GameSceneType.Location)
+		if (_currentlyLoadedScene.sceneType == GameSceneSO.GameSceneType.Stage)
 		{
 			//Gameplay managers is loaded synchronously
 			_gameplayManagerLoadingOpHandle = _gameplayScene.sceneReference.LoadSceneAsync(LoadSceneMode.Additive, true);
@@ -90,7 +95,7 @@ public class SceneLoader : MonoBehaviour
 	/// <summary>
 	/// This function loads the location scenes passed as array parameter
 	/// </summary>
-	private void LoadLocation(GameSceneSO locationToLoad, bool showLoadingScreen, bool fadeScreen)
+	private void LoadStage(GameSceneSO locationToLoad, bool showLoadingScreen, bool fadeScreen)
 	{
 		//Prevent a double-loading, for situations where the player falls in two Exit colliders in one frame
 		if (_isLoading)

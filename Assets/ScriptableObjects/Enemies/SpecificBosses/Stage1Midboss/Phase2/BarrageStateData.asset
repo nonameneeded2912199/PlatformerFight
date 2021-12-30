@@ -16,7 +16,7 @@ MonoBehaviour:
   bulletDetails:
   - bulletSpeed: 6
     bulletAcceleration: -0.1
-    bulletLifeSpan: 2.5
+    bulletLifeSpan: 250
     damageMultiplier: 0.8
     hitRadius: 0.07
     destroyOnInvisible: 0

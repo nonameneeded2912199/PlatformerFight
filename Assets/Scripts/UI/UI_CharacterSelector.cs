@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+using System.Text;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
@@ -12,7 +11,7 @@ public class UI_CharacterSelector : MonoBehaviour
     private int selectedCharacter;
 
     [SerializeField]
-    private PlayableCharacterInfo[] playableCharacterInfos;
+    private PlayableDatabaseSO _playableDatabaseSO = default;
 
     [SerializeField]
     private VoidEventChannelSO _startNewGameEvent = default;
@@ -60,21 +59,26 @@ public class UI_CharacterSelector : MonoBehaviour
 
     private void UpdateCharacterSelectUI()
     {
-        characterName.text = playableCharacterInfos[selectedCharacter].CharacterName;
-        characterPortrait.sprite = playableCharacterInfos[selectedCharacter].CharacterSprite;
-        string characterStats = " ";
-        characterStats += "HP: " + playableCharacterInfos[selectedCharacter].CharacterStats.baseHP + "\n";
-        characterStats += "AP: " + playableCharacterInfos[selectedCharacter].CharacterStats.baseAP + "  " 
-            + "Recovery Rate: " + playableCharacterInfos[selectedCharacter].CharacterStats.apRecoveryRate.ToString() + "%" + "\n";
-        characterStats += "ATK: " + playableCharacterInfos[selectedCharacter].CharacterStats.baseATK + "\n";
-        characterStats += "DEF: " + playableCharacterInfos[selectedCharacter].CharacterStats.baseDEF + "\n";
-        this.characterStats.text = characterStats;
-        characterDescription.text = playableCharacterInfos[selectedCharacter].CharacterDescription;
+        PlayableCharacterInfo currentPlayableInfo = _playableDatabaseSO.GetPlayableInfo(selectedCharacter);
+        
+        characterName.text = currentPlayableInfo.CharacterName;
+        characterPortrait.sprite = currentPlayableInfo.CharacterSprite;
+
+        StringBuilder sb = new StringBuilder("");
+
+        sb.Append("HP: " + currentPlayableInfo.CharacterStats.baseHP + "\n");
+        sb.Append("AP: " + currentPlayableInfo.CharacterStats.baseAP + "  "
+            + "Recovery Rate: " + currentPlayableInfo.CharacterStats.apRecoveryRate.ToString() + "%" + "\n");
+        sb.Append("ATK: " + currentPlayableInfo.CharacterStats.baseATK + "\n");
+        sb.Append("DEF: " + currentPlayableInfo.CharacterStats.baseDEF + "\n");
+
+        characterStats.text = sb.ToString();
+        characterDescription.text = currentPlayableInfo.CharacterDescription;
     }
 
     public void OnNextButton_Click()
     {
-        if (++selectedCharacter == playableCharacterInfos.Length)
+        if (++selectedCharacter == _playableDatabaseSO.Amount)
             selectedCharacter = 0;
         UpdateCharacterSelectUI();
     }
@@ -82,13 +86,13 @@ public class UI_CharacterSelector : MonoBehaviour
     public void OnPrevButton_Click()
     {
         if (--selectedCharacter < 0)
-            selectedCharacter = playableCharacterInfos.Length - 1;
+            selectedCharacter = _playableDatabaseSO.Amount - 1;
         UpdateCharacterSelectUI();
     }
 
     public void OnSelectCharButton_Click()
     {
-        gameStateSO.SelectCharacter(playableCharacterInfos[selectedCharacter]);
+        gameStateSO.SelectCharacter(_playableDatabaseSO.GetPlayableInfo(selectedCharacter).CharacterID);
         _startNewGameEvent.RaiseEvent();
     }
 }

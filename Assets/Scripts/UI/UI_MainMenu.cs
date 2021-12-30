@@ -12,17 +12,15 @@ public class UI_MainMenu : MonoBehaviour
 	public UnityAction CreditsButtonAction;
 	public UnityAction ExitButtonAction;
 
+	[SerializeField] 
+	private Button _continueButton = default;
+	[SerializeField] 
+	private Button _NewGameButton = default;
+
 	public void SetMenuScreen(bool hasSaveData)
 	{
-		/*_continueButton.interactable = hasSaveData;
-		if (hasSaveData)
-		{
-			_continueButton.Select();
-		}
-		else
-		{
-			_NewGameButton.Select();
-		}*/
+		_continueButton.interactable = hasSaveData;
+		_NewGameButton.Select();
 	}
 
 	public void NewGameButton()

@@ -13,23 +13,26 @@ public class Stage1Midboss : Boss
     [SerializeField]
     private Stage1Midboss_Phase1Data phase1_Data;
 
+    #endregion
+
+    #region Phase2
+
     public Stage1Midboss_Phase2 phase2 { get; private set; }
 
     [SerializeField]
     private Stage1Midboss_Phase2Data phase2_Data;
 
+    #endregion
+
     public Stage1Midboss_PhaseTransition phaseTransition { get; private set; }
+
+    [SerializeField]
+    private VoidEventChannelSO OnStageCompleted;
 
     public Stage1Midboss_Dead deadState { get; private set; }
 
     [SerializeField]
     private D_DeadState deadStateData;
-
-    #endregion
-
-    #region Phase2
-
-    #endregion
 
     public Transform flightLevel1;
     public Transform flightLevel2;
@@ -72,13 +75,6 @@ public class Stage1Midboss : Boss
     protected override void TakeDamage(AttackDetails attackDetails)
     {
         base.TakeDamage(attackDetails);
-
-        if (isDead)
-        {
-            OnDefeat();
-            //stateMachine.ChangeState(deadState);
-            Destroy(gameObject);
-        }
     }
 
     protected override void OnDrawGizmos()
@@ -91,9 +87,14 @@ public class Stage1Midboss : Boss
         phase2.StartPhase();
     }
 
+    public override void Kill()
+    {
+        OnDefeat();
+        stateMachine.ChangeState(deadState);
+    }
+
     public override void OnDefeat()
     {
-        Invoke("Fanfare", 5f);
-        Invoke("ToNextStage", 10f);
+        OnStageCompleted.RaiseEvent();
     }
 }

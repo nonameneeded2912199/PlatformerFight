@@ -20,4 +20,6 @@ MonoBehaviour:
     m_AssetGUID: f5e4b03fd19c81741a0bc1e32b02a419
     m_SubObjectName: 
     m_SubObjectType: 
+    m_EditorAssetChanged: 0
   musicTrack: {fileID: 0}
+  stageName: 

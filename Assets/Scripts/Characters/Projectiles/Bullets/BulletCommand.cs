@@ -23,11 +23,12 @@ public class BulletCommand : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!GetComponent<Bullet>().IsDelayed)
-        {
-            update?.Invoke();
-            frame++;
-        }
+        if (gameObject.activeInHierarchy)
+            if (!GetComponent<Bullet>().IsDelayed && Time.timeScale != 0)
+            {
+                update?.Invoke();
+                frame++;
+            }
     }
 
     private void OnTriggerEnter2D(Collider2D other)

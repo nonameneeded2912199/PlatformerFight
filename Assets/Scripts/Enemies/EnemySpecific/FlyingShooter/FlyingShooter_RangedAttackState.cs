@@ -83,7 +83,7 @@ public class FlyingShooter_RangedAttackState : RangedAttackState
         BulletDetails bulletDetails = stateData.bulletDetails[0];
         for (int j = 0; j < 5; j++)
         {
-            switch (entity.GameStateSO.CurrentDifficulty)
+            switch (entity.thisDifficulty)
             {
                 case GameDifficulty.EASY:
                     /*Bullet.GetBullet(BulletOwner.Enemy, attackPosition.position, stateData.bulletShootTypes[0].bulletSpeed, angle, stateData.bulletShootTypes[0].bulletLifeSpan,

@@ -77,7 +77,7 @@ public class Stage1Midboss_SpiralAttack : RangedAttackState
     {
         base.TriggerAttack();
         timeStartAttack = Time.time;
-        switch (boss.GameStateSO.CurrentDifficulty)
+        switch (boss.thisDifficulty)
         {
             case GameDifficulty.EASY:
                 attackingCoroutine = boss.StartCoroutine(SpiralAttackEasy());

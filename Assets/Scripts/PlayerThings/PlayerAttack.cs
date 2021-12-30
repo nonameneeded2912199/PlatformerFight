@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.UI;
 using PlatformerFight.Abilities;
 
 namespace PlatformerFight.CharacterThings
@@ -53,17 +52,23 @@ namespace PlatformerFight.CharacterThings
         protected Skill normalAttack;
 
         [SerializeField]
+        protected ScriptableSkill normalAirATKScriptable;
+
+        [SerializeField]
+        protected Skill normalAirAttack;
+
+        [SerializeField]
+        protected ScriptableSkill normalSlideATKScriptable;
+
+        [SerializeField]
+        protected Skill normalSlideATK;
+
+        [SerializeField]
         private int normalATKCombo = 0;
 
         public int Combo => normalATKCombo;
 
         private Coroutine recoverAPCoroutine;
-
-        [SerializeField]
-        protected ScriptableSkill normalAirATKScriptable;
-
-        [SerializeField]
-        protected Skill normalAirAttack;
 
         private Skill skill1;
         private Skill skill2;
@@ -91,18 +96,36 @@ namespace PlatformerFight.CharacterThings
 
         public Transform AttackPoint;
 
+#if UNITY_EDITOR
+
+        [SerializeField]
+        private bool debugHitbox;
+
+        [SerializeField]
+        private float circleRadius;
+
+        [SerializeField]
+        private float horizontalSize;
+
+        [SerializeField]
+        private float verticalSize;
+
+#endif
 
         private void Awake()
         {
             rb = GetComponent<Rigidbody2D>();
             player = GetComponent<Player>();
             playerAnimation = GetComponent<PlayerAnimation>();
-
+            
+            // Initialize skills
             listSkill = new List<Skill>();
 
             normalAttack = normalATKScriptable.InitializeSkill(player, AttackPoint);
 
             normalAirAttack = normalAirATKScriptable.InitializeSkill(player, AttackPoint);
+
+            normalSlideATK = normalSlideATKScriptable.InitializeSkill(player, AttackPoint);
 
             foreach (ScriptableSkill scriptableSkill in presetSkill)
             {
@@ -112,7 +135,12 @@ namespace PlatformerFight.CharacterThings
             skill1 = listSkill[0];
             skill2 = listSkill[1];
             skill3 = listSkill[2];
-            skill4 = listSkill[0];
+            skill4 = listSkill[3];
+
+            skill1.EnterCooldown();
+            skill2.EnterCooldown();
+            skill3.EnterCooldown();
+            skill4.EnterCooldown();
         }
 
         private void OnEnable()
@@ -191,6 +219,14 @@ namespace PlatformerFight.CharacterThings
                 if (skill4.CooldownRate > 0)
                     skill4.CoolingDown(Time.deltaTime);
             }
+
+            if (currentSkill == normalSlideATK && !player.wallSlide)
+            {
+                CancelAttack();
+            }    
+
+            if (onSkillUpdate != null)
+                onSkillUpdate.Invoke(Time.deltaTime);
         }
 
         public void NormalAttackButton(InputAction.CallbackContext context)
@@ -232,18 +268,36 @@ namespace PlatformerFight.CharacterThings
                 }
                 else
                 {
-                    if (normalAirAttack != null)
-                        if (normalAirAttack.CanPeform(player.IsGrounded, player))
-                        {
-                            if (normalAirAttack.Execute())
+                    if (player.wallSlide)
+                    {
+                        if (normalSlideATK != null)
+                            if (normalSlideATK.CanPeform(player.IsGrounded, player))
                             {
-                                SetupSkill(normalAirAttack);
-                                isAttacking = true;
-                                player.CharacterStats.SetAPRecovery(false);
-                                if (recoverAPCoroutine != null)
-                                    StopCoroutine(recoverAPCoroutine);
+                                if (normalSlideATK.Execute())
+                                {
+                                    SetupSkill(normalSlideATK);
+                                    isAttacking = true;
+                                    player.CharacterStats.SetAPRecovery(false);
+                                    if (recoverAPCoroutine != null)
+                                        StopCoroutine(recoverAPCoroutine);
+                                }
                             }
-                        }
+                    }    
+                    else
+                    {
+                        if (normalAirAttack != null)
+                            if (normalAirAttack.CanPeform(player.IsGrounded, player))
+                            {
+                                if (normalAirAttack.Execute())
+                                {
+                                    SetupSkill(normalAirAttack);
+                                    isAttacking = true;
+                                    player.CharacterStats.SetAPRecovery(false);
+                                    if (recoverAPCoroutine != null)
+                                        StopCoroutine(recoverAPCoroutine);
+                                }
+                            }
+                    }    
                 }
             }
         }
@@ -526,6 +580,29 @@ namespace PlatformerFight.CharacterThings
             {
                 currentSkill.DrawGizmo();
             }
+
+#if UNITY_EDITOR
+
+            if (debugHitbox)
+            {
+                Vector2 topLeft = new Vector2(AttackPoint.position.x - horizontalSize / 2, AttackPoint.position.y + verticalSize / 2);
+
+                Vector2 topRight = new Vector2(AttackPoint.position.x + horizontalSize / 2, AttackPoint.position.y + verticalSize / 2);
+
+                Vector2 bottomLeft = new Vector2(AttackPoint.position.x - horizontalSize / 2, AttackPoint.position.y - verticalSize / 2);
+
+                Vector2 bottomRight = new Vector2(AttackPoint.position.x + horizontalSize / 2, AttackPoint.position.y - verticalSize / 2);
+
+                Gizmos.color = Color.magenta;
+
+                Gizmos.DrawLine(topLeft, topRight);
+                Gizmos.DrawLine(topLeft, bottomLeft);
+                Gizmos.DrawLine(topRight, bottomRight);
+                Gizmos.DrawLine(bottomLeft, bottomRight);
+
+                Gizmos.DrawWireSphere(AttackPoint.position, circleRadius);
+            }          
+#endif
         }
     }
 }

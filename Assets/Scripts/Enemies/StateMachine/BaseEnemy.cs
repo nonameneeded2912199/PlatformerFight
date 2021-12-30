@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace PlatformerFight.CharacterThings
 {
-    public class BaseEnemy : BaseCharacter
+    public abstract class BaseEnemy : BaseCharacter
     {
         private Vector2 touchDamageBotLeft, touchDamageTopRight;
 
@@ -39,9 +39,17 @@ namespace PlatformerFight.CharacterThings
         public BulletEventChannelSO BulletEventChannel => bulletEventChannel;
 
         [SerializeField]
-        protected GameStateSO gameStateSO;
+        protected GameDifficultyEventChannelSO OnRequestDifficulty;
 
-        public GameStateSO GameStateSO => gameStateSO;
+        [SerializeField]
+        protected LongEventChannelSO onAddScore;
+
+        public LongEventChannelSO OnAddScore => onAddScore;
+
+        public GameDifficulty thisDifficulty
+        {
+            get => OnRequestDifficulty.RaiseDifficultyEvent();
+        }
 
         public FiniteStateMachine stateMachine;
 
@@ -54,8 +62,6 @@ namespace PlatformerFight.CharacterThings
         public int lastDamageDirection { get; private set; }
 
         protected bool isStunned;
-
-        protected bool isDead;
 
         protected AttackDetails touchAttackDetails;
 
@@ -170,6 +176,9 @@ namespace PlatformerFight.CharacterThings
 
         protected override void TakeDamage(AttackDetails attackDetails)
         {
+            if (IsDead)
+                return;
+
             if (IsInvincible || stateMachine.CurrentState is KnockbackState)
                 return;
 
@@ -203,7 +212,7 @@ namespace PlatformerFight.CharacterThings
 
             if (CharacterStats.CurrentHP <= 0)
             {
-                isDead = true;
+                IsDead = true;
             }
 
             if (currentKnockbackResistance <= 0 && canBeKnockedback)
@@ -224,6 +233,29 @@ namespace PlatformerFight.CharacterThings
             {
                 Destroy(gameObject);
             }
+        }
+
+        public abstract void Kill();
+
+        public virtual long CalculateScoreAfterDefeat(long score)
+        {
+            long calculatedScore = 0;
+
+            switch (thisDifficulty)
+            {
+                case GameDifficulty.EASY:
+                case GameDifficulty.NORMAL:
+                    calculatedScore = score;
+                    break;
+                case GameDifficulty.HARD:
+                    calculatedScore = (long)(score * 1.5);
+                    break;
+                case GameDifficulty.LUNATIC:
+                    calculatedScore = score * 2;
+                    break;
+            }
+
+            return calculatedScore;
         }
 
         protected override void OnDrawGizmos()
@@ -261,12 +293,6 @@ namespace PlatformerFight.CharacterThings
             Gizmos.DrawLine(botLeft, topLeft);
             Gizmos.DrawLine(botRight, topRight);
             Gizmos.DrawLine(topLeft, topRight);
-
-        }
-
-        public void SetDeath(bool death)
-        {
-            isDead = true;
         }
     }
 }

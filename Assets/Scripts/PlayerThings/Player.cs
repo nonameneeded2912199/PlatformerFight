@@ -14,6 +14,8 @@ namespace PlatformerFight.CharacterThings
         [Header("Event Channels")]
         [SerializeField]
         private InputReader _inputReader = default;
+        [SerializeField]
+        private VoidEventChannelSO _onDeath = default;
 
         [Header("Component")]
         private BetterJumping betterJumping;
@@ -375,28 +377,43 @@ namespace PlatformerFight.CharacterThings
 
         protected override void TakeDamage(AttackDetails attackDetails)
         {
-            if (!IsInvincible && !IsDashing)
+            if (IsDead)
+                return;
+
+            if (IsInvincible)
+                return;
+
+            if (IsDashing)
+                return;
+
+            float reduction = CharacterStats.CurrentDefense / (CharacterStats.CurrentDefense + 500);
+            float multiplier = 1 - reduction;
+            int incomingDMG = (int)(attackDetails.damageAmount * multiplier);
+
+            CharacterStats.CurrentHP -= incomingDMG;
+
+            //GameObject damageOBJ = PoolManager.SpawnObject(DamagePopup.OriginalDamagePopup);
+            //DamagePopup damagePopup = damageOBJ.GetComponent<DamagePopup>();
+            //damagePopup.SetPopup(incomingDMG, DamageType.NormalDamage, transform.position);
+
+            popupEventChannel.RaiseTextPopupEvent(incomingDMG.ToString(), transform.position);
+
+            if (CharacterStats.CurrentHP > 0)
             {
-                float reduction = CharacterStats.CurrentDefense / (CharacterStats.CurrentDefense + 500);
-                float multiplier = 1 - reduction;
-                int incomingDMG = (int)(attackDetails.damageAmount * multiplier);
+                StartCoroutine(BecomeInvincible(1.5f));
+                int direction = attackDetails.position.x < transform.position.x ? 1 : -1;
 
-                CharacterStats.CurrentHP -= incomingDMG;
+                if (canBeKnockedback)
+                    Knockback(direction);
+            }
+            else
+            {
+                IsDead = true;
+            }
 
-                //GameObject damageOBJ = PoolManager.SpawnObject(DamagePopup.OriginalDamagePopup);
-                //DamagePopup damagePopup = damageOBJ.GetComponent<DamagePopup>();
-                //damagePopup.SetPopup(incomingDMG, DamageType.NormalDamage, transform.position);
-
-                popupEventChannel.RaiseTextPopupEvent(incomingDMG.ToString(), transform.position);
-
-                if (CharacterStats.CurrentHP > 0)
-                {
-                    StartCoroutine(BecomeInvincible(1.5f));
-                    int direction = attackDetails.position.x < transform.position.x ? 1 : -1;
-
-                    if (canBeKnockedback)
-                        Knockback(direction);
-                }
+            if (IsDead)
+            {
+                _onDeath.RaiseEvent();
             }
         }
 

@@ -3,8 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
-public class Dialog : MonoBehaviour, IDialog, TouchOutsideInterface
+public class Dialog : MonoBehaviour, IDialog
 {
     #region Dialog box's data structure
 
@@ -34,10 +35,10 @@ public class Dialog : MonoBehaviour, IDialog, TouchOutsideInterface
     private DialogData dialogData;
 
     [SerializeField]
-    private Text headerText;
+    private TextMeshProUGUI headerText;
 
     [SerializeField]
-    private Text bodyText;
+    private TextMeshProUGUI bodyText;
 
     [SerializeField]
     private Transform buttonHolder;
@@ -51,14 +52,22 @@ public class Dialog : MonoBehaviour, IDialog, TouchOutsideInterface
     [SerializeField]
     private GameObject dialogBox;
 
-    private static IDialog instance;
+    [SerializeField]
+    private DialogEventChannelSO _onDialogRequested = default;
 
-    public static IDialog Instance => instance;
+    private void OnEnable()
+    {
+        _onDialogRequested.OnDialogRequested += GetDialog;
+    }
+
+    private void OnDisable()
+    {
+        _onDialogRequested.OnDialogRequested -= GetDialog;
+    }
 
     void Start()
     {
         dialogData = new DialogData();
-        instance = this;
 
         dialogBox.SetActive(false);
     }  
@@ -119,7 +128,7 @@ public class Dialog : MonoBehaviour, IDialog, TouchOutsideInterface
     {
         GameObject buttonClone = Instantiate(buttonPrefab, buttonHolder);
         buttonClone.transform.localScale = Vector3.one;
-        var txt = buttonClone.GetComponentInChildren<Text>();
+        var txt = buttonClone.GetComponentInChildren<TextMeshProUGUI>();
         var button = buttonClone.GetComponentInChildren<Button>();
 
         Action fireAndClose = () =>
@@ -134,9 +143,8 @@ public class Dialog : MonoBehaviour, IDialog, TouchOutsideInterface
         button.onClick.AddListener(new UnityEngine.Events.UnityAction(fireAndClose));
     }
 
-    public void TouchOutside()
+    private IDialog GetDialog()
     {
-        dialogBackground.SetActive(false);
-        dialogBox.SetActive(false);
-    }    
+        return this;
+    }
 }

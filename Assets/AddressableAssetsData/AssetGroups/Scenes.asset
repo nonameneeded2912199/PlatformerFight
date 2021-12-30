@@ -33,6 +33,14 @@ MonoBehaviour:
     m_Address: SharedScene
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: 152a8b45cd037cd49b47c122b80b5f4d
+    m_Address: PreStageScene
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 512047c2923a7564fb8735fe1600e2df
+    m_Address: DebugScene2
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 79756e5974eec8c42b93e9a2074b8a15, type: 2}
   m_SchemaSet:

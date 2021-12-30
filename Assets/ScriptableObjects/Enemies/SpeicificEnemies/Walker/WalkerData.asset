@@ -19,9 +19,7 @@ MonoBehaviour:
   ledgeRadius: 0.5
   minAgroDistance: 3
   maxAgroDistance: 4
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 128
   playerLayer:
     serializedVersion: 2
     m_Bits: 64
+  scoreYield: 500000

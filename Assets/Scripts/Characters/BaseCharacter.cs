@@ -16,13 +16,6 @@ namespace PlatformerFight.CharacterThings
         public CharacterStats CharacterStats { get; private set; }
         //public Animator animator { get; private set; }
 
-        [Header("Invincibility Stuff")]
-        [SerializeField]
-        private Material normalMat;
-
-        [SerializeField]
-        private Material whiteMat;
-
         protected bool IsInvincible { get; private set; }
 
         public CharacterAnimation CharacterAnimation { get; private set; }
@@ -72,6 +65,8 @@ namespace PlatformerFight.CharacterThings
         protected bool isGrounded;
         public bool IsGrounded { get => isGrounded; }
         public bool facingRight = true;
+
+        public bool IsDead = false;
 
         protected virtual void Awake()
         {

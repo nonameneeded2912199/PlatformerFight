@@ -69,7 +69,7 @@ public class SniperJoe_RangedAttackState : RangedAttackState
         float startingAngle = 0;
         BulletDetails[] bulletDetails = stateData.bulletDetails;
 
-        switch (enemy.GameStateSO.CurrentDifficulty)
+        switch (enemy.thisDifficulty)
         {
             case GameDifficulty.EASY:
                 /*Bullet.GetBullet(BulletOwner.Enemy, attackPosition.position, stateData.bulletShootTypes[0].bulletSpeed, angle, stateData.bulletShootTypes[0].bulletLifeSpan,

@@ -1,17 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum GameState
-{
-	Gameplay, //regular state: player moves, attacks, can perform actions
-	Pause, //pause menu is opened, the whole game world is frozen
-	Inventory, //when inventory UI or cooking UI are open
-	Dialogue,
-	Cutscene,
-	LocationTransition, //when the character steps into LocationExit trigger, fade to black begins and control is removed from the player
-	//Combat, //enemy is nearby and alert, player can't open Inventory or initiate dialogues, but can pause the game
-}
-
 public enum GameDifficulty
 {
 	EASY,
@@ -23,27 +12,35 @@ public enum GameDifficulty
 [CreateAssetMenu(fileName = "GameState", menuName = "Gameplay/GameState", order = 51)]
 public class GameStateSO : DescriptionBaseSO
 {
-	public GameState CurrentGameState => _currentGameState;
+    #region Properties
 	public GameDifficulty CurrentDifficulty => currentDifficulty;
 
-	[Header("Game states")]
-	[SerializeField] /*[ReadOnly]*/ private GameState _currentGameState = default;
-	[SerializeField] /*[ReadOnly]*/ private GameState _previousGameState = default;
+	public int ChosenPlayerID => chosenPlayerID;
+
+	public StageSO CurrentStage => currentStage;
+
+	public string LastCheckpoint => lastCheckpoint;
+
+	public int LifeCount { get; set; } = default;
+
+	public long Score { get; set; } = default;
+
+    #endregion
 
 	[Header("Game difficulty")]
 	[SerializeField] private GameDifficulty currentDifficulty = default;
 
 	[Header("Selected protagonist")]
 	[SerializeField]
-	private PlayableCharacterInfo chosenPlayer;
+	private int chosenPlayerID;
 
-	public PlayableCharacterInfo ChosenPlayer => chosenPlayer;
+	[Header("Current Stage")]
+	[SerializeField]
+	private StageSO currentStage = default;
 
 	[Header("Checkpoint manager")]
 	[SerializeField]
 	private string lastCheckpoint;
-
-	public string LastCheckpoint => lastCheckpoint;
 
 	public void SetDifficulty(GameDifficulty difficulty)
     {
@@ -53,19 +50,9 @@ public class GameStateSO : DescriptionBaseSO
 		currentDifficulty = difficulty;
     }		
 
-	public void UpdateGameState(GameState newGameState)
-	{
-		if (newGameState == CurrentGameState)
-			return;
-
-		_previousGameState = _currentGameState;
-		_currentGameState = newGameState;
-	}
-
-	public void SelectCharacter(PlayableCharacterInfo chosenPlayer)
+	public void SelectCharacter(int chosenPlayerID)
     {
-		this.chosenPlayer = chosenPlayer;
-		//lastCheckpoint = null;
+		this.chosenPlayerID = chosenPlayerID;
     }
 
 	public void SetCheckpoint(string lastCheckpoint)
@@ -73,13 +60,8 @@ public class GameStateSO : DescriptionBaseSO
 		this.lastCheckpoint = lastCheckpoint;
     }
 
-	public void ResetToPreviousGameState()
-	{
-		if (_previousGameState == _currentGameState)
-			return;
-
-		GameState stateToReturnTo = _previousGameState;
-		_previousGameState = _currentGameState;
-		_currentGameState = stateToReturnTo;
-	}
+	public void SelectStage(StageSO stage)
+    {
+		this.currentStage = stage;
+    }	
 }

@@ -214,8 +214,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf05164a804677b488f3fac3e46bc813, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  normalMat: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
-  whiteMat: {fileID: 2100000, guid: a62f573dae442b942ba4c84352195174, type: 2}
   groundRaycastLength: 0.5
   groundRaycastOffset: {x: 0, y: 0, z: 0}
   wallRaycastLength: 0.4
@@ -231,6 +229,7 @@ MonoBehaviour:
   popupEventChannel: {fileID: 11400000, guid: 86e2776f5bd02d54bab1caecc4dbd9f3, type: 2}
   isGrounded: 0
   facingRight: 1
+  IsDead: 0
   goRight: 0
   touchDamage: 5
   touchDamageWidth: 0.5
@@ -240,7 +239,8 @@ MonoBehaviour:
   touchDamagePoint: {fileID: 6826909797254641159}
   canDestroy: 1
   bulletEventChannel: {fileID: 11400000, guid: cf839519a667d8e47b35d9a9ad557afc, type: 2}
-  gameStateSO: {fileID: 11400000, guid: 263447437fcf8ef48a8e9e12136177ff, type: 2}
+  OnRequestDifficulty: {fileID: 11400000, guid: ee8f92610f098ac4c805296451700acf, type: 2}
+  onAddScore: {fileID: 11400000, guid: 815523ab556f22d46acfd37bc85e2682, type: 2}
   entityData: {fileID: 11400000, guid: 6f723b3c771df6049b1aa179e5c0efab, type: 2}
   moveStateData: {fileID: 11400000, guid: b84921c83d220e747846a0da5b34827c, type: 2}
   deadStateData: {fileID: 11400000, guid: 18801f77c371fed4a9bf6c718de95b5c, type: 2}

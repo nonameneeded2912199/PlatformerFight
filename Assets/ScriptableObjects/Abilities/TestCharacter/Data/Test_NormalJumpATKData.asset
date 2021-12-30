@@ -25,18 +25,6 @@ MonoBehaviour:
     verticalSize: 0
     moveWhileExecuting: 0
     movingVelocity: {x: 0, y: 0}
-  - animationName:
-    - WallSlideATK
-    attackMultiplier: 1
-    bonusKnockbackSpeed: {x: 0, y: 0}
-    bonusKnockbackTime: 0
-    invicibleTime: 0.5
-    circularHitbox: 1
-    attackRadius: 0.5
-    horizontalSize: 0
-    verticalSize: 0
-    moveWhileExecuting: 0
-    movingVelocity: {x: 0, y: 0}
   skillName: Normal Jump ATK
   canPerformOnAir: 1
   canPerformOnGround: 0

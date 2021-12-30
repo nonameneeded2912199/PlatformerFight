@@ -25,13 +25,19 @@ public class Walker : BaseEnemy
         stateMachine.Initialize(moveState);
     }
 
+    public override void Kill()
+    {
+        stateMachine.ChangeState(deadState);
+    }
+
     protected override void TakeDamage(AttackDetails attackDetails)
     {
         base.TakeDamage(attackDetails);
 
-        if (isDead)
+        if (IsDead)
         {
-            stateMachine.ChangeState(deadState);
+            OnAddScore.RaiseEvent(CalculateScoreAfterDefeat(entityData.scoreYield));
+            Kill();
         }
     }
 

@@ -32,6 +32,8 @@ public class TextPopupManager : MonoBehaviour
     {
         popupEventChannel.OnPopupSpawnRequested -= SpawnPopup;
         popupEventChannel.OnPopupBackToPoolRequested -= RetrievePopup;
+
+        popupPool.RequestResetPool();
     }
 
     private TextPopup SpawnPopup(string content, Vector2 position, float destroyTime = 3f, DamageType damageType = DamageType.NormalDamage)

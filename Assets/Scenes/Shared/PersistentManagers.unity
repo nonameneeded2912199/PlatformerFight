@@ -152,7 +152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4b6d7b7ecb40c04683415585aac8e96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _loadingInterface: {fileID: 1302665625}
+  _loadingInterface: {fileID: 1680663127}
   _toggleLoadingScreen: {fileID: 11400000, guid: 59e470d5fd3bd4a479bb49a7f6fc8acb, type: 2}
 --- !u!4 &38327078
 Transform:
