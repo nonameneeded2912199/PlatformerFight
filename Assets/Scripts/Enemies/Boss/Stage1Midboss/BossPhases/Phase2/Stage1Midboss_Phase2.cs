@@ -15,7 +15,9 @@ public class Stage1Midboss_Phase2 : BossPhase
 
     public Stage1Midboss_BarrageState barrageState { get; private set; }
 
-    public Stage1Midboss_Phase2(Stage1Midboss owner, Stage1Midboss_Phase2Data phaseData)
+    public Stage1Midboss_Phase2(Stage1Midboss owner, Stage1Midboss_Phase2Data phaseData, FloatEventChannelSO onPhaseTimerUpdate,
+        PhaseResultEventChannelSO onCompletedPhase)
+        : base(onPhaseTimerUpdate, onCompletedPhase)
     {
         this.owner = owner;
         this.phaseData = phaseData;
@@ -27,26 +29,38 @@ public class Stage1Midboss_Phase2 : BossPhase
 
     }
 
-    public void EndPhase()
+    public override void EndPhase()
     {
-        owner.OnAddScore.RaiseEvent(owner.CalculateScoreAfterDefeat(phaseData.scoreYield));
+        switch (phaseData.phaseType)
+        {
+            case BossPhaseType.NormalAttack:
+                owner.OnAddScore.RaiseEvent(owner.CalculateScoreAfterDefeat(phaseData.scoreYield));
+                break;
+            case BossPhaseType.SpellCardAttack:
+                long finalScore = (long)((phaseTimeLeft * phaseData.scoreYield) / (phaseData.phaseBonusTime + phaseData.scoreYield));
+                finalScore += phaseData.scoreYield;
+                OnPhaseCompleted.RaiseEvent(phaseTimeLeft > 0, finalScore);
+                owner.OnAddScore.RaiseEvent(owner.CalculateScoreAfterDefeat(finalScore));
+                break;
+        }    
         owner.IsDead = true;
         owner.CurrentBossPhase = null;
         owner._OnBossStatusEnd.RaiseEvent();
         owner.Kill();
     }
 
-    public void FixedUpdate(float deltaTime)
+    public override void FixedUpdate(float deltaTime)
     {
         owner.stateMachine.CurrentState?.PhysicsUpdate();
     }
 
-    public void LateUpdate(float deltaTime)
+    public override void LateUpdate(float deltaTime)
     {
+        base.LateUpdate(deltaTime);
         owner.stateMachine.CurrentState?.LateUpdate();
     }
 
-    public void StartPhase()
+    public override void StartPhase()
     {
         owner.CurrentBossPhase = this;
 
@@ -54,11 +68,13 @@ public class Stage1Midboss_Phase2 : BossPhase
 
         owner.CharacterStats.SetCharacterStats(phaseData.phaseStats);
 
-        //owner.stateMachine.ChangeState(initialState);
-        owner.stateMachine.Initialize(initialState);
+        owner.stateMachine.ChangeState(initialState);
+        //owner.stateMachine.Initialize(initialState);
+
+        BeginCounting(phaseData);
     }
 
-    public void TakeDamage(AttackDetails attackDetails)
+    public override void TakeDamage(AttackDetails attackDetails)
     {
         float reduction = owner.CharacterStats.CurrentDefense / (owner.CharacterStats.CurrentDefense + 500);
         float multiplier = 1 - reduction;
@@ -78,7 +94,7 @@ public class Stage1Midboss_Phase2 : BossPhase
         }
     }
 
-    public void Update(float deltaTime)
+    public override void Update(float deltaTime)
     {
         owner.stateMachine.CurrentState?.LogicUpdate();
     }

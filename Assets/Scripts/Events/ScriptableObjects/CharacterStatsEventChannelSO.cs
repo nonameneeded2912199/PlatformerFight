@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.Events;
 
 [CreateAssetMenu(menuName = "Events/Character Stat Event Channel")]
-public class CharacterStatsEventChannelSO : ScriptableObject
+public class CharacterStatsEventChannelSO : DescriptionBaseSO
 {
     public UnityAction<CharacterStats> OnEventRaised;
 

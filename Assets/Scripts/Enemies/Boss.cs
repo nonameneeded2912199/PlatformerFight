@@ -8,12 +8,18 @@ namespace PlatformerFight.CharacterThings
     {
         [Header("Event channel")]
         [SerializeField]
-        private BossPhaseEventChannelSO _onBossStatusStart;
+        protected BossPhaseEventChannelSO _onBossStatusStart;
         public BossPhaseEventChannelSO _OnBossStatusStart => _onBossStatusStart;
 
         [SerializeField]
-        private VoidEventChannelSO _onBossStatusEnd;
+        protected VoidEventChannelSO _onBossStatusEnd;
         public VoidEventChannelSO _OnBossStatusEnd => _onBossStatusEnd;
+
+        [SerializeField]
+        protected FloatEventChannelSO _onBossTimerUpdate = default;
+
+        [SerializeField]
+        protected PhaseResultEventChannelSO _onCompletedPhase = default;
 
         public BossPhase CurrentBossPhase { get; set; }
 

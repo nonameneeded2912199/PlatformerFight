@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.Events;
 
 [CreateAssetMenu(menuName = "Events/Boss Phase Event Channel")]
-public class BossPhaseEventChannelSO : ScriptableObject
+public class BossPhaseEventChannelSO : DescriptionBaseSO
 {
     public UnityAction<BossPhaseDataSO> OnEventRaised;
 

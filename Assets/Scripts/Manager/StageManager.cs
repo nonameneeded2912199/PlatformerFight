@@ -63,7 +63,7 @@ public class StageManager : MonoBehaviour
 
     private IEnumerator MoveSceneCoroutine()
     {
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(10f);
 
         if (_nextScene is StageSO)
         {

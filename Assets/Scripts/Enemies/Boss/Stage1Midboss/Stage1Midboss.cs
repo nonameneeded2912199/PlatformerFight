@@ -39,23 +39,15 @@ public class Stage1Midboss : Boss
 
     public Transform centerPosition;
 
-    //public GameObject doors;
-
-    //public GameObject HPBarsOBJ;
-
-    //public Image imageHP;
-
-    //public Text textHP;
-
     //public Text stageCompleteText;
 
     protected override void Start()
     {
         base.Start();
 
-        phase1 = new Stage1Midboss_Phase1(this, phase1_Data);
+        phase1 = new Stage1Midboss_Phase1(this, phase1_Data, _onBossTimerUpdate, _onCompletedPhase);
 
-        phase2 = new Stage1Midboss_Phase2(this, phase2_Data);
+        phase2 = new Stage1Midboss_Phase2(this, phase2_Data, _onBossTimerUpdate, _onCompletedPhase);
 
         phaseTransition = new Stage1Midboss_PhaseTransition(stateMachine, this, "Midboss_Move", null);
 
@@ -84,7 +76,7 @@ public class Stage1Midboss : Boss
 
     public override void Activate()
     {
-        phase2.StartPhase();
+        phase1.StartPhase();
     }
 
     public override void Kill()

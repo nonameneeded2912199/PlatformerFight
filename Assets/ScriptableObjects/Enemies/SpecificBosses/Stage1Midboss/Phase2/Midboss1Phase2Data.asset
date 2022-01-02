@@ -17,7 +17,7 @@ MonoBehaviour:
   scoreYield: 50000
   phaseType: 1
   phaseName: Full-blown Snowstorm
-  phaseBonusTime: 0
+  phaseBonusTime: 60
   initialStateData: {fileID: 11400000, guid: dc5d93e1991ec8048adfb6fa23a96dee, type: 2}
   moveStateData: {fileID: 11400000, guid: 87e59b72100fff04ca2fb16c89020857, type: 2}
   barrageStateData: {fileID: 11400000, guid: a28188d87b1e80545af8e54e61c59da4, type: 2}

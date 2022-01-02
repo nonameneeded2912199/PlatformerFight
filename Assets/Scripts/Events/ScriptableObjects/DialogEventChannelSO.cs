@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Events/Dialog Event Channel")]
-public class DialogEventChannelSO : ScriptableObject
+public class DialogEventChannelSO : DescriptionBaseSO
 {
     public delegate IDialog RequestDialogAction();
 

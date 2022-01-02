@@ -7,7 +7,7 @@ public class Stage1Midboss_Phase1 : BossPhase
 {
     private Stage1Midboss owner;
 
-    private Stage1Midboss_Phase1Data stage1Midboss_Phase1Data;
+    private Stage1Midboss_Phase1Data phaseData;
 
     public Stage1Midboss_InitialStatePhase1 initialState { get; private set; }
 
@@ -22,52 +22,57 @@ public class Stage1Midboss_Phase1 : BossPhase
     public int randomShootTime;
     
 
-    public Stage1Midboss_Phase1(Stage1Midboss owner, Stage1Midboss_Phase1Data phaseData)
+    public Stage1Midboss_Phase1(Stage1Midboss owner, Stage1Midboss_Phase1Data phaseData, FloatEventChannelSO onPhaseTimerUpdate, 
+        PhaseResultEventChannelSO onCompletedPhase)
+        :base(onPhaseTimerUpdate, onCompletedPhase)
     {
         this.owner = owner;
-        this.stage1Midboss_Phase1Data = phaseData;
-        initialState = new Stage1Midboss_InitialStatePhase1(this.owner.stateMachine, owner, "Midboss1_Idle", stage1Midboss_Phase1Data.initialStateData, this);
+        this.phaseData = phaseData;
+        initialState = new Stage1Midboss_InitialStatePhase1(this.owner.stateMachine, owner, "Midboss1_Idle", this.phaseData.initialStateData, this);
 
         teleportOutState = new Stage1Midboss_TeleportOut(this.owner.stateMachine, owner, "Midboss1_TeleportAway", this);
 
-        teleportInState = new Stage1Midboss_TeleportIn(this.owner.stateMachine, owner, "Midboss1_TeleportIn", stage1Midboss_Phase1Data.teleportInStateData, this);
+        teleportInState = new Stage1Midboss_TeleportIn(this.owner.stateMachine, owner, "Midboss1_TeleportIn", this.phaseData.teleportInStateData, this);
 
-        spiralAttack = new Stage1Midboss_SpiralAttack(this.owner.stateMachine, owner, "Midboss1_RangedAttack", owner.transform, this, stage1Midboss_Phase1Data.spiralAttackStateData);
+        spiralAttack = new Stage1Midboss_SpiralAttack(this.owner.stateMachine, owner, "Midboss1_RangedAttack", owner.transform, this, this.phaseData.spiralAttackStateData);
 
-        chaseAttack = new Stage1Midboss_DiamondChase(this.owner.stateMachine, owner, "Midboss1_Special", owner.transform, this, stage1Midboss_Phase1Data.chasingAttackStateData);
+        chaseAttack = new Stage1Midboss_DiamondChase(this.owner.stateMachine, owner, "Midboss1_Special", owner.transform, this, this.phaseData.chasingAttackStateData);
     }
 
-    public void StartPhase()
+    public override void StartPhase()
     {
         owner.CurrentBossPhase = this;
 
-        owner.CharacterStats.SetCharacterStats(stage1Midboss_Phase1Data.phaseStats);
+        owner.CharacterStats.SetCharacterStats(phaseData.phaseStats);
 
         owner.stateMachine.Initialize(initialState);
 
-        owner._OnBossStatusStart.RaiseEvent(stage1Midboss_Phase1Data);
+        owner._OnBossStatusStart.RaiseEvent(phaseData);
+
+        BeginCounting(phaseData);
     }
 
-    public void EndPhase()
+    public override void EndPhase()
     {
         owner.CurrentBossPhase = null;
-        owner.OnAddScore.RaiseEvent(owner.CalculateScoreAfterDefeat(stage1Midboss_Phase1Data.scoreYield));
+        owner.OnAddScore.RaiseEvent(owner.CalculateScoreAfterDefeat(phaseData.scoreYield));
         owner.NextBossPhase = owner.phase2;
         owner._OnBossStatusEnd.RaiseEvent();
         owner.stateMachine.ChangeState(owner.phaseTransition);
     }
 
-    public void FixedUpdate(float deltaTime)
+    public override void FixedUpdate(float deltaTime)
     {
         owner.stateMachine.CurrentState?.PhysicsUpdate();
     }
 
-    public void LateUpdate(float deltaTime)
+    public override void LateUpdate(float deltaTime)
     {
+        base.LateUpdate(deltaTime);
         owner.stateMachine.CurrentState?.LateUpdate();
     }
 
-    public void TakeDamage(AttackDetails attackDetails)
+    public override void TakeDamage(AttackDetails attackDetails)
     {
         float reduction = owner.CharacterStats.CurrentDefense / (owner.CharacterStats.CurrentDefense + 500);
         float multiplier = 1 - reduction;
@@ -87,7 +92,7 @@ public class Stage1Midboss_Phase1 : BossPhase
         }
     }
 
-    public void Update(float deltaTime)
+    public override void Update(float deltaTime)
     {
         owner.stateMachine.CurrentState?.LogicUpdate();
     }

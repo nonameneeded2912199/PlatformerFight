@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.Events;
 
 [CreateAssetMenu(menuName = "Events/Buff Event Channel")]
-public class BuffEventChannelSO : ScriptableObject
+public class BuffEventChannelSO : DescriptionBaseSO
 {
     public UnityAction<BaseBuff> OnRaiseEvent;
 

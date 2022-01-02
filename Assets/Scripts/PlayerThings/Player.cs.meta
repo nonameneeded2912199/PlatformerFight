@@ -3,7 +3,10 @@ guid: 5f4fd012997b7a74290d27def26c429b
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - popupEventChannel: {fileID: 11400000, guid: 86e2776f5bd02d54bab1caecc4dbd9f3, type: 2}
+  - _inputReader: {fileID: 11400000, guid: b1021248402db504987c4d14cac14357, type: 2}
+  - _onDeath: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

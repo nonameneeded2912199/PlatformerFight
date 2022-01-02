@@ -235,6 +235,8 @@ MonoBehaviour:
   entityData: {fileID: 11400000, guid: b1389f614e8bf514b9dc1adfea74c9ce, type: 2}
   _onBossStatusStart: {fileID: 11400000, guid: 061eed32b65369345855e9520706f240, type: 2}
   _onBossStatusEnd: {fileID: 11400000, guid: 385018ddee1a3494e82ed479a4df9c27, type: 2}
+  _onBossTimerUpdate: {fileID: 11400000, guid: 0be1a51461ba58740bb9952766ffba09, type: 2}
+  _onCompletedPhase: {fileID: 11400000, guid: 0d52389350a4ee546b15929c083bbbfa, type: 2}
   currentState: 
   currentPhase: 
   phase1_Data: {fileID: 11400000, guid: 4902db794767abf478e2554d0749f9f5, type: 2}

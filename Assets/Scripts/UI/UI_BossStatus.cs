@@ -11,14 +11,23 @@ public class UI_BossStatus : MonoBehaviour
 {
     [Header("Event channel")]
     [SerializeField]
-    private CharacterStatsEventChannelSO _onBossStatUpdate;
+    private CharacterStatsEventChannelSO _onBossStatUpdate = default;
 
     [SerializeField]
-    private BossPhaseEventChannelSO _onBossStatusStart;
+    private BossPhaseEventChannelSO _onBossStatusStart = default;
 
     [SerializeField]
-    private VoidEventChannelSO _onBossStatusEnd;
+    private VoidEventChannelSO _onBossStatusEnd = default;
 
+    [SerializeField]
+    private FloatEventChannelSO _onBossTimerUpdate = default;
+
+    [SerializeField]
+    private PhaseResultEventChannelSO _onSpellPhaseCompleted = default;
+
+
+    [Space]
+    [Header("Attributes")]
     [SerializeField, Tooltip("Boss's name")]
     private TextMeshProUGUI bossName;
 
@@ -28,8 +37,20 @@ public class UI_BossStatus : MonoBehaviour
     [SerializeField, Tooltip("Boss's health")]
     private StatusBar hpBar;
 
+    [SerializeField, Tooltip("Time title")]
+    private TextMeshProUGUI timeTitle;
+
     [SerializeField, Tooltip("Boss's time")]
     private TextMeshProUGUI phaseTime;
+
+    [SerializeField, Tooltip("Bonus Title")]
+    private TextMeshProUGUI bonusTitle;
+
+    [SerializeField, Tooltip("Bonus Time")]
+    private TextMeshProUGUI bonusScore;
+
+    [SerializeField, Tooltip("Bonus Fail")]
+    private TextMeshProUGUI bonusFail;
 
     private bool isBossBattle;
 
@@ -39,6 +60,10 @@ public class UI_BossStatus : MonoBehaviour
         phaseName.gameObject.SetActive(false);
         hpBar.gameObject.SetActive(false);
         phaseTime.gameObject.SetActive(false);
+        timeTitle.gameObject.SetActive(false);
+        bonusScore.gameObject.SetActive(false);
+        bonusTitle.gameObject.SetActive(false);
+        bonusFail.gameObject.SetActive(false);
         GetComponent<CanvasGroup>().DOFade(0, 0.1f);
     }
 
@@ -62,6 +87,7 @@ public class UI_BossStatus : MonoBehaviour
 
             if (phase.phaseBonusTime > 0)
             {
+                timeTitle.gameObject.SetActive(true);
                 phaseTime.gameObject.SetActive(true);
                 phaseTime.text = phase.phaseBonusTime.ToString();
             }
@@ -81,6 +107,7 @@ public class UI_BossStatus : MonoBehaviour
             phaseName.gameObject.SetActive(false);
             hpBar.gameObject.SetActive(false);
             phaseTime.gameObject.SetActive(false);
+            timeTitle.gameObject.SetActive(false);
         });
     }
 
@@ -89,6 +116,8 @@ public class UI_BossStatus : MonoBehaviour
         _onBossStatUpdate.OnEventRaised += UpdateBossHP;
         _onBossStatusStart.OnEventRaised += StartPhase;
         _onBossStatusEnd.OnEventRaised += EndPhase;
+        _onBossTimerUpdate.OnEventRaised += UpdateBossTimer;
+        _onSpellPhaseCompleted.OnEventRaised += CompleteSpellPhase;
     }
 
     private void OnDisable()
@@ -96,12 +125,49 @@ public class UI_BossStatus : MonoBehaviour
         _onBossStatUpdate.OnEventRaised -= UpdateBossHP;
         _onBossStatusStart.OnEventRaised -= StartPhase;
         _onBossStatusEnd.OnEventRaised -= EndPhase;
+        _onBossTimerUpdate.OnEventRaised -= UpdateBossTimer;
+        _onSpellPhaseCompleted.OnEventRaised -= CompleteSpellPhase;
     }
 
     private void UpdateBossHP(CharacterStats bossStats)
     {
         if (isBossBattle && hpBar.gameObject.activeInHierarchy)
             hpBar.UpdateBar(bossStats.CurrentHP, bossStats.MaxHP);
+    }
+
+    private void UpdateBossTimer(float time)
+    {
+        if (isBossBattle && phaseTime.gameObject.activeInHierarchy)
+        {
+            phaseTime.text = time.ToString("00.00");
+        }    
+    }  
+    
+    private void CompleteSpellPhase(bool success, long score)
+    {
+        if (success)
+        {
+            bonusScore.gameObject.SetActive(true);
+            bonusTitle.gameObject.SetActive(true);
+            bonusFail.gameObject.SetActive(false);
+
+            bonusScore.text = score.ToString();
+        }
+        else
+        {
+            bonusScore.gameObject.SetActive(false);
+            bonusTitle.gameObject.SetActive(false);
+            bonusFail.gameObject.SetActive(true);
+        }
+
+        Invoke("HideResult", 3f);
+    }
+
+    private void HideResult()
+    {
+        bonusScore.gameObject.SetActive(false);
+        bonusTitle.gameObject.SetActive(false);
+        bonusFail.gameObject.SetActive(false);
     }
 
 }

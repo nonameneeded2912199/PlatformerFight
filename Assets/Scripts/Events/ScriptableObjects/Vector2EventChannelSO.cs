@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 
 [CreateAssetMenu(menuName = "Events/Vector2 Event Channel")]
-public class Vector2EventChannelSO : ScriptableObject
+public class Vector2EventChannelSO : DescriptionBaseSO
 {
 	public UnityAction<Vector2> OnEventRaised;
 

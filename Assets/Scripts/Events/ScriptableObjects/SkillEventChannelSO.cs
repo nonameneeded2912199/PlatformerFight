@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.Events;
 
 [CreateAssetMenu(menuName = "Events/Skill Event Channel")]
-public class SkillEventChannelSO : ScriptableObject
+public class SkillEventChannelSO : DescriptionBaseSO
 {
     public UnityAction<Skill> OnEventRaised;
 
