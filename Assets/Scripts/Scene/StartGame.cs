@@ -51,6 +51,8 @@ public class StartGame : MonoBehaviour
     {
         _hasSaveData = false;
 
+        PlayerPrefs.DeleteAll();
+
         gameStateSO.SelectStage(stageToLoad);
         gameStateSO.LifeCount = 2;
         gameStateSO.Score = 0;
@@ -71,6 +73,8 @@ public class StartGame : MonoBehaviour
 
         if (asyncOperationHandle.Status == AsyncOperationStatus.Succeeded)
         {
+            PlayerPrefs.DeleteAll();
+
             gameStateSO.SelectCharacter(_saveSystem.saveData._charID);
             gameStateSO.Score = _saveSystem.saveData._score;
             gameStateSO.LifeCount = _saveSystem.saveData._lives;

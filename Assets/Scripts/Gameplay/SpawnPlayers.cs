@@ -52,18 +52,22 @@ public class SpawnPlayers : MonoBehaviour
 
 	private Transform GetSpawnLocation()
 	{
-		if (_possibleSpawnLocation.Length <= 0 || _gameStateSO.LastCheckpoint == null)
+		if (_possibleSpawnLocation.Length <= 0 || !PlayerPrefs.HasKey("CurrentCheckpoint"))
 			return defaultSpawnPoint;
 
 
-		int possibleSpawnPointIndex = Array.FindIndex(_possibleSpawnLocation, element => element.CheckpointName == _gameStateSO.LastCheckpoint);
+		int possibleSpawnPointIndex = Array.FindIndex(_possibleSpawnLocation, 
+			element => element.CheckpointName == PlayerPrefs.GetString("CurrentCheckpoint"));
 		if (possibleSpawnPointIndex == -1)
         {
 			return defaultSpawnPoint;
         }
 		else
         {
-			return _possibleSpawnLocation[possibleSpawnPointIndex].transform;
+			Checkpoint checkpointSpawn = _possibleSpawnLocation[possibleSpawnPointIndex];
+			if (checkpointSpawn.boundaryChange != null)
+				checkpointSpawn.boundaryChange.ChangeBoundary();
+			return checkpointSpawn.transform;
         }
 	}
 

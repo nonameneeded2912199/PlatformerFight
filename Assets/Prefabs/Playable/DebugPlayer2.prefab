@@ -80,6 +80,7 @@ GameObject:
   - component: {fileID: 4990622847858991538}
   - component: {fileID: 7295565743862550282}
   - component: {fileID: 3207587796168577085}
+  - component: {fileID: 5073670368892568736}
   m_Layer: 6
   m_Name: DebugPlayer2
   m_TagString: Player
@@ -184,7 +185,7 @@ MonoBehaviour:
   facingRight: 1
   IsDead: 0
   _inputReader: {fileID: 11400000, guid: b1021248402db504987c4d14cac14357, type: 2}
-  _onDeath: {fileID: 11400000, guid: 753e6e6d699a46848b84264847c87976, type: 2}
+  _onDeath: {fileID: 11400000, guid: 15f4e59129b415e4f8e3a59bf983eee2, type: 2}
   movementSpeed: 5
   jumpForce: 15
   wallJumpForce: 1.5
@@ -200,6 +201,7 @@ MonoBehaviour:
   canGrab: 1
   canDoubleJump: 1
   canDash: 1
+  deathSound: {fileID: 11400000, guid: 88dc7a42fa903044484ffdf0c5d92a2d, type: 2}
 --- !u!50 &8200236332781823547
 Rigidbody2D:
   serializedVersion: 4
@@ -358,6 +360,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _onBuffDisplay: {fileID: 11400000, guid: 3d73235125bf79749b329d0b30c4a75b, type: 2}
+--- !u!114 &5073670368892568736
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3207587796168577084}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63edc9afb927e7f46819ce683b9fbf44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _sfxEventChannel: {fileID: 11400000, guid: 74a2d9fbeb6a39142ad51018b5eb0588, type: 2}
+  _audioConfig: {fileID: 11400000, guid: fb02a80b33e037348bdb5d196fddeba7, type: 2}
 --- !u!1 &7970888567434237853
 GameObject:
   m_ObjectHideFlags: 0

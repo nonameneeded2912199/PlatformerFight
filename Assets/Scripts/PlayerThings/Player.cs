@@ -54,6 +54,11 @@ namespace PlatformerFight.CharacterThings
         public bool canDoubleJump;
         public bool canDash;
 
+        [Space]
+        [Header("Common sounds")]
+        [SerializeField]
+        private AudioCueSO deathSound;
+
         private Coroutine movingCoroutine;
         private Coroutine recoverAPCoroutine;
 
@@ -409,12 +414,17 @@ namespace PlatformerFight.CharacterThings
             else
             {
                 IsDead = true;
+                Kill();
             }
+        }
 
-            if (IsDead)
-            {
-                _onDeath.RaiseEvent();
-            }
+        public override void Kill()
+        {
+            IsDead = true;
+            CharacterAudio.PlayAudio(deathSound);
+            CharacterStats.CurrentHP = 0;
+            _inputReader.DisableAllInput();
+            _onDeath.RaiseEvent();
         }
 
         public override void Knockback(int direction)

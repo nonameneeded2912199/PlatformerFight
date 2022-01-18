@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Test_NormalJumpATKData
   m_EditorClassIdentifier: 
   variations:
-  - animationName:
-    - JumpNormalATK
+  - animationPlayable:
+    - {fileID: 11400000, guid: 41fc4bea623f5e949bcd0fef073b399d, type: 2}
     attackMultiplier: 1
     bonusKnockbackSpeed: {x: 0, y: 0}
     bonusKnockbackTime: 0

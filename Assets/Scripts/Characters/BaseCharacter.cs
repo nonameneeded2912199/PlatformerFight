@@ -6,6 +6,15 @@ using DG.Tweening;
 
 namespace PlatformerFight.CharacterThings
 {
+    [RequireComponent(typeof(Rigidbody2D))]
+    [RequireComponent(typeof(SpriteRenderer))]
+    [RequireComponent(typeof(Animator))]
+    [RequireComponent(typeof(CharacterStats))]
+    [RequireComponent(typeof(CharacterAnimation))]
+    [RequireComponent(typeof(CharacterAudio))]
+    [RequireComponent(typeof(CharacterBuffManager))]
+    [RequireComponent(typeof(AudioSource))]
+    [RequireComponent(typeof(UnityEngine.Playables.PlayableDirector))]
     public abstract class BaseCharacter : MonoBehaviour
     {
         public Rigidbody2D Rigidbody { get; private set; }
@@ -14,6 +23,10 @@ namespace PlatformerFight.CharacterThings
         public CharacterBuffManager CharacterBuffManager { get; private set; }
 
         public CharacterStats CharacterStats { get; private set; }
+
+        public CharacterAudio CharacterAudio { get; private set; }
+
+        public UnityEngine.Playables.PlayableDirector PlayableDirector { get; private set; }
         //public Animator animator { get; private set; }
 
         protected bool IsInvincible { get; private set; }
@@ -75,6 +88,8 @@ namespace PlatformerFight.CharacterThings
             CharacterStats = GetComponent<CharacterStats>();
             CharacterAnimation = GetComponent<CharacterAnimation>();
             CharacterBuffManager = GetComponent<CharacterBuffManager>();
+            CharacterAudio = GetComponent<CharacterAudio>();
+            PlayableDirector = GetComponent<UnityEngine.Playables.PlayableDirector>();
 
             Rigidbody.gravityScale = CharacterStats.OriginalGravityScale;
         }
@@ -205,6 +220,8 @@ namespace PlatformerFight.CharacterThings
         {
             CharacterBuffManager.AddBuff(buff);
         }
+
+        public abstract void Kill();
 
         protected virtual void OnDrawGizmos()
         {

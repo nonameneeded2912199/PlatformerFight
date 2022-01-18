@@ -3,7 +3,7 @@ using PlatformerFight.CharacterThings;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
+using UnityEngine.Playables;
 
 namespace PlatformerFight.Abilities
 {
@@ -45,7 +45,7 @@ namespace PlatformerFight.Abilities
     [System.Serializable]
     public class SkillVariation
     {
-        public string[] animationName;
+        public PlayableAsset[] animationPlayable;
 
         /// <summary>
         /// Attack multiplier based on ATK or sth

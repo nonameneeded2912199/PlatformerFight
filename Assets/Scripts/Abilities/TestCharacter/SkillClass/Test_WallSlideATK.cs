@@ -18,7 +18,8 @@ namespace PlatformerFight.Abilities
             if (Executor.CharacterStats.CurrentAP >= APCost)
             {
                 SetVariation(0);
-                Executor.CharacterAnimation.PlayAnim(currentVariation.animationName[0]);
+                Executor.PlayableDirector.Stop();
+                Executor.PlayableDirector.Play(currentVariation.animationPlayable[0]);
                 Executor.CharacterStats.ConsumeAP(APCost);
                 if (currentVariation.moveWhileExecuting)
                     Executor.SetVelocity(currentVariation.movingVelocity);

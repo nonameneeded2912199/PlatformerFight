@@ -31,6 +31,9 @@ public class SniperJoe : BaseEnemy
     [SerializeField]
     public GameObject shield;
 
+    [SerializeField]
+    protected VoidEventChannelSO OnDefeatedEvent;
+
     protected override void Start()
     {
         base.Start();
@@ -60,6 +63,7 @@ public class SniperJoe : BaseEnemy
 
         if (IsDead)
         {
+            OnDefeatedEvent.RaiseEvent();
             OnAddScore.RaiseEvent(CalculateScoreAfterDefeat(entityData.scoreYield));
             Kill();
         }

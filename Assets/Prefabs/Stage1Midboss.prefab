@@ -78,6 +78,7 @@ GameObject:
   - component: {fileID: 4224939885047474613}
   - component: {fileID: 4316175003140799656}
   - component: {fileID: 8294446502508564460}
+  - component: {fileID: 1131288877184909118}
   m_Layer: 8
   m_Name: Stage1Midboss
   m_TagString: Enemy
@@ -222,7 +223,6 @@ MonoBehaviour:
   facingRight: 1
   IsDead: 0
   goRight: 0
-  touchDamage: 10
   touchDamageWidth: 0.25
   touchDamageHeight: 0.6
   ledgePoint: {fileID: 6349668875247923904}
@@ -241,11 +241,12 @@ MonoBehaviour:
   currentPhase: 
   phase1_Data: {fileID: 11400000, guid: 4902db794767abf478e2554d0749f9f5, type: 2}
   phase2_Data: {fileID: 11400000, guid: 5cc62c9b76fa63745af4cec90cafc769, type: 2}
-  OnStageCompleted: {fileID: 11400000, guid: 5df3cc6b4de67c347ba000dfd53e3bec, type: 2}
   deadStateData: {fileID: 11400000, guid: 5809e9ec4bac1f443a6b47ec176dbb0d, type: 2}
   flightLevel1: {fileID: 0}
   flightLevel2: {fileID: 0}
   centerPosition: {fileID: 0}
+  openDoorOnDefeat: {fileID: 0}
+  doorNumber: 0
 --- !u!95 &6349668875321419762
 Animator:
   serializedVersion: 3
@@ -317,6 +318,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _onBuffDisplay: {fileID: 0}
+--- !u!114 &1131288877184909118
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6349668875321419660}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63edc9afb927e7f46819ce683b9fbf44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _sfxEventChannel: {fileID: 11400000, guid: 74a2d9fbeb6a39142ad51018b5eb0588, type: 2}
+  _audioConfig: {fileID: 11400000, guid: fb02a80b33e037348bdb5d196fddeba7, type: 2}
 --- !u!1 &6349668875347210408
 GameObject:
   m_ObjectHideFlags: 0

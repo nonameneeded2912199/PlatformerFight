@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Test_NormalATKData
   m_EditorClassIdentifier: 
   variations:
-  - animationName:
-    - NormalATK1
+  - animationPlayable:
+    - {fileID: 11400000, guid: 7ef94a68f8fce294fa2b201d9478a8da, type: 2}
     attackMultiplier: 0.5
     bonusKnockbackSpeed: {x: 0, y: 0}
     bonusKnockbackTime: 0
@@ -25,8 +25,8 @@ MonoBehaviour:
     verticalSize: 0
     moveWhileExecuting: 0
     movingVelocity: {x: 0, y: 0}
-  - animationName:
-    - NormalATK2
+  - animationPlayable:
+    - {fileID: 11400000, guid: 601cec2a63c714445afceaf4e97a3cd6, type: 2}
     attackMultiplier: 0.5
     bonusKnockbackSpeed: {x: 0, y: 0}
     bonusKnockbackTime: 0
@@ -37,8 +37,8 @@ MonoBehaviour:
     verticalSize: 0.5
     moveWhileExecuting: 0
     movingVelocity: {x: 0, y: 0}
-  - animationName:
-    - NormalATK3
+  - animationPlayable:
+    - {fileID: 11400000, guid: 336d1804e26c20647a9d6e3ad4f86ec7, type: 2}
     attackMultiplier: 1
     bonusKnockbackSpeed: {x: 0, y: 0}
     bonusKnockbackTime: 0

@@ -62,7 +62,8 @@ namespace PlatformerFight.Abilities
             {
                 SetVariation(0);
                 Executor.Rigidbody.velocity = Vector2.zero;
-                Executor.CharacterAnimation.PlayAnim(currentVariation.animationName[0]);
+                Executor.PlayableDirector.Stop();
+                Executor.PlayableDirector.Play(currentVariation.animationPlayable[0]);
                 Executor.CharacterStats.ConsumeAP(APCost);
                 Executor.CharacterBuffManager.AddBuff(BuffsToExecutor[0].InitializeBuff(Executor));
                 if (currentVariation.moveWhileExecuting)

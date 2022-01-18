@@ -3,7 +3,19 @@ guid: cb43125943d4a8e4f823fd501575ac13
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - popupEventChannel: {fileID: 11400000, guid: 86e2776f5bd02d54bab1caecc4dbd9f3, type: 2}
+  - ledgePoint: {instanceID: 0}
+  - playerCheckPoint: {instanceID: 0}
+  - touchDamagePoint: {instanceID: 0}
+  - bulletEventChannel: {fileID: 11400000, guid: cf839519a667d8e47b35d9a9ad557afc, type: 2}
+  - OnRequestDifficulty: {fileID: 11400000, guid: ee8f92610f098ac4c805296451700acf, type: 2}
+  - onAddScore: {fileID: 11400000, guid: 815523ab556f22d46acfd37bc85e2682, type: 2}
+  - entityData: {instanceID: 0}
+  - _onBossStatusStart: {fileID: 11400000, guid: 061eed32b65369345855e9520706f240, type: 2}
+  - _onBossStatusEnd: {fileID: 11400000, guid: 385018ddee1a3494e82ed479a4df9c27, type: 2}
+  - _onBossTimerUpdate: {fileID: 11400000, guid: 0be1a51461ba58740bb9952766ffba09, type: 2}
+  - _onCompletedPhase: {fileID: 11400000, guid: 0d52389350a4ee546b15929c083bbbfa, type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

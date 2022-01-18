@@ -135,6 +135,7 @@ GameObject:
   - component: {fileID: 107903375379679158}
   - component: {fileID: 107903375379679159}
   - component: {fileID: 107903375379679156}
+  - component: {fileID: 861873067409023946}
   m_Layer: 8
   m_Name: SniperJoe
   m_TagString: Enemy
@@ -241,7 +242,6 @@ MonoBehaviour:
   facingRight: 1
   IsDead: 0
   goRight: 0
-  touchDamage: 0
   touchDamageWidth: 0.53
   touchDamageHeight: 1
   ledgePoint: {fileID: 107903375379637194}
@@ -258,6 +258,7 @@ MonoBehaviour:
   rangedAttackStateData: {fileID: 11400000, guid: 7ce5572ac0ffb9a48aad8b6849c59c21, type: 2}
   attackPoint: {fileID: 107903373969579818}
   shield: {fileID: 107903374625387253}
+  OnDefeatedEvent: {fileID: 11400000, guid: 202e1428e7494af41926ee6bc53e5193, type: 2}
 --- !u!114 &107903375379679178
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -366,6 +367,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48c24418042707f459ed9db4d7fb1800, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &861873067409023946
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 107903375379679182}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63edc9afb927e7f46819ce683b9fbf44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _sfxEventChannel: {fileID: 11400000, guid: 74a2d9fbeb6a39142ad51018b5eb0588, type: 2}
+  _audioConfig: {fileID: 11400000, guid: fb02a80b33e037348bdb5d196fddeba7, type: 2}
 --- !u!1 &107903375704370647
 GameObject:
   m_ObjectHideFlags: 0

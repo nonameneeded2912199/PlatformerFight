@@ -8,7 +8,6 @@ namespace PlatformerFight.CharacterThings
     {
         private Vector2 touchDamageBotLeft, touchDamageTopRight;
 
-
         private float currentStunResistance;
 
         private float currentKnockbackResistance;
@@ -19,7 +18,7 @@ namespace PlatformerFight.CharacterThings
         private bool goRight;
 
         [SerializeField]
-        private float touchDamage, touchDamageWidth, touchDamageHeight;
+        private float touchDamageWidth, touchDamageHeight;
 
         [SerializeField]
         private Transform ledgePoint;
@@ -33,6 +32,7 @@ namespace PlatformerFight.CharacterThings
         [SerializeField]
         protected bool canDestroy;
 
+        #region Event Channels
         [SerializeField]
         protected BulletEventChannelSO bulletEventChannel;
 
@@ -45,6 +45,8 @@ namespace PlatformerFight.CharacterThings
         protected LongEventChannelSO onAddScore;
 
         public LongEventChannelSO OnAddScore => onAddScore;
+
+        #endregion
 
         public GameDifficulty thisDifficulty
         {
@@ -64,6 +66,8 @@ namespace PlatformerFight.CharacterThings
         protected bool isStunned;
 
         protected AttackDetails touchAttackDetails;
+
+        protected bool yieldScore = true;
 
         protected override void Awake()
         {
@@ -194,11 +198,6 @@ namespace PlatformerFight.CharacterThings
                 currentKnockbackResistance--;
             currentStunResistance -= attackDetails.stunDamageAmount;
 
-            //GameObject damageOBJ = PoolManager.SpawnObject(DamagePopup.OriginalDamagePopup);
-            //DamagePopup damagePopup = damageOBJ.GetComponent<DamagePopup>();
-            //damagePopup.SetPopup(incomingDMG, DamageType.NormalDamage, transform.position);
-
-            //popupEventChannel.RaiseTextPopupEvent(incomingDMG.ToString(), transform.position);
             CreateDamagePopup(incomingDMG.ToString(), transform.position);
 
             StartCoroutine(BecomeInvincible(attackDetails.invincibleTime));
@@ -235,10 +234,11 @@ namespace PlatformerFight.CharacterThings
             }
         }
 
-        public abstract void Kill();
-
         public virtual long CalculateScoreAfterDefeat(long score)
         {
+            if (!yieldScore)
+                return 0;
+
             long calculatedScore = 0;
 
             switch (thisDifficulty)
@@ -256,6 +256,11 @@ namespace PlatformerFight.CharacterThings
             }
 
             return calculatedScore;
+        }
+
+        public void SetScorable(bool yieldScore)
+        {
+            this.yieldScore = yieldScore;
         }
 
         protected override void OnDrawGizmos()

@@ -25,6 +25,10 @@ MonoBehaviour:
     m_Address: DebugStage2SO
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: cb69e6d8d8cfd3e448b2085c542713f2
+    m_Address: DebugStage3SO
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 79756e5974eec8c42b93e9a2074b8a15, type: 2}
   m_SchemaSet:

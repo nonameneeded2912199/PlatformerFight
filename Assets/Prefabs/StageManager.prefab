@@ -46,8 +46,12 @@ MonoBehaviour:
   _preScene: {fileID: 11400000, guid: d660cbeb477a1214e9c9e63aa42325b1, type: 2}
   _thisScene: {fileID: 0}
   _nextScene: {fileID: 0}
+  passages: []
+  _onEnemyDefeated: {fileID: 11400000, guid: 202e1428e7494af41926ee6bc53e5193, type: 2}
   _onRestartStage: {fileID: 11400000, guid: 753e6e6d699a46848b84264847c87976, type: 2}
   _onStageCompleted: {fileID: 11400000, guid: 5df3cc6b4de67c347ba000dfd53e3bec, type: 2}
+  _onOpenDoor: {fileID: 11400000, guid: 0335cb01fbc18c443b05e93f1694b058, type: 2}
   _loadScene: {fileID: 11400000, guid: 7cfb7e6dfcc38474d9e7a0c10c32c5e8, type: 2}
   _gameStateSO: {fileID: 11400000, guid: 263447437fcf8ef48a8e9e12136177ff, type: 2}
   _onRequestSave: {fileID: 11400000, guid: ae21772248da30d4e9cd2516619f8228, type: 2}
+  numEnemies: 0

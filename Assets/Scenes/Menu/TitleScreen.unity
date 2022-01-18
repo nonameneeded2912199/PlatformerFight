@@ -4757,12 +4757,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7639db4d3673bbf4188101c5089700bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stageToLoad: {fileID: 11400000, guid: 7562609f915a74a4787aeb04ffc6b03e, type: 2}
+  stageToLoad: {fileID: 11400000, guid: cb69e6d8d8cfd3e448b2085c542713f2, type: 2}
   preScene: {fileID: 11400000, guid: d660cbeb477a1214e9c9e63aa42325b1, type: 2}
   _saveSystem: {fileID: 11400000, guid: 8752e3737ddad6841849e730eec72599, type: 2}
   showLoadScreen: 1
   loadScene: {fileID: 11400000, guid: 7cfb7e6dfcc38474d9e7a0c10c32c5e8, type: 2}
-  _onSaveRequested: {fileID: 11400000, guid: ae21772248da30d4e9cd2516619f8228, type: 2}
   onNewGameButton: {fileID: 11400000, guid: 2c394b1a8b209cf4cb1f9568256a2f98, type: 2}
   onContinueButton: {fileID: 11400000, guid: 53ad76d196c1af140b0bf337911dc106, type: 2}
   gameStateSO: {fileID: 11400000, guid: 263447437fcf8ef48a8e9e12136177ff, type: 2}

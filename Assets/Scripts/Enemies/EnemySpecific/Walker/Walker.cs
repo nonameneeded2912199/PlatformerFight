@@ -15,6 +15,9 @@ public class Walker : BaseEnemy
     [SerializeField]
     private D_DeadState deadStateData;
 
+    [SerializeField]
+    protected VoidEventChannelSO OnDefeatedEvent;
+
     protected override void Start()
     {
         base.Start();
@@ -36,6 +39,7 @@ public class Walker : BaseEnemy
 
         if (IsDead)
         {
+            OnDefeatedEvent.RaiseEvent();
             OnAddScore.RaiseEvent(CalculateScoreAfterDefeat(entityData.scoreYield));
             Kill();
         }

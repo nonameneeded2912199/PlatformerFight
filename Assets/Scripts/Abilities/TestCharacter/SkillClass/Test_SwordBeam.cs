@@ -98,7 +98,8 @@ namespace PlatformerFight.Abilities
                     Executor.Rigidbody.velocity = Vector2.zero;
                 if (currentVariation.moveWhileExecuting)
                     Executor.SetVelocity(currentVariation.movingVelocity);
-                Executor.CharacterAnimation.PlayAnim(currentVariation.animationName[0]);
+                Executor.PlayableDirector.Stop();
+                Executor.PlayableDirector.Play(currentVariation.animationPlayable[0]);
                 Executor.CharacterStats.ConsumeAP(APCost);
                 return true;
             }

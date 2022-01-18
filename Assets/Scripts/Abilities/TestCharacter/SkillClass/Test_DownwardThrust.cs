@@ -96,7 +96,9 @@ namespace PlatformerFight.Abilities
             isThrusting = true;
             Executor.SetInvincibility(true);
             Executor.Rigidbody.gravityScale = Executor.CharacterStats.OriginalGravityScale * 1.5f;
-            Executor.CharacterAnimation.PlayAnim(currentVariation.animationName[0]);           
+            //Executor.CharacterAnimation.PlayAnim(currentVariation.animationPlayable[0]);     
+            Executor.PlayableDirector.Stop();
+            Executor.PlayableDirector.Play(currentVariation.animationPlayable[0]);
             if (currentVariation.moveWhileExecuting)
                 Executor.SetVelocity(currentVariation.movingVelocity);
         }
@@ -115,7 +117,8 @@ namespace PlatformerFight.Abilities
             {
                 isThrusting = false;
                 Executor.SetInvincibility(false);
-                Executor.CharacterAnimation.PlayAnim(currentVariation.animationName[1]);
+                Executor.PlayableDirector.Stop();
+                Executor.PlayableDirector.Play(currentVariation.animationPlayable[1]);
                 Executor.Rigidbody.gravityScale = Executor.CharacterStats.OriginalGravityScale;
             }
         }

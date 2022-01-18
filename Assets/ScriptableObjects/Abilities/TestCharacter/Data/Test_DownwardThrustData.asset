@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Test_DownwardThrustData
   m_EditorClassIdentifier: 
   variations:
-  - animationName:
-    - DownwardThrust
-    - DownwardThrustDone
+  - animationPlayable:
+    - {fileID: 11400000, guid: 4ff54c5e3be2eae4c8d164c8ee3351a0, type: 2}
+    - {fileID: 11400000, guid: b5e46f323eaa4414d87d20315cd1dba0, type: 2}
     attackMultiplier: 1.2
     bonusKnockbackSpeed: {x: 0, y: 0}
     bonusKnockbackTime: 0

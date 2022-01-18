@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Test_WallSlideATKData
   m_EditorClassIdentifier: 
   variations:
-  - animationName:
-    - WallSlideATK
+  - animationPlayable:
+    - {fileID: 11400000, guid: 3cdbe5af35c55c64f91186c1beead2b6, type: 2}
     attackMultiplier: 1
     bonusKnockbackSpeed: {x: 0, y: 0}
     bonusKnockbackTime: 0

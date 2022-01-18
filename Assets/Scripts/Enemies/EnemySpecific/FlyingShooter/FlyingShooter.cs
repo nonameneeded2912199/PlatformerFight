@@ -26,6 +26,9 @@ public class FlyingShooter : BaseEnemy
     [SerializeField]
     private Transform playerCircleDetector;
 
+    [SerializeField]
+    protected VoidEventChannelSO OnDefeatedEvent;
+
     protected override void Start()
     {
         base.Start();
@@ -48,6 +51,7 @@ public class FlyingShooter : BaseEnemy
 
         if (IsDead)
         {
+            OnDefeatedEvent.RaiseEvent();
             OnAddScore.RaiseEvent(CalculateScoreAfterDefeat(entityData.scoreYield));
             Kill();
         }

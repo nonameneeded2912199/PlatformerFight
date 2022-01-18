@@ -107,6 +107,7 @@ GameObject:
   - component: {fileID: 6826909798196500059}
   - component: {fileID: 1737306707563311063}
   - component: {fileID: 1153994664481382837}
+  - component: {fileID: 1722136789618191777}
   m_Layer: 8
   m_Name: FlyingShooter
   m_TagString: Enemy
@@ -231,7 +232,6 @@ MonoBehaviour:
   facingRight: 1
   IsDead: 0
   goRight: 0
-  touchDamage: 5
   touchDamageWidth: 0.5
   touchDamageHeight: 0.5
   ledgePoint: {fileID: 6826909796859265197}
@@ -247,6 +247,7 @@ MonoBehaviour:
   rangedAttackStateData: {fileID: 11400000, guid: 3c22c32b2ab2cf04dbe153c394f38c6d, type: 2}
   rangedAttackPosition: {fileID: 6826909796733078164}
   playerCircleDetector: {fileID: 6826909796859265197}
+  OnDefeatedEvent: {fileID: 11400000, guid: 202e1428e7494af41926ee6bc53e5193, type: 2}
 --- !u!50 &6826909798196500052
 Rigidbody2D:
   serializedVersion: 4
@@ -333,6 +334,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentState: 
+--- !u!114 &1722136789618191777
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6826909798196500050}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63edc9afb927e7f46819ce683b9fbf44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _sfxEventChannel: {fileID: 11400000, guid: 74a2d9fbeb6a39142ad51018b5eb0588, type: 2}
+  _audioConfig: {fileID: 11400000, guid: fb02a80b33e037348bdb5d196fddeba7, type: 2}
 --- !u!1 &6826909798258021559
 GameObject:
   m_ObjectHideFlags: 0

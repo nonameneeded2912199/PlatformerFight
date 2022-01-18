@@ -22,6 +22,9 @@ public class GameManager : MonoBehaviour
     private bool maxThresholdReached = false;
 
     [Header("Event channels")]
+
+    #region Listener
+
     [SerializeField]
     private GameDifficultyEventChannelSO OnRequestDifficulty = default;
 
@@ -29,7 +32,22 @@ public class GameManager : MonoBehaviour
     private VoidEventChannelSO checkScoreThreshold = default;
 
     [SerializeField]
+    private VoidEventChannelSO onPlayerDead = default;
+
+    #endregion
+
+    #region Responder
+
+    [SerializeField]
     private IntEventChannelSO onAddLives = default;
+
+    [SerializeField]
+    private VoidEventChannelSO restartStage = default;
+
+    [SerializeField]
+    private VoidEventChannelSO gameOver = default;
+
+    #endregion
 
     void Awake()
     {
@@ -60,15 +78,17 @@ public class GameManager : MonoBehaviour
     {
         OnRequestDifficulty.OnRequestDifficultyAction += ReturnDifficulty;
         checkScoreThreshold.OnEventRaised += CheckScoreLives;
+        onPlayerDead.OnEventRaised += OnPlayerDead;
     }
 
     private void OnDisable()
     {
         OnRequestDifficulty.OnRequestDifficultyAction -= ReturnDifficulty;
         checkScoreThreshold.OnEventRaised -= CheckScoreLives;
+        onPlayerDead.OnEventRaised -= OnPlayerDead;
     }
 
-    public void CheckScoreLives()
+    private void CheckScoreLives()
     {
         Debug.Log("Here");
         
@@ -91,7 +111,29 @@ public class GameManager : MonoBehaviour
             maxThresholdReached = true;
     }
 
-    public GameDifficulty ReturnDifficulty()
+    private void OnPlayerDead()
+    {
+        if (_gameState.LifeCount > 0)
+        {
+            Debug.Log("Still live");
+            onAddLives.RaiseEvent(-1);
+            restartStage.RaiseEvent();
+        }
+        else
+        {
+            //StartCoroutine(ShowGameOver());
+            gameOver.RaiseEvent();
+        }    
+    }
+
+    private IEnumerator ShowGameOver()
+    {
+        yield return new WaitForSeconds(3f);
+
+        gameOver.RaiseEvent();
+    }    
+
+    private GameDifficulty ReturnDifficulty()
     {
         return currentDifficulty;
     }

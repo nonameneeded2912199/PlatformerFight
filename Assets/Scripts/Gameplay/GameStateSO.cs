@@ -19,8 +19,6 @@ public class GameStateSO : DescriptionBaseSO
 
 	public StageSO CurrentStage => currentStage;
 
-	public string LastCheckpoint => lastCheckpoint;
-
 	public int LifeCount { get; set; } = default;
 
 	public long Score { get; set; } = default;
@@ -38,10 +36,6 @@ public class GameStateSO : DescriptionBaseSO
 	[SerializeField]
 	private StageSO currentStage = default;
 
-	[Header("Checkpoint manager")]
-	[SerializeField]
-	private string lastCheckpoint;
-
 	public void SetDifficulty(GameDifficulty difficulty)
     {
 		if (currentDifficulty == difficulty)
@@ -53,11 +47,6 @@ public class GameStateSO : DescriptionBaseSO
 	public void SelectCharacter(int chosenPlayerID)
     {
 		this.chosenPlayerID = chosenPlayerID;
-    }
-
-	public void SetCheckpoint(string lastCheckpoint)
-    {
-		this.lastCheckpoint = lastCheckpoint;
     }
 
 	public void SelectStage(StageSO stage)

@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Test_Skill1Data
   m_EditorClassIdentifier: 
   variations:
-  - animationName:
-    - Skill1
+  - animationPlayable:
+    - {fileID: 11400000, guid: 6eed3a2e6375eee44844fcb70eb29fbb, type: 2}
     attackMultiplier: 0.5
     bonusKnockbackSpeed: {x: 0, y: 0}
     bonusKnockbackTime: 0

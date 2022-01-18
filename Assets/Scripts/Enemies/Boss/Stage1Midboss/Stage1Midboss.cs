@@ -26,9 +26,6 @@ public class Stage1Midboss : Boss
 
     public Stage1Midboss_PhaseTransition phaseTransition { get; private set; }
 
-    [SerializeField]
-    private VoidEventChannelSO OnStageCompleted;
-
     public Stage1Midboss_Dead deadState { get; private set; }
 
     [SerializeField]
@@ -39,7 +36,11 @@ public class Stage1Midboss : Boss
 
     public Transform centerPosition;
 
-    //public Text stageCompleteText;
+    [SerializeField]
+    private IntEventChannelSO openDoorOnDefeat;
+
+    [SerializeField]
+    private int doorNumber;
 
     protected override void Start()
     {
@@ -87,6 +88,7 @@ public class Stage1Midboss : Boss
 
     public override void OnDefeat()
     {
-        OnStageCompleted.RaiseEvent();
+        //OnDefeatedEvent.RaiseEvent();
+        openDoorOnDefeat.RaiseEvent(doorNumber);
     }
 }

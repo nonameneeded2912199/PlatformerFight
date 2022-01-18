@@ -18,12 +18,21 @@ public class StageManager : MonoBehaviour
     [SerializeField]
     private GameSceneSO _nextScene = default;
 
+    [SerializeField]
+    private GameObject[] passages = default;
+
     [Header("Event Channels")]
+    [SerializeField]
+    private VoidEventChannelSO _onEnemyDefeated = default;
+
     [SerializeField]
     private VoidEventChannelSO _onRestartStage = default;
 
     [SerializeField]
     private VoidEventChannelSO _onStageCompleted = default;
+
+    [SerializeField]
+    private IntEventChannelSO _onOpenDoor = default;
 
     [SerializeField]
     private LoadEventChannelSO _loadScene = default;
@@ -34,6 +43,14 @@ public class StageManager : MonoBehaviour
     [SerializeField]
     private SaveEventChannelSO _onRequestSave = default;
 
+    /// <summary>
+    /// If numEnemies is zero, small enemies in this stage will no longer yield scores until you restart the stage;
+    /// </summary>
+    [Space]
+    [Header("Number of enemies that yield points")]
+    [SerializeField]
+    private int numEnemies = 0;
+
     private void Awake()
     {
         _gameStateSO.SelectStage(_thisScene as StageSO);
@@ -43,12 +60,16 @@ public class StageManager : MonoBehaviour
     {
         _onRestartStage.OnEventRaised += RestartStage;
         _onStageCompleted.OnEventRaised += MoveToNextScene;
+        _onEnemyDefeated.OnEventRaised += SmallEnemiesDefeated;
+        _onOpenDoor.OnEventRaised += OpenDoor;
     }
 
     private void OnDisable()
     {
         _onRestartStage.OnEventRaised -= RestartStage;
         _onStageCompleted.OnEventRaised -= MoveToNextScene;
+        _onEnemyDefeated.OnEventRaised -= SmallEnemiesDefeated;
+        _onOpenDoor.OnEventRaised -= OpenDoor;
     }
 
     private void RestartStage()
@@ -58,6 +79,8 @@ public class StageManager : MonoBehaviour
 
     private void MoveToNextScene()
     {
+        PlayerPrefs.DeleteAll();
+
         StartCoroutine(MoveSceneCoroutine());
     }
 
@@ -76,6 +99,29 @@ public class StageManager : MonoBehaviour
         else
         {
             _loadScene.RaiseEvent(_nextScene, true, true);
+        }
+    }
+
+    public void OpenDoor(int doorNumber)
+    {
+        if (doorNumber < 0 || doorNumber > passages.Length - 1)
+        {
+            Debug.LogError("Passage way doesn't exist");
+            return;
+        }
+
+        passages[doorNumber].SetActive(false);
+    }    
+
+    private void SmallEnemiesDefeated()
+    {
+        if (numEnemies <= 0)
+            return;
+
+        numEnemies--;
+        if (numEnemies <= 0)
+        {
+            EnemySpawner.enemyHoldScore = false;
         }
     }
         

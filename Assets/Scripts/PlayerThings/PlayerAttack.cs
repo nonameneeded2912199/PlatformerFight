@@ -29,10 +29,6 @@ namespace PlatformerFight.CharacterThings
         protected Player player;
         protected PlayerAnimation playerAnimation;
 
-        protected AnimatorStateInfo animatorStateInfo;
-
-        private PlayerInputAction playerInputAction;
-
         [SerializeField]
         protected bool isAttacking;
 
@@ -178,7 +174,6 @@ namespace PlatformerFight.CharacterThings
 
         private void Update()
         {
-            animatorStateInfo = playerAnimation.GetCurrentAnimatorStateInfo();
             if (player.IsKnockback && IsAttacking)
             {
                 CancelAttack();
@@ -242,9 +237,7 @@ namespace PlatformerFight.CharacterThings
             if (!player.IsDashing && canAttack && !isSkillAttacking)
             {
                 if (player.IsGrounded)
-                {
-                    animatorStateInfo = playerAnimation.GetCurrentAnimatorStateInfo();
-                    
+                {                    
                     if (normalAttack != null)
                     {
                         if (normalAttack.CanPeform(player.IsGrounded, player) && normalATKCombo < normalAttack.Variations.Count)
@@ -313,7 +306,7 @@ namespace PlatformerFight.CharacterThings
             yield return new WaitForSeconds(1f);
 
             if (isAttacking && (IsAttackingAnimation() || IsNormalAttacking()))
-            {
+            {               
                 player.CharacterStats.SetAPRecovery(false);
             }
             else
@@ -326,9 +319,10 @@ namespace PlatformerFight.CharacterThings
         {
             if (currentSkill != null)
             {             
-                foreach (string animationName in currentSkill.currentVariation.animationName)
+                foreach (var animationName in currentSkill.currentVariation.animationPlayable)
                 {
-                    return animatorStateInfo.IsName(animationName);
+                    if (player.PlayableDirector.playableAsset == animationName)
+                        return true;
                 }
             }
             return false;
@@ -338,9 +332,10 @@ namespace PlatformerFight.CharacterThings
         {
             for (int i = 0; i < normalAttack.Variations.Count; i++)
             {
-                foreach (string animationName in normalAttack.Variations[i].animationName)
+                foreach (var animationName in normalAttack.Variations[i].animationPlayable)
                 {
-                    return animatorStateInfo.IsName(animationName);
+                    if (player.PlayableDirector.playableAsset == animationName)
+                        return true;
                 }
             }
             return false;
