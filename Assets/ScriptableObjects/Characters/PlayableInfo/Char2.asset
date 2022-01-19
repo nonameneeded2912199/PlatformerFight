@@ -16,5 +16,5 @@ MonoBehaviour:
   playerGameObject: {fileID: 3207587796168577084, guid: 598fa246b66e2a64298145a7f638cd88, type: 3}
   characterStats: {fileID: 11400000, guid: 2e6ca1a7e96f8bb49b47482b4ad348b3, type: 2}
   characterName: Char2
-  characterDescription: Same as char1, but likes burning, looting and murdering
+  characterDescription: Same as char1, darkened sprite for difference
   characterSprite: {fileID: 21300000, guid: 2cfe3ecaf83684a44bc05071a5baa501, type: 3}
