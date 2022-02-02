@@ -6,11 +6,11 @@ using UnityEngine;
 [Serializable]
 public class Bullet : MonoBehaviour
 {
-    private int lifeTime = 0;
     private AttackDetails attackDetails;
 
-    [SerializeField]
-    private LayerMask groundLayer;
+    private List<BulletCommand> bulletCommands;
+
+    private float suspendTime = 0f;
 
     [SerializeField]
     private BulletEventChannelSO bulletEventChannel = default;
@@ -35,13 +35,15 @@ public class Bullet : MonoBehaviour
 
     public bool destroyOnInvisible { get; set; } = true;
 
-    public bool IsDelayed { get; set; } = false;
+    public bool walkThroughWall { get; set; } = true;
 
     private void Awake()
     {
         bulletCollider = GetComponent<CircleCollider2D>();
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+
+        bulletCommands = new List<BulletCommand>();
     }
 
     // Update is called once per frame
@@ -49,19 +51,68 @@ public class Bullet : MonoBehaviour
     {
         if (Time.timeScale == 0)
             return;
+        if (suspendTime <= 0)
+        {
+            Speed += Acceleration;
+            //Direction += Curve;
 
-        Speed += Acceleration;
-        //Direction += Curve;
+            Vector3 bulletPos = transform.position;
+            bulletPos.x += Speed * Mathf.Cos(Direction) * Time.deltaTime;
+            bulletPos.y += Speed * Mathf.Sin(Direction) * Time.deltaTime;
+            transform.rotation = Quaternion.Euler(0, 0, Direction * Mathf.Rad2Deg);
+            transform.position = bulletPos;
 
-        Vector3 bulletPos = transform.position;
-        bulletPos.x += Speed * Mathf.Cos(Direction) * Time.deltaTime;
-        bulletPos.y += Speed * Mathf.Sin(Direction) * Time.deltaTime;      
-        transform.rotation = Quaternion.Euler(0, 0, Direction * Mathf.Rad2Deg);
-        transform.position = bulletPos;
+            UpdateBulletCommands();
+        }
+        else
+        {
+            suspendTime -= Time.deltaTime;
+        }
+
+        if (hasLifeSpan)
+        {
+            LifeSpan -= Time.deltaTime;
+            if (LifeSpan <= 0)
+            {
+                BackToPool();
+            }
+        }
+    }
+
+    public void UpdateBulletCommands()
+    {
+        for (int i = 0; i < bulletCommands.Count; i++)
+        {
+            BulletCommand bc = bulletCommands[i];
+            if (bc.IsEnoughTime)
+            {
+                bulletCommands.Remove(bc);
+                i--;
+            }
+            else
+            {
+                bc.Update();
+                if (bc.IsExecutable)
+                {
+                    bc.Execute(this);
+                }
+            }
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (!walkThroughWall)
+        {
+            int platformLayer = 0;
+            platformLayer |= (1 << LayerMask.NameToLayer("Ground"));
+            if (collision.gameObject.layer == platformLayer)
+            {
+                BackToPool();
+                return;
+            }
+        }
+
         attackDetails.position = transform.position;
 
         int damagableLayer = 0;
@@ -106,24 +157,8 @@ public class Bullet : MonoBehaviour
         }
     }
 
-    private void LateUpdate()
-    {
-        /*if (hasLifeSpan && !IsDelayed && Time.timeScale != 0)
-        {
-            lifeTime++;
-            if (lifeTime >= LifeSpan)
-            {
-                lifeTime = 0;
-                BackToPool();
-            }    
-        }*/    
-    }
-
     private void OnBecameInvisible()
     {
-        if (IsDelayed)
-            return;
-
         if (destroyOnInvisible)
             BackToPool();
     }
@@ -133,23 +168,25 @@ public class Bullet : MonoBehaviour
         if (enabled)
         {
             hasLifeSpan = false;
-            BulletCommand[] bulletCommands = gameObject.GetComponents<BulletCommand>();
+            /*BulletCommand[] bulletCommands = gameObject.GetComponents<BulletCommand>();
             foreach (BulletCommand bc in bulletCommands)
             {
                 Destroy(bc);
-            }
+            }*/
+
+            bulletCommands.Clear();
 
             ResetAttributes();
-            
+
         }
 
         bulletEventChannel.RaiseReturnBulletEvent(this);
-    }    
+    }
 
     public void EndBullet()
     {
         BackToPool();
-    } 
+    }
 
     public void ChangeSprite(Sprite sprite, AnimatorOverrideController animatorOverrideController)
     {
@@ -162,19 +199,13 @@ public class Bullet : MonoBehaviour
         bulletCollider.radius = radius;
     }
 
-    public void ExitDelay()
-    {
-        gameObject.SetActive(true);
-        IsDelayed = false;
-    }
-    
     public void SetAllegiance(string owner)
     {
         gameObject.tag = owner;
     }
 
-    public void SetAttributes(Vector2 position, float speed, float direction, float acceleration, float lifeSpan, float damage, float invincibleTime, 
-        float delay = 0, bool pierce = false, bool destroyOnInvisible = true)
+    public void SetAttributes(Vector2 position, float speed, float direction, float acceleration, float lifeSpan, 
+        float damage, float invincibleTime, float suspendTime, bool pierce = false, bool destroyOnInvisible = true, bool walkThroughWall = true)
     {
         ResetAttributes();
 
@@ -184,37 +215,24 @@ public class Bullet : MonoBehaviour
         Acceleration = acceleration;
         Pierce = pierce;
 
-        if (delay > 0)
-        {
-            IsDelayed = true;
-            gameObject.SetActive(false);
-            Invoke("ExitDelay", delay);
-        }
-
         if (lifeSpan > 0)
         {
-            LifeSpan = lifeSpan;
-            BulletCommand destroyCommand = gameObject.AddComponent<BulletCommand>();
-            destroyCommand.update = update;
-            void update()
-            {
-                if (destroyCommand.frame == LifeSpan)
-                {
-                    BackToPool();
-                }
-            }
             hasLifeSpan = true;
+            this.LifeSpan = lifeSpan;
         }
         else
         {
             hasLifeSpan = false;
         }
 
+        this.suspendTime = suspendTime;
+
         attackDetails.damageAmount = damage;
         attackDetails.invincibleTime = invincibleTime;
         this.destroyOnInvisible = destroyOnInvisible;
+        this.walkThroughWall = walkThroughWall;
     }
-    
+
     public void ResetAttributes()
     {
         transform.position = Vector3.zero;
@@ -223,8 +241,22 @@ public class Bullet : MonoBehaviour
         Acceleration = 0;
         hasLifeSpan = false;
         LifeSpan = 0;
-        lifeTime = 0;
         destroyOnInvisible = true;
-
     }
+
+    public void AddBulletCommand(Action<Bullet> command, int durationFrames, int executeLimit = 1, int startOffset = 0)
+    {
+        BulletCommand newCommand = new BulletCommand(command, durationFrames, executeLimit, startOffset);
+        bulletCommands.Add(newCommand);
+    }    
+
+    public void SetDisappear(int frame)
+    {
+        Action<Bullet> disappear = new Action<Bullet>((bullet) =>
+        {
+            bullet.EndBullet();
+        });
+        BulletCommand disappearCommand = new BulletCommand(disappear, frame);
+        bulletCommands.Add(disappearCommand);
+    }    
 }

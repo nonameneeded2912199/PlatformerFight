@@ -15,7 +15,7 @@ public class Stage1Midboss_SpiralAttack : RangedAttackState
 
     Coroutine attackingCoroutine;
 
-    public Stage1Midboss_SpiralAttack(FiniteStateMachine stateMachine, Stage1Midboss entity, string animBoolName, Transform attackPosition, Stage1Midboss_Phase1 phase, D_RangedAttackState stateData) 
+    public Stage1Midboss_SpiralAttack(FiniteStateMachine stateMachine, Stage1Midboss entity, string animBoolName, Transform attackPosition, Stage1Midboss_Phase1 phase, D_RangedAttackState stateData)
         : base(stateMachine, entity, animBoolName, attackPosition, stateData)
     {
         this.boss = entity;
@@ -92,7 +92,7 @@ public class Stage1Midboss_SpiralAttack : RangedAttackState
                 attackingCoroutine = boss.StartCoroutine(SpiralAttackLunatic());
                 break;
         }
-        
+
     }
 
     private IEnumerator SpiralAttackEasy()
@@ -105,7 +105,7 @@ public class Stage1Midboss_SpiralAttack : RangedAttackState
 
 
         while (Time.time <= timeStartAttack + stateData.attackTime)
-        {           
+        {
             entity.BulletEventChannel.RaiseBulletEvent(boss.tag, attackPosition.position, thisAttackProjectile.bulletSpeed, angle,
                             thisAttackProjectile.bulletAcceleration, thisAttackProjectile.bulletLifeSpan,
                             thisAttackProjectile.damageMultiplier * boss.CharacterStats.CurrentAttack / 2, 0.5f, thisAttackProjectile.hitRadius,
@@ -130,7 +130,7 @@ public class Stage1Midboss_SpiralAttack : RangedAttackState
         BulletDetails thisAttackProjectile = stateData.bulletDetails[0];
 
         while (Time.time <= timeStartAttack + stateData.attackTime)
-        {          
+        {
             entity.BulletEventChannel.RaiseBulletEvent(boss.tag, attackPosition.position, thisAttackProjectile.bulletSpeed, angle,
                             thisAttackProjectile.bulletAcceleration, thisAttackProjectile.bulletLifeSpan,
                             thisAttackProjectile.damageMultiplier * boss.CharacterStats.CurrentAttack, 0.5f, thisAttackProjectile.hitRadius,
@@ -156,7 +156,7 @@ public class Stage1Midboss_SpiralAttack : RangedAttackState
         BulletDetails thisAttackProjectile = stateData.bulletDetails[0];
 
         while (Time.time <= timeStartAttack + stateData.attackTime)
-        {        
+        {
             entity.BulletEventChannel.RaiseBulletEvent(boss.tag, attackPosition.position, thisAttackProjectile.bulletSpeed, angle,
                             thisAttackProjectile.bulletAcceleration, thisAttackProjectile.bulletLifeSpan,
                             thisAttackProjectile.damageMultiplier * boss.CharacterStats.CurrentAttack, 0.5f, thisAttackProjectile.hitRadius,

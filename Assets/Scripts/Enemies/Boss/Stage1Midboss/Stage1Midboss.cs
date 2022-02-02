@@ -89,6 +89,6 @@ public class Stage1Midboss : Boss
     public override void OnDefeat()
     {
         //OnDefeatedEvent.RaiseEvent();
-        openDoorOnDefeat.RaiseEvent(doorNumber);
+        //openDoorOnDefeat.RaiseEvent(doorNumber);
     }
 }

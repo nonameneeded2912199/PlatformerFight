@@ -4,36 +4,51 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class BulletCommand : MonoBehaviour
+public class BulletCommand
 {
-    public ulong frame = 0;
+    private int localFrames = 0;
+    private int duration;
+    private int timesExecuted = 0;
+    private int executeLimit;
 
-    public Action start, update;
+    private bool hasExecuteLimit = false;
 
-    public UnityAction<Collider2D> onTriggerEntered;
+    private Action<Bullet> command;
 
-    public List<int> ints { get; set; } = new List<int>();
+    public bool IsEnoughTime => hasExecuteLimit && timesExecuted >= executeLimit;
 
-    // Start is called before the first frame update
-    void Start()
+    public bool IsExecutable => localFrames >= duration;
+
+    public BulletCommand(Action<Bullet> command, int duration, int executeLimit = 1, int startOffset = 0)
     {
-        start?.Invoke();
+        localFrames = 0;
+        localFrames += startOffset;
+
+        this.command = command;
+
+        this.duration = duration;
+
+        if (executeLimit >= 1)
+        {
+            hasExecuteLimit = true;
+            this.executeLimit = executeLimit;
+        }
+        else
+        {
+            hasExecuteLimit = false;
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Update()
     {
-        if (gameObject.activeInHierarchy)
-            if (!GetComponent<Bullet>().IsDelayed && Time.timeScale != 0)
-            {
-                update?.Invoke();
-                frame++;
-            }
+        localFrames++;
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    public void Execute(Bullet bullet)
     {
-        if (onTriggerEntered != null)
-            onTriggerEntered.Invoke(other);
+        timesExecuted++;
+
+        command.Invoke(bullet);
+        localFrames = 0;
     }
 }

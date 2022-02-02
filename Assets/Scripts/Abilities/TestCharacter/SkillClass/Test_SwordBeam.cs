@@ -73,15 +73,9 @@ namespace PlatformerFight.Abilities
                 direction = Executor.facingRight ? -Mathf.PI / 4 : -3 * Mathf.PI / 4;
             }
 
-            //var bullet = PoolManager.SpawnObject(SwordbeamOBJ).GetComponent<Bullet>();
-            //bullet.SetAllegiance(Executor.tag);
-            //bullet.SetAttributes(AttackPoint.position, 8, direction, 0, 0, BulletMultiplier * Executor.CharacterStats.BaseATK, 0.5f);
-
-            //GameObject bullet = Bullet.GetBullet(BulletOwner.Player, attackPoint.position, 8, direction, 0, bulletMultiplier * executor.CharacterStats.BaseATK, BulletType.Arrow,
-            //    BulletColor.GREEN);
             bulletEventChannel.RaiseBulletEvent(Executor.tag, AttackPoint.position, SwordBeamDetail.bulletSpeed, direction, SwordBeamDetail.bulletAcceleration,
                 SwordBeamDetail.bulletLifeSpan, SwordBeamDetail.damageMultiplier * Executor.CharacterStats.CurrentAttack, 0.5f, SwordBeamDetail.hitRadius,
-                SwordBeamDetail.bulletSprite, SwordBeamDetail.animatorOverrideController);
+                SwordBeamDetail.bulletSprite, SwordBeamDetail.animatorOverrideController, 0, false, true, false);
         }
 
         public override bool Execute()

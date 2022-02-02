@@ -20,6 +20,7 @@ public class InitializationLoader : MonoBehaviour
 	private void Start()
 	{
 		//Load the persistent managers scene
+		Application.targetFrameRate = 60;
 		_managersScene.sceneReference.LoadSceneAsync(LoadSceneMode.Additive, true).Completed += LoadEventChannel;
 	}
 

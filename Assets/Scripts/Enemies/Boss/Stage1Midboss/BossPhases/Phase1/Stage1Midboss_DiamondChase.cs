@@ -2,6 +2,7 @@ using PlatformerFight.CharacterThings;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class Stage1Midboss_DiamondChase : RangedAttackState
 {
@@ -15,13 +16,11 @@ public class Stage1Midboss_DiamondChase : RangedAttackState
 
     Coroutine attackingCoroutine;
 
-    public Stage1Midboss_DiamondChase(FiniteStateMachine stateMachine, Stage1Midboss entity, string animBoolName, Transform attackPosition, Stage1Midboss_Phase1 phase, D_RangedAttackState stateData) 
+    public Stage1Midboss_DiamondChase(FiniteStateMachine stateMachine, Stage1Midboss entity, string animBoolName, Transform attackPosition, Stage1Midboss_Phase1 phase, D_RangedAttackState stateData)
         : base(stateMachine, entity, animBoolName, attackPosition, stateData)
     {
         this.boss = entity;
         this.phase = phase;
-        //initalBullet = boss.ProjectilesDetails[1];
-        //chaseBullet = boss.ProjectilesDetails[2];
         initialBullet = stateData.bulletDetails[0];
         chaseBullet = stateData.bulletDetails[1];
     }
@@ -98,21 +97,17 @@ public class Stage1Midboss_DiamondChase : RangedAttackState
                                 initialBullet.bulletAcceleration, initialBullet.bulletLifeSpan, initialBullet.damageMultiplier * boss.CharacterStats.CurrentAttack, 0.5f,
                                 initialBullet.hitRadius, initialBullet.bulletSprite, initialBullet.animatorOverrideController, 0, initialBullet.destroyOnInvisible);
 
-                    BulletCommand changeDirectionCommand = bullet.gameObject.AddComponent<BulletCommand>();
-                    changeDirectionCommand.update = update;
-                    void update()
+                    Action<Bullet> chase = new Action<Bullet>(target =>
                     {
-                        if (changeDirectionCommand.frame == 50)
-                        {
-                            Player player = GameObject.FindObjectOfType<Player>();
-                            float angleToPlayer = Mathf.Atan2(player.transform.position.y - bullet.transform.position.y,
-                                player.transform.position.x - bullet.transform.position.x);
-                            bullet.ChangeSprite(chaseBullet.bulletSprite, chaseBullet.animatorOverrideController);
-                            bullet.SetAttributes(bullet.transform.position, chaseBullet.bulletSpeed * 0.75f, angleToPlayer,
-                                chaseBullet.bulletAcceleration, chaseBullet.bulletLifeSpan, boss.CharacterStats.CurrentAttack * chaseBullet.damageMultiplier, 0.5f,
-                                0, chaseBullet.destroyOnInvisible);
-                        }
-                    }
+                        Player player = GameObject.FindObjectOfType<Player>();
+                        float angleToPlayer = Mathf.Atan2(player.transform.position.y - target.transform.position.y,
+                            player.transform.position.x - target.transform.position.x);
+                        target.ChangeSprite(chaseBullet.bulletSprite, chaseBullet.animatorOverrideController);
+                        target.SetAttributes(target.transform.position, chaseBullet.bulletSpeed * 0.75f, angleToPlayer,
+                            chaseBullet.bulletAcceleration, chaseBullet.bulletLifeSpan, boss.CharacterStats.CurrentAttack * chaseBullet.damageMultiplier, 0.5f,
+                            0, chaseBullet.destroyOnInvisible);
+                    });
+                    bullet.AddBulletCommand(chase, 45);
                 }
                 yield return new WaitForSeconds(0.5f);
             }
@@ -134,21 +129,17 @@ public class Stage1Midboss_DiamondChase : RangedAttackState
                                 initialBullet.bulletAcceleration, initialBullet.bulletLifeSpan, initialBullet.damageMultiplier * boss.CharacterStats.CurrentAttack, 0.5f,
                                 initialBullet.hitRadius, initialBullet.bulletSprite, initialBullet.animatorOverrideController, 0, initialBullet.destroyOnInvisible);
 
-                    BulletCommand changeDirectionCommand = bullet.gameObject.AddComponent<BulletCommand>();
-                    changeDirectionCommand.update = update;
-                    void update()
+                    Action<Bullet> chase = new Action<Bullet>(target =>
                     {
-                        if (changeDirectionCommand.frame == 50)
-                        {
-                            Player player = GameObject.FindObjectOfType<Player>();
-                            float angleToPlayer = Mathf.Atan2(player.transform.position.y - bullet.transform.position.y,
-                                player.transform.position.x - bullet.transform.position.x);
-                            bullet.ChangeSprite(chaseBullet.bulletSprite, chaseBullet.animatorOverrideController);
-                            bullet.SetAttributes(bullet.transform.position, chaseBullet.bulletSpeed, angleToPlayer,
-                                chaseBullet.bulletAcceleration, chaseBullet.bulletLifeSpan, boss.CharacterStats.CurrentAttack * chaseBullet.damageMultiplier, 0.5f,
-                                0, chaseBullet.destroyOnInvisible);
-                        }
-                    }
+                        Player player = GameObject.FindObjectOfType<Player>();
+                        float angleToPlayer = Mathf.Atan2(player.transform.position.y - target.transform.position.y,
+                            player.transform.position.x - target.transform.position.x);
+                        target.ChangeSprite(chaseBullet.bulletSprite, chaseBullet.animatorOverrideController);
+                        target.SetAttributes(target.transform.position, chaseBullet.bulletSpeed, angleToPlayer,
+                            chaseBullet.bulletAcceleration, chaseBullet.bulletLifeSpan, boss.CharacterStats.CurrentAttack * chaseBullet.damageMultiplier, 0.5f,
+                            0, chaseBullet.destroyOnInvisible);
+                    });
+                    bullet.AddBulletCommand(chase, 45);
                 }
                 yield return new WaitForSeconds(0.5f);
             }
@@ -170,21 +161,17 @@ public class Stage1Midboss_DiamondChase : RangedAttackState
                                 initialBullet.bulletAcceleration, initialBullet.bulletLifeSpan, initialBullet.damageMultiplier * boss.CharacterStats.CurrentAttack, 0.5f,
                                 initialBullet.hitRadius, initialBullet.bulletSprite, initialBullet.animatorOverrideController, 0, initialBullet.destroyOnInvisible);
 
-                    BulletCommand changeDirectionCommand = bullet.gameObject.AddComponent<BulletCommand>();
-                    changeDirectionCommand.update = update;
-                    void update()
+                    Action<Bullet> chase = new Action<Bullet>(target =>
                     {
-                        if (changeDirectionCommand.frame == 70)
-                        {
-                            Player player = GameObject.FindObjectOfType<Player>();
-                            float angleToPlayer = Mathf.Atan2(player.transform.position.y - bullet.transform.position.y,
-                                player.transform.position.x - bullet.transform.position.x);
-                            bullet.ChangeSprite(chaseBullet.bulletSprite, chaseBullet.animatorOverrideController);
-                            bullet.SetAttributes(bullet.transform.position, chaseBullet.bulletSpeed, angleToPlayer,
-                                chaseBullet.bulletAcceleration, chaseBullet.bulletLifeSpan, boss.CharacterStats.CurrentAttack * chaseBullet.damageMultiplier, 0.5f,
-                                0, chaseBullet.destroyOnInvisible);
-                        }
-                    }
+                        Player player = GameObject.FindObjectOfType<Player>();
+                        float angleToPlayer = Mathf.Atan2(player.transform.position.y - target.transform.position.y,
+                            player.transform.position.x - target.transform.position.x);
+                        target.ChangeSprite(chaseBullet.bulletSprite, chaseBullet.animatorOverrideController);
+                        target.SetAttributes(target.transform.position, chaseBullet.bulletSpeed, angleToPlayer,
+                            chaseBullet.bulletAcceleration, chaseBullet.bulletLifeSpan, boss.CharacterStats.CurrentAttack * chaseBullet.damageMultiplier, 0.5f,
+                            0, chaseBullet.destroyOnInvisible);
+                    });
+                    bullet.AddBulletCommand(chase, 45);
                 }
                 yield return new WaitForSeconds(0.5f);
             }
@@ -206,21 +193,17 @@ public class Stage1Midboss_DiamondChase : RangedAttackState
                                 initialBullet.bulletAcceleration, initialBullet.bulletLifeSpan, initialBullet.damageMultiplier * boss.CharacterStats.CurrentAttack, 0.5f,
                                 initialBullet.hitRadius, initialBullet.bulletSprite, initialBullet.animatorOverrideController, 0, initialBullet.destroyOnInvisible);
 
-                    BulletCommand changeDirectionCommand = bullet.gameObject.AddComponent<BulletCommand>();
-                    changeDirectionCommand.update = update;
-                    void update()
+                    Action<Bullet> chase = new Action<Bullet>(target =>
                     {
-                        if (changeDirectionCommand.frame == 90)
-                        {
-                            Player player = GameObject.FindObjectOfType<Player>();
-                            float angleToPlayer = Mathf.Atan2(player.transform.position.y - bullet.transform.position.y,
-                                player.transform.position.x - bullet.transform.position.x);
-                            bullet.ChangeSprite(chaseBullet.bulletSprite, chaseBullet.animatorOverrideController);
-                            bullet.SetAttributes(bullet.transform.position, chaseBullet.bulletSpeed * 1.5f, angleToPlayer,
-                                chaseBullet.bulletAcceleration, chaseBullet.bulletLifeSpan, boss.CharacterStats.CurrentAttack * chaseBullet.damageMultiplier, 0.5f,
-                                0, chaseBullet.destroyOnInvisible);
-                        }
-                    }
+                        Player player = GameObject.FindObjectOfType<Player>();
+                        float angleToPlayer = Mathf.Atan2(player.transform.position.y - target.transform.position.y,
+                            player.transform.position.x - target.transform.position.x);
+                        target.ChangeSprite(chaseBullet.bulletSprite, chaseBullet.animatorOverrideController);
+                        target.SetAttributes(target.transform.position, chaseBullet.bulletSpeed * 1.5f, angleToPlayer,
+                            chaseBullet.bulletAcceleration, chaseBullet.bulletLifeSpan, boss.CharacterStats.CurrentAttack * chaseBullet.damageMultiplier, 0.5f,
+                            0, chaseBullet.destroyOnInvisible);
+                    });
+                    bullet.AddBulletCommand(chase, 45);
                 }
                 yield return new WaitForSeconds(0.5f);
             }
