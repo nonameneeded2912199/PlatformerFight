@@ -10,31 +10,23 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e3c0713421bb3c848b88443184ec600e, type: 3}
-  m_Name: BarrageStateData
+  m_Name: RandomAttackData
   m_EditorClassIdentifier: 
-  attackTime: 0
+  attackTime: 2
   bulletDetails:
-  - bulletSpeed: 6
-    bulletAcceleration: -0.1
-    bulletLifeSpan: 0
-    damageMultiplier: 0.8
-    hitRadius: 0.07
-    destroyOnInvisible: 0
-    bulletSprite: {fileID: 8425642334494580284, guid: 8148e8ee61b17ac4e99f2b31b32ed444, type: 3}
-    animatorOverrideController: {fileID: 22100000, guid: 0d508561567d3c64b92ea42bd3650412, type: 2}
-  - bulletSpeed: 0.1
-    bulletAcceleration: 0.1
+  - bulletSpeed: 8
+    bulletAcceleration: 0
     bulletLifeSpan: 0
     damageMultiplier: 0.5
     hitRadius: 0.07
     destroyOnInvisible: 1
-    bulletSprite: {fileID: -4683541104984300282, guid: 20293347fd793554594601da77fa473f, type: 3}
+    bulletSprite: {fileID: -6817307713531789983, guid: c9fa5b67b61af014b8e77267515bcfaf, type: 3}
     animatorOverrideController: {fileID: 22100000, guid: 0d508561567d3c64b92ea42bd3650412, type: 2}
-  - bulletSpeed: 0.5
+  - bulletSpeed: 3
     bulletAcceleration: 0.1
     bulletLifeSpan: 0
-    damageMultiplier: 0.5
-    hitRadius: 0.07
+    damageMultiplier: 0.7
+    hitRadius: 0.1
     destroyOnInvisible: 1
-    bulletSprite: {fileID: 1319096162232284329, guid: 8148e8ee61b17ac4e99f2b31b32ed444, type: 3}
+    bulletSprite: {fileID: -3943154991144791732, guid: 20293347fd793554594601da77fa473f, type: 3}
     animatorOverrideController: {fileID: 22100000, guid: 0d508561567d3c64b92ea42bd3650412, type: 2}

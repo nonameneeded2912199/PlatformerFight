@@ -19,6 +19,6 @@ MonoBehaviour:
     bulletLifeSpan: 0
     damageMultiplier: 1
     hitRadius: 0.08
-    destroyOnInvisible: 0
+    destroyOnInvisible: 1
     bulletSprite: {fileID: -5926490974846390120, guid: 8148e8ee61b17ac4e99f2b31b32ed444, type: 3}
     animatorOverrideController: {fileID: 22100000, guid: 0d508561567d3c64b92ea42bd3650412, type: 2}

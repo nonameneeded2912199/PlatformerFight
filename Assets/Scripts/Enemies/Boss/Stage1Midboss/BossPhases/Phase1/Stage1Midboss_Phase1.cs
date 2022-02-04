@@ -15,7 +15,7 @@ public class Stage1Midboss_Phase1 : BossPhase
 
     public Stage1Midboss_TeleportIn teleportInState { get; private set; }
 
-    public Stage1Midboss_SpiralAttack spiralAttack { get; private set; }
+    public Stage1Midboss_RandomAttack spiralAttack { get; private set; }
 
     public Stage1Midboss_DiamondChase chaseAttack { get; private set; }
 
@@ -34,7 +34,7 @@ public class Stage1Midboss_Phase1 : BossPhase
 
         teleportInState = new Stage1Midboss_TeleportIn(this.owner.stateMachine, owner, "Midboss1_TeleportIn", this.phaseData.teleportInStateData, this);
 
-        spiralAttack = new Stage1Midboss_SpiralAttack(this.owner.stateMachine, owner, "Midboss1_RangedAttack", owner.transform, this, this.phaseData.spiralAttackStateData);
+        spiralAttack = new Stage1Midboss_RandomAttack(this.owner.stateMachine, owner, "Midboss1_RangedAttack", owner.transform, this, this.phaseData.spiralAttackStateData);
 
         chaseAttack = new Stage1Midboss_DiamondChase(this.owner.stateMachine, owner, "Midboss1_Special", owner.transform, this, this.phaseData.chasingAttackStateData);
     }
