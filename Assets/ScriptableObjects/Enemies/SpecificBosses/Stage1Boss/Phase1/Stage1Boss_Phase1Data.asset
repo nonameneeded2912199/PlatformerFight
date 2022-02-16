@@ -13,9 +13,12 @@ MonoBehaviour:
   m_Name: Stage1Boss_Phase1Data
   m_EditorClassIdentifier: 
   enemyName: Hero
-  phaseStats: {fileID: 11400000, guid: 90fe137809b1b344a9a695928c5611b4, type: 2}
+  phaseStats: {fileID: 11400000, guid: d6b400b20be06674b908c79a06c32ffa, type: 2}
   scoreYield: 5000
   phaseType: 0
   phaseName: Untitled
   phaseBonusTime: 0
+  initialState: {fileID: 11400000, guid: ceee931fc100eb14a9547bbc063ea5d4, type: 2}
   pursueData: {fileID: 11400000, guid: 181b4f74ebba5f34c804f4785b9659e7, type: 2}
+  meleeData: {fileID: 11400000, guid: 98c1c88f86027e446b8ad27e61b092cf, type: 2}
+  meleeCD: 4

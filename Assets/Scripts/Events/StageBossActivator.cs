@@ -25,6 +25,9 @@ public class StageBossActivator : MonoBehaviour
     private List<CharacterDialogue> uniqueDialoguesList;
     private Dictionary<int, TextAsset> uniqueDialogues;
 
+    [SerializeField]
+    private AudioCueSO bossBGM = default;
+
     public bool triggered = false;
 
     private void Awake()
@@ -75,6 +78,11 @@ public class StageBossActivator : MonoBehaviour
                 Debug.Log("Failed dialogue");
                 boss.Activate();
             }    
+        }   
+        
+        if (bossBGM != null)
+        {
+
         }    
     }
 

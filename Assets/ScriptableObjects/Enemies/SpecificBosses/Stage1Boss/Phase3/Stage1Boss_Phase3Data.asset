@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61012f66bab497e4aa0669902cd71110, type: 3}
+  m_Name: Stage1Boss_Phase3Data
+  m_EditorClassIdentifier: 
+  enemyName: Hero
+  phaseStats: {fileID: 11400000, guid: b99ba4e3bd45f2a43abe7ab355d95b67, type: 2}
+  scoreYield: 150000
+  phaseType: 2
+  phaseName: Circular Seal
+  phaseBonusTime: 75
+  initialState: {fileID: 11400000, guid: 9bf75b8979523e64fbb024f6c79bc815, type: 2}
+  barrageAttack: {fileID: 11400000, guid: 03017b2246123664c8ae397782bea303, type: 2}

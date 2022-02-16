@@ -80,22 +80,22 @@ public class Stage1Midboss_RandomAttack : RangedAttackState
         switch (boss.thisDifficulty)
         {
             case GameDifficulty.EASY:
-                attackingCoroutine = boss.StartCoroutine(SpiralAttackEasy());
+                attackingCoroutine = boss.StartCoroutine(RandomAttackEasy());
                 break;
             case GameDifficulty.NORMAL:
-                attackingCoroutine = boss.StartCoroutine(SpiralAttackNormal());
+                attackingCoroutine = boss.StartCoroutine(RandomAttackNormal());
                 break;
             case GameDifficulty.HARD:
-                attackingCoroutine = boss.StartCoroutine(SpiralAttackHard());
+                attackingCoroutine = boss.StartCoroutine(RandomAttackHard());
                 break;
             case GameDifficulty.LUNATIC:
-                attackingCoroutine = boss.StartCoroutine(SpiralAttackLunatic());
+                attackingCoroutine = boss.StartCoroutine(RandomAttackLunatic());
                 break;
         }
 
     }
 
-    private IEnumerator SpiralAttackEasy()
+    private IEnumerator RandomAttackEasy()
     {
         BulletDetails thisAttackProjectile = stateData.bulletDetails[0];
 
@@ -106,7 +106,7 @@ public class Stage1Midboss_RandomAttack : RangedAttackState
 
             entity.BulletEventChannel.RaiseBulletEvent(boss.tag, attackPosition.position, thisAttackProjectile.bulletSpeed, angle,
                             thisAttackProjectile.bulletAcceleration, thisAttackProjectile.bulletLifeSpan,
-                            thisAttackProjectile.damageMultiplier * boss.CharacterStats.CurrentAttack / 2, 0.5f, thisAttackProjectile.hitRadius,
+                            thisAttackProjectile.damageMultiplier * boss.CharacterStats.CurrentAttack / 2, 0.5f,
                             thisAttackProjectile.bulletSprite, thisAttackProjectile.animatorOverrideController, 0, thisAttackProjectile.destroyOnInvisible);
 
             yield return new WaitForSeconds(0.1f);
@@ -115,7 +115,7 @@ public class Stage1Midboss_RandomAttack : RangedAttackState
         FinishAttack();
     }
 
-    private IEnumerator SpiralAttackNormal()
+    private IEnumerator RandomAttackNormal()
     {
         BulletDetails thisAttackProjectile = stateData.bulletDetails[0];
         BulletDetails thisAttackProjectile2 = stateData.bulletDetails[1];
@@ -126,7 +126,7 @@ public class Stage1Midboss_RandomAttack : RangedAttackState
 
             entity.BulletEventChannel.RaiseBulletEvent(boss.tag, attackPosition.position, thisAttackProjectile.bulletSpeed, angle,
                             thisAttackProjectile.bulletAcceleration, thisAttackProjectile.bulletLifeSpan,
-                            thisAttackProjectile.damageMultiplier * boss.CharacterStats.CurrentAttack, 0.5f, thisAttackProjectile.hitRadius,
+                            thisAttackProjectile.damageMultiplier * boss.CharacterStats.CurrentAttack, 0.5f,
                             thisAttackProjectile.bulletSprite, thisAttackProjectile.animatorOverrideController, 0, thisAttackProjectile.destroyOnInvisible);
 
             yield return new WaitForSeconds(0.08f);
@@ -136,7 +136,7 @@ public class Stage1Midboss_RandomAttack : RangedAttackState
         {
             entity.BulletEventChannel.RaiseBulletEvent(boss.tag, attackPosition.position, thisAttackProjectile2.bulletSpeed, i,
                             thisAttackProjectile2.bulletAcceleration, thisAttackProjectile2.bulletLifeSpan,
-                            thisAttackProjectile2.damageMultiplier * boss.CharacterStats.CurrentAttack, 0.5f, thisAttackProjectile2.hitRadius,
+                            thisAttackProjectile2.damageMultiplier * boss.CharacterStats.CurrentAttack, 0.5f, 
                             thisAttackProjectile2.bulletSprite, thisAttackProjectile2.animatorOverrideController, 0, thisAttackProjectile2.destroyOnInvisible);
         }
 
@@ -145,7 +145,7 @@ public class Stage1Midboss_RandomAttack : RangedAttackState
         FinishAttack();
     }
 
-    private IEnumerator SpiralAttackHard()
+    private IEnumerator RandomAttackHard()
     {
         BulletDetails thisAttackProjectile = stateData.bulletDetails[0];
         BulletDetails thisAttackProjectile2 = stateData.bulletDetails[1];
@@ -156,7 +156,7 @@ public class Stage1Midboss_RandomAttack : RangedAttackState
 
             entity.BulletEventChannel.RaiseBulletEvent(boss.tag, attackPosition.position, thisAttackProjectile.bulletSpeed, angle,
                             thisAttackProjectile.bulletAcceleration, thisAttackProjectile.bulletLifeSpan,
-                            thisAttackProjectile.damageMultiplier * boss.CharacterStats.CurrentAttack, 0.5f, thisAttackProjectile.hitRadius,
+                            thisAttackProjectile.damageMultiplier * boss.CharacterStats.CurrentAttack, 0.5f,
                             thisAttackProjectile.bulletSprite, thisAttackProjectile.animatorOverrideController, 0, thisAttackProjectile.destroyOnInvisible);
 
             yield return new WaitForSeconds(0.06f);
@@ -166,7 +166,7 @@ public class Stage1Midboss_RandomAttack : RangedAttackState
         {
             entity.BulletEventChannel.RaiseBulletEvent(boss.tag, attackPosition.position, thisAttackProjectile2.bulletSpeed, i,
                             thisAttackProjectile2.bulletAcceleration, thisAttackProjectile2.bulletLifeSpan,
-                            thisAttackProjectile2.damageMultiplier * boss.CharacterStats.CurrentAttack, 0.5f, thisAttackProjectile2.hitRadius,
+                            thisAttackProjectile2.damageMultiplier * boss.CharacterStats.CurrentAttack, 0.5f,
                             thisAttackProjectile2.bulletSprite, thisAttackProjectile2.animatorOverrideController, 0, thisAttackProjectile2.destroyOnInvisible);
         }
 
@@ -174,7 +174,7 @@ public class Stage1Midboss_RandomAttack : RangedAttackState
         FinishAttack();
     }
 
-    private IEnumerator SpiralAttackLunatic()
+    private IEnumerator RandomAttackLunatic()
     {
         BulletDetails thisAttackProjectile = stateData.bulletDetails[0];
         BulletDetails thisAttackProjectile2 = stateData.bulletDetails[1];
@@ -186,7 +186,7 @@ public class Stage1Midboss_RandomAttack : RangedAttackState
 
             entity.BulletEventChannel.RaiseBulletEvent(boss.tag, attackPosition.position, thisAttackProjectile.bulletSpeed * 1.5f, angle,
                             thisAttackProjectile.bulletAcceleration, thisAttackProjectile.bulletLifeSpan,
-                            thisAttackProjectile.damageMultiplier * boss.CharacterStats.CurrentAttack * 2f, 0.5f, thisAttackProjectile.hitRadius,
+                            thisAttackProjectile.damageMultiplier * boss.CharacterStats.CurrentAttack * 2f, 0.5f,
                             thisAttackProjectile.bulletSprite, thisAttackProjectile.animatorOverrideController, 0, thisAttackProjectile.destroyOnInvisible);
 
             yield return new WaitForSeconds(0.03f);
@@ -196,7 +196,7 @@ public class Stage1Midboss_RandomAttack : RangedAttackState
         {
             entity.BulletEventChannel.RaiseBulletEvent(boss.tag, attackPosition.position, thisAttackProjectile2.bulletSpeed, i,
                             thisAttackProjectile2.bulletAcceleration, thisAttackProjectile2.bulletLifeSpan,
-                            thisAttackProjectile2.damageMultiplier * boss.CharacterStats.CurrentAttack, 0.5f, thisAttackProjectile2.hitRadius,
+                            thisAttackProjectile2.damageMultiplier * boss.CharacterStats.CurrentAttack, 0.5f,
                             thisAttackProjectile2.bulletSprite, thisAttackProjectile2.animatorOverrideController, 0, thisAttackProjectile2.destroyOnInvisible);
         }
 

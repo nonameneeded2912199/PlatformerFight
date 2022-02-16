@@ -12,15 +12,31 @@ public class SniperJoe_DeadState : DeadState
         this.enemy = enemy;
     }
 
-    // Start is called before the first frame update
-    void Start()
+    public override void DoChecks()
     {
-        
+        base.DoChecks();
     }
 
-    // Update is called once per frame
-    void Update()
+    public override void Enter()
     {
-        
+        base.Enter();
+        entity.gameObject.SetActive(false);
+
+        GameObject.Destroy(entity.gameObject); ;
+    }
+
+    public override void Exit()
+    {
+        base.Exit();
+    }
+
+    public override void LogicUpdate()
+    {
+        base.LogicUpdate();
+    }
+
+    public override void PhysicsUpdate()
+    {
+        base.PhysicsUpdate();
     }
 }

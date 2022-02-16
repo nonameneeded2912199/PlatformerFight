@@ -4717,7 +4717,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletPool: {fileID: 11400000, guid: 6515ee3b0d3b07f45ba3f37a6e79eaef, type: 2}
-  initialSize: 100
+  initialSize: 500
   bulletEventChannel: {fileID: 11400000, guid: cf839519a667d8e47b35d9a9ad557afc, type: 2}
 --- !u!1 &1309838567
 GameObject:

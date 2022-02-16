@@ -11,6 +11,8 @@ public class MusicPlayer : MonoBehaviour
 	[SerializeField] private AudioCueSO _pauseMusic = default;
 	[SerializeField] private BoolEventChannelSO _onPauseOpened = default;
 
+	private AudioCueSO currentMusic = default;
+
 	private void OnEnable()
 	{
 		_onPauseOpened.OnEventRaised += PlayPauseMusic;
@@ -25,12 +27,13 @@ public class MusicPlayer : MonoBehaviour
 
 	private void PlayMusicFromStart()
 	{
-		_playMusicOn.RaisePlayEvent(_thisSceneSO.musicTrack, _audioConfig);
+		currentMusic = _thisSceneSO.musicTrack;
+		_playMusicOn.RaisePlayEvent(currentMusic, _audioConfig);
 	}
 
 	private void PlayMusic()
 	{
-		_playMusicOn.RaisePlayEvent(_thisSceneSO.musicTrack, _audioConfig, default, false);
+		_playMusicOn.RaisePlayEvent(currentMusic, _audioConfig, default, false);
 	}
 
 	private void PlayPauseMusic(bool open)

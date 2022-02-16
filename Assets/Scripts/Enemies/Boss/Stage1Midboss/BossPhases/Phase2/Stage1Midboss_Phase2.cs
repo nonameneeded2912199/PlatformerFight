@@ -36,7 +36,7 @@ public class Stage1Midboss_Phase2 : BossPhase
             case BossPhaseType.NormalAttack:
                 owner.OnAddScore.RaiseEvent(owner.CalculateScoreAfterDefeat(phaseData.scoreYield));
                 break;
-            case BossPhaseType.SpellCardAttack:
+            case BossPhaseType.TimeAttack:
                 long finalScore = (long)((phaseTimeLeft * phaseData.scoreYield) / (phaseData.phaseBonusTime + phaseData.scoreYield));
                 finalScore += phaseData.scoreYield;
                 OnPhaseCompleted.RaiseEvent(phaseTimeLeft > 0, finalScore);

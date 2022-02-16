@@ -20,6 +20,9 @@ public class Walker_DeadState : DeadState
     public override void Enter()
     {
         base.Enter();
+        entity.gameObject.SetActive(false);
+
+        GameObject.Destroy(entity.gameObject);
     }
 
     public override void Exit()

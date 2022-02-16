@@ -1,0 +1,47 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26ef1ba97d0414940805ac1f2ea98263, type: 3}
+  m_Name: Stage1Boss_Phase2Data
+  m_EditorClassIdentifier: 
+  enemyName: Hero
+  phaseStats: {fileID: 11400000, guid: b99ba4e3bd45f2a43abe7ab355d95b67, type: 2}
+  scoreYield: 100000
+  phaseType: 1
+  phaseName: Flowery Trail
+  phaseBonusTime: 60
+  initialState: {fileID: 11400000, guid: f10bd30518205094fbeead4ad1bd29f8, type: 2}
+  movingState: {fileID: 11400000, guid: 8292a182d653d254c8f74654fb4af8e2, type: 2}
+  movingStateBullet:
+    bulletSpeed: 4
+    bulletAcceleration: 0.1
+    bulletLifeSpan: 0
+    damageMultiplier: 1.2
+    destroyOnInvisible: 0
+    bulletSprite: {fileID: 6261204194188010130, guid: 20293347fd793554594601da77fa473f, type: 3}
+    animatorOverrideController: {fileID: 22100000, guid: 0d508561567d3c64b92ea42bd3650412, type: 2}
+  movingStateBullet2:
+    bulletSpeed: 6
+    bulletAcceleration: 0.2
+    bulletLifeSpan: 3
+    damageMultiplier: 0.5
+    destroyOnInvisible: 1
+    bulletSprite: {fileID: 1319096162232284329, guid: 8148e8ee61b17ac4e99f2b31b32ed444, type: 3}
+    animatorOverrideController: {fileID: 22100000, guid: 0d508561567d3c64b92ea42bd3650412, type: 2}
+  movingStateBullet3:
+    bulletSpeed: 0
+    bulletAcceleration: 0
+    bulletLifeSpan: 0
+    damageMultiplier: 0.5
+    destroyOnInvisible: 0
+    bulletSprite: {fileID: -6264289495730742573, guid: 8148e8ee61b17ac4e99f2b31b32ed444, type: 3}
+    animatorOverrideController: {fileID: 22100000, guid: 0d508561567d3c64b92ea42bd3650412, type: 2}
+  normalAttack: {fileID: 11400000, guid: b3e1b87a850243e42b3db76c763a49a5, type: 2}

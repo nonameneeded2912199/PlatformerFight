@@ -14,6 +14,8 @@ public class Stage1Boss_Dead : DeadState
     public override void Enter()
     {
         base.Enter();
+
+        boss.Rigidbody.gravityScale = 3f;
     }
 
     public override void Exit()

@@ -15,8 +15,6 @@ public class Bullet : MonoBehaviour
     [SerializeField]
     private BulletEventChannelSO bulletEventChannel = default;
 
-    public CircleCollider2D bulletCollider { get; private set; }
-
     public SpriteRenderer spriteRenderer { get; private set; }
 
     public Animator animator { get; private set; }
@@ -31,19 +29,19 @@ public class Bullet : MonoBehaviour
 
     public bool Pierce { get; set; }
 
-    public bool hasLifeSpan { get; set; }
+    public bool HasLifeSpan { get; set; }
 
     public bool destroyOnInvisible { get; set; } = true;
 
-    public bool walkThroughWall { get; set; } = true;
+    public bool walkThroughPlatform { get; set; } = false;
 
     private void Awake()
     {
-        bulletCollider = GetComponent<CircleCollider2D>();
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
 
         bulletCommands = new List<BulletCommand>();
+        Physics2D.reuseCollisionCallbacks = true;
     }
 
     // Update is called once per frame
@@ -56,9 +54,12 @@ public class Bullet : MonoBehaviour
             Speed += Acceleration;
             //Direction += Curve;
 
+            if (Speed < 0)
+                Speed = 0;
+
             Vector3 bulletPos = transform.position;
-            bulletPos.x += Speed * Mathf.Cos(Direction) * Time.deltaTime;
-            bulletPos.y += Speed * Mathf.Sin(Direction) * Time.deltaTime;
+            bulletPos.x += Speed * Mathf.Cos(Direction) * 1 / 60f;
+            bulletPos.y += Speed * Mathf.Sin(Direction) * 1 / 60f;
             transform.rotation = Quaternion.Euler(0, 0, Direction * Mathf.Rad2Deg);
             transform.position = bulletPos;
 
@@ -67,9 +68,10 @@ public class Bullet : MonoBehaviour
         else
         {
             suspendTime -= Time.deltaTime;
+            return;
         }
 
-        if (hasLifeSpan)
+        if (HasLifeSpan)
         {
             LifeSpan -= Time.deltaTime;
             if (LifeSpan <= 0)
@@ -102,22 +104,17 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (!walkThroughWall)
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Ground"))
         {
-            int platformLayer = 0;
-            platformLayer |= (1 << LayerMask.NameToLayer("Ground"));
-            if (collision.gameObject.layer == platformLayer)
+            if (!walkThroughPlatform)
             {
                 BackToPool();
                 return;
             }
+
         }
 
         attackDetails.position = transform.position;
-
-        int damagableLayer = 0;
-        damagableLayer |= (1 << LayerMask.NameToLayer("Shield"));
-        damagableLayer |= (1 << LayerMask.NameToLayer("Damagable"));
 
         if (!collision.CompareTag("Player") && !collision.CompareTag("Enemy"))
             return;
@@ -167,12 +164,7 @@ public class Bullet : MonoBehaviour
     {
         if (enabled)
         {
-            hasLifeSpan = false;
-            /*BulletCommand[] bulletCommands = gameObject.GetComponents<BulletCommand>();
-            foreach (BulletCommand bc in bulletCommands)
-            {
-                Destroy(bc);
-            }*/
+            HasLifeSpan = false;
 
             bulletCommands.Clear();
 
@@ -190,13 +182,12 @@ public class Bullet : MonoBehaviour
 
     public void ChangeSprite(Sprite sprite, AnimatorOverrideController animatorOverrideController)
     {
-        animator.runtimeAnimatorController = animatorOverrideController as RuntimeAnimatorController;
+        animator.runtimeAnimatorController = animatorOverrideController;
         spriteRenderer.sprite = sprite;
-    }
-
-    public void ChangeHitRadius(float radius)
-    {
-        bulletCollider.radius = radius;
+        Collider2D thisCollider = gameObject.GetComponent<CircleCollider2D>();
+        Destroy(thisCollider);
+        thisCollider = gameObject.AddComponent<CircleCollider2D>();
+        thisCollider.isTrigger = true;
     }
 
     public void SetAllegiance(string owner)
@@ -204,8 +195,8 @@ public class Bullet : MonoBehaviour
         gameObject.tag = owner;
     }
 
-    public void SetAttributes(Vector2 position, float speed, float direction, float acceleration, float lifeSpan, 
-        float damage, float invincibleTime, float suspendTime, bool pierce = false, bool destroyOnInvisible = true, bool walkThroughWall = true)
+    public void SetAttributes(Vector2 position, float speed, float direction, float acceleration, float lifeSpan, float damage, float invincibleTime, 
+        float suspendTime, bool pierce = false, bool destroyOnInvisible = true, bool walkThroughPlatform = false)
     {
         ResetAttributes();
 
@@ -217,12 +208,12 @@ public class Bullet : MonoBehaviour
 
         if (lifeSpan > 0)
         {
-            hasLifeSpan = true;
+            HasLifeSpan = true;
             this.LifeSpan = lifeSpan;
         }
         else
         {
-            hasLifeSpan = false;
+            HasLifeSpan = false;
         }
 
         this.suspendTime = suspendTime;
@@ -230,7 +221,7 @@ public class Bullet : MonoBehaviour
         attackDetails.damageAmount = damage;
         attackDetails.invincibleTime = invincibleTime;
         this.destroyOnInvisible = destroyOnInvisible;
-        this.walkThroughWall = walkThroughWall;
+        this.walkThroughPlatform = walkThroughPlatform;
     }
 
     public void ResetAttributes()
@@ -239,9 +230,10 @@ public class Bullet : MonoBehaviour
         Direction = 0;
         Speed = 0;
         Acceleration = 0;
-        hasLifeSpan = false;
+        HasLifeSpan = false;
         LifeSpan = 0;
         destroyOnInvisible = true;
+        walkThroughPlatform = false;
     }
 
     public void AddBulletCommand(Action<Bullet> command, int durationFrames, int executeLimit = 1, int startOffset = 0)

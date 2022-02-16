@@ -31,6 +31,9 @@ namespace PlatformerFight.CharacterThings
         [SerializeField]
         protected string currentPhase;
 
+        [SerializeField]
+        protected GameObject[] doorsToLock;
+
         protected override void Awake()
         {
             base.Awake();

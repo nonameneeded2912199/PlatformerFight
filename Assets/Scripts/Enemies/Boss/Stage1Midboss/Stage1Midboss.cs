@@ -40,7 +40,7 @@ public class Stage1Midboss : Boss
     private IntEventChannelSO openDoorOnDefeat;
 
     [SerializeField]
-    private int doorNumber;
+    private int[] doorNumbers;
 
     protected override void Start()
     {
@@ -54,8 +54,7 @@ public class Stage1Midboss : Boss
 
         deadState = new Stage1Midboss_Dead(stateMachine, this, "Midboss_Dead", deadStateData);
 
-
-        //HPBarsOBJ.SetActive(false);
+        gameObject.SetActive(false);
     }
 
     protected override void Update()
@@ -77,6 +76,22 @@ public class Stage1Midboss : Boss
 
     public override void Activate()
     {
+        if (PlayerPrefs.HasKey("Stage1MidbossDefeated"))
+        {
+            if (PlayerPrefs.GetInt("Stage1MidbossDefeated") == 1)
+            {
+                foreach (int num in doorNumbers)
+                    openDoorOnDefeat.RaiseEvent(num);
+
+                return;
+            }
+        }
+
+        foreach (GameObject door in doorsToLock)
+            door.SetActive(true);
+
+        PlayerPrefs.SetInt("Stage1MidbossDefeated", 0);
+        gameObject.SetActive(true);
         phase1.StartPhase();
     }
 
@@ -89,6 +104,8 @@ public class Stage1Midboss : Boss
     public override void OnDefeat()
     {
         //OnDefeatedEvent.RaiseEvent();
-        //openDoorOnDefeat.RaiseEvent(doorNumber);
+        PlayerPrefs.SetInt("Stage1MidbossDefeated", 1);
+        foreach (int num in doorNumbers)
+            openDoorOnDefeat.RaiseEvent(num);
     }
 }

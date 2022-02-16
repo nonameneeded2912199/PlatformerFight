@@ -20,6 +20,10 @@ public class E1_DeadState : DeadState
     public override void Enter()
     {
         base.Enter();
+
+        entity.gameObject.SetActive(false);
+
+        GameObject.Destroy(entity);
     }
 
     public override void Exit()

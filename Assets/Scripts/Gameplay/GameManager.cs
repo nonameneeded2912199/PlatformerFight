@@ -89,9 +89,7 @@ public class GameManager : MonoBehaviour
     }
 
     private void CheckScoreLives()
-    {
-        Debug.Log("Here");
-        
+    {        
         if (extraLifeThreshold.Length <= 0)
             return;
 

@@ -23,10 +23,6 @@ public class DeadState : State
 
         GameObject.Instantiate(stateData.ExplosionParticle, entity.transform.position, 
             stateData.ExplosionParticle.transform.rotation);
-
-        entity.gameObject.SetActive(false);
-
-        GameObject.Destroy(entity);
     }
 
     public override void Exit()

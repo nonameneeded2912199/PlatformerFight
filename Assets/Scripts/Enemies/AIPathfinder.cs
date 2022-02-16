@@ -37,7 +37,7 @@ public class AIPathfinder : MonoBehaviour
         seeker = GetComponent<Seeker>();
         character = GetComponent<BaseCharacter>();
 
-        InvokeRepeating("UpdatePath", 0f, pathUpdateSeconds);
+        InvokeRepeating(nameof(UpdatePath), 0f, pathUpdateSeconds);
     }
 
     private void FixedUpdate()
@@ -72,6 +72,11 @@ public class AIPathfinder : MonoBehaviour
         }
     }
 
+    public void StopFinding()
+    {
+        
+    }
+
     private void PathFollow()
     {
         if (path == null)
@@ -84,12 +89,9 @@ public class AIPathfinder : MonoBehaviour
 
         if (jumpEnabled && character.IsGrounded)
         {
-            if (target.position.y - 1f > transform.position.y 
-                && target.GetComponent<Rigidbody2D>().velocity.y == 0 
-                && path.path.Count < 20)
+            if (direction.y > 0.9f /*&& target.GetComponent<Rigidbody2D>().velocity.y == 0*/ && path.path.Count < 20)
             {
-                character.Rigidbody.velocity = new Vector2(character.Rigidbody.velocity.x,
-                    jumpForce);
+                character.Rigidbody.velocity = new Vector2(character.Rigidbody.velocity.x, jumpForce);
             }
         }
 

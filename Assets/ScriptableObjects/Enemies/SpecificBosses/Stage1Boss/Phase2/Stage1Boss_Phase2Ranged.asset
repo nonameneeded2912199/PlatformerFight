@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3c0713421bb3c848b88443184ec600e, type: 3}
+  m_Name: Stage1Boss_Phase2Ranged
+  m_EditorClassIdentifier: 
+  attackTime: 3
+  bulletDetails:
+  - bulletSpeed: 6
+    bulletAcceleration: -0.1
+    bulletLifeSpan: 0
+    damageMultiplier: 0.5
+    destroyOnInvisible: 1
+    bulletSprite: {fileID: -4992869952773315271, guid: 8148e8ee61b17ac4e99f2b31b32ed444, type: 3}
+    animatorOverrideController: {fileID: 22100000, guid: 0d508561567d3c64b92ea42bd3650412, type: 2}

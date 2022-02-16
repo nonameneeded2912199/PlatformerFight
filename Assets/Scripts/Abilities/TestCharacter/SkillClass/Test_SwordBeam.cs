@@ -63,7 +63,7 @@ namespace PlatformerFight.Abilities
 
         public override void PerformShot()
         {
-            float direction = 0;
+            float direction;
             if (currentVariation == Variations[0])
             {
                 direction = Executor.facingRight ? 0 : Mathf.PI;
@@ -74,8 +74,8 @@ namespace PlatformerFight.Abilities
             }
 
             bulletEventChannel.RaiseBulletEvent(Executor.tag, AttackPoint.position, SwordBeamDetail.bulletSpeed, direction, SwordBeamDetail.bulletAcceleration,
-                SwordBeamDetail.bulletLifeSpan, SwordBeamDetail.damageMultiplier * Executor.CharacterStats.CurrentAttack, 0.5f, SwordBeamDetail.hitRadius,
-                SwordBeamDetail.bulletSprite, SwordBeamDetail.animatorOverrideController, 0, false, true, false);
+                SwordBeamDetail.bulletLifeSpan, SwordBeamDetail.damageMultiplier * Executor.CharacterStats.CurrentAttack, 0.5f,
+                SwordBeamDetail.bulletSprite, SwordBeamDetail.animatorOverrideController, 0, false, true);
         }
 
         public override bool Execute()

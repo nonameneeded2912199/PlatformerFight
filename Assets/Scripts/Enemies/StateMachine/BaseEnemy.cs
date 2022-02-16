@@ -152,6 +152,9 @@ namespace PlatformerFight.CharacterThings
 
         protected virtual void CheckTouchDamage()
         {
+            if (IsDead)
+                return;
+
             touchDamageBotLeft.Set(touchDamagePoint.position.x - touchDamageWidth / 2,
                     touchDamagePoint.position.y - touchDamageHeight / 2);
             touchDamageTopRight.Set(touchDamagePoint.position.x + touchDamageWidth / 2,

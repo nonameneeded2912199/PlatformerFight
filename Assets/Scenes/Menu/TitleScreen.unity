@@ -4757,7 +4757,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7639db4d3673bbf4188101c5089700bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stageToLoad: {fileID: 11400000, guid: 6b003a53e5ecc484babd3dc540bf0f33, type: 2}
+  stageToLoad: {fileID: 11400000, guid: 7562609f915a74a4787aeb04ffc6b03e, type: 2}
   preScene: {fileID: 11400000, guid: d660cbeb477a1214e9c9e63aa42325b1, type: 2}
   _saveSystem: {fileID: 11400000, guid: 8752e3737ddad6841849e730eec72599, type: 2}
   showLoadScreen: 1

@@ -77,7 +77,7 @@ public class UI_BossStatus : MonoBehaviour
             bossName.text = phase.enemyName;
         }
 
-        if (phase.phaseType == BossPhaseType.SpellCardAttack)
+        if (phase.phaseType != BossPhaseType.NormalAttack)
         {
             if (phase.phaseName != "" && phase.phaseName != null)
             {

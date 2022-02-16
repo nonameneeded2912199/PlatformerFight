@@ -39,14 +39,13 @@ public class BulletManager : MonoBehaviour
     }
 
     private Bullet SpawnBullet(string allegiance, Vector2 position, float speed, float direction, float acceleration, float lifeSpan, float damage,
-        float invincibleTime, float radius, Sprite sprite, AnimatorOverrideController animatorOverrideController, 
-        float suspendTime = 0, bool pierce = false, bool destroyOnInvisible = true, bool walkThroughWall = true)
+        float invincibleTime, Sprite sprite, AnimatorOverrideController animatorOverrideController,  float suspendTime = 0, bool pierce = false, 
+        bool destroyOnInvisible = true, bool walkThroughPlatform = false)
     {
         Bullet bullet = bulletPool.Request();
         bullet.SetAllegiance(allegiance);
         bullet.ChangeSprite(sprite, animatorOverrideController);
-        bullet.ChangeHitRadius(radius);
-        bullet.SetAttributes(position, speed, direction, acceleration, lifeSpan, damage, invincibleTime, suspendTime, pierce, destroyOnInvisible, walkThroughWall);
+        bullet.SetAttributes(position, speed, direction, acceleration, lifeSpan, damage, invincibleTime, suspendTime, pierce, destroyOnInvisible, walkThroughPlatform);
 
         return bullet;
     }

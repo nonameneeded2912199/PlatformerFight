@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39049d07247881f489498209a63abb2e, type: 3}
   m_Name: Stage1Boss_DeadState
   m_EditorClassIdentifier: 
-  ExplosionParticle: {fileID: 0}
+  ExplosionParticle: {fileID: 7120952389304436605, guid: 0f2281104c08ebd40af4a801a4662b0c, type: 3}

@@ -8,7 +8,7 @@ public class D_MeleeAttackState : ScriptableObject
     public float movingSpeed = 0f;
 
     public float attackRadius = 0.5f;
-    public float attackDamage = 10f;
+    public float attackMultiplier = 10f;
 
     public LayerMask playerLayer;
 }

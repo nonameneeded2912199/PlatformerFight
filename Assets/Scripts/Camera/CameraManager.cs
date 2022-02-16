@@ -11,8 +11,14 @@ public class CameraManager : MonoBehaviour
     //[SerializeField] private TransformAnchor _cameraTransformAnchor = default;
     [SerializeField] private TransformAnchor _playerTransformAnchor = default;
 
-    [SerializeField]
-    private CinemachineVirtualCamera cinemachineVirtualCamera;
+    //[SerializeField]
+    //private CinemachineVirtualCamera cinemachineVirtualCamera;
+
+    private CinemachineBrain cinemachineBrain;
+    private void Awake()
+    {
+        cinemachineBrain = mainCamera.GetComponent<CinemachineBrain>();
+    }
 
     private void OnEnable()
     {
@@ -21,7 +27,7 @@ public class CameraManager : MonoBehaviour
 
     private void OnDisable()
     {
-        _playerTransformAnchor.OnAnchorProvided += SetupPlayerVirtualCamera;
+        _playerTransformAnchor.OnAnchorProvided -= SetupPlayerVirtualCamera;
     }
 
     private void Start()
@@ -33,6 +39,8 @@ public class CameraManager : MonoBehaviour
 
     public void SetupPlayerVirtualCamera()
     {
+        ICinemachineCamera cinemachineVirtualCamera = cinemachineBrain.ActiveVirtualCamera;
+
         Transform target = _playerTransformAnchor.Value;
 
         cinemachineVirtualCamera.Follow = target;

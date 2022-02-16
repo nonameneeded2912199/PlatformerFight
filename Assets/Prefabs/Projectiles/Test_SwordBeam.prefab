@@ -128,11 +128,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87230cdfa07766f449db42701107cb3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 128
-  damageRadius: 0.1
-  hitBox: {fileID: 7290700121375870578}
   bulletEventChannel: {fileID: 11400000, guid: cf839519a667d8e47b35d9a9ad557afc, type: 2}
 --- !u!95 &7957669205656786220
 Animator:
@@ -163,7 +158,7 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}

@@ -21,4 +21,4 @@ MonoBehaviour:
     m_SubObjectType: 
     m_EditorAssetChanged: 0
   musicTrack: {fileID: 11400000, guid: cdb82b738329627469e94e082f73704e, type: 2}
-  stageName: 
+  stageName: Stage 2

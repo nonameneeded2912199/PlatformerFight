@@ -9,9 +9,15 @@ public class Stage1Boss_Phase1 : BossPhase
 
     private Stage1Boss_Phase1Data phaseData;
 
-    public Stage1Boss_Pursue chasingPlayer { get; private set; }
+    public Stage1Boss_Phase1Initial InitialState { get; private set; }
 
-    public int randomShootTime;
+    public Stage1Boss_Phase1Pursue ChasingPlayer { get; private set; }
+
+    public Stage1Boss_Phase1Melee MeleeAttack { get; private set; }
+
+    private float meleeAttackCooldown = 0;
+
+    public bool MeleeAvailable { get => meleeAttackCooldown <= 0; }
 
 
     public Stage1Boss_Phase1(Stage1Boss owner, Stage1Boss_Phase1Data phaseData, FloatEventChannelSO onPhaseTimerUpdate,
@@ -20,7 +26,10 @@ public class Stage1Boss_Phase1 : BossPhase
     {
         this.owner = owner;
         this.phaseData = phaseData;
-        chasingPlayer = new Stage1Boss_Pursue(owner.stateMachine, owner, "Boss1_Move", phaseData.pursueData, this);
+
+        InitialState = new Stage1Boss_Phase1Initial(owner.stateMachine, owner, "Boss1_Idle", phaseData.initialState, this);
+        ChasingPlayer = new Stage1Boss_Phase1Pursue(owner.stateMachine, owner, "Boss1_Move", phaseData.pursueData, this);
+        MeleeAttack = new Stage1Boss_Phase1Melee(owner.stateMachine, owner, "Boss1_Melee0", owner.meleeATKPosition, phaseData.meleeData, this);
     }
 
     public override void StartPhase()
@@ -29,7 +38,7 @@ public class Stage1Boss_Phase1 : BossPhase
 
         owner.CharacterStats.SetCharacterStats(phaseData.phaseStats);
 
-        owner.stateMachine.Initialize(chasingPlayer);
+        owner.stateMachine.ChangeState(InitialState);
 
         owner._OnBossStatusStart.RaiseEvent(phaseData);
 
@@ -40,9 +49,9 @@ public class Stage1Boss_Phase1 : BossPhase
     {
         owner.CurrentBossPhase = null;
         owner.OnAddScore.RaiseEvent(owner.CalculateScoreAfterDefeat(phaseData.scoreYield));
-        //owner.NextBossPhase = owner.phase2;
+        owner.NextBossPhase = owner.phase2;
         owner._OnBossStatusEnd.RaiseEvent();
-        owner.stateMachine.ChangeState(owner.phaseTransition);
+        owner.stateMachine.ChangeState(owner.phaseTransition1);
     }
 
     public override void FixedUpdate(float deltaTime)
@@ -79,5 +88,12 @@ public class Stage1Boss_Phase1 : BossPhase
     public override void Update(float deltaTime)
     {
         owner.stateMachine.CurrentState?.LogicUpdate();
+        if (meleeAttackCooldown > 0)
+            meleeAttackCooldown -= deltaTime;
+    }
+
+    public void EnterMeleeCooldown()
+    {
+        meleeAttackCooldown = phaseData.meleeCD;
     }
 }

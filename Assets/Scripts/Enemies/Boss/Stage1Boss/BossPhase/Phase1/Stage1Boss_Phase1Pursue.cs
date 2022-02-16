@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Pathfinding;
 
-public class Stage1Boss_Pursue : MoveState
+public class Stage1Boss_Phase1Pursue : MoveState
 {
     private Stage1Boss boss;
 
@@ -12,11 +12,7 @@ public class Stage1Boss_Pursue : MoveState
 
     private Player target;
 
-    private float moveDuration = 0;
-
-    private bool moved = false;
-
-    public Stage1Boss_Pursue(FiniteStateMachine stateMachine, Stage1Boss entity, string animBoolName, D_MoveState stateData, Stage1Boss_Phase1 phase)
+    public Stage1Boss_Phase1Pursue(FiniteStateMachine stateMachine, Stage1Boss entity, string animBoolName, D_MoveState stateData, Stage1Boss_Phase1 phase)
         : base(stateMachine, entity, animBoolName, stateData)
     {
         this.boss = entity;
@@ -31,8 +27,6 @@ public class Stage1Boss_Pursue : MoveState
     public override void Enter()
     {
         base.Enter();
-        moved = false;
-        moveDuration = Random.Range(stateData.minMoveTime, stateData.maxMoveTime);
         target = GameObject.FindObjectOfType<Player>();
         if (target == null)
             return;
@@ -53,10 +47,10 @@ public class Stage1Boss_Pursue : MoveState
     public override void LogicUpdate()
     {
         base.LogicUpdate();
-        if (!boss.IsGrounded)
+        if (boss.CheckPlayerInCloseRangeAction() && phase.MeleeAvailable)
         {
-            boss.CharacterAnimation.PlayAnim("Boss1_Jump / Fall");
-        }
+            stateMachine.ChangeState(phase.MeleeAttack);
+        }    
     }
 
     public override void PhysicsUpdate()
@@ -73,5 +67,9 @@ public class Stage1Boss_Pursue : MoveState
                 boss.CharacterAnimation.PlayAnim("Boss1_Idle");
             }
         }
+        else
+        {
+            boss.CharacterAnimation.PlayAnim("Boss1_Jump / Fall");
+        }    
     }
 }

@@ -19,5 +19,6 @@ public abstract class BossPhaseDataSO : ScriptableObject
 public enum BossPhaseType
 {
     NormalAttack,
-    SpellCardAttack
+    TimeAttack,
+    TimeSurvival
 }

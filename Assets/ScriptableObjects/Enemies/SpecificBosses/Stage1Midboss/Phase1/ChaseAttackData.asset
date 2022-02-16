@@ -18,7 +18,6 @@ MonoBehaviour:
     bulletAcceleration: 0
     bulletLifeSpan: 0
     damageMultiplier: 0.5
-    hitRadius: 0.06
     destroyOnInvisible: 0
     bulletSprite: {fileID: -753645668912349536, guid: 20293347fd793554594601da77fa473f, type: 3}
     animatorOverrideController: {fileID: 22100000, guid: 0d508561567d3c64b92ea42bd3650412, type: 2}
@@ -26,7 +25,6 @@ MonoBehaviour:
     bulletAcceleration: 2
     bulletLifeSpan: 0
     damageMultiplier: 0.5
-    hitRadius: 0.06
     destroyOnInvisible: 1
     bulletSprite: {fileID: 9199234949254390476, guid: 20293347fd793554594601da77fa473f, type: 3}
     animatorOverrideController: {fileID: 22100000, guid: 0d508561567d3c64b92ea42bd3650412, type: 2}

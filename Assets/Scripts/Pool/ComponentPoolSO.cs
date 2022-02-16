@@ -27,6 +27,8 @@ namespace PlatformerFight.Pool
 
         private Transform _parent;
 
+        private int lastObjectID = -1;
+
         /// <summary>
         /// Parents the pool root transform to <paramref name="t"/>.
         /// </summary>
@@ -42,7 +44,12 @@ namespace PlatformerFight.Pool
         public override T Request()
         {
             T member = base.Request();
+            while (member.GetInstanceID() == lastObjectID)
+            {
+                member = base.Request();
+            }
             member.gameObject.SetActive(true);
+            lastObjectID = member.GetInstanceID();
             return member;
         }
 

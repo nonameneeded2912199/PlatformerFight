@@ -9,7 +9,6 @@ public struct BulletDetails
     public float bulletAcceleration;
     public float bulletLifeSpan;
     public float damageMultiplier;
-    public float hitRadius;
 
     public bool destroyOnInvisible;
 

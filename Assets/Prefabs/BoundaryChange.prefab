@@ -72,3 +72,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cameraBoundary: {fileID: 0}
   cameraConfiner: {fileID: 0}
+  newVCam: {fileID: 0}
+  blendingTime: 2
+  _playerTransformAnchor: {fileID: 11400000, guid: 64cf21d73d3ad1f45bc60f922f220514, type: 2}

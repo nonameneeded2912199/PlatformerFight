@@ -176,6 +176,8 @@ namespace PlatformerFight.CharacterThings
         {
             if (player.IsKnockback && IsAttacking)
             {
+                player.PlayableDirector.Stop();
+
                 CancelAttack();
 
                 normalATKCombo = 0;

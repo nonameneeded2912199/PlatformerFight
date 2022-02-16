@@ -47,8 +47,9 @@ public class FlyingShooter_RangedAttackState : RangedAttackState
     {
         base.LogicUpdate();
         int facingDirection = enemy.facingRight ? 1 : -1;
-        if ((Player.Instance.transform.position.x > enemy.transform.position.x && facingDirection == -1)
-            || (Player.Instance.transform.position.x < enemy.transform.position.x && facingDirection == 1))
+        Player player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+        if ((player.transform.position.x > player.transform.position.x && facingDirection == -1)
+            || (player.transform.position.x < player.transform.position.x && facingDirection == 1))
         {
             enemy.Flip();
         }    
@@ -83,46 +84,45 @@ public class FlyingShooter_RangedAttackState : RangedAttackState
         BulletDetails bulletDetails = stateData.bulletDetails[0];
         for (int j = 0; j < 5; j++)
         {
-            //switch (entity.thisDifficulty)
-            //{
-            //    case GameDifficulty.EASY:
-            //        /*Bullet.GetBullet(BulletOwner.Enemy, attackPosition.position, stateData.bulletShootTypes[0].bulletSpeed, angle, stateData.bulletShootTypes[0].bulletLifeSpan,
-            //            stateData.bulletShootTypes[0].bulletDamage, stateData.bulletShootTypes[0].bulletType, stateData.bulletShootTypes[0].bulletColor);*/
-            //        for (int i = 0; i < 1; i++)
-            //        {
-            //            //var bulletCom = PoolManager.SpawnObject(GameManager.Instance.CommonBullet).GetComponent<Bullet>();
-            //            //var bulletCom = PoolManager.SpawnObject(Bullet.OriginalBullet).GetComponent<Bullet>();
-            //            entity.BulletEventChannel.RaiseBulletEvent(enemy.tag, attackPosition.position, bulletDetails.bulletSpeed, angle, 
-            //                bulletDetails.bulletAcceleration, bulletDetails.bulletLifeSpan, bulletDetails.damageMultiplier * enemy.CharacterStats.CurrentAttack, 
-            //                0.5f, bulletDetails.hitRadius, bulletDetails.bulletSprite,
-            //                bulletDetails.animatorOverrideController);                        
-            //        }
-            //        break;
-            //    case GameDifficulty.NORMAL:
-            //        for (float i = 0; i < 2 * Mathf.PI; i += (2f * Mathf.PI / 6))
-            //        {                        
-            //            entity.BulletEventChannel.RaiseBulletEvent(enemy.tag, attackPosition.position, bulletDetails.bulletSpeed, angle + i, 
-            //                bulletDetails.bulletAcceleration, bulletDetails.bulletLifeSpan, bulletDetails.damageMultiplier * enemy.CharacterStats.CurrentAttack, 
-            //                0.5f, bulletDetails.hitRadius, bulletDetails.bulletSprite, bulletDetails.animatorOverrideController, 1);                      
-            //        }
-            //        break;
-            //    case GameDifficulty.HARD:
-            //        for (float i = 0; i < 2 * Mathf.PI; i += (2f * Mathf.PI / 12))
-            //        {
-            //            entity.BulletEventChannel.RaiseBulletEvent(enemy.tag, attackPosition.position, bulletDetails.bulletSpeed, angle + i, 
-            //                bulletDetails.bulletAcceleration, bulletDetails.bulletLifeSpan, bulletDetails.damageMultiplier * enemy.CharacterStats.CurrentAttack, 
-            //                0.5f, bulletDetails.hitRadius, bulletDetails.bulletSprite, bulletDetails.animatorOverrideController, 1);                        
-            //        }
-            //        break;
-            //    case GameDifficulty.LUNATIC:
-            //        for (float i = 0; i < 2 * Mathf.PI; i += (2f * Mathf.PI / 18))
-            //        {
-            //            entity.BulletEventChannel.RaiseBulletEvent(enemy.tag, attackPosition.position, bulletDetails.bulletSpeed, angle + i, 
-            //                bulletDetails.bulletAcceleration, bulletDetails.bulletLifeSpan, bulletDetails.damageMultiplier * enemy.CharacterStats.CurrentAttack * 2, 0.5f, 
-            //                bulletDetails.hitRadius, bulletDetails.bulletSprite, bulletDetails.animatorOverrideController, 1);                       
-            //        }
-            //        break;
-            //}
+            switch (entity.thisDifficulty)
+            {
+                case GameDifficulty.EASY:
+                    /*Bullet.GetBullet(BulletOwner.Enemy, attackPosition.position, stateData.bulletShootTypes[0].bulletSpeed, angle, stateData.bulletShootTypes[0].bulletLifeSpan,
+                        stateData.bulletShootTypes[0].bulletDamage, stateData.bulletShootTypes[0].bulletType, stateData.bulletShootTypes[0].bulletColor);*/
+                    for (int i = 0; i < 1; i++)
+                    {
+                        //var bulletCom = PoolManager.SpawnObject(GameManager.Instance.CommonBullet).GetComponent<Bullet>();
+                        //var bulletCom = PoolManager.SpawnObject(Bullet.OriginalBullet).GetComponent<Bullet>();
+                        entity.BulletEventChannel.RaiseBulletEvent(enemy.tag, attackPosition.position, bulletDetails.bulletSpeed, angle,
+                            bulletDetails.bulletAcceleration, bulletDetails.bulletLifeSpan, bulletDetails.damageMultiplier * enemy.CharacterStats.CurrentAttack,
+                            0.5f, bulletDetails.bulletSprite, bulletDetails.animatorOverrideController);
+                    }
+                    break;
+                case GameDifficulty.NORMAL:
+                    for (float i = 0; i < 2 * Mathf.PI; i += (2f * Mathf.PI / 6))
+                    {
+                        entity.BulletEventChannel.RaiseBulletEvent(enemy.tag, attackPosition.position, bulletDetails.bulletSpeed, angle + i,
+                            bulletDetails.bulletAcceleration, bulletDetails.bulletLifeSpan, bulletDetails.damageMultiplier * enemy.CharacterStats.CurrentAttack,
+                            0.5f, bulletDetails.bulletSprite, bulletDetails.animatorOverrideController);
+                    }
+                    break;
+                case GameDifficulty.HARD:
+                    for (float i = 0; i < 2 * Mathf.PI; i += (2f * Mathf.PI / 12))
+                    {
+                        entity.BulletEventChannel.RaiseBulletEvent(enemy.tag, attackPosition.position, bulletDetails.bulletSpeed, angle + i,
+                            bulletDetails.bulletAcceleration, bulletDetails.bulletLifeSpan, bulletDetails.damageMultiplier * enemy.CharacterStats.CurrentAttack,
+                            0.5f, bulletDetails.bulletSprite, bulletDetails.animatorOverrideController);
+                    }
+                    break;
+                case GameDifficulty.LUNATIC:
+                    for (float i = 0; i < 2 * Mathf.PI; i += (2f * Mathf.PI / 18))
+                    {
+                        entity.BulletEventChannel.RaiseBulletEvent(enemy.tag, attackPosition.position, bulletDetails.bulletSpeed, angle + i,
+                            bulletDetails.bulletAcceleration, bulletDetails.bulletLifeSpan, bulletDetails.damageMultiplier * enemy.CharacterStats.CurrentAttack * 2, 0.5f,
+                            bulletDetails.bulletSprite, bulletDetails.animatorOverrideController);
+                    }
+                    break;
+            }
 
             yield return new WaitForSeconds(0.2f);
         }

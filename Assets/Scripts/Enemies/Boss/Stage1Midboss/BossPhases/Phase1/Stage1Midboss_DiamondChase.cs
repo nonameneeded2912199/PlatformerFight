@@ -95,7 +95,7 @@ public class Stage1Midboss_DiamondChase : RangedAttackState
                 {
                     Bullet bullet = entity.BulletEventChannel.RaiseBulletEvent(boss.tag, attackPosition.position, initialBullet.bulletSpeed, j,
                                 initialBullet.bulletAcceleration, initialBullet.bulletLifeSpan, initialBullet.damageMultiplier * boss.CharacterStats.CurrentAttack, 0.5f,
-                                initialBullet.hitRadius, initialBullet.bulletSprite, initialBullet.animatorOverrideController, 0, initialBullet.destroyOnInvisible);
+                                initialBullet.bulletSprite, initialBullet.animatorOverrideController, 0, initialBullet.destroyOnInvisible);
 
                     Action<Bullet> chase = new Action<Bullet>(target =>
                     {
@@ -127,7 +127,7 @@ public class Stage1Midboss_DiamondChase : RangedAttackState
                 {
                     Bullet bullet = entity.BulletEventChannel.RaiseBulletEvent(boss.tag, attackPosition.position, initialBullet.bulletSpeed, j,
                                 initialBullet.bulletAcceleration, initialBullet.bulletLifeSpan, initialBullet.damageMultiplier * boss.CharacterStats.CurrentAttack, 0.5f,
-                                initialBullet.hitRadius, initialBullet.bulletSprite, initialBullet.animatorOverrideController, 0, initialBullet.destroyOnInvisible);
+                                initialBullet.bulletSprite, initialBullet.animatorOverrideController, 0, initialBullet.destroyOnInvisible);
 
                     Action<Bullet> chase = new Action<Bullet>(target =>
                     {
@@ -159,7 +159,7 @@ public class Stage1Midboss_DiamondChase : RangedAttackState
                 {
                     Bullet bullet = entity.BulletEventChannel.RaiseBulletEvent(boss.tag, attackPosition.position, initialBullet.bulletSpeed, j,
                                 initialBullet.bulletAcceleration, initialBullet.bulletLifeSpan, initialBullet.damageMultiplier * boss.CharacterStats.CurrentAttack, 0.5f,
-                                initialBullet.hitRadius, initialBullet.bulletSprite, initialBullet.animatorOverrideController, 0, initialBullet.destroyOnInvisible);
+                                initialBullet.bulletSprite, initialBullet.animatorOverrideController, 0, initialBullet.destroyOnInvisible);
 
                     Action<Bullet> chase = new Action<Bullet>(target =>
                     {
@@ -191,7 +191,7 @@ public class Stage1Midboss_DiamondChase : RangedAttackState
                 {
                     Bullet bullet = entity.BulletEventChannel.RaiseBulletEvent(boss.tag, attackPosition.position, initialBullet.bulletSpeed * 1.5f, j,
                                 initialBullet.bulletAcceleration, initialBullet.bulletLifeSpan, initialBullet.damageMultiplier * boss.CharacterStats.CurrentAttack, 0.5f,
-                                initialBullet.hitRadius, initialBullet.bulletSprite, initialBullet.animatorOverrideController, 0, initialBullet.destroyOnInvisible);
+                                initialBullet.bulletSprite, initialBullet.animatorOverrideController, 0, initialBullet.destroyOnInvisible);
 
                     Action<Bullet> chase = new Action<Bullet>(target =>
                     {

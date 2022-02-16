@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad62e2da5aeb4a4429c8956d8d8b17d8, type: 3}
+  m_Name: Stage1Boss_Phase2MovingData
+  m_EditorClassIdentifier: 
+  jumpHeight: 8
+  numJumps: 1
+  duration: 3
+  snapping: 0
