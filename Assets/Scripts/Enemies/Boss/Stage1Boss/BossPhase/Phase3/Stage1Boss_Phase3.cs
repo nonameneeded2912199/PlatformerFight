@@ -41,7 +41,7 @@ public class Stage1Boss_Phase3 : BossPhase
             case BossPhaseType.TimeSurvival:
                 finalScore = (long)((phaseData.scoreYield) / (phaseData.phaseBonusTime + phaseData.scoreYield));
                 finalScore *= phaseData.scoreYield / 100;
-                OnPhaseCompleted.RaiseEvent(phaseTimeLeft > 0, finalScore);
+                OnPhaseCompleted.RaiseEvent(true, finalScore);
                 owner.OnAddScore.RaiseEvent(owner.CalculateScoreAfterDefeat(finalScore));
                 break;
         }
