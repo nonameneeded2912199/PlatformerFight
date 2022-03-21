@@ -11,12 +11,19 @@ public class UI_MenuManager : MonoBehaviour
 	private UI_DifficultSelectorPanel difficultyPanel = default;
 
 	[SerializeField]
+	private UI_SettingsPanel settingsPanel = default;
+
+	[SerializeField]
+	private UI_Credit creditsPanel = default;
+
+	[SerializeField]
 	private UI_CharacterSelector characterSelect = default;
 
 	[SerializeField] 
 	private UI_MainMenu _mainMenuPanel = default;
 
-	[SerializeField] private SaveSystem _saveSystem = default;
+	[SerializeField] 
+	private SaveSystem _saveSystem = default;
 
 	[SerializeField] 
 	private InputReader _inputReader = default;
@@ -104,33 +111,29 @@ public class UI_MenuManager : MonoBehaviour
 
 	public void OpenSettingsScreen()
 	{
-		//_settingsPanel.gameObject.SetActive(true);
-		//_settingsPanel.Closed += CloseSettingsScreen;
+		settingsPanel.gameObject.SetActive(true);
+		settingsPanel.OnCloseSettingsPanel += CloseSettingsScreen;
 
 	}
 	public void CloseSettingsScreen()
 	{
-		//_settingsPanel.Closed -= CloseSettingsScreen;
-		//_settingsPanel.gameObject.SetActive(false);
+		settingsPanel.OnCloseSettingsPanel -= CloseSettingsScreen;
+		settingsPanel.gameObject.SetActive(false);
 		_mainMenuPanel.SetMenuScreen(_hasSaveData);
 
 	}
 	public void OpenCreditsScreen()
 	{
-		//_creditsPanel.gameObject.SetActive(true);
+		creditsPanel.gameObject.SetActive(true);
 
-		//_creditsPanel.OnCloseCredits += CloseCreditsScreen;
-
-
-
-
+		creditsPanel.OnCloseCredits += CloseCreditsScreen;
 	}
+
 	public void CloseCreditsScreen()
 	{
-		//_creditsPanel.OnCloseCredits -= CloseCreditsScreen;
-		//_creditsPanel.gameObject.SetActive(false);
+		creditsPanel.OnCloseCredits -= CloseCreditsScreen;
+		creditsPanel.gameObject.SetActive(false);
 		_mainMenuPanel.SetMenuScreen(_hasSaveData);
-
 	}
 
 
@@ -141,12 +144,5 @@ public class UI_MenuManager : MonoBehaviour
 			.AddButton("Yes", () => { Application.Quit(); })
 			.AddCancelButton("No")
 			.Show();
-	}
-
-	private void OnDestroy()
-	{
-		//_popupPanel.ConfirmationResponseAction -= HideExitConfirmationPopup;
-		//_popupPanel.ConfirmationResponseAction -= StartNewGamePopupResponse;
-
 	}
 }

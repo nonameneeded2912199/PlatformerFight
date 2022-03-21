@@ -14,10 +14,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   saveFilename: save.file
   backupSaveFilename: save.file.bak
+  settingsFilename: settings.file
+  backupSettingsFilename: settings.file.bak
   _onSaveRequested: {fileID: 11400000, guid: ae21772248da30d4e9cd2516619f8228, type: 2}
+  _onSettingsRequested: {fileID: 11400000, guid: a3c750edcb61cd44bbecf605974f90a4, type: 2}
   saveData:
     _stageID: 
     _charID: 0
     _score: 0
     _lives: 0
     _difficulty: 0
+  settingsData:
+    _bgmVolume: 0
+    _sfxVolume: 0

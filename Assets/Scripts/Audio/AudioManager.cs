@@ -32,6 +32,9 @@ public class AudioManager : MonoBehaviour
 	private SoundEmitterVault _soundEmitterVault;
 	private SoundEmitter _musicSoundEmitter;
 
+	[SerializeField]
+	private SaveSystem _saveSystem = default;
+
 	private void Awake()
 	{
 		//TODO: Get the initial volume levels from the settings
@@ -39,6 +42,18 @@ public class AudioManager : MonoBehaviour
 
 		_pool.Prewarm(_initialSize);
 		_pool.SetParent(this.transform);
+
+		bool settingsExist = _saveSystem.LoadSettingsDataFromDisk();
+
+		Debug.Log(settingsExist);
+
+		if (!settingsExist)
+		{ 			
+			_saveSystem.SetNewSettingsData();
+        }
+
+		SetGroupVolume("MusicVolume", _saveSystem.settingsData._bgmVolume);
+		SetGroupVolume("SFXVolume", _saveSystem.settingsData._sfxVolume);
 	}
 
 	private void OnEnable()
@@ -80,6 +95,8 @@ public class AudioManager : MonoBehaviour
 			SetGroupVolume("MasterVolume", _masterVolume);
 			SetGroupVolume("MusicVolume", _musicVolume);
 			SetGroupVolume("SFXVolume", _sfxVolume);
+			SetGroupVolume("MusicVolume", _saveSystem.settingsData._bgmVolume);
+			SetGroupVolume("SFXVolume", _saveSystem.settingsData._sfxVolume);
 		}
 	}
 	void ChangeMasterVolume(float newVolume)

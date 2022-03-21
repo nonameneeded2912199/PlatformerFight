@@ -24,6 +24,8 @@ public static class FileManager
     {
         var fullPath = Path.Combine(Application.persistentDataPath, fileName);
 
+        Debug.Log(fullPath);
+
         if (!File.Exists(fullPath))
         {
             File.WriteAllText(fullPath, "");

@@ -33,7 +33,7 @@ public class UIGameplayManager : MonoBehaviour
 	private InputReader _inputReader = default;
 	[SerializeField]
 	private Button pauseButton = default;
-	//[SerializeField] private ActorSO _mainProtagonist = default;
+	
 
 	[Header("Event channels")]
 	[SerializeField]
@@ -51,11 +51,15 @@ public class UIGameplayManager : MonoBehaviour
 	[SerializeField]
 	private DialogueEventChannelSO _onShowDialogue = default;
 
+	[SerializeField]
+	private UI_SettingsPanel settingsPanel = default;
+
 	private void OnEnable()
     {
 		_onSceneReady.OnEventRaised += ResetUI;
 		_inputReader.UIPauseEvent += OpenUIPause;
 		pauseButton.onClick.AddListener(OpenUIPause);
+
 		_loadGameOverScreen.OnEventRaised += ShowGameOverScreen;
 		_onShowDialogue.OnEventRaised += OpenUIDialogue;
     }
@@ -76,6 +80,18 @@ public class UIGameplayManager : MonoBehaviour
 		Time.timeScale = 1;
     }
 
+	public void OpenSettingsScreen()
+	{
+		settingsPanel.gameObject.SetActive(true);
+		settingsPanel.OnCloseSettingsPanel += CloseSettingsScreen;
+
+	}
+	public void CloseSettingsScreen()
+	{
+		settingsPanel.OnCloseSettingsPanel -= CloseSettingsScreen;
+		settingsPanel.gameObject.SetActive(false);
+	}
+
 	private void OpenUIPause()
     {
 		_inputReader.UIPauseEvent -= OpenUIPause;
@@ -84,7 +100,7 @@ public class UIGameplayManager : MonoBehaviour
 
 		_pauseScreen.Resumed += CloseUIPause;
 
-		_pauseScreen.SettingsOpened += CloseUIPause;
+		_pauseScreen.SettingsOpened += OpenSettingsScreen;
 
 		_pauseScreen.BackToMainRequested += BackToMainMenu;
 
@@ -109,7 +125,7 @@ public class UIGameplayManager : MonoBehaviour
 
 		_pauseScreen.Resumed -= CloseUIPause;
 
-		_pauseScreen.SettingsOpened -= CloseUIPause;
+		_pauseScreen.SettingsOpened -= OpenUIPause;
 
 		_pauseScreen.BackToMainRequested -= BackToMainMenu;
 

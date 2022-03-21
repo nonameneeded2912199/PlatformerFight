@@ -10,19 +10,28 @@ public class SaveSystem : ScriptableObject
     public string saveFilename = "save.file";
     public string backupSaveFilename = "save.file.bak";
 
+    public string settingsFilename = "settings.file";
+    public string backupSettingsFilename = "settings.file.bak";
+
     [SerializeField]
     private SaveEventChannelSO _onSaveRequested = default;
 
+    [SerializeField]
+    private SettingsEventChannelSO _onSettingsRequested = default;
+
     public Save saveData = new Save();
+    public SettingsSave settingsData = new SettingsSave();
 
     private void OnEnable()
     {
         _onSaveRequested.OnSaveRequested += SaveDataToDisk;
+        _onSettingsRequested.OnSettingsRequested += SaveSettingsToDisk;
     }
 
     private void OnDisable()
     {
         _onSaveRequested.OnSaveRequested -= SaveDataToDisk;
+        _onSettingsRequested.OnSettingsRequested -= SaveSettingsToDisk;
     }
 
     private void CacheLoadStage(GameSceneSO stage, bool showLoadingScreen, bool fadeScreen)
@@ -45,6 +54,17 @@ public class SaveSystem : ScriptableObject
         return false;
     }
 
+    public bool LoadSettingsDataFromDisk()
+    {
+        if (FileManager.LoadFromFile(settingsFilename, out var json))
+        {
+            settingsData.LoadFromJson(json);
+            return true;
+        }
+
+        return false;
+    }    
+
     private void SaveDataToDisk(int charID, int difficulty, int lives, string stageID, long score)
     {
         saveData._charID = charID;
@@ -62,6 +82,20 @@ public class SaveSystem : ScriptableObject
         }
     }
 
+    private void SaveSettingsToDisk(float bgmVolume, float sfxVolume)
+    {
+        settingsData._bgmVolume = bgmVolume;
+        settingsData._sfxVolume = sfxVolume;
+
+        if (FileManager.MoveFile(settingsFilename, backupSettingsFilename))
+        {
+            if (FileManager.WriteToFile(settingsFilename, settingsData.ToJson()))
+            {
+                Debug.Log("Settings " + saveFilename + " saved successfully.");
+            }
+        }    
+    }    
+
     public void WriteEmptySaveFile()
     {
         FileManager.WriteToFile(saveFilename, "");
@@ -72,5 +106,12 @@ public class SaveSystem : ScriptableObject
         FileManager.WriteToFile(saveFilename, "");
 
         SaveDataToDisk(charID, difficulty, 2, stageID, 0);
+    }
+
+    public void SetNewSettingsData()
+    {
+        FileManager.WriteToFile(settingsFilename, "");
+
+        SaveSettingsToDisk(1.0f, 1.0f);
     }
 }

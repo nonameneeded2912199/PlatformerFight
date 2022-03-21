@@ -475,6 +475,7 @@ MonoBehaviour:
   _masterVolume: 1
   _musicVolume: 1
   _sfxVolume: 1
+  _saveSystem: {fileID: 11400000, guid: 8752e3737ddad6841849e730eec72599, type: 2}
 --- !u!4 &1070266503
 Transform:
   m_ObjectHideFlags: 0
